@@ -36,7 +36,7 @@ export default defineConfig({
       // Workspace packages sort as their own group, between npm packages and `#/` imports.
       customGroups: [
         {
-          elementNamePattern: ["@vibestart/**"],
+          elementNamePattern: ["@vibe-scaffold/**"],
           groupName: "workspace",
         },
       ],

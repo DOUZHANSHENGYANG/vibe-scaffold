@@ -1,13 +1,13 @@
 import { minBy } from "es-toolkit/array";
 
-import type { Blueprint, PackageManager, Stack } from "@vibestart/core";
+import type { Blueprint, PackageManager, Stack } from "@vibe-scaffold/core";
 import {
   defaultAddons,
   fingerprint,
   generate,
   legalStacks,
   verificationSchema,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { registry } from "#/registry.ts";
 import { stackLabel } from "#/stack-label.ts";

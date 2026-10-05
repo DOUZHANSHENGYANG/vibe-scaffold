@@ -1,14 +1,14 @@
 import type { CANCEL_SYMBOL } from "@clack/prompts";
 import { isCancel, multiselect, select, text } from "@clack/prompts";
 
-import type { Choices, PackageManager, Stack } from "@vibestart/core";
+import type { Choices, PackageManager, Stack } from "@vibe-scaffold/core";
 import {
   compose,
   kindOptions,
   openChoices,
   startingChoice,
-} from "@vibestart/core";
-import { registry } from "@vibestart/integrations";
+} from "@vibe-scaffold/core";
+import { registry } from "@vibe-scaffold/integrations";
 
 import { CliError } from "#/errors.ts";
 import { noneLabel } from "#/options.ts";

@@ -1,9 +1,9 @@
 import type { ParseError } from "jsonc-parser";
 import { parse } from "jsonc-parser";
 
-import type { FileChange } from "@vibestart/core";
-import { mergeFile } from "@vibestart/core";
-import { maintenanceFiles } from "@vibestart/integrations";
+import type { FileChange } from "@vibe-scaffold/core";
+import { mergeFile } from "@vibe-scaffold/core";
+import { maintenanceFiles } from "@vibe-scaffold/integrations";
 
 import { metadataFiles, readText } from "#/maintenance/files.ts";
 import type { Snapshot } from "#/maintenance/model.ts";

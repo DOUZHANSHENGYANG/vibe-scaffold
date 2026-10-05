@@ -7,7 +7,7 @@ import {
 import { AnchorProvider } from "fumadocs-core/toc";
 import { ArrowLeft, ArrowRight, SquarePen } from "lucide-react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { DocLink } from "#/components/docs/doc-link.tsx";
 import { mdxComponents } from "#/components/docs/mdx.tsx";
@@ -125,7 +125,7 @@ const relocatedPages = new Map([
   ["concepts/deployment", "stack/delivery#docker"],
   ["concepts/engineering", "stack/toolchain#vite-plus"],
 ]);
-// The first page once held why vibestart exists and how it tests; those sections have pages of their own.
+// The first page once held why vibe-scaffold exists and how it tests; those sections have pages of their own.
 const introductionSections = new Map([
   ["conventions", "why#conventions"],
   ["maintenance", "why#maintenance"],

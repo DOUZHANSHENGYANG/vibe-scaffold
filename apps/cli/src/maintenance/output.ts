@@ -11,7 +11,7 @@ const summaries = new Map([
   ],
   [
     "needs-install",
-    "Files written. Installation and checks are still pending.\nNext (in the project directory): vibestart recover",
+    "Files written. Installation and checks are still pending.\nNext (in the project directory): vibe-scaffold recover",
   ],
   [
     "rolled-back",
@@ -35,7 +35,7 @@ export const maintenanceText = (
         ({ id, name, description }) => `  ${id} — ${name}\n    ${description}`
       ),
       "",
-      "Preview with: vibestart add <id> --dry-run",
+      "Preview with: vibe-scaffold add <id> --dry-run",
       "",
     ].join("\n");
   }
@@ -58,7 +58,7 @@ export const maintenanceText = (
     );
     if (result.updates > 0 || result.conflicts.length > 0) {
       lines.push(
-        "Inspect the plan in the project directory: vibestart upgrade --dry-run"
+        "Inspect the plan in the project directory: vibe-scaffold upgrade --dry-run"
       );
     }
     return `${lines.join("\n")}\n`;

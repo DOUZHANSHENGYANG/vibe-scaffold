@@ -3,8 +3,8 @@ import { AnimatePresence, motion } from "motion/react";
 import type { ReactNode } from "react";
 import { useCallback, useState } from "react";
 
-import type { Stack } from "@vibestart/core";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { Stack } from "@vibe-scaffold/core";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Block } from "#/components/topology/block.tsx";
 import { Capsule, capsuleClass } from "#/components/topology/capsule.tsx";

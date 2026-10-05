@@ -4,11 +4,11 @@ import { confirm, isCancel } from "@clack/prompts";
 
 import { MaintenanceError } from "#/maintenance/model.ts";
 
-export const usage = `vibestart add [knip ultracite docker] [--list]
-vibestart doctor [--offline]
-vibestart upgrade [--to <exact-version>] [--check | --dry-run]
-vibestart adopt --from <original-snapshot.json>
-vibestart recover [--rollback | --abort]
+export const usage = `vibe-scaffold add [knip ultracite docker] [--list]
+vibe-scaffold doctor [--offline]
+vibe-scaffold upgrade [--to <exact-version>] [--check | --dry-run]
+vibe-scaffold adopt --from <original-snapshot.json>
+vibe-scaffold recover [--rollback | --abort]
 
 Common: --cwd <project> --json --yes/-y --no-install --full-check
 Writes show one plan and require --yes in non-interactive mode.

@@ -1,4 +1,4 @@
-import type { Stack } from "@vibestart/core";
+import type { Stack } from "@vibe-scaffold/core";
 
 import type { Group } from "#/lib/roles.ts";
 import { chosen } from "#/lib/stack.ts";

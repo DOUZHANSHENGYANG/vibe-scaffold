@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import type { ReactNode } from "react";
 import { useRef, useState } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import type { Choosing } from "#/components/topology/decision.tsx";
 import { Extensions } from "#/components/topology/extensions.tsx";

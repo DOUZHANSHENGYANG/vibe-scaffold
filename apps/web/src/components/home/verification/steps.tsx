@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import type { Gate } from "#/lib/gate.ts";
 import { ease } from "#/lib/motion.ts";

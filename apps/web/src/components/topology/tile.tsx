@@ -11,7 +11,7 @@ import {
   Server,
 } from "lucide-react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import type { Decision } from "#/lib/stack.ts";
 

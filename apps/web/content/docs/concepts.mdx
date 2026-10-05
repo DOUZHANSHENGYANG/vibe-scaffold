@@ -57,11 +57,11 @@ Take a signed-in user creating a todo. The request passes through each part in t
 
 Rendering turns data into the HTML a browser displays. A single-page application (SPA) renders in the browser: the server sends JavaScript, which then builds the page. Server-side rendering (SSR) builds the HTML on the server, so content arrives with the first response, and the browser takes over interaction afterwards.
 
-Routing maps URLs to pages and handles parameters such as `/todos/42`. vibestart offers a TanStack Router SPA, TanStack Start, and Next.js; [Frontend](/docs/stack/frontend) compares them.
+Routing maps URLs to pages and handles parameters such as `/todos/42`. vibe-scaffold offers a TanStack Router SPA, TanStack Start, and Next.js; [Frontend](/docs/stack/frontend) compares them.
 
 ## APIs and data [#data]
 
-An API describes what clients can ask the server to do. vibestart offers oRPC, which shares TypeScript types between server and client, and OpenAPI, which describes standard REST endpoints for clients in any language.
+An API describes what clients can ask the server to do. vibe-scaffold offers oRPC, which shares TypeScript types between server and client, and OpenAPI, which describes standard REST endpoints for clients in any language.
 
 The database stores data in tables. Drizzle defines those tables in TypeScript and builds typed queries. When a table changes, a **migration** records the change as SQL, so that every database, from your laptop to production, can apply it in the same order. See [Backend and API](/docs/stack/backend) and [Data and authentication](/docs/stack/data).
 

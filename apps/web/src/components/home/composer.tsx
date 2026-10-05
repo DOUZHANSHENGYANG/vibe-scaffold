@@ -5,11 +5,11 @@ import { CornerDownRight } from "lucide-react";
 import type { Variants } from "motion/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { previewName, stacks } from "virtual:vibestart";
+import { previewName, stacks } from "virtual:vibe-scaffold";
 
-import type { Change, Stack } from "@vibestart/core";
-import { buttonVariants } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { Change, Stack } from "@vibe-scaffold/core";
+import { buttonVariants } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Verified } from "#/components/command.tsx";
 import { useComposed } from "#/components/home/use-composed.ts";

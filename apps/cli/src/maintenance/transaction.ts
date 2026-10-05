@@ -26,8 +26,8 @@ import {
 } from "#/maintenance/model.ts";
 import type { Plan } from "#/maintenance/plan.ts";
 
-const journalPath = ".vibestart/pending/journal.json";
-const backupPath = ".vibestart/backup/files.json";
+const journalPath = ".vibe-scaffold/pending/journal.json";
+const backupPath = ".vibe-scaffold/backup/files.json";
 const itemSchema = z.strictObject({
   after: z.string().nullable(),
   before: z.string().nullable(),
@@ -68,7 +68,7 @@ const runVp: Runner = async (cwd, args) => {
   });
   if (result.failed) {
     throw new MaintenanceError(
-      `vp ${args.join(" ")} failed:\n${result.all.slice(-12_000)}\nRun vibestart recover after fixing the cause, or recover --rollback.`
+      `vp ${args.join(" ")} failed:\n${result.all.slice(-12_000)}\nRun vibe-scaffold recover after fixing the cause, or recover --rollback.`
     );
   }
 };
@@ -85,9 +85,9 @@ export const withOperation = async <T>(
   cwd: string,
   action: () => T | Promise<T>
 ): Promise<T> => {
-  mkdirSync(projectPath(cwd, ".vibestart"), { recursive: true });
-  const file = projectPath(cwd, ".vibestart/operation.lock");
-  const previous = readText(cwd, ".vibestart/operation.lock");
+  mkdirSync(projectPath(cwd, ".vibe-scaffold"), { recursive: true });
+  const file = projectPath(cwd, ".vibe-scaffold/operation.lock");
+  const previous = readText(cwd, ".vibe-scaffold/operation.lock");
   if (previous !== null) {
     const owner = z
       .object({ host: z.string(), pid: z.number() })
@@ -131,7 +131,7 @@ export const prepare = (
 ) => {
   if (pendingOperation(cwd) !== null) {
     throw new MaintenanceError(
-      "An operation is pending. Run vibestart recover first."
+      "An operation is pending. Run vibe-scaffold recover first."
     );
   }
   for (const change of plan.changes) {
@@ -175,7 +175,7 @@ export const prepare = (
   for (const conflict of plan.conflicts) {
     writeText(
       cwd,
-      `.vibestart/pending/candidates/${conflict.path}`,
+      `.vibe-scaffold/pending/candidates/${conflict.path}`,
       conflict.after
     );
   }
@@ -185,10 +185,10 @@ export const prepare = (
 
 const resolveCandidates = (cwd: string, journal: Journal) => {
   for (const file of journal.conflicts) {
-    const candidate = readText(cwd, `.vibestart/pending/candidates/${file}`);
+    const candidate = readText(cwd, `.vibe-scaffold/pending/candidates/${file}`);
     if (candidate === null || /^(?:<{7}|={7}|>{7}|\|{7})/mu.test(candidate)) {
       throw new MaintenanceError(
-        `Resolve .vibestart/pending/candidates/${file}, then run recover.`
+        `Resolve .vibe-scaffold/pending/candidates/${file}, then run recover.`
       );
     }
     if (/\.jsonc?$/u.test(file)) {
@@ -317,7 +317,7 @@ export const resume = async (
   }
   writeText(
     cwd,
-    ".vibestart/last-run.json",
+    ".vibe-scaffold/last-run.json",
     serialize({
       checks: validations(cwd, journal),
       files: journal.changes.map(({ path }) => ({

@@ -1,5 +1,5 @@
 {
-  "name": "@vibestart/config",
+  "name": "@vibe-scaffold/config",
   "private": true,
   "type": "module",
   "exports": {

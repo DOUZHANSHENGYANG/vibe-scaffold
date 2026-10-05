@@ -4,7 +4,7 @@ import { AlignLeft } from "lucide-react";
 import { motion } from "motion/react";
 import { useRef } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { spring } from "#/lib/motion.ts";
 import { m } from "#/paraglide/messages.js";

@@ -1,4 +1,4 @@
-import { contribute, defineIntegration } from "@vibestart/core";
+import { contribute, defineIntegration } from "@vibe-scaffold/core";
 
 import {
   authVariant,

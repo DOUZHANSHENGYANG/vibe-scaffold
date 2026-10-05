@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { describe, expect, it } from "vite-plus/test";
 
-import { generate } from "@vibestart/core";
+import { generate } from "@vibe-scaffold/core";
 
 import { goldenPaths, goldenRoot, goldens } from "#/goldens.ts";
 import { registry } from "#/registry.ts";

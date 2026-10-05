@@ -5,7 +5,7 @@ import {
   compose,
   createBlueprintSchema,
   defaultAddons,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { formatWithProjectConfig } from "#/oxfmt.ts";
 import { registry } from "#/registry.ts";
@@ -17,7 +17,7 @@ describe("blueprint", () => {
     const { code } = await formatWithProjectConfig(
       "schema.json",
       JSON.stringify(blueprintJsonSchema(registry)),
-      "@vibestart"
+      "@vibe-scaffold"
     );
     await expect(code).toMatchFileSnapshot("../schema.json");
   });

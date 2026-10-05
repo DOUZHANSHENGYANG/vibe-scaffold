@@ -4,9 +4,9 @@ import { tmpdir } from "node:os";
 import { execa } from "execa";
 import { z } from "zod";
 
-import { createBlueprintSchema, generate } from "@vibestart/core";
-import type { Blueprint } from "@vibestart/core";
-import { registry } from "@vibestart/integrations";
+import { createBlueprintSchema, generate } from "@vibe-scaffold/core";
+import type { Blueprint } from "@vibe-scaffold/core";
+import { registry } from "@vibe-scaffold/integrations";
 
 import type { Snapshot } from "#/maintenance/model.ts";
 import {
@@ -43,9 +43,9 @@ export const targetSnapshot = async (base: Snapshot, version?: string) => {
     [
       "exec",
       "--yes",
-      `--package=vibestart-cli@${version}`,
+      `--package=vibe-scaffold-cli@${version}`,
       "--",
-      "vibestart",
+      "vibe-scaffold",
       "snapshot",
       "--json",
     ],
@@ -81,7 +81,7 @@ export const readSnapshot = (file: string) =>
   snapshotSchema.parse(JSON.parse(readFileSync(file, "utf-8")));
 
 export const latestVersion = async () => {
-  const response = await fetch("https://registry.npmjs.org/vibestart/latest", {
+  const response = await fetch("https://registry.npmjs.org/vibe-scaffold/latest", {
     signal: AbortSignal.timeout(8000),
   });
   if (!response.ok) {

@@ -14,8 +14,8 @@
     "components": "#/components",
     "hooks": "#/hooks",
     "lib": "#/lib",
-    "utils": "@vibestart/ui/lib/utils",
-    "ui": "@vibestart/ui/components"
+    "utils": "@vibe-scaffold/ui/lib/utils",
+    "ui": "@vibe-scaffold/ui/components"
   },
   "rtl": false,
   "menuColor": "default",

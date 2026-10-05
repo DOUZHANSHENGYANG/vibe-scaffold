@@ -5,7 +5,7 @@ import { useId, useState, useSyncExternalStore } from "react";
 
 import { spring } from "#/lib/motion.ts";
 
-const storageKey = (group: string) => `vibestart:docs-tab:${group}`;
+const storageKey = (group: string) => `vibe-scaffold:docs-tab:${group}`;
 const listeners = new Set<() => void>();
 const subscribe = (listener: () => void) => {
   listeners.add(listener);

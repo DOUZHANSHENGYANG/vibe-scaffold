@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vite-plus/test";
 import { z } from "zod";
 
-import type { Generation, PackageManager, Stack } from "@vibestart/core";
-import { generate } from "@vibestart/core";
+import type { Generation, PackageManager, Stack } from "@vibe-scaffold/core";
+import { generate } from "@vibe-scaffold/core";
 
 import { registry } from "#/registry.ts";
 import { stackLabel } from "#/stack-label.ts";
@@ -20,7 +20,7 @@ const bunOwned = new Set([
   "Dockerfile",
   "package.json",
   "pnpm-workspace.yaml",
-  "vibestart.jsonc",
+  "vibe-scaffold.jsonc",
 ]);
 
 const manifestSchema = z.looseObject({

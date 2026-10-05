@@ -1,4 +1,4 @@
-import { contribute, defineIntegration, packageJson } from "@vibestart/core";
+import { contribute, defineIntegration, packageJson } from "@vibe-scaffold/core";
 
 import { toolchainVersions } from "#/catalog.ts";
 import { readmeCommandNotes, readmeTagline } from "#/vite-plus/slots.ts";

@@ -42,13 +42,13 @@ const navLink =
 export const Header = () => (
   <header className="bg-background/80 supports-backdrop-filter:bg-background/65 h-header edge-on-scroll sticky top-0 z-40 flex shrink-0 items-center gap-2 px-4 backdrop-blur-md sm:gap-6 sm:px-6">
     <Link
-      aria-label="vibestart"
+      aria-label="vibe-scaffold"
       className="group/home focus-visible:ring-foreground/30 -m-1.5 flex shrink-0 items-center gap-2.5 rounded-full p-1.5 outline-none focus-visible:ring-2"
       to="/"
     >
       <Logo className="size-7 transition-transform duration-500 ease-out group-hover/home:-rotate-6" />
       <span className="text-ui hidden font-semibold tracking-tight min-[400px]:inline">
-        vibestart
+        vibe-scaffold
       </span>
       <span className="bg-foreground/5 text-muted-foreground hidden rounded-full px-2 py-0.5 text-xs md:inline">
         beta

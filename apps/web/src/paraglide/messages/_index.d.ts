@@ -1099,7 +1099,7 @@ export declare const create_agent_copy: ((inputs?: Create_Agent_CopyInputs, opti
 /**
 * | output |
 * | --- |
-* | "Create a project with vibestart. Install its skill first: {skill} Then follow it to choose a stack that fits my needs and create the project. My needs:" |
+* | "Create a project with vibe-scaffold. Install its skill first: {skill} Then follow it to choose a stack that fits my needs and create the project. My needs:" |
 *
 * @param {Create_Agent_PromptInputs} inputs
 * @param {{ locale?: "en" | "zh" }} options
@@ -1575,7 +1575,7 @@ export declare const docs_copy_code: ((inputs?: Docs_Copy_CodeInputs, options?: 
 /**
 * | output |
 * | --- |
-* | "{page} · vibestart docs" |
+* | "{page} · vibe-scaffold docs" |
 *
 * @param {Docs_Document_TitleInputs} inputs
 * @param {{ locale?: "en" | "zh" }} options
@@ -1687,7 +1687,7 @@ export declare const document_description: ((inputs?: Document_DescriptionInputs
 /**
 * | output |
 * | --- |
-* | "vibestart · AI Native full-stack scaffolding" |
+* | "vibe-scaffold · AI Native full-stack scaffolding" |
 *
 * @param {Document_TitleInputs} inputs
 * @param {{ locale?: "en" | "zh" }} options
@@ -4856,7 +4856,7 @@ export declare const viz_tests_caption_broken: ((inputs?: Viz_Tests_Caption_Brok
 /**
 * | output |
 * | --- |
-* | "vibestart suite: {count} tests fail and point to the leak" |
+* | "vibe-scaffold suite: {count} tests fail and point to the leak" |
 *
 * @param {Viz_Tests_CaughtInputs} inputs
 * @param {{ locale?: "en" | "zh" }} options

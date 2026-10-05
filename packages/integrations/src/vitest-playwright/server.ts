@@ -1,4 +1,4 @@
-import type { Context } from "@vibestart/core";
+import type { Context } from "@vibe-scaffold/core";
 
 import { hasBackend, todosExample } from "#/app.ts";
 

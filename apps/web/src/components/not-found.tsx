@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import { useId } from "react";
 
-import { buttonVariants } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import { buttonVariants } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { backInk, clearing, strokes, strokeWidth } from "#/components/logo.tsx";
 import { m } from "#/paraglide/messages.js";

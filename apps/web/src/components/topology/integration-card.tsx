@@ -2,15 +2,15 @@ import { ArrowUpRight, Link2 } from "lucide-react";
 import type { ReactNode } from "react";
 import { useState } from "react";
 
-import type { AddonInfo, IntegrationInfo, Stack } from "@vibestart/core";
+import type { AddonInfo, IntegrationInfo, Stack } from "@vibe-scaffold/core";
 import {
   Popover,
   PopoverContent,
   PopoverDescription,
   PopoverTitle,
   PopoverTrigger,
-} from "@vibestart/ui/components/popover";
-import { cn } from "@vibestart/ui/lib/utils";
+} from "@vibe-scaffold/ui/components/popover";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { useFocus, useFocusTarget } from "#/lib/focus.ts";
 import { addonDescription, integrationDescription } from "#/lib/i18n.ts";

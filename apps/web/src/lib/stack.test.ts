@@ -1,4 +1,4 @@
-import { stacks } from "virtual:vibestart";
+import { stacks } from "virtual:vibe-scaffold";
 import { describe, expect, it } from "vite-plus/test";
 
 import {
@@ -165,7 +165,7 @@ describe("the create command", () => {
   it("writes the command a person runs", () => {
     const { stack } = entry("next-self-orpc-sqlite-better-auth-docker");
     expect(commandLine(commandWords(flagsOf(stack), "acme", "pnpm"))).toBe(
-      "pnpm dlx vibestart-cli acme --framework next --backend self --api orpc --database sqlite --auth better-auth --deployment docker"
+      "pnpm dlx vibe-scaffold-cli acme --framework next --backend self --api orpc --database sqlite --auth better-auth --deployment docker"
     );
   });
 });
@@ -185,7 +185,7 @@ describe("Bun selections", () => {
     ).toContain("--package-manager bun");
     expect(
       commandLine(commandWords(flags, "acme", "bun", verifiedAddons, "pnpm"))
-    ).toMatch(/^bunx vibestart-cli/u);
+    ).toMatch(/^bunx vibe-scaffold-cli/u);
     expect(
       verificationWith(
         { ...entryFromFlags({}), bunVerification: null },

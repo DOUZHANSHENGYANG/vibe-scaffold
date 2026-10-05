@@ -3,27 +3,27 @@ title: CLI 概览
 description: 创建项目、添加能力、检查项目状态并应用模板升级。
 ---
 
-vibestart CLI 负责创建项目，以及项目创建之后的维护。它无需全局安装，通过包管理器运行即可：
+vibe-scaffold CLI 负责创建项目，以及项目创建之后的维护。它无需全局安装，通过包管理器运行即可：
 
 <Tabs group="pm" items={["pnpm", "npm", "bun"]}>
 <Tab value="pnpm">
 
 ```sh
-npx vibestart-cli <命令>
+npx vibe-scaffold-cli <命令>
 ```
 
 </Tab>
 <Tab value="npm">
 
 ```sh
-npx vibestart-cli <命令>
+npx vibe-scaffold-cli <命令>
 ```
 
 </Tab>
 <Tab value="bun">
 
 ```sh
-bunx vibestart-cli <命令>
+bunx vibe-scaffold-cli <命令>
 ```
 
 </Tab>
@@ -40,7 +40,7 @@ bunx vibestart-cli <命令>
 | [`recover`](/docs/cli/recover)     | 继续或回滚未完成的操作                   |
 | [`adopt`](/docs/cli/upgrade#adopt) | 为来源可确认的旧项目记录基线             |
 
-如果希望由编码 Agent 代为执行这些命令，请安装 [vibestart skill](/docs/cli/skill)。
+如果希望由编码 Agent 代为执行这些命令，请安装 [vibe-scaffold skill](/docs/cli/skill)。
 
 ## 维护流程 [#workflow]
 
@@ -52,7 +52,7 @@ bunx vibestart-cli <命令>
 `doctor` 报告项目的模板版本、存在的问题，以及是否有可用的更新。它不会写入任何文件。
 
 ```sh
-npx vibestart-cli doctor --offline
+npx vibe-scaffold-cli doctor --offline
 ```
 
 </Step>
@@ -61,7 +61,7 @@ npx vibestart-cli doctor --offline
 `--dry-run` 根据原始模板、当前文件和目标模板生成变更计划，只展示，不写入。
 
 ```sh
-npx vibestart-cli upgrade --dry-run
+npx vibe-scaffold-cli upgrade --dry-run
 ```
 
 </Step>
@@ -70,7 +70,7 @@ npx vibestart-cli upgrade --dry-run
 在终端中确认计划；没有终端的环境请传入 `--yes`。应用后会安装依赖并检查项目。
 
 ```sh
-npx vibestart-cli upgrade --yes
+npx vibe-scaffold-cli upgrade --yes
 ```
 
 </Step>
@@ -82,7 +82,7 @@ npx vibestart-cli upgrade --yes
 </Steps>
 
 <Callout type="warn" title="提交维护状态">
-  `.vibestart/state.json` 与 `.vibestart/base.json`
+  `.vibe-scaffold/state.json` 与 `.vibe-scaffold/base.json`
   记录项目的来源和最初的模板。请一并提交这两个文件，不要用业务文件替换它们，升级依赖于此。
 </Callout>
 

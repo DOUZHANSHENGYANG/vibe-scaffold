@@ -4,7 +4,7 @@ vp run typegen  # writes apps/web/.next/**, apps/web/next-env.d.ts
 
 # .dockerignore (docker)
 .git
-.vibestart
+.vibe-scaffold
 **/node_modules
 **/dist
 **/coverage
@@ -105,7 +105,7 @@ release. Add a tool name to select part of the graph. For example, run
 
 # Project
 
-The architecture this project was created with is recorded in `vibestart.jsonc`.
+The architecture this project was created with is recorded in `vibe-scaffold.jsonc`.
 
 ## Code
 
@@ -1967,9 +1967,9 @@ peerDependencyRules:
   "include": ["vite.config.ts"]
 }
 
-# vibestart.jsonc (core)
+# vibe-scaffold.jsonc (core)
 {
-  "$schema": "https://vibestart.dev/schema.json",
+  "$schema": "https://vibe-scaffold.dev/schema.json",
 
   "stack": {
     "toolchain": "vite-plus",
@@ -2000,7 +2000,7 @@ import vitest from "ultracite/oxlint/vitest";
 import { defineConfig } from "vite-plus";
 
 const generatedFiles = [
-  ".vibestart/**",
+  ".vibe-scaffold/**",
   "**/.next/**",
   "**/.next-test-*/**",
   "**/next-env.d.ts",

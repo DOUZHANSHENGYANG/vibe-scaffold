@@ -1,10 +1,10 @@
-import type { Context } from "@vibestart/core";
+import type { Context } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
   file,
   packageJson,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { clientComponent, hasBackend } from "#/app.ts";
 import { templateContent, templateFiles } from "#/templates.ts";

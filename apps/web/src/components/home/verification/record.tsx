@@ -1,7 +1,7 @@
 import { ShieldCheck, ShieldQuestion } from "lucide-react";
 import { use } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { FingerprintCheck } from "#/components/home/verification/fingerprint-check.tsx";
 import { Steps } from "#/components/home/verification/steps.tsx";

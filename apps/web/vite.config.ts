@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 import mdx from "fumadocs-mdx/vite";
 import { defineConfig } from "vite-plus";
 
-import { vibestart } from "./plugin/index.ts";
+import { vibe-scaffold } from "./plugin/index.ts";
 import * as docsConfig from "./source.config.ts";
 
 export default defineConfig({
@@ -22,7 +22,7 @@ export default defineConfig({
       project: `${import.meta.dirname}/project.inlang`,
       strategy: ["localStorage", "preferredLanguage", "baseLocale"],
     }),
-    vibestart(),
+    vibe-scaffold(),
     // Only the index the app imports: the pages and their frontmatter, with bodies loaded on demand.
     mdx(docsConfig, { index: { browser: false, dynamic: false } }),
     tanstackRouter({ autoCodeSplitting: true, target: "react" }),

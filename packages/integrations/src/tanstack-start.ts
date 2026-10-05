@@ -1,11 +1,11 @@
-import type { Context } from "@vibestart/core";
+import type { Context } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
   file,
   packageJson,
   renderFile,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import {
   apiVariant,

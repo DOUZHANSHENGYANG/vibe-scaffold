@@ -2,9 +2,9 @@ import { Check, Fingerprint, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-import { fingerprint } from "@vibestart/core";
-import { Button } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import { fingerprint } from "@vibe-scaffold/core";
+import { Button } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { ease } from "#/lib/motion.ts";
 import type { Project } from "#/lib/project.ts";

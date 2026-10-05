@@ -28,13 +28,13 @@ import type {
   PackageManager,
   Stack,
   Verification,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 import {
   fingerprint,
   generate,
   legalStacks,
   verificationSchema,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { goldenPaths, goldenRoot, goldens } from "#/goldens.ts";
 import { formatWithProjectConfig } from "#/oxfmt.ts";
@@ -102,7 +102,7 @@ const writeVerification = async (
   const { code } = await formatWithProjectConfig(
     verificationPath,
     JSON.stringify(sorted),
-    "@vibestart"
+    "@vibe-scaffold"
   );
   writeFileSync(verificationPath, code);
 };
@@ -558,7 +558,7 @@ export const main = async (args: readonly string[]) => {
       force: { default: false, type: "boolean" },
       "package-manager": { default: "all", type: "string" },
       jobs: { default: String(defaultJobs), type: "string" },
-      out: { default: path.join(tmpdir(), "vibestart-stacks"), type: "string" },
+      out: { default: path.join(tmpdir(), "vibe-scaffold-stacks"), type: "string" },
       shard: { default: "0/1", type: "string" },
       shards: { type: "string" },
     },

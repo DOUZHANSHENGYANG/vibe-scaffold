@@ -3,8 +3,8 @@ import path from "node:path";
 import { isCancel, multiselect } from "@clack/prompts";
 import { z } from "zod";
 
-import { createBlueprintSchema, diffText } from "@vibestart/core";
-import { registry } from "@vibestart/integrations";
+import { createBlueprintSchema, diffText } from "@vibe-scaffold/core";
+import { registry } from "@vibe-scaffold/integrations";
 
 import { metadataFiles, readBaseline, readText } from "#/maintenance/files.ts";
 import {
@@ -94,7 +94,7 @@ const added = async (
   }
   if (selected.length === 0) {
     throw new MaintenanceError(
-      "Choose a capability; see vibestart add --list.",
+      "Choose a capability; see vibe-scaffold add --list.",
       2
     );
   }
@@ -128,7 +128,7 @@ const added = async (
   const current = await currentSnapshot(base.name, base.blueprint);
   if (releaseId(current) !== releaseId(base)) {
     throw new MaintenanceError(
-      "requires-upgrade: run vibestart upgrade with this release before adding capabilities."
+      "requires-upgrade: run vibe-scaffold upgrade with this release before adding capabilities."
     );
   }
   return await currentSnapshot(base.name, blueprint);
@@ -139,7 +139,7 @@ const inspect = async (cwd: string, offline: boolean) => {
   const base = readBaseline(cwd);
   const issues: string[] = [];
   if (operation !== null) {
-    issues.push(`Operation ${operation.phase}: run vibestart recover`);
+    issues.push(`Operation ${operation.phase}: run vibe-scaffold recover`);
   }
   const recipe = await loadRecipe(cwd);
   const normalized = createBlueprintSchema(registry).parse({
@@ -152,7 +152,7 @@ const inspect = async (cwd: string, offline: boolean) => {
     serialize(normalizeInput(expected))
   ) {
     issues.push(
-      "vibestart.jsonc differs from the recorded choices; use lifecycle commands to change capabilities."
+      "vibe-scaffold.jsonc differs from the recorded choices; use lifecycle commands to change capabilities."
     );
   }
   const manifest = z
@@ -200,7 +200,7 @@ const planFor = async (
         2
       );
     }
-    if (readText(cwd, ".vibestart/state.json") !== null) {
+    if (readText(cwd, ".vibe-scaffold/state.json") !== null) {
       throw new MaintenanceError("This project already has a baseline.");
     }
     const source = readSnapshot(path.resolve(values.from));
@@ -306,7 +306,7 @@ const printPlan = (plan: Awaited<ReturnType<typeof planFor>>) => {
   );
   for (const change of plan.changes) {
     process.stdout.write(
-      change.path.startsWith(".vibestart/")
+      change.path.startsWith(".vibe-scaffold/")
         ? `  baseline: ${change.path}\n`
         : `${diffText(change)}\n`
     );
@@ -331,7 +331,7 @@ const execute = async (
   }
   if (pendingOperation(cwd) !== null) {
     throw new MaintenanceError(
-      "An operation is pending. Run vibestart recover first."
+      "An operation is pending. Run vibe-scaffold recover first."
     );
   }
   const plan = await planFor(command, cwd, ids, values);
@@ -354,8 +354,8 @@ const execute = async (
       exitCode: 1,
       status: "conflicts",
       next: previewing
-        ? "Preview only; no files were written. Apply the plan to prepare conflict candidates, then resolve them and run vibestart recover."
-        : "Resolve candidates under .vibestart/pending/candidates, then run vibestart recover; vibestart recover --abort leaves project files unchanged.",
+        ? "Preview only; no files were written. Apply the plan to prepare conflict candidates, then resolve them and run vibe-scaffold recover."
+        : "Resolve candidates under .vibe-scaffold/pending/candidates, then run vibe-scaffold recover; vibe-scaffold recover --abort leaves project files unchanged.",
     };
   }
   if (previewing || plan.changes.length === 0) {

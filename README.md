@@ -1,13 +1,13 @@
 <div align="center">
 
-# VibeStart
+# VibeScaffold
 
 **Compose. Verify. Ship.**
 
 Compose a full-stack TypeScript stack and get a cutting-edge, verified project made for AI coding agents, with type safety, lint, and tests built in.
 
-[![npm](https://img.shields.io/npm/v/vibestart-cli?label=npm&color=cb3837)](https://www.npmjs.com/package/vibestart-cli)
-[![CI](https://github.com/VinkyDev/vibestart/actions/workflows/ci.yml/badge.svg)](https://github.com/VinkyDev/vibestart/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/vibe-scaffold-cli?label=npm&color=cb3837)](https://www.npmjs.com/package/vibe-scaffold-cli)
+[![CI](https://github.com/your-org/vibe-scaffold/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/vibe-scaffold/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **English** · [简体中文](README.zh.md)
@@ -20,10 +20,10 @@ https://github.com/user-attachments/assets/aa58d60b-4776-460b-97ee-234aa331f436
 
 ### Compose it yourself
 
-Pick each layer in the [web studio](https://vibestart.net/studio) and copy the command it builds, or answer the prompts in your terminal:
+Pick each layer in the [web studio](https://vibe-scaffold.dev/studio) and copy the command it builds, or answer the prompts in your terminal:
 
 ```sh
-npx vibestart-cli my-app
+npx vibe-scaffold-cli my-app
 ```
 
 ### Hand it to an AI agent
@@ -31,16 +31,16 @@ npx vibestart-cli my-app
 Paste this command, along with what you want to build, into Claude Code, Codex, Cursor, or any coding agent:
 
 ```sh
-npx skills add VinkyDev/vibestart --skill vibestart
+npx skills add your-org/vibe-scaffold --skill vibe-scaffold
 ```
 
-The agent installs the [vibestart skill](skills/vibestart/SKILL.md), chooses the stack, and creates the project. Later, ask it to add capabilities or upgrade the templates. See the [Agent Skills guide](apps/web/content/docs/cli/skill.mdx).
+The agent installs the [vibe-scaffold skill](skills/vibe-scaffold/SKILL.md), chooses the stack, and creates the project. Later, ask it to add capabilities or upgrade the templates. See the [Agent Skills guide](apps/web/content/docs/cli/skill.mdx).
 
-## Why VibeStart
+## Why VibeScaffold
 
-Full details: [Why vibestart](https://vibestart.net/docs/why).
+Full details: [Why vibe-scaffold](https://vibe-scaffold.dev/docs/why).
 
-With a coding agent, the hard part of an application is rarely the first day. It is the thirtieth: features pile up, the structure erodes, and each fix introduces another bug. VibeStart gives the agent, and you, a better starting point: best practices for a current, carefully chosen stack, and a codebase built so that an agent writes good code in it.
+With a coding agent, the hard part of an application is rarely the first day. It is the thirtieth: features pile up, the structure erodes, and each fix introduces another bug. VibeScaffold gives the agent, and you, a better starting point: best practices for a current, carefully chosen stack, and a codebase built so that an agent writes good code in it.
 
 - **Good code begets good code.** An agent imitates the code around it, follows written rules, and corrects itself from errors. Every project ships a consistent codebase, an `AGENTS.md` that says where and how each change is made, and checks (types, lint, tests) that report a mistake within seconds. `vp run ready` runs them all, fastest first.
 - **A current stack, kept current.** Only technologies that are the current standard or clearly becoming it: TypeScript 7, React 19 with the React Compiler, Drizzle ORM 1.0, Oxlint and Oxfmt, and [Vite+](https://viteplus.dev) as one toolchain. Open source, no vendor lock-in, one library per capability. When a better tool becomes the standard, the template moves to it and the old one is removed.
@@ -50,7 +50,7 @@ With a coding agent, the hard part of an application is rarely the first day. It
 - **Tests that earn their place.** End-to-end tests for whole workflows, integration tests for every API operation against a real database, and unit tests only for logic with real branches.
 - **Maintained after creation.** `upgrade` compares the original template, your project, and the new template, and previews the result before writing anything. Template files take the update; your application code stays as you wrote it.
 
-VibeStart does not host your application, does not migrate production data, and does not hide the code. A generated project is an ordinary repository with no runtime dependency on VibeStart.
+VibeScaffold does not host your application, does not migrate production data, and does not hide the code. A generated project is an ordinary repository with no runtime dependency on VibeScaffold.
 
 ## Supported stacks
 
@@ -71,7 +71,7 @@ VibeStart does not host your application, does not migrate production data, and 
 Pass flags to skip the prompts:
 
 ```sh
-npx vibestart-cli my-app --framework next --backend self --api orpc --database postgres --auth better-auth
+npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --database postgres --auth better-auth
 ```
 
 | Option                                                       | Description                                                                                                                                                    |
@@ -80,7 +80,7 @@ npx vibestart-cli my-app --framework next --backend self --api orpc --database p
 | `--addons <ids\|none>`                                       | Select add-ons, comma-separated. Knip and Ultracite are on by default; `none` leaves out both.                                                                 |
 | `--package-manager <pnpm\|bun>`                              | Install with pnpm (default) or Bun 1.4.2 or newer.                                                                                                             |
 | `--runtime <node\|bun>`                                      | Run the Hono server on Node.js (default) or Bun.                                                                                                               |
-| `--recipe <path\|url>`                                       | Start from a `vibestart.jsonc`; kind flags override it.                                                                                                        |
+| `--recipe <path\|url>`                                       | Start from a `vibe-scaffold.jsonc`; kind flags override it.                                                                                                        |
 | `--list`                                                     | List every kind, its options, and every legal stack.                                                                                                           |
 | `--dry-run`                                                  | Resolve the stack and list the files without writing.                                                                                                          |
 | `--json`                                                     | Print one JSON object and never prompt. Failures carry a machine-readable `code`.                                                                              |
@@ -88,7 +88,7 @@ npx vibestart-cli my-app --framework next --backend self --api orpc --database p
 
 ## Documentation
 
-- [vibestart.net/docs](https://vibestart.net/docs): quick start, choosing a stack, the CLI reference, testing, and concepts
+- [vibe-scaffold.dev/docs](https://vibe-scaffold.dev/docs): quick start, choosing a stack, the CLI reference, testing, and concepts
 - [Architecture](docs/architecture.md): the model, the resolver, integrations, verification, and project maintenance
 - [AGENTS.md](AGENTS.md): the rules for code in this repository and in every generated project
 
@@ -96,7 +96,7 @@ npx vibestart-cli my-app --framework next --backend self --api orpc --database p
 
 | Path                    | Owns                                                                     |
 | ----------------------- | ------------------------------------------------------------------------ |
-| `apps/cli`              | The `vibestart` command                                                  |
+| `apps/cli`              | The `vibe-scaffold` command                                                  |
 | `apps/web`              | The web studio and documentation site                                    |
 | `packages/core`         | Blueprint schema, resolver, and generator                                |
 | `packages/integrations` | Integrations, templates, the dependency catalog, and `verification.json` |

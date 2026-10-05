@@ -1,4 +1,4 @@
-@import "@vibestart/ui/globals.css";
+@import "@vibe-scaffold/ui/globals.css";
 
 /* Tall enough that a pane pinned below the app bar shows whole, which a phone on its side is not. */
 @custom-variant tall (@media (min-height: 48rem));

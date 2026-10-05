@@ -1,7 +1,7 @@
 import { Tabs } from "@base-ui/react/tabs";
 import { motion } from "motion/react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { ChangeDemo } from "#/components/home/demo/change-demo.tsx";
 import type { Scenario } from "#/components/home/demo/change-demo.tsx";

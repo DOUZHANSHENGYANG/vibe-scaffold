@@ -533,7 +533,7 @@ export const create_agent_copy = /** @type {(inputs: Create_Agent_CopyInputs) =>
 };
 
 export const create_agent_prompt = /** @type {(inputs: Create_Agent_PromptInputs) => LocalizedString} */ (i) => {
-	return /** @type {LocalizedString} */ (`用 vibestart 创建项目。先安装它的 skill：
+	return /** @type {LocalizedString} */ (`用 vibe-scaffold 创建项目。先安装它的 skill：
 ${i?.skill}
 
 再按 skill 的流程，根据我的需求选择合适的技术栈并创建项目。
@@ -674,7 +674,7 @@ export const docs_copy_code = /** @type {(inputs: Docs_Copy_CodeInputs) => Local
 };
 
 export const docs_document_title = /** @type {(inputs: Docs_Document_TitleInputs) => LocalizedString} */ (i) => {
-	return /** @type {LocalizedString} */ (`${i?.page} · vibestart 文档`)
+	return /** @type {LocalizedString} */ (`${i?.page} · vibe-scaffold 文档`)
 };
 
 export const docs_edit = /** @type {(inputs: Docs_EditInputs) => LocalizedString} */ () => {
@@ -706,7 +706,7 @@ export const document_description = /** @type {(inputs: Document_DescriptionInpu
 };
 
 export const document_title = /** @type {(inputs: Document_TitleInputs) => LocalizedString} */ () => {
-	return /** @type {LocalizedString} */ (`vibestart · AI Native 全栈脚手架`)
+	return /** @type {LocalizedString} */ (`vibe-scaffold · AI Native 全栈脚手架`)
 };
 
 export const electron_process = /** @type {(inputs: Electron_ProcessInputs) => LocalizedString} */ () => {
@@ -1631,7 +1631,7 @@ export const viz_tests_caption_broken = /** @type {(inputs: Viz_Tests_Caption_Br
 };
 
 export const viz_tests_caught = /** @type {(inputs: Viz_Tests_CaughtInputs) => LocalizedString} */ (i) => {
-	return /** @type {LocalizedString} */ (`vibestart：${i?.count} 个测试失败，并指出泄漏`)
+	return /** @type {LocalizedString} */ (`vibe-scaffold：${i?.count} 个测试失败，并指出泄漏`)
 };
 
 export const viz_tests_green = /** @type {(inputs: Viz_Tests_GreenInputs) => LocalizedString} */ () => {

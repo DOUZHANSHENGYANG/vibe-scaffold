@@ -14,7 +14,7 @@ import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState, useTransition } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { docsTarget, nav } from "#/lib/docs/source.ts";
 import { m } from "#/paraglide/messages.js";

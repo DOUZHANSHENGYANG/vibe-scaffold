@@ -28,7 +28,7 @@ release. Add a tool name to select part of the graph. For example, run
 
 # Project
 
-The architecture this project was created with is recorded in `vibestart.jsonc`.
+The architecture this project was created with is recorded in `vibe-scaffold.jsonc`.
 
 ## Code
 

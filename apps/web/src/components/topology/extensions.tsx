@@ -1,6 +1,6 @@
 import { Check, ChevronsUpDown, Info, Puzzle } from "lucide-react";
 import { useState } from "react";
-import { registry } from "virtual:vibestart";
+import { registry } from "virtual:vibe-scaffold";
 
 import {
   Popover,
@@ -8,7 +8,7 @@ import {
   PopoverDescription,
   PopoverTitle,
   PopoverTrigger,
-} from "@vibestart/ui/components/popover";
+} from "@vibe-scaffold/ui/components/popover";
 
 import type { Choosing } from "#/components/topology/decision.tsx";
 import { IntegrationCard } from "#/components/topology/integration-card.tsx";

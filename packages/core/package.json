@@ -1,5 +1,5 @@
 {
-  "name": "@vibestart/core",
+  "name": "@vibe-scaffold/core",
   "private": true,
   "type": "module",
   "imports": {
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "@vibestart/config": "workspace:*",
+    "@vibe-scaffold/config": "workspace:*",
     "typescript": "catalog:",
     "vite-plus": "catalog:"
   }

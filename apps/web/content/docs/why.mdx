@@ -1,6 +1,6 @@
 ---
-title: Why vibestart
-description: The problems vibestart addresses, what it believes, and the decisions that follow.
+title: Why vibe-scaffold
+description: The problems vibe-scaffold addresses, what it believes, and the decisions that follow.
 ---
 
 ## The problem [#problems]
@@ -9,13 +9,13 @@ With a coding agent, the hard part of an application is rarely the first day. It
 
 Part of the cause is the starting point. A full-stack TypeScript application needs a router, an API layer, an ORM with migrations, sessions, input validation, lint rules, tests for both the API and the browser, and a way to deploy. Each pairing has its own configuration details, and a starter that works today drifts as its dependencies move on. In a loosely configured project, nothing tells the agent where a change belongs, and nothing confirms that the result works.
 
-vibestart gives the agent, and you, a better starting point: best practices for a current, carefully chosen stack, and a codebase built so that an agent writes good code in it.
+vibe-scaffold gives the agent, and you, a better starting point: best practices for a current, carefully chosen stack, and a codebase built so that an agent writes good code in it.
 
 ## Good code begets good code [#theory]
 
-The idea behind vibestart is simple: **an agent writes better code on top of a better codebase.** This follows from how coding agents work:
+The idea behind vibe-scaffold is simple: **an agent writes better code on top of a better codebase.** This follows from how coding agents work:
 
-| An agent…                              | In a loose project                      | In a vibestart project                                          |
+| An agent…                              | In a loose project                      | In a vibe-scaffold project                                          |
 | -------------------------------------- | --------------------------------------- | --------------------------------------------------------------- |
 | **imitates** the code around it        | picks up whatever habits it finds       | finds a consistent example in every file                        |
 | **follows** written rules              | improvises, because there are none      | reads `AGENTS.md`, which says where and how each change is made |
@@ -62,23 +62,23 @@ Below are four mistakes agents commonly make. Choose one to see which check in a
   ]}
 />
 
-`vp run ready` runs these checks in order, fastest first. An agent can run it after every change and learn within seconds to minutes whether the change is correct. This is how a vibestart project keeps improving as it grows, instead of eroding.
+`vp run ready` runs these checks in order, fastest first. An agent can run it after every change and learn within seconds to minutes whether the change is correct. This is how a vibe-scaffold project keeps improving as it grows, instead of eroding.
 
 ## A current stack, kept current [#modern]
 
-vibestart offers only technologies that are the current standard, or are clearly becoming it. Generated projects use TypeScript 7 with its native compiler, React 19 with the React Compiler, Drizzle ORM 1.0, Oxlint and Oxfmt rather than ESLint and Prettier, and Vite+ as a single toolchain for development, checks, tests, and builds.
+vibe-scaffold offers only technologies that are the current standard, or are clearly becoming it. Generated projects use TypeScript 7 with its native compiler, React 19 with the React Compiler, Drizzle ORM 1.0, Oxlint and Oxfmt rather than ESLint and Prettier, and Vite+ as a single toolchain for development, checks, tests, and builds.
 
 When a better tool becomes the standard, the template moves to it in a later release, and the tool it replaces is removed rather than kept alongside for compatibility. Every technology on offer meets the same criteria:
 
 - **Current, not legacy.** It is maintained, widely adopted, and where the ecosystem is heading.
 - **Open source, with no vendor lock-in.** The project runs on your machine and on any server. Hosted services can be connected through configuration, but none is required to start.
 - **Verifiable.** Combined with every technology it can work with, it installs, checks, tests, and builds. A technology that cannot pass verification is not offered.
-- **Suited to agents.** Complete types, clear conventions, and precise error messages. Between two equally capable tools, vibestart picks the one whose mistakes surface earlier.
+- **Suited to agents.** Complete types, clear conventions, and precise error messages. Between two equally capable tools, vibe-scaffold picks the one whose mistakes surface earlier.
 - **One library per capability.** There is no second state library or second API style to choose between. Fewer concepts leave fewer ways to go wrong, for people and agents alike.
 
 ## Composed, not copied [#compose]
 
-Starters usually come as fixed templates: you pick the closest one and delete what you do not need. vibestart describes each technology as an integration, with its files, dependencies, and constraints, and composes the project from the integrations you choose. A single-page app can use a standalone Hono service; TanStack Start and Next.js can serve the API themselves; a project can also be an API alone.
+Starters usually come as fixed templates: you pick the closest one and delete what you do not need. vibe-scaffold describes each technology as an integration, with its files, dependencies, and constraints, and composes the project from the integrations you choose. A single-page app can use a standalone Hono service; TanStack Start and Next.js can serve the API themselves; a project can also be an API alone.
 
 The studio and the CLI read the same registry of integrations. When choices conflict, such as Electron with Next.js, both explain the conflict and propose the smallest change that resolves it.
 
@@ -90,7 +90,7 @@ When you create a project, the CLI matches its output against that fingerprint a
 
 ## TypeScript across the stack [#typescript]
 
-vibestart generates TypeScript only, by choice:
+vibe-scaffold generates TypeScript only, by choice:
 
 - **One language from database to button.** Pages, server, schema, validation, tests, and configuration are all TypeScript, so an agent never switches languages, and a type can travel from a table to the page that displays it.
 - **Types are the fastest feedback.** In a dynamic language, a misspelled field fails at runtime, often only when a user reaches that screen. In TypeScript, it is reported as soon as the code is written.
@@ -103,7 +103,7 @@ Static types catch mistakes in your own code; runtime validation with Zod catche
 
 A view has spread in the community: in the age of AI, unit tests are dead, because tests an agent writes only double the amount of code without catching real bugs. For a common kind of unit test, the criticism is fair. Asked to "add tests", an agent tends to write one per function, mock every dependency, and assert that some function was called once. Coverage looks good, every test passes while the product is broken, and every refactor breaks the tests.
 
-vibestart does not give up on testing; it puts the weight where bugs actually appear:
+vibe-scaffold does not give up on testing; it puts the weight where bugs actually appear:
 
 - **End-to-end tests** cover the widest scope. They sign up, sign in, and work in a real browser, and decide whether the product works.
 - **Integration tests** cover every API operation: validation, error codes, and permissions, through the real API code and a real database.
@@ -123,11 +123,11 @@ Every project includes an `AGENTS.md` written for its stack: which directory own
 
 ## Maintained after creation [#maintenance]
 
-Most generators stop at the first commit. vibestart records the template each project started from, so that later template releases can be merged in. `upgrade` compares the original template, your project, and the new template, and previews the result before writing anything. A conflict stops the upgrade before any file changes, and an unfinished operation can be resumed or rolled back. See the [CLI reference](/docs/cli).
+Most generators stop at the first commit. vibe-scaffold records the template each project started from, so that later template releases can be merged in. `upgrade` compares the original template, your project, and the new template, and previews the result before writing anything. A conflict stops the upgrade before any file changes, and an unfinished operation can be resumed or rolled back. See the [CLI reference](/docs/cli).
 
 ## Compared with a typical starter [#compare]
 
-|                  | A typical starter                    | vibestart                                                        |
+|                  | A typical starter                    | vibe-scaffold                                                        |
 | ---------------- | ------------------------------------ | ---------------------------------------------------------------- |
 | Stack            | One fixed template, or a few options | Composed from your choices; conflicts are explained, with a fix  |
 | Does it work?    | Expected to                          | Every combination has passed checks, tests, and a build          |
@@ -135,8 +135,8 @@ Most generators stop at the first commit. vibestart records the template each pr
 | Tests            | None, or an example file             | End-to-end and integration tests against a real database         |
 | After creation   | Up to you                            | Template upgrades merged into your project, with a preview first |
 
-## What vibestart does not do [#scope]
+## What vibe-scaffold does not do [#scope]
 
 - **It does not host your application.** The output is an ordinary repository that you deploy wherever you like.
 - **It does not migrate production data.** Template upgrades never touch a database; you review and apply migrations yourself.
-- **It does not hide the code.** Everything it generates is yours to read and change, and nothing at runtime depends on vibestart.
+- **It does not hide the code.** Everything it generates is yours to read and change, and nothing at runtime depends on vibe-scaffold.

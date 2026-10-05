@@ -1,4 +1,4 @@
-import type { Catalog } from "@vibestart/core";
+import type { Catalog } from "@vibe-scaffold/core";
 
 export const toolchainVersions = {
   bun: "1.4.2",

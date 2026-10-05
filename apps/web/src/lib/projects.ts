@@ -1,4 +1,4 @@
-import type { GeneratedFile } from "@vibestart/core";
+import type { GeneratedFile } from "@vibe-scaffold/core";
 
 import type { Project, StackEntry } from "#/lib/project.ts";
 import { projectKey } from "#/lib/project.ts";

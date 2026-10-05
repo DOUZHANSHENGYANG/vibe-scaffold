@@ -1,4 +1,4 @@
-import { defineRegistry } from "@vibestart/core";
+import { defineRegistry } from "@vibe-scaffold/core";
 
 import { betterAuth } from "#/better-auth.ts";
 import { bun } from "#/bun.ts";

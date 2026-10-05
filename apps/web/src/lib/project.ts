@@ -4,7 +4,7 @@ import type {
   SetupCommand,
   Stack,
   Verification,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 export interface Project {
   readonly packageManager?: "pnpm" | "bun";

@@ -46,7 +46,7 @@ export interface Integration {
   readonly kind: string;
   readonly name: string;
   readonly description: string;
-  /** The project's official site, linked from the integration on the map. Absent for vibestart's own glue, which has none. */
+  /** The project's official site, linked from the integration on the map. Absent for vibe-scaffold's own glue, which has none. */
   readonly homepage?: string;
   /** Can be added to a project after creation without regenerating its business source. */
   readonly supportsAdd?: boolean;

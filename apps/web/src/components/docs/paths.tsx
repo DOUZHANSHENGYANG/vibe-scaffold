@@ -1,7 +1,7 @@
 import { ArrowRight, Sparkles, SquareTerminal } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { DocLink } from "#/components/docs/doc-link.tsx";
 

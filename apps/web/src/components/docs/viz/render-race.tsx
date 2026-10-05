@@ -2,8 +2,8 @@ import { Eye, MousePointerClick, RotateCw } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { motion } from "motion/react";
 
-import { Button } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import { Button } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Demo } from "#/components/demo/frame.tsx";
 import { useSteps } from "#/lib/use-steps.ts";

@@ -1,4 +1,4 @@
-import type { Stack } from "@vibestart/core";
+import type { Stack } from "@vibe-scaffold/core";
 
 export const stackLabel = (stack: Stack) =>
   [

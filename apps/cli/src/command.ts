@@ -80,7 +80,7 @@ export const command = defineCommand({
   meta: {
     description:
       "Create a project from a stack. Commands: create, add, doctor, upgrade, adopt, recover. Use <command> --help for project maintenance, or --list for creation choices.",
-    name: "vibestart",
+    name: "vibe-scaffold",
     version: packageJson.version,
   },
   run: async ({ args: parsed, rawArgs }) => {

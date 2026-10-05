@@ -7,7 +7,7 @@ import {
 } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { kindLabel } from "#/lib/i18n.ts";
 import { ease } from "#/lib/motion.ts";
@@ -63,7 +63,7 @@ const tree = [
   { depth: 0, folder: true, name: "packages" },
   { depth: 1, folder: true, name: "api · db · auth · ui" },
   { depth: 0, folder: false, name: "AGENTS.md" },
-  { depth: 0, folder: false, name: "vibestart.jsonc" },
+  { depth: 0, folder: false, name: "vibe-scaffold.jsonc" },
   { depth: 0, folder: false, name: "vite.config.ts" },
 ] as const;
 
@@ -128,7 +128,7 @@ const files = [
 const Maintain = () => (
   <div className="flex flex-col gap-2 font-mono text-xs">
     <motion.p className="text-foreground/80 mb-1" {...row(0)}>
-      <span className="text-muted-foreground">$ </span>vibestart upgrade
+      <span className="text-muted-foreground">$ </span>vibe-scaffold upgrade
       --dry-run
     </motion.p>
     {files.map(({ kept, path }, order) => (

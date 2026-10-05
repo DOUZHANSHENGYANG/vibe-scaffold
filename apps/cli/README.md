@@ -1,29 +1,29 @@
-# vibestart-cli
+# vibe-scaffold-cli
 
 **Compose. Verify. Ship.**
 
-Compose a full-stack TypeScript stack and get a project that has been installed, checked, tested, and built for real. This package is the `vibestart` command.
+Compose a full-stack TypeScript stack and get a project that has been installed, checked, tested, and built for real. This package is the `vibe-scaffold` command.
 
 ```sh
-npx vibestart-cli@beta my-app
+npx vibe-scaffold-cli@beta my-app
 ```
 
 Answer the prompts, or pass flags to skip them:
 
 ```sh
-npx vibestart-cli@beta my-app --framework next --backend self --api orpc --database postgres --auth better-auth
+npx vibe-scaffold-cli@beta my-app --framework next --backend self --api orpc --database postgres --auth better-auth
 ```
 
-Or compose visually in the [web studio](https://vibestart.net/studio) and copy the command.
+Or compose visually in the [web studio](https://vibe-scaffold.dev/studio) and copy the command.
 
 ## What you get
 
 - **A current stack.** React SPA, TanStack Start, or Next.js; Hono or the framework's own server; oRPC or OpenAPI; PostgreSQL or SQLite with Drizzle; Better Auth; Electron; Docker; shadcn and Tailwind 4; [Vite+](https://viteplus.dev), Oxlint, Vitest, and Playwright as one toolchain.
 - **Verified combinations.** Every supported combination is generated, installed, type-checked, linted, tested, tested in a browser, and built before release. The CLI shows the result when it creates your project.
 - **Agent-ready code.** Each project ships an `AGENTS.md` and `vp run ready`, so a coding agent gets fast, specific feedback.
-- **Maintained after creation.** `vibestart upgrade` previews a merge of the newest template into your project before it writes anything.
+- **Maintained after creation.** `vibe-scaffold upgrade` previews a merge of the newest template into your project before it writes anything.
 
-A generated project is an ordinary repository with no runtime dependency on VibeStart.
+A generated project is an ordinary repository with no runtime dependency on VibeScaffold.
 
 ## Requirements
 
@@ -36,18 +36,18 @@ Node.js 22.12 or newer. The CLI installs the project with pnpm (the default) or 
 | `--<kind> <choice>`                                          | Decide one kind (`--framework`, `--backend`, `--api`, `--database`, `--auth`, `--desktop`, `--deployment`, …). |
 | `--addons <ids\|none>`                                       | Select add-ons, comma-separated.                                                                               |
 | `--package-manager <pnpm\|bun>`                              | Install with pnpm (default) or Bun.                                                                            |
-| `--recipe <path\|url>`                                       | Start from a `vibestart.jsonc`.                                                                                |
+| `--recipe <path\|url>`                                       | Start from a `vibe-scaffold.jsonc`.                                                                                |
 | `--list`                                                     | List every kind, its options, and every legal stack.                                                           |
 | `--dry-run`                                                  | Resolve the stack and list the files without writing.                                                          |
 | `--json`                                                     | Print one JSON object and never prompt.                                                                        |
 | `--no-interactive`, `--no-git`, `--no-install`, `--no-check` | Skip prompts, `git init`, install and setup, or the final check.                                               |
 
-Run `npx vibestart-cli@beta --help` for the full reference.
+Run `npx vibe-scaffold-cli@beta --help` for the full reference.
 
 ## Links
 
-- [Documentation](https://vibestart.net/docs)
-- [Source and issues](https://github.com/VinkyDev/vibestart)
-- [Agent skill](https://github.com/VinkyDev/vibestart/tree/main/skills/vibestart)
+- [Documentation](https://vibe-scaffold.dev/docs)
+- [Source and issues](https://github.com/your-org/vibe-scaffold)
+- [Agent skill](https://github.com/your-org/vibe-scaffold/tree/main/skills/vibe-scaffold)
 
 MIT

@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 
 import { z } from "zod";
 
-import type { Blueprint, GeneratedFile } from "@vibestart/core";
+import type { Blueprint, GeneratedFile } from "@vibe-scaffold/core";
 
 // Persist historical choices without filling them from a future registry's defaults.
 const inputSchema = z.strictObject({
@@ -29,7 +29,7 @@ const fileSchema = z.strictObject({
   content: z.string(),
   owner: z.string(),
   path: relativePath.refine(
-    (value) => !value.startsWith(".vibestart/") && !value.startsWith(".git/")
+    (value) => !value.startsWith(".vibe-scaffold/") && !value.startsWith(".git/")
   ),
 });
 

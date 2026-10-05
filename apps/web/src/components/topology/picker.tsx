@@ -2,8 +2,8 @@ import { Check, CornerDownRight } from "lucide-react";
 import type { RefObject } from "react";
 import { Suspense, use } from "react";
 
-import type { Stack } from "@vibestart/core";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { Stack } from "@vibe-scaffold/core";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import type { Project, StackEntry } from "#/lib/project.ts";
 import { fileDelta, loadProject } from "#/lib/projects.ts";

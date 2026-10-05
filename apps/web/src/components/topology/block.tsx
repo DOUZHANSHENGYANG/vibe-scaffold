@@ -1,8 +1,8 @@
 import { ChevronsUpDown } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
-import type { IntegrationInfo, Stack } from "@vibestart/core";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { IntegrationInfo, Stack } from "@vibe-scaffold/core";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Chip } from "#/components/topology/chip.tsx";
 import type { Choosing } from "#/components/topology/decision.tsx";

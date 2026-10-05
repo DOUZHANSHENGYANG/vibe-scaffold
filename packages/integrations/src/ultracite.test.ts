@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import { defaultAddons, generate } from "@vibestart/core";
+import { defaultAddons, generate } from "@vibe-scaffold/core";
 
 import { goldens } from "#/goldens.ts";
 import { registry } from "#/registry.ts";

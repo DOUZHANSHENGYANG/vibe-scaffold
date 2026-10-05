@@ -1,5 +1,5 @@
 {
-  "name": "@vibestart/web",
+  "name": "@vibe-scaffold/web",
   "private": true,
   "type": "module",
   "imports": {
@@ -17,8 +17,8 @@
     "@base-ui/react": "catalog:",
     "@inlang/paraglide-js-react": "catalog:",
     "@tanstack/react-router": "catalog:",
-    "@vibestart/core": "workspace:*",
-    "@vibestart/ui": "workspace:*",
+    "@vibe-scaffold/core": "workspace:*",
+    "@vibe-scaffold/ui": "workspace:*",
     "es-toolkit": "catalog:",
     "fumadocs-core": "catalog:",
     "lucide-react": "catalog:",
@@ -36,8 +36,8 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vibestart/config": "workspace:*",
-    "@vibestart/integrations": "workspace:*",
+    "@vibe-scaffold/config": "workspace:*",
+    "@vibe-scaffold/integrations": "workspace:*",
     "@vitejs/plugin-react": "catalog:",
     "fumadocs-mdx": "catalog:",
     "oxc-transform-react": "catalog:",

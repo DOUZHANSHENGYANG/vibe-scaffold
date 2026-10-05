@@ -30,13 +30,13 @@ A project with SQLite needs nothing else. PostgreSQL also needs Docker on your m
 
 ## Create with an agent [#agent]
 
-Paste the prompt below into a coding agent such as Claude Code or Codex, and replace the requirements and project name with your own. The agent reads the vibestart skill, looks up the combinations the CLI supports, chooses a stack that fits the requirements, and creates the project.
+Paste the prompt below into a coding agent such as Claude Code or Codex, and replace the requirements and project name with your own. The agent reads the vibe-scaffold skill, looks up the combinations the CLI supports, chooses a stack that fits the requirements, and creates the project.
 
 ```text title="Prompt"
 Run this command, read its complete output, and follow the skill:
-npx skills use VinkyDev/vibestart --skill vibestart
+npx skills use your-org/vibe-scaffold --skill vibe-scaffold
 
-Choose a suitable stack and use the vibestart CLI to create a project named my-app.
+Choose a suitable stack and use the vibe-scaffold CLI to create a project named my-app.
 Requirements: a personal expense tracker with email/password sign-in,
 private records per user, and persistent storage. Start with local development.
 ```
@@ -55,21 +55,21 @@ Once the project exists, the agent can continue with [Start the application](#ru
 <Tab value="pnpm">
 
 ```sh
-pnpm dlx vibestart-cli my-app
+pnpm dlx vibe-scaffold-cli my-app
 ```
 
 </Tab>
 <Tab value="npm">
 
 ```sh
-npx vibestart-cli my-app
+npx vibe-scaffold-cli my-app
 ```
 
 </Tab>
 <Tab value="bun">
 
 ```sh
-bunx vibestart-cli my-app
+bunx vibe-scaffold-cli my-app
 ```
 
 </Tab>

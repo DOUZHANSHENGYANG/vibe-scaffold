@@ -6,15 +6,15 @@
 
 - `packages/core`: Blueprint schema, registry, resolver, generator, and the pure merge used by maintenance. It never touches the file system: `generate` returns a virtual file tree, so the browser and the CLI run the same resolver.
 - `packages/integrations`: every integration and add-on, the `recommended` catalog, templates, the golden comparison, and `verification.json`.
-- `apps/cli`: the `vibestart` command: prompts, flags, `--json`, writing files, running setup, and project maintenance.
+- `apps/cli`: the `vibe-scaffold` command: prompts, flags, `--json`, writing files, running setup, and project maintenance.
 - `apps/web`: the Studio, the documentation site, and the generator preview. `oxfmt` has only a native binding, so previews run the generator on the server.
 - `golden/`: checked-in generated projects. Each is its own workspace and the expected output of the comparison tests.
 
 ## Model
 
-**Kinds and stacks.** The registry declares an ordered list of kinds: `toolchain`, `frontend`, `framework`, `router`, `backend`, `api`, `database`, `orm`, `auth`, `ui`, `desktop`, `runtime`, `deployment`, `testing`. A kind is required or optional and may have a default. A stack maps kind to integration id. Kind order fixes the field order of `vibestart.jsonc` and the order in which contributions are collected.
+**Kinds and stacks.** The registry declares an ordered list of kinds: `toolchain`, `frontend`, `framework`, `router`, `backend`, `api`, `database`, `orm`, `auth`, `ui`, `desktop`, `runtime`, `deployment`, `testing`. A kind is required or optional and may have a default. A stack maps kind to integration id. Kind order fixes the field order of `vibe-scaffold.jsonc` and the order in which contributions are collected.
 
-**Blueprint.** `vibestart.jsonc` records `stack`, `addons`, `channel`, and an optional `packageManager`. Its Zod schema and the exported JSON Schema derive from the registry, so a new integration changes no schema.
+**Blueprint.** `vibe-scaffold.jsonc` records `stack`, `addons`, `channel`, and an optional `packageManager`. Its Zod schema and the exported JSON Schema derive from the registry, so a new integration changes no schema.
 
 **Add-ons.** Orthogonal extensions (Knip, Ultracite) are chosen independently of the stack and stay out of the resolver. The registry declares the defaults: omitting `addons` takes them, an explicit `[]` takes none. The CLI flag, the prompt, and the Studio read the same registry.
 
@@ -81,7 +81,7 @@ Verification runs once per class of stacks that share a result:
 
 - **Add-ons.** Each stack is verified with the default add-ons. Dropping an add-on removes only its own files, dependencies, presets, and checks (`addons.test.ts`), so the record stands for any subset of the defaults. An add-on that edits business files or the runtime must bring its own coverage.
 - **Docker.** A stack without a deployment differs from its Docker sibling by Docker's files alone (`deployment.test.ts`), so it reuses that sibling's snapshot and record.
-- **Bun.** Bun and pnpm generate identical sources and tests, differing in `package.json`, `pnpm-workspace.yaml`, `Dockerfile`, and `vibestart.jsonc` (`bun.test.ts`). A Bun verification therefore checks that a dependency set installs and runs under Bun. A stack reuses the record of the Bun subject whose dependencies include its own: a stack that no other covers (`bun-subject.test.ts` proves the inclusion). A stack counts as verified under Bun only when both its own pnpm record and its subject's Bun record match.
+- **Bun.** Bun and pnpm generate identical sources and tests, differing in `package.json`, `pnpm-workspace.yaml`, `Dockerfile`, and `vibe-scaffold.jsonc` (`bun.test.ts`). A Bun verification therefore checks that a dependency set installs and runs under Bun. A stack reuses the record of the Bun subject whose dependencies include its own: a stack that no other covers (`bun-subject.test.ts` proves the inclusion). A stack counts as verified under Bun only when both its own pnpm record and its subject's Bun record match.
 
 ### Running at scale
 
@@ -105,7 +105,7 @@ The e2e runner keeps a parent-owned stdin pipe open, because Vite treats stdin E
 
 ## Project maintenance
 
-`create` writes `.vibestart/base.json`, a pure snapshot of generator output, and `.vibestart/state.json`, with the identity, choices, project name, ownership, and SHA-256 inventory. Commit both. `.vibestart/.gitignore` keeps local recovery data out; Vite+ formatting and Docker contexts exclude the whole directory.
+`create` writes `.vibe-scaffold/base.json`, a pure snapshot of generator output, and `.vibe-scaffold/state.json`, with the identity, choices, project name, ownership, and SHA-256 inventory. Commit both. `.vibe-scaffold/.gitignore` keeps local recovery data out; Vite+ formatting and Docker contexts exclude the whole directory.
 
 Commands: `create`, `add`, `upgrade`, `adopt`, `recover`, and the `snapshot` protocol. `add` and `upgrade` reuse the generator, compare the prior baseline, the current files, and the target output, and produce one plan. `packages/core` owns the pure line and JSONC merge, `packages/integrations` declares addable capabilities and the maintained scope, and `apps/cli/src/maintenance` owns release loading, project I/O, commands, and recovery. A capability has one template, shared by create and add.
 

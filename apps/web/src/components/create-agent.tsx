@@ -6,14 +6,14 @@ import {
   PopoverDescription,
   PopoverTitle,
   PopoverTrigger,
-} from "@vibestart/ui/components/popover";
-import { cn } from "@vibestart/ui/lib/utils";
+} from "@vibe-scaffold/ui/components/popover";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { CopyGlyph, useCopy } from "#/components/copy.tsx";
 import { repository } from "#/lib/site.ts";
 import { m } from "#/paraglide/messages.js";
 
-const skill = `npx skills add ${repository.replace("https://github.com/", "")} --skill vibestart`;
+const skill = `npx skills add ${repository.replace("https://github.com/", "")} --skill vibe-scaffold`;
 
 /**
  * The way out of choosing a stack, so it sits with the choices rather than with the command they produce.

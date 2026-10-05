@@ -2,8 +2,8 @@ import { Bug, Check, LoaderCircle, RotateCcw, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { useState } from "react";
 
-import { Button } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import { Button } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Demo, Verdict } from "#/components/demo/frame.tsx";
 import { useTimeout } from "#/lib/use-timeout.ts";

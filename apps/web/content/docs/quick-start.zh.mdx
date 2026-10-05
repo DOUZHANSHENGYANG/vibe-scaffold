@@ -30,13 +30,13 @@ irm https://vite.plus/ps1 | iex
 
 ## 使用 Agent 创建 [#agent]
 
-将下面的提示词粘贴到 Claude Code、Codex 等编码 Agent 中，并把需求和项目名称替换为你自己的。Agent 会读取 vibestart skill，查询 CLI 支持的组合，根据需求选择技术栈，然后创建项目。
+将下面的提示词粘贴到 Claude Code、Codex 等编码 Agent 中，并把需求和项目名称替换为你自己的。Agent 会读取 vibe-scaffold skill，查询 CLI 支持的组合，根据需求选择技术栈，然后创建项目。
 
 ```text title="提示词"
 先执行以下命令，读取完整输出并遵循其中的 skill：
-npx skills use VinkyDev/vibestart --skill vibestart
+npx skills use your-org/vibe-scaffold --skill vibe-scaffold
 
-选择合适的技术栈，使用 vibestart CLI 创建名为 my-app 的项目。
+选择合适的技术栈，使用 vibe-scaffold CLI 创建名为 my-app 的项目。
 需求：个人记账 Web 应用，支持邮箱密码登录，每个用户的记录相互隔离，数据持久化存储。先在本地开发。
 ```
 
@@ -54,21 +54,21 @@ npx skills use VinkyDev/vibestart --skill vibestart
 <Tab value="pnpm">
 
 ```sh
-pnpm dlx vibestart-cli my-app
+pnpm dlx vibe-scaffold-cli my-app
 ```
 
 </Tab>
 <Tab value="npm">
 
 ```sh
-npx vibestart-cli my-app
+npx vibe-scaffold-cli my-app
 ```
 
 </Tab>
 <Tab value="bun">
 
 ```sh
-bunx vibestart-cli my-app
+bunx vibe-scaffold-cli my-app
 ```
 
 </Tab>

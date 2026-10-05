@@ -1,4 +1,4 @@
 {
-  "extends": "@vibestart/config/typescript/react.json",
+  "extends": "@vibe-scaffold/config/typescript/react.json",
   "include": ["src"]
 }

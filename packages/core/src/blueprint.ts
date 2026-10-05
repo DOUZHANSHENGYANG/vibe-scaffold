@@ -8,7 +8,7 @@ import {
   integrationsOfKind,
 } from "#/registry.ts";
 
-export const blueprintSchemaUrl = "https://vibestart.dev/schema.json";
+export const blueprintSchemaUrl = "https://vibe-scaffold.dev/schema.json";
 
 export const channels = ["recommended"] as const;
 export const packageManagers = ["pnpm", "bun"] as const;
@@ -53,7 +53,7 @@ export const createBlueprintSchema = (registry: Registry) => {
   });
 };
 
-/** The JSON Schema served at `blueprintSchemaUrl`, for editor completion in `vibestart.jsonc`: what a file may say. */
+/** The JSON Schema served at `blueprintSchemaUrl`, for editor completion in `vibe-scaffold.jsonc`: what a file may say. */
 export const blueprintJsonSchema = (registry: Registry) =>
   z.toJSONSchema(createBlueprintSchema(registry), { io: "input" });
 

@@ -2,7 +2,7 @@ import { CircleCheck, CircleX, FileCode2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import type { ReactNode } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { ease } from "#/lib/motion.ts";
 

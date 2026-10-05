@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Demo } from "#/components/demo/frame.tsx";
 import type { Place } from "#/components/docs/viz/journey.tsx";

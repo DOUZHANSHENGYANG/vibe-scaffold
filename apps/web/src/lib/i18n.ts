@@ -2,7 +2,7 @@ import type {
   AddonInfo,
   GettingStartedNote,
   IntegrationInfo,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { m } from "#/paraglide/messages.js";
 import { getLocale } from "#/paraglide/runtime.js";

@@ -1,11 +1,11 @@
-import type { Context, ReadSlot } from "@vibestart/core";
+import type { Context, ReadSlot } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
   defineSlot,
   packageJson,
   renderFile,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { hasBackend, hasWebApp, proxiesToHono } from "#/app.ts";
 import { toolchainVersions } from "#/catalog.ts";
@@ -264,7 +264,7 @@ export const renderDevCompose = (ctx: Context, read: ReadSlot) => {
 const renderDockerignore = (read: ReadSlot) =>
   [
     ".git",
-    ".vibestart",
+    ".vibe-scaffold",
     ...read(ignoredFiles).map((pattern) => `**/${pattern}`),
     "**/.env",
     "**/.env.*",

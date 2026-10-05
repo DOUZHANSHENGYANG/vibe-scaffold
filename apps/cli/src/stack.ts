@@ -5,9 +5,9 @@ import type { ParseError } from "jsonc-parser";
 import { parse, printParseErrorCode } from "jsonc-parser";
 import { z } from "zod";
 
-import type { Blueprint, Resolution, Stack } from "@vibestart/core";
-import { createBlueprintSchema } from "@vibestart/core";
-import { registry } from "@vibestart/integrations";
+import type { Blueprint, Resolution, Stack } from "@vibe-scaffold/core";
+import { createBlueprintSchema } from "@vibe-scaffold/core";
+import { registry } from "@vibe-scaffold/integrations";
 
 import { CliError } from "#/errors.ts";
 import { kindFlag } from "#/options.ts";
@@ -77,7 +77,7 @@ const readRecipe = async (source: string) => {
   try {
     const stats = await stat(source);
     const file = stats.isDirectory()
-      ? path.join(source, "vibestart.jsonc")
+      ? path.join(source, "vibe-scaffold.jsonc")
       : source;
     return await readFile(file, "utf-8");
   } catch (error) {
@@ -103,7 +103,7 @@ export const loadRecipe = async (source: string): Promise<Blueprint> => {
   if (!result.success) {
     throw new CliError(
       { code: "invalid-recipe" },
-      `${source} is not a VibeStart blueprint:\n${z.prettifyError(result.error)}`
+      `${source} is not a VibeScaffold blueprint:\n${z.prettifyError(result.error)}`
     );
   }
   return result.data;

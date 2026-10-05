@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import type { ReactNode } from "react";
 import { useState } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { CodeFile, Demo, Line, Quiet } from "#/components/demo/frame.tsx";
 import { Stepper } from "#/components/demo/stepper.tsx";

@@ -5,7 +5,7 @@ import type {
   Formatter,
   PackageJsonContribution,
   ReadSlot,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
@@ -16,7 +16,7 @@ import {
   pnpmWorkspace,
   renderFile,
   setupCommand,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { hasWebApp } from "#/app.ts";
 import { toolchainVersions } from "#/catalog.ts";
@@ -129,7 +129,7 @@ const renderViteConfig = (ctx: Context, read: ReadSlot) => {
   const [base] = presets;
   const [fmt] = read(fmtPresets);
   const generated = [
-    quote(".vibestart/**"),
+    quote(".vibe-scaffold/**"),
     ...read(generatedFiles).map(({ glob }) => quote(glob)),
   ];
   const vendored = read(vendoredFiles).map(quote);
@@ -298,7 +298,7 @@ const renderAgents = (read: ReadSlot) => {
   return `${[
     agentsVitePlus.trimEnd(),
     "# Project",
-    "The architecture this project was created with is recorded in `vibestart.jsonc`.",
+    "The architecture this project was created with is recorded in `vibe-scaffold.jsonc`.",
     agentsCode.trimEnd(),
     "## Map",
     markdownTable(

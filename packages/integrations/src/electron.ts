@@ -1,11 +1,11 @@
-import type { Context } from "@vibestart/core";
+import type { Context } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
   file,
   packageJson,
   pnpmWorkspace,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { hasBackend } from "#/app.ts";
 import { knipEntries } from "#/knip.ts";

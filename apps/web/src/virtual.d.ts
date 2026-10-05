@@ -1,5 +1,5 @@
-declare module "virtual:vibestart" {
-  import type { RegistryInfo } from "@vibestart/core";
+declare module "virtual:vibe-scaffold" {
+  import type { RegistryInfo } from "@vibe-scaffold/core";
 
   import type { StackEntry } from "#/lib/project.ts";
 

@@ -1,4 +1,4 @@
-import { defineIntegration } from "@vibestart/core";
+import { defineIntegration } from "@vibe-scaffold/core";
 
 // The server is the full-stack framework's own: it owns the server files and branches on `ctx.has("self")`.
 // It exists only for an API or a database; a framework with neither renders its pages without it.

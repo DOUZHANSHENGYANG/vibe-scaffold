@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from "motion/react";
 import { Suspense, use, useState } from "react";
 import type { ThemedToken } from "shiki/core";
 
-import type { GeneratedFile } from "@vibestart/core";
-import { Button } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { GeneratedFile } from "@vibe-scaffold/core";
+import { Button } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { tokensOf } from "#/lib/highlight.ts";
 import { ease } from "#/lib/motion.ts";

@@ -1,5 +1,5 @@
-import type { Context } from "@vibestart/core";
-import { defineSlot, file, renderFile } from "@vibestart/core";
+import type { Context } from "@vibe-scaffold/core";
+import { defineSlot, file, renderFile } from "@vibe-scaffold/core";
 
 import { templateContent } from "#/templates.ts";
 

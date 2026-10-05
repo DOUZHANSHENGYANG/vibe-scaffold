@@ -4,7 +4,7 @@ import {
   defineSlot,
   packageJson,
   renderFile,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { readySteps, toolConventions } from "#/vite-plus/slots.ts";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@vibestart/ui",
+  "name": "@vibe-scaffold/ui",
   "private": true,
   "type": "module",
   "exports": {
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vibestart/config": "workspace:*",
+    "@vibe-scaffold/config": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",

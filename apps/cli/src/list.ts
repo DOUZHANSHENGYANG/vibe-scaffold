@@ -1,5 +1,5 @@
-import { defaultAddons, legalStacks } from "@vibestart/core";
-import { registry, stackLabel, verificationOf } from "@vibestart/integrations";
+import { defaultAddons, legalStacks } from "@vibe-scaffold/core";
+import { registry, stackLabel, verificationOf } from "@vibe-scaffold/integrations";
 
 import { addonsValue, kindFlag, none, noneLabel } from "#/options.ts";
 
@@ -94,9 +94,9 @@ export const listingText = ({ addons, kinds, stacks }: Listing) =>
     `${stacks.length} legal stacks, ${stacks.filter((stack) => stack.verifiedAt !== null).length} verified at this version with the default add-ons. --list --json lists each.`,
     "",
     "Examples",
-    "  npx vibestart-cli my-app",
-    `  npx vibestart-cli my-app ${[kindFlag("framework", "next"), kindFlag("backend", "self"), kindFlag("api", "orpc"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --no-interactive`,
-    `  npx vibestart-cli my-api ${[kindFlag("frontend", null), kindFlag("api", "openapi"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --addons ${addonsValue([])} --json`,
-    "  npx vibestart-cli my-app --recipe ../other-app --json",
+    "  npx vibe-scaffold-cli my-app",
+    `  npx vibe-scaffold-cli my-app ${[kindFlag("framework", "next"), kindFlag("backend", "self"), kindFlag("api", "orpc"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --no-interactive`,
+    `  npx vibe-scaffold-cli my-api ${[kindFlag("frontend", null), kindFlag("api", "openapi"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --addons ${addonsValue([])} --json`,
+    "  npx vibe-scaffold-cli my-app --recipe ../other-app --json",
     "",
   ].join("\n");

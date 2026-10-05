@@ -1,4 +1,4 @@
-import type { Context } from "@vibestart/core";
+import type { Context } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
@@ -6,7 +6,7 @@ import {
   gettingStarted,
   packageJson,
   setupCommand,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { exampleVariant, hasTables, serverApp, stackHeadline } from "#/app.ts";
 import { commentedShell } from "#/format.ts";

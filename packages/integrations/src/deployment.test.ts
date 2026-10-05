@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import type { Stack } from "@vibestart/core";
-import { generate, legalStacks } from "@vibestart/core";
+import type { Stack } from "@vibe-scaffold/core";
+import { generate, legalStacks } from "@vibe-scaffold/core";
 
 import { registry } from "#/registry.ts";
 import { stackLabel } from "#/stack-label.ts";
@@ -11,7 +11,7 @@ const generateStack = async (stack: Stack) =>
   await generate(registry, verifiedBlueprint(stack), { name: verifiedName });
 
 // The recorded blueprint names the deployment, and the README describes it.
-const described = new Set(["README.md", "vibestart.jsonc"]);
+const described = new Set(["README.md", "vibe-scaffold.jsonc"]);
 
 const pairs = legalStacks(registry).flatMap((stack) => {
   const sibling = verifiedAs(stack);

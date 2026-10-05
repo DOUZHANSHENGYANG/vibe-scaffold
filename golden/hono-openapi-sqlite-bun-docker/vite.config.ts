@@ -4,7 +4,7 @@ import core from "ultracite/oxlint/core";
 import vitest from "ultracite/oxlint/vitest";
 import { defineConfig, loadEnv } from "vite-plus";
 
-const generatedFiles = [".vibestart/**", "packages/db/src/migrations/**"];
+const generatedFiles = [".vibe-scaffold/**", "packages/db/src/migrations/**"];
 
 export default defineConfig({
   fmt: {

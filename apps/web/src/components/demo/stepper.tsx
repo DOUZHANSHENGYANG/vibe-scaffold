@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 
-import { Button } from "@vibestart/ui/components/button";
+import { Button } from "@vibe-scaffold/ui/components/button";
 
 import { m } from "#/paraglide/messages.js";
 

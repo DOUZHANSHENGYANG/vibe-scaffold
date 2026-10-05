@@ -1,5 +1,5 @@
 {
-  "name": "vibestart-cli",
+  "name": "vibe-scaffold-cli",
   "version": "0.1.0-beta.1",
   "description": "Create a verified full-stack TypeScript project from a stack you compose",
   "keywords": [
@@ -8,18 +8,18 @@
     "stack",
     "vite-plus"
   ],
-  "homepage": "https://github.com/VinkyDev/vibestart#readme",
+  "homepage": "https://github.com/your-org/vibe-scaffold#readme",
   "bugs": {
-    "url": "https://github.com/VinkyDev/vibestart/issues"
+    "url": "https://github.com/your-org/vibe-scaffold/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VinkyDev/vibestart.git",
+    "url": "git+https://github.com/your-org/vibe-scaffold.git",
     "directory": "apps/cli"
   },
   "bin": {
-    "vibestart": "dist/cli.mjs"
+    "vibe-scaffold": "dist/cli.mjs"
   },
   "files": [
     "dist"
@@ -45,9 +45,9 @@
   "devDependencies": {
     "@clack/prompts": "catalog:",
     "@types/node": "catalog:",
-    "@vibestart/config": "workspace:*",
-    "@vibestart/core": "workspace:*",
-    "@vibestart/integrations": "workspace:*",
+    "@vibe-scaffold/config": "workspace:*",
+    "@vibe-scaffold/core": "workspace:*",
+    "@vibe-scaffold/integrations": "workspace:*",
     "citty": "catalog:",
     "execa": "catalog:",
     "jsonc-parser": "catalog:",

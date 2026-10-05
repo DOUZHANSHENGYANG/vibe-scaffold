@@ -11,11 +11,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@vibestart/ui/components",
-    "utils": "@vibestart/ui/lib/utils",
-    "hooks": "@vibestart/ui/hooks",
-    "lib": "@vibestart/ui/lib",
-    "ui": "@vibestart/ui/components"
+    "components": "@vibe-scaffold/ui/components",
+    "utils": "@vibe-scaffold/ui/lib/utils",
+    "hooks": "@vibe-scaffold/ui/hooks",
+    "lib": "@vibe-scaffold/ui/lib",
+    "ui": "@vibe-scaffold/ui/components"
   },
   "rtl": false,
   "menuColor": "default",

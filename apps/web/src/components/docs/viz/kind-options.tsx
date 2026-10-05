@@ -1,6 +1,6 @@
-import { registry } from "virtual:vibestart";
+import { registry } from "virtual:vibe-scaffold";
 
-import type { Kind } from "@vibestart/core";
+import type { Kind } from "@vibe-scaffold/core";
 
 import { kindLabel } from "#/lib/i18n.ts";
 import { none, optionsOf } from "#/lib/stack.ts";

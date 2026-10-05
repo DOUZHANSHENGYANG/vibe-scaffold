@@ -5,7 +5,7 @@ import {
   defineAddon,
   defineSlot,
   packageJson,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import {
   fmtPresets,

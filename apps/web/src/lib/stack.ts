@@ -1,7 +1,7 @@
 import { uniq } from "es-toolkit/array";
 import { mapValues, omit } from "es-toolkit/object";
 import { isEqual } from "es-toolkit/predicate";
-import { registry, stacks } from "virtual:vibestart";
+import { registry, stacks } from "virtual:vibe-scaffold";
 import { z } from "zod";
 
 import type {
@@ -10,14 +10,14 @@ import type {
   Choices,
   IntegrationInfo,
   Stack,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 import {
   addonsInOrder,
   compose,
   defaultAddons,
   packageManagers,
   resolve,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import { capabilityText, list } from "#/lib/i18n.ts";
 import type { StackEntry, StackVerification } from "#/lib/project.ts";
@@ -204,9 +204,9 @@ export const verificationWith = (
 export type PackageRunner = "pnpm" | "npm" | "bun";
 
 const runners: Record<PackageRunner, string> = {
-  bun: "bunx vibestart-cli",
-  npm: "npx vibestart-cli",
-  pnpm: "pnpm dlx vibestart-cli",
+  bun: "bunx vibe-scaffold-cli",
+  npm: "npx vibe-scaffold-cli",
+  pnpm: "pnpm dlx vibe-scaffold-cli",
 };
 
 export const commandWords = (

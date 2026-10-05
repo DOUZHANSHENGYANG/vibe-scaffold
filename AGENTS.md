@@ -28,7 +28,7 @@ release. Add a tool name to select part of the graph. For example, run
 
 # Project
 
-vibestart generates a project from a stack. The generator and the projects it writes follow one toolchain: Vite+, pnpm catalog, `@vibestart/config` TypeScript presets, Oxlint, and Knip. A web app for this repo will live in `apps/*` and extend `@vibestart/config/typescript/react.json`.
+vibe-scaffold generates a project from a stack. The generator and the projects it writes follow one toolchain: Vite+, pnpm catalog, `@vibe-scaffold/config` TypeScript presets, Oxlint, and Knip. A web app for this repo will live in `apps/*` and extend `@vibe-scaffold/config/typescript/react.json`.
 
 The rules under Code are the text of `packages/integrations/src/vite-plus/agents-code.md`. A change to the rules changes both, and every generated project receives that file's text.
 
@@ -50,7 +50,7 @@ Converge on the simplest durable design that meets current requirements. Land it
 
 | Path                    | Owns                                                                                              |
 | ----------------------- | ------------------------------------------------------------------------------------------------- |
-| `apps/cli`              | The `vibestart` CLI: prompts, flags, `--json`, writing the project and running its setup          |
+| `apps/cli`              | The `vibe-scaffold` CLI: prompts, flags, `--json`, writing the project and running its setup          |
 | `packages/core`         | Blueprint schema, resolver, and generator. Core returns a virtual file tree                       |
 | `packages/integrations` | Integrations, the catalog, templates, golden comparison, and `verification.json`                  |
 | `packages/config`       | Shared TypeScript presets: `typescript/node.json` for Node, `typescript/react.json` for a web app |
@@ -58,10 +58,10 @@ Converge on the simplest durable design that meets current requirements. Land it
 
 ## Conventions
 
-- **CLI skill.** Keep `skills/vibestart/` and the CLI documentation aligned with changes to commands, flags, result states, and recovery behavior. The skill is distributed independently of the CLI; it must discover the running release's capabilities.
+- **CLI skill.** Keep `skills/vibe-scaffold/` and the CLI documentation aligned with changes to commands, flags, result states, and recovery behavior. The skill is distributed independently of the CLI; it must discover the running release's capabilities.
 
 - **Lint.** Templates and `golden/` are linted as generated output, so `vp run stacks verify` is where a template meets the rules. In this repo, turn a misfiring rule off in `lint.overrides` of the root `vite.config.ts`. In a generated project, the integration that owns the library contributes `lintOverrides`.
-- **TypeScript.** A package extends `@vibestart/config` and lists it as a devDependency. Node code uses `typescript/node.json`. Web code uses `typescript/react.json`.
+- **TypeScript.** A package extends `@vibe-scaffold/config` and lists it as a devDependency. Node code uses `typescript/node.json`. Web code uses `typescript/react.json`.
 - **Utilities.** Import shared helpers from [es-toolkit](https://es-toolkit.dev/llms.txt), from the submodule the docs name (`import { retry } from "es-toolkit/function"`). `es-toolkit/compat` stays out.
 - **Dependencies.** A package has one range across `pnpm-workspace.yaml`, the generated catalog in `packages/integrations/src/catalog.ts`, and the `package.json` engines, and `src/deps/pins.test.ts` holds them to it. Move versions with `vp run deps update`, which verifies every stack they reach.
 - **Knip.** Delete what `vp run knip` reports: unused files, exports, dependencies, and catalog entries. Add a Knip config entry only when a plugin cannot see a real reference.

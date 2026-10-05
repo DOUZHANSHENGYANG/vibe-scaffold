@@ -3,7 +3,7 @@ import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import type { ReactNode } from "react";
 import { useState } from "react";
-import { previewName } from "virtual:vibestart";
+import { previewName } from "virtual:vibe-scaffold";
 
 import { CodeView } from "#/components/code-view.tsx";
 import { Command } from "#/components/command.tsx";

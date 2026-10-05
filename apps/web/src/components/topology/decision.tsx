@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import { useRef, useState } from "react";
 
-import type { Stack } from "@vibestart/core";
+import type { Stack } from "@vibe-scaffold/core";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@vibestart/ui/components/popover";
-import { cn } from "@vibestart/ui/lib/utils";
+} from "@vibe-scaffold/ui/components/popover";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Picker } from "#/components/topology/picker.tsx";
 import type { Project, StackEntry } from "#/lib/project.ts";

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 export const capsuleClass =
   "flex h-8 items-center gap-2 rounded-full px-3.5 text-xs font-medium whitespace-nowrap";

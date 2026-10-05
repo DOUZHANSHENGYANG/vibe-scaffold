@@ -1,5 +1,5 @@
 {
-  "name": "@vibestart/integrations",
+  "name": "@vibe-scaffold/integrations",
   "private": true,
   "type": "module",
   "imports": {
@@ -9,7 +9,7 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@vibestart/core": "workspace:*",
+    "@vibe-scaffold/core": "workspace:*",
     "es-toolkit": "catalog:",
     "oxfmt": "catalog:",
     "ultracite": "catalog:",
@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "@types/semver": "catalog:",
-    "@vibestart/config": "workspace:*",
+    "@vibe-scaffold/config": "workspace:*",
     "semver": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

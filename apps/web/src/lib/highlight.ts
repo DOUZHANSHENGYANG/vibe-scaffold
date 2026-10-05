@@ -2,7 +2,7 @@ import type { HighlighterCore, ThemedToken } from "shiki/core";
 import { createHighlighterCore } from "shiki/core";
 import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
 
-import type { GeneratedFile } from "@vibestart/core";
+import type { GeneratedFile } from "@vibe-scaffold/core";
 
 const theme = "vitesse-light";
 

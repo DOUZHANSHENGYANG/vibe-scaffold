@@ -2,8 +2,8 @@ import path from "node:path";
 
 import { beforeEach, describe, expect, it, vi } from "vite-plus/test";
 
-import { packageManagers } from "@vibestart/core";
-import type * as Integrations from "@vibestart/integrations";
+import { packageManagers } from "@vibe-scaffold/core";
+import type * as Integrations from "@vibe-scaffold/integrations";
 
 import { create } from "#/create.ts";
 import type * as MaintenanceFiles from "#/maintenance/files.ts";
@@ -23,7 +23,7 @@ vi.mock(import("#/maintenance/files.ts"), async (importOriginal) => ({
   initializeBaseline: vi.fn<typeof MaintenanceFiles.initializeBaseline>(),
 }));
 
-vi.mock(import("@vibestart/integrations"), async (importOriginal) => ({
+vi.mock(import("@vibe-scaffold/integrations"), async (importOriginal) => ({
   ...(await importOriginal()),
   materializeEnvFromExamples:
     vi.fn<typeof Integrations.materializeEnvFromExamples>(),

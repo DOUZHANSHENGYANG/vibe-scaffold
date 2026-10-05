@@ -10,7 +10,7 @@ import {
 import type { ComponentProps, ReactNode } from "react";
 import { useRef } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { CopyGlyph, useCopy } from "#/components/copy.tsx";
 import { DocLink } from "#/components/docs/doc-link.tsx";

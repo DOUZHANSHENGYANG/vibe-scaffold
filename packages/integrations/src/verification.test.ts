@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import { legalStacks } from "@vibestart/core";
+import { legalStacks } from "@vibe-scaffold/core";
 
 import { registry } from "#/registry.ts";
 import { stackLabel } from "#/stack-label.ts";

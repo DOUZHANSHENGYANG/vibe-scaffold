@@ -10,8 +10,8 @@ import {
 import type { PointerEvent } from "react";
 import { useEffect, useId, useRef } from "react";
 
-import { buttonVariants } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import { buttonVariants } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { CopyCommand } from "#/components/home/copy-command.tsx";
 import {
@@ -136,7 +136,7 @@ export const Finale = () => {
             >
               {m.home_open()}
             </Link>
-            <CopyCommand command="npx vibestart-cli" />
+            <CopyCommand command="npx vibe-scaffold-cli" />
           </div>
         </div>
         <Mark inView={inView} />

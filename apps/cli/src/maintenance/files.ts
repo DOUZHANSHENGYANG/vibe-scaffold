@@ -70,7 +70,7 @@ export const writeText = (
     return;
   }
   mkdirSync(path.dirname(target), { recursive: true });
-  const temporary = `${target}.${randomUUID()}.vibestart-tmp`;
+  const temporary = `${target}.${randomUUID()}.vibe-scaffold-tmp`;
   // O_EXCL prevents a stale or malicious temporary symlink from being followed.
   const descriptor = openSync(temporary, "wx", mode);
   try {
@@ -84,20 +84,20 @@ export const writeText = (
 };
 
 export const metadataFiles = (snapshot: Snapshot) => [
-  { path: ".vibestart/base.json", content: serialize(snapshot) },
-  { path: ".vibestart/state.json", content: serialize(stateOf(snapshot)) },
+  { path: ".vibe-scaffold/base.json", content: serialize(snapshot) },
+  { path: ".vibe-scaffold/state.json", content: serialize(stateOf(snapshot)) },
   {
-    path: ".vibestart/.gitignore",
+    path: ".vibe-scaffold/.gitignore",
     content: "pending/\nbackup/\ncache/\nlast-run.json\noperation.lock\n",
   },
 ];
 
 export const readBaseline = (cwd: string) => {
-  const source = readText(cwd, ".vibestart/base.json");
-  const stateText = readText(cwd, ".vibestart/state.json");
+  const source = readText(cwd, ".vibe-scaffold/base.json");
+  const stateText = readText(cwd, ".vibe-scaffold/state.json");
   if (source === null || stateText === null) {
     throw new MaintenanceError(
-      "No trusted baseline. Run `vibestart adopt --from <original snapshot.json>` first."
+      "No trusted baseline. Run `vibe-scaffold adopt --from <original snapshot.json>` first."
     );
   }
   const snapshot = snapshotSchema.parse(JSON.parse(source));

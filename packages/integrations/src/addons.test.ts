@@ -4,8 +4,8 @@ import oxfmt from "ultracite/oxfmt";
 import { describe, expect, it } from "vite-plus/test";
 import { z } from "zod";
 
-import type { Generation } from "@vibestart/core";
-import { defaultAddons, generate } from "@vibestart/core";
+import type { Generation } from "@vibe-scaffold/core";
+import { defaultAddons, generate } from "@vibe-scaffold/core";
 
 import { formatWithProjectConfig } from "#/oxfmt.ts";
 import { registry } from "#/registry.ts";
@@ -17,7 +17,7 @@ import {
 } from "#/verification.ts";
 
 // The recorded blueprint names the add-ons, and the documents list their commands and conventions.
-const described = new Set(["AGENTS.md", "README.md", "vibestart.jsonc"]);
+const described = new Set(["AGENTS.md", "README.md", "vibe-scaffold.jsonc"]);
 
 const manifestSchema = z.looseObject({
   devDependencies: z.record(z.string(), z.string()),

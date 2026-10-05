@@ -1,7 +1,7 @@
 import { Server } from "lucide-react";
-import { registry } from "virtual:vibestart";
+import { registry } from "virtual:vibe-scaffold";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { DocLink } from "#/components/docs/doc-link.tsx";
 import type { TechIcon } from "#/components/docs/tech-icons.ts";

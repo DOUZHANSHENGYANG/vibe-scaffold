@@ -15,9 +15,9 @@ packages/
   auth/                Better Auth 配置
   ui/                  共享组件与主题
   config/              共享 TypeScript 配置
-.vibestart/            模板基线与维护状态
+.vibe-scaffold/            模板基线与维护状态
 AGENTS.md              开发约定
-vibestart.jsonc        项目的技术选择
+vibe-scaffold.jsonc        项目的技术选择
 vite.config.ts         检查配置与项目任务
 ```
 
@@ -48,7 +48,7 @@ vite.config.ts         检查配置与项目任务
 
 ## 项目配方 [#blueprint]
 
-`vibestart.jsonc` 记录创建项目时的技术栈、扩展、包管理器和发布渠道。`packageManager` 与 `stack.runtime` 相互独立：前者表示安装依赖的工具，后者表示应用的运行时。如需以相同选择创建新项目，可将该文件传给 `--recipe`，详见[配方](/docs/cli/create#recipe)。
+`vibe-scaffold.jsonc` 记录创建项目时的技术栈、扩展、包管理器和发布渠道。`packageManager` 与 `stack.runtime` 相互独立：前者表示安装依赖的工具，后者表示应用的运行时。如需以相同选择创建新项目，可将该文件传给 `--recipe`，详见[配方](/docs/cli/create#recipe)。
 
 ## 依赖版本 [#catalog]
 
@@ -65,7 +65,7 @@ pnpm 项目在 `pnpm-workspace.yaml` 中声明 workspace 和共享版本目录�
 
 ## 维护基线 [#baseline]
 
-`.vibestart/state.json` 与 `.vibestart/base.json` 记录项目的来源和最初的模板文件。升级时，CLI 依靠它们区分模板的变化和你自己的修改。请一并提交这两个文件，不要手动编辑。详见[升级项目](/docs/cli/upgrade)。
+`.vibe-scaffold/state.json` 与 `.vibe-scaffold/base.json` 记录项目的来源和最初的模板文件。升级时，CLI 依靠它们区分模板的变化和你自己的修改。请一并提交这两个文件，不要手动编辑。详见[升级项目](/docs/cli/upgrade)。
 
 ## 项目任务 [#scripts]
 

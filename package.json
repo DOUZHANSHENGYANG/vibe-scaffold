@@ -1,5 +1,5 @@
 {
-  "name": "vibestart-monorepo",
+  "name": "vibe-scaffold-monorepo",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -9,12 +9,12 @@
     "stacks": "node packages/integrations/scripts/stacks.ts",
     "ready": "vp check && vp run knip && vp test",
     "prepare": "vp config",
-    "cli": "vp run --filter vibestart-cli build && node apps/cli/dist/cli.mjs"
+    "cli": "vp run --filter vibe-scaffold-cli build && node apps/cli/dist/cli.mjs"
   },
   "devDependencies": {
     "@shadcn/lint": "catalog:",
     "@types/node": "catalog:",
-    "@vibestart/config": "workspace:*",
+    "@vibe-scaffold/config": "workspace:*",
     "knip": "catalog:",
     "typescript": "catalog:",
     "ultracite": "catalog:",

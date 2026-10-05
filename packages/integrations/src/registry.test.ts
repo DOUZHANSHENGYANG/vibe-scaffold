@@ -4,7 +4,7 @@ import { registry } from "#/registry.ts";
 
 describe("the registry", () => {
   it("links every third-party integration to its official site over HTTPS", () => {
-    // `self` is vibestart's own glue: the framework's server routes, with no project of its own.
+    // `self` is vibe-scaffold's own glue: the framework's server routes, with no project of its own.
     const linked = [...registry.integrations, ...registry.addons].filter(
       ({ id }) => id !== "self"
     );

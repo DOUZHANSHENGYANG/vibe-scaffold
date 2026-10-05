@@ -8,7 +8,7 @@ import vitest from "ultracite/oxlint/vitest";
 import { defineConfig, loadEnv } from "vite-plus";
 
 const generatedFiles = [
-  ".vibestart/**",
+  ".vibe-scaffold/**",
   "**/routeTree.gen.ts",
   "packages/db/src/migrations/**",
 ];

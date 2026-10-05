@@ -1,5 +1,5 @@
-import type { IntegrationInfo, Stack } from "@vibestart/core";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { IntegrationInfo, Stack } from "@vibe-scaffold/core";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { capsuleClass } from "#/components/topology/capsule.tsx";
 import { IntegrationCard } from "#/components/topology/integration-card.tsx";

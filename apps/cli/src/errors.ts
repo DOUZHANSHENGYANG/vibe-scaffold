@@ -1,4 +1,4 @@
-import type { Change, Violation } from "@vibestart/core";
+import type { Change, Violation } from "@vibe-scaffold/core";
 
 interface FlagFix {
   readonly changes: readonly Change[];

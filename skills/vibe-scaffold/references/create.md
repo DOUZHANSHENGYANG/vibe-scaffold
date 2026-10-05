@@ -3,8 +3,8 @@
 ## Discover and preview
 
 ```sh
-npx --yes vibestart-cli --help
-npx --yes vibestart-cli --list --json
+npx --yes vibe-scaffold-cli --help
+npx --yes vibe-scaffold-cli --list --json
 ```
 
 Use the current list to resolve supported choices and legal combinations. Ask for missing consequential choices rather than silently selecting a different architecture. The destination must be absent or empty.
@@ -12,7 +12,7 @@ Use the current list to resolve supported choices and legal combinations. Ask fo
 Example: a React SPA with Hono, oRPC, SQLite, authentication, and the default extensions:
 
 ```sh
-npx --yes vibestart-cli create my-app --framework spa --backend hono --api orpc --database sqlite --auth better-auth --desktop none --deployment none --runtime node --package-manager pnpm --addons knip,ultracite --dry-run --json
+npx --yes vibe-scaffold-cli create my-app --framework spa --backend hono --api orpc --database sqlite --auth better-auth --desktop none --deployment none --runtime node --package-manager pnpm --addons knip,ultracite --dry-run --json
 ```
 
 Inspect `ok`, `stack`, `addons`, `packageManager`, `files`, and `nextSteps`. When the resolved plan matches the request, run the same command without `--dry-run`. The `create` keyword is optional. Neither form accepts `--yes`, `--cwd`, or `--full-check`.
@@ -30,7 +30,7 @@ If the preview reports `incomplete-stack`, supply the remaining choices. If it r
 ## Use a recipe
 
 ```sh
-npx --yes vibestart-cli create my-app --recipe /actual/path/vibestart.jsonc --dry-run --json
+npx --yes vibe-scaffold-cli create my-app --recipe /actual/path/vibe-scaffold.jsonc --dry-run --json
 ```
 
 Replace the example path. A recipe may be a file, directory, or URL. Stack flags override its choices. A recipe reproduces configuration; it does not preserve business edits or establish the original baseline for adopting an existing project.

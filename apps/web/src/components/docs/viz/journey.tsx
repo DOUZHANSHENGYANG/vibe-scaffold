@@ -2,7 +2,7 @@ import { AppWindow, Database, MousePointerClick, Server } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-import { cn } from "@vibestart/ui/lib/utils";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Demo } from "#/components/demo/frame.tsx";
 import { Stepper } from "#/components/demo/stepper.tsx";

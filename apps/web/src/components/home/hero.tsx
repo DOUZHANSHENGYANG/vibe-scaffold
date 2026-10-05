@@ -4,10 +4,10 @@ import type { Variants } from "motion/react";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import { useRef } from "react";
-import { stacks } from "virtual:vibestart";
+import { stacks } from "virtual:vibe-scaffold";
 
-import { buttonVariants } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import { buttonVariants } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Composer } from "#/components/home/composer.tsx";
 import { CopyCommand } from "#/components/home/copy-command.tsx";
@@ -76,7 +76,7 @@ export const Hero = () => {
           >
             {m.home_open()}
           </Link>
-          <CopyCommand command="npx vibestart-cli" />
+          <CopyCommand command="npx vibe-scaffold-cli" />
         </div>
       </motion.div>
       <div className="mt-14 sm:mt-16 xl:mt-20">

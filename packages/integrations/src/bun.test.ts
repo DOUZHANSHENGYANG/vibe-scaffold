@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vite-plus/test";
 import { z } from "zod";
 
-import { compose, defaultAddons, generate, legalStacks } from "@vibestart/core";
+import { compose, defaultAddons, generate, legalStacks } from "@vibe-scaffold/core";
 
 import { registry } from "#/registry.ts";
 import { stackLabel } from "#/stack-label.ts";

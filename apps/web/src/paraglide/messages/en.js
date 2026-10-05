@@ -533,7 +533,7 @@ export const create_agent_copy = /** @type {(inputs: Create_Agent_CopyInputs) =>
 };
 
 export const create_agent_prompt = /** @type {(inputs: Create_Agent_PromptInputs) => LocalizedString} */ (i) => {
-	return /** @type {LocalizedString} */ (`Create a project with vibestart. Install its skill first:
+	return /** @type {LocalizedString} */ (`Create a project with vibe-scaffold. Install its skill first:
 ${i?.skill}
 
 Then follow it to choose a stack that fits my needs and create the project.
@@ -674,7 +674,7 @@ export const docs_copy_code = /** @type {(inputs: Docs_Copy_CodeInputs) => Local
 };
 
 export const docs_document_title = /** @type {(inputs: Docs_Document_TitleInputs) => LocalizedString} */ (i) => {
-	return /** @type {LocalizedString} */ (`${i?.page} · vibestart docs`)
+	return /** @type {LocalizedString} */ (`${i?.page} · vibe-scaffold docs`)
 };
 
 export const docs_edit = /** @type {(inputs: Docs_EditInputs) => LocalizedString} */ () => {
@@ -706,7 +706,7 @@ export const document_description = /** @type {(inputs: Document_DescriptionInpu
 };
 
 export const document_title = /** @type {(inputs: Document_TitleInputs) => LocalizedString} */ () => {
-	return /** @type {LocalizedString} */ (`vibestart · AI Native full-stack scaffolding`)
+	return /** @type {LocalizedString} */ (`vibe-scaffold · AI Native full-stack scaffolding`)
 };
 
 export const electron_process = /** @type {(inputs: Electron_ProcessInputs) => LocalizedString} */ () => {
@@ -1635,7 +1635,7 @@ export const viz_tests_caption_broken = /** @type {(inputs: Viz_Tests_Caption_Br
 };
 
 export const viz_tests_caught = /** @type {(inputs: Viz_Tests_CaughtInputs) => LocalizedString} */ (i) => {
-	return /** @type {LocalizedString} */ (`vibestart suite: ${i?.count} tests fail and point to the leak`)
+	return /** @type {LocalizedString} */ (`vibe-scaffold suite: ${i?.count} tests fail and point to the leak`)
 };
 
 export const viz_tests_green = /** @type {(inputs: Viz_Tests_GreenInputs) => LocalizedString} */ () => {

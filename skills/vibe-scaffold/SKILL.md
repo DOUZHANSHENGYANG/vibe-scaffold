@@ -1,18 +1,18 @@
 ---
-name: vibestart
-description: Use the vibestart CLI to create a TypeScript project, choose a stack or recipe, add capabilities such as Knip, Ultracite or Docker, diagnose project state, upgrade templates while preserving business edits, or recover an interrupted operation. Use when the user mentions vibestart, asks to maintain a project with vibestart.jsonc and .vibestart metadata, or needs help with these CLI workflows. Not for ordinary application feature development unrelated to the CLI.
+name: vibe-scaffold
+description: Use the vibe-scaffold CLI to create a TypeScript project, choose a stack or recipe, add capabilities such as Knip, Ultracite or Docker, diagnose project state, upgrade templates while preserving business edits, or recover an interrupted operation. Use when the user mentions vibe-scaffold, asks to maintain a project with vibe-scaffold.jsonc and .vibe-scaffold metadata, or needs help with these CLI workflows. Not for ordinary application feature development unrelated to the CLI.
 ---
 
-# VibeStart CLI
+# VibeScaffold CLI
 
 Use the CLI to resolve stacks and maintain generated projects. Let its current help, capability list, and change plan determine what is supported; do not reconstruct templates or hand-edit maintenance metadata.
 
 ## Establish the context
 
-1. Identify the target directory and whether the request is creation or maintenance. Read the project's instructions. For an existing project, inspect `vibestart.jsonc`, `package.json`, Git status, and the presence of `.vibestart/state.json` and `.vibestart/base.json`. Preserve unrelated edits.
-2. Run the CLI from npm with `npx --yes vibestart-cli` (or `pnpm dlx vibestart-cli`); a global install is not required. Resolve its version with `npx --yes vibestart-cli --version`. For a preview followed by application, append `@` and that exact published version to the package name in both commands so a new release cannot change the target between them.
+1. Identify the target directory and whether the request is creation or maintenance. Read the project's instructions. For an existing project, inspect `vibe-scaffold.jsonc`, `package.json`, Git status, and the presence of `.vibe-scaffold/state.json` and `.vibe-scaffold/base.json`. Preserve unrelated edits.
+2. Run the CLI from npm with `npx --yes vibe-scaffold-cli` (or `pnpm dlx vibe-scaffold-cli`); a global install is not required. Resolve its version with `npx --yes vibe-scaffold-cli --version`. For a preview followed by application, append `@` and that exact published version to the package name in both commands so a new release cannot change the target between them.
 3. Installing this skill does not install the CLI, Vite+, or project dependencies. If a required tool is unavailable, follow its installation instructions within the user's scope rather than changing the selected stack.
-4. Read `npx --yes vibestart-cli --help` for creation or `npx --yes vibestart-cli COMMAND --help` for maintenance. Prefer `--json` for operations executed by an agent; keep stdout separate from stderr. Do not parse a task runner's banner as JSON.
+4. Read `npx --yes vibe-scaffold-cli --help` for creation or `npx --yes vibe-scaffold-cli COMMAND --help` for maintenance. Prefer `--json` for operations executed by an agent; keep stdout separate from stderr. Do not parse a task runner's banner as JSON.
 
 ## Choose the workflow
 
@@ -20,10 +20,10 @@ Read the relevant reference before acting. Paths are relative to this skill's di
 
 | User intent                               | First action                                       | Reference                                                       |
 | ----------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------- |
-| Create a project or use a recipe          | `npx --yes vibestart-cli --list --json`            | [Creating projects](references/create.md)                       |
-| Add a capability                          | `npx --yes vibestart-cli add --list --json`        | [Maintenance](references/maintenance.md#add-capabilities)       |
-| Diagnose an existing project              | `npx --yes vibestart-cli doctor --offline --json`  | [Maintenance](references/maintenance.md#inspect-project-state)  |
-| Update a generated project                | `npx --yes vibestart-cli upgrade --dry-run --json` | [Maintenance](references/maintenance.md#upgrade-templates)      |
+| Create a project or use a recipe          | `npx --yes vibe-scaffold-cli --list --json`            | [Creating projects](references/create.md)                       |
+| Add a capability                          | `npx --yes vibe-scaffold-cli add --list --json`        | [Maintenance](references/maintenance.md#add-capabilities)       |
+| Diagnose an existing project              | `npx --yes vibe-scaffold-cli doctor --offline --json`  | [Maintenance](references/maintenance.md#inspect-project-state)  |
+| Update a generated project                | `npx --yes vibe-scaffold-cli upgrade --dry-run --json` | [Maintenance](references/maintenance.md#upgrade-templates)      |
 | Finish or undo an interrupted operation   | Inspect the pending state with `doctor`            | [Maintenance](references/maintenance.md#recover-an-operation)   |
 | Establish provenance for an older project | Locate its original snapshot                       | [Maintenance](references/maintenance.md#adopt-an-older-project) |
 
@@ -36,7 +36,7 @@ Run maintenance from the generated project root, or pass `--cwd /actual/project/
 - The package manager and Hono runtime are separate choices: `--package-manager bun` selects dependency installation; `--runtime bun` selects Hono execution. Neither changes the other or moves the Vite+ test toolchain to Bun. Do not replace `vp test` with `bun test` or force the CLI to run under Bun.
 - Existing projects use `add` and `upgrade`. Do not scaffold over them, replace their baseline with current business files, or edit a recipe to simulate a supported migration.
 - Respect the environment's installation and service restrictions. Normal creation and maintenance writes run setup/checks. If these are unavailable, use a read-only preview, or explicitly defer installation when file writes are in scope. `--full-check` can start services and browsers.
-- Keep `.vibestart/state.json` and `.vibestart/base.json` together in version control. Leave pending-operation records intact until the operation is recovered, aborted, or rolled back through the CLI.
+- Keep `.vibe-scaffold/state.json` and `.vibe-scaffold/base.json` together in version control. Leave pending-operation records intact until the operation is recovered, aborted, or rolled back through the CLI.
 
 ## Report the actual result
 

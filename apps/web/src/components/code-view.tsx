@@ -3,8 +3,8 @@ import { X } from "lucide-react";
 import { motion } from "motion/react";
 import { Suspense, use, useEffect } from "react";
 
-import type { GeneratedFile } from "@vibestart/core";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { GeneratedFile } from "@vibe-scaffold/core";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { CopyGlyph, useCopy } from "#/components/copy.tsx";
 import { tokensOf } from "#/lib/highlight.ts";

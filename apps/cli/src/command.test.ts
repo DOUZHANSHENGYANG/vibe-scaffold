@@ -6,8 +6,8 @@ import { runCommand } from "citty";
 import { afterAll, describe, expect, vi, it } from "vite-plus/test";
 import { z } from "zod";
 
-import { legalStacks, verificationSchema } from "@vibestart/core";
-import { registry } from "@vibestart/integrations";
+import { legalStacks, verificationSchema } from "@vibe-scaffold/core";
+import { registry } from "@vibe-scaffold/integrations";
 
 import { command } from "#/command.ts";
 
@@ -199,7 +199,7 @@ describe("package manager and runtime flags", () => {
 });
 
 describe("creating a project", async () => {
-  const root = await mkdtemp(path.join(tmpdir(), "vibestart-"));
+  const root = await mkdtemp(path.join(tmpdir(), "vibe-scaffold-"));
   const directory = path.join(root, "my-api");
 
   afterAll(async () => {
@@ -226,9 +226,9 @@ describe("creating a project", async () => {
           files: z.array(z.object({ owner: z.string(), path: z.string() })),
         })
         .parse(output).files
-    ).toContainEqual({ owner: "core", path: "vibestart.jsonc" });
+    ).toContainEqual({ owner: "core", path: "vibe-scaffold.jsonc" });
     await expect(
-      readFile(path.join(directory, "vibestart.jsonc"))
+      readFile(path.join(directory, "vibe-scaffold.jsonc"))
     ).rejects.toThrow("ENOENT");
   });
 
@@ -253,7 +253,7 @@ describe("creating a project", async () => {
       },
     });
     await expect(
-      readFile(path.join(directory, "vibestart.jsonc"), "utf-8")
+      readFile(path.join(directory, "vibe-scaffold.jsonc"), "utf-8")
     ).resolves.toContain('"backend": "hono",');
     await expect(
       run(directory, ...restApi, "--no-install")

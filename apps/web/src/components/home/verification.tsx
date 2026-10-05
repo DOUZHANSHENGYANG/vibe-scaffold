@@ -1,7 +1,7 @@
 import { ArrowUp } from "lucide-react";
 import { useInView } from "motion/react";
 import { Suspense, useRef } from "react";
-import { stacks } from "virtual:vibestart";
+import { stacks } from "virtual:vibe-scaffold";
 
 import { Reveal } from "#/components/home/reveal.tsx";
 import { useComposed } from "#/components/home/use-composed.ts";

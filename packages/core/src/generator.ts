@@ -159,7 +159,7 @@ export const generate = async (
             path: "pnpm-workspace.yaml",
           },
         ]),
-    { content: renderBlueprint(registry, blueprint), path: "vibestart.jsonc" },
+    { content: renderBlueprint(registry, blueprint), path: "vibe-scaffold.jsonc" },
   ].map(({ path, content }) => ({ content, owner: "core", path }));
 
   const files = new Map<string, GeneratedFile>();

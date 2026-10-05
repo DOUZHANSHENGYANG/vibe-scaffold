@@ -1,9 +1,9 @@
 import type { ArgsDef, ParsedArgs } from "citty";
 import { z } from "zod";
 
-import type { Choices, Kind, PackageManager } from "@vibestart/core";
-import { addonsInOrder, defaultAddons, packageManagers } from "@vibestart/core";
-import { registry } from "@vibestart/integrations";
+import type { Choices, Kind, PackageManager } from "@vibe-scaffold/core";
+import { addonsInOrder, defaultAddons, packageManagers } from "@vibe-scaffold/core";
+import { registry } from "@vibe-scaffold/integrations";
 
 import { CliError } from "#/errors.ts";
 
@@ -36,7 +36,7 @@ export const args: ArgsDef = {
   },
   recipe: {
     description:
-      "Start from a vibestart.jsonc file, directory, or URL; kind flags override it",
+      "Start from a vibe-scaffold.jsonc file, directory, or URL; kind flags override it",
     type: "string",
     valueHint: "path|url",
   },

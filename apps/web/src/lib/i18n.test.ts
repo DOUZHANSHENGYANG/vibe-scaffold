@@ -1,7 +1,7 @@
-import { registry, stacks } from "virtual:vibestart";
+import { registry, stacks } from "virtual:vibe-scaffold";
 import { beforeAll, describe, expect, it } from "vite-plus/test";
 
-import { maxProjectNameLength, projectNameError } from "@vibestart/core";
+import { maxProjectNameLength, projectNameError } from "@vibe-scaffold/core";
 
 import {
   addonDescription,

@@ -1,5 +1,5 @@
-import type { Context } from "@vibestart/core";
-import { contribute, defineIntegration, packageJson } from "@vibestart/core";
+import type { Context } from "@vibe-scaffold/core";
+import { contribute, defineIntegration, packageJson } from "@vibe-scaffold/core";
 
 import { templateFiles } from "#/templates.ts";
 import { ultracitePresets } from "#/ultracite.ts";

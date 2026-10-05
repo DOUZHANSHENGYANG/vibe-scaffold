@@ -1,7 +1,7 @@
 import type { OxfmtConfig } from "oxfmt";
 
-import type { ReadSlot } from "@vibestart/core";
-import { defineSlot } from "@vibestart/core";
+import type { ReadSlot } from "@vibe-scaffold/core";
+import { defineSlot } from "@vibe-scaffold/core";
 
 export const lintPresets = defineSlot<{ name: string; module: string }>(
   "vite-plus/lint-presets"

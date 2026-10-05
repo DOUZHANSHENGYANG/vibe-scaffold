@@ -1,5 +1,5 @@
-import type { Context, Contribution } from "@vibestart/core";
-import { file } from "@vibestart/core";
+import type { Context, Contribution } from "@vibe-scaffold/core";
+import { file } from "@vibe-scaffold/core";
 
 const root = "../templates/";
 

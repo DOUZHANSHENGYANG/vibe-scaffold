@@ -5,8 +5,8 @@ import path from "node:path";
 import { afterAll, describe, expect, it, vi } from "vite-plus/test";
 import { z } from "zod";
 
-import { resolve, withDefaults } from "@vibestart/core";
-import { registry } from "@vibestart/integrations";
+import { resolve, withDefaults } from "@vibe-scaffold/core";
+import { registry } from "@vibe-scaffold/integrations";
 
 import { maintenanceCommand } from "#/maintenance/commands.ts";
 import {
@@ -23,7 +23,7 @@ const fixture = async (
   packageManager: "pnpm" | "bun",
   runtime: "node" | "bun"
 ) => {
-  const cwd = mkdtempSync(path.join(tmpdir(), "vibestart-commands-"));
+  const cwd = mkdtempSync(path.join(tmpdir(), "vibe-scaffold-commands-"));
   roots.push(cwd);
   const [stack] = resolve(
     registry,
@@ -94,7 +94,7 @@ describe("project maintenance CLI", () => {
     expect(result.output).toContain("knip — Knip");
     expect(result.output).toContain("ultracite — Ultracite");
     expect(result.output).toContain("docker — Docker");
-    expect(result.output).toContain("vibestart add <id> --dry-run");
+    expect(result.output).toContain("vibe-scaffold add <id> --dry-run");
   });
 
   it("shows doctor findings and distinguishes an offline lookup", async () => {
@@ -120,7 +120,7 @@ describe("project maintenance CLI", () => {
     expect(result.output).toContain(
       "Installation and checks are still pending"
     );
-    expect(result.output).toContain("vibestart recover");
+    expect(result.output).toContain("vibe-scaffold recover");
     expect(pendingOperation(cwd)?.phase).toBe("applied");
   });
 
@@ -139,8 +139,8 @@ describe("project maintenance CLI", () => {
     writeText(cwd, "Dockerfile", "FROM custom-business-image\n");
     const applied = await capture("add", "docker", "--cwd", cwd, "--yes");
     expect(applied.exitCode).toBe(1);
-    expect(applied.output).toContain(".vibestart/pending/candidates");
-    expect(applied.output).toContain("vibestart recover --abort");
+    expect(applied.output).toContain(".vibe-scaffold/pending/candidates");
+    expect(applied.output).toContain("vibe-scaffold recover --abort");
     expect(pendingOperation(cwd)?.phase).toBe("conflicted");
   });
 
@@ -191,7 +191,7 @@ describe("project maintenance CLI", () => {
     expect(result.output).toMatchObject({ ok: true, status: "planned" });
     expect(readBaseline(cwd)).toStrictEqual(base);
     expect(pendingOperation(cwd)).toBeNull();
-    expect(readText(cwd, ".vibestart/operation.lock")).toBeNull();
+    expect(readText(cwd, ".vibe-scaffold/operation.lock")).toBeNull();
   });
 
   it("reports invalid flags and contradictory modes with exit 2", async () => {

@@ -24,7 +24,7 @@ import {
 
 const roots: string[] = [];
 const project = () => {
-  const cwd = mkdtempSync(path.join(tmpdir(), "vibestart-maintenance-"));
+  const cwd = mkdtempSync(path.join(tmpdir(), "vibe-scaffold-maintenance-"));
   roots.push(cwd);
   return cwd;
 };
@@ -117,10 +117,10 @@ describe("maintenance transactions", () => {
     const { cwd, plan } = fixture();
     const journal = prepare(cwd, plan, false);
     await resume(cwd, journal, false);
-    const state = readText(cwd, ".vibestart/state.json");
+    const state = readText(cwd, ".vibe-scaffold/state.json");
     writeText(cwd, "package.json", "user edit");
     expect(() => rollback(cwd, journal)).toThrow("newer edit");
-    expect(readText(cwd, ".vibestart/state.json")).toBe(state);
+    expect(readText(cwd, ".vibe-scaffold/state.json")).toBe(state);
   });
 
   it("resumes after a subset of files was written", async () => {
@@ -197,7 +197,7 @@ describe("maintenance transactions", () => {
     await expect(resume(cwd, journal, false)).rejects.toThrow("Resolve");
     writeText(
       cwd,
-      ".vibestart/pending/candidates/package.json",
+      ".vibe-scaffold/pending/candidates/package.json",
       '{"version":"business","accepted":true}\n'
     );
     await resume(cwd, journal, true, vi.fn<Runner>().mockResolvedValue());

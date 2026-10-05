@@ -11,8 +11,8 @@ import {
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
-import { Button } from "@vibestart/ui/components/button";
-import { cn } from "@vibestart/ui/lib/utils";
+import { Button } from "@vibe-scaffold/ui/components/button";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import { Demo, Verdict } from "#/components/demo/frame.tsx";
 import { ease } from "#/lib/motion.ts";

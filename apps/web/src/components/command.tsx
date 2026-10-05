@@ -2,7 +2,7 @@ import { ParaglideMessage } from "@inlang/paraglide-js-react";
 import { ShieldCheck, ShieldQuestion } from "lucide-react";
 import type { ReactNode } from "react";
 
-import { maxProjectNameLength, projectNameError } from "@vibestart/core";
+import { maxProjectNameLength, projectNameError } from "@vibe-scaffold/core";
 
 import { CreateTerminal } from "#/components/create-terminal.tsx";
 import { Segmented } from "#/components/segmented.tsx";

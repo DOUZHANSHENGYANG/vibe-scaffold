@@ -94,7 +94,7 @@ const refresh = (skipStackVerification: boolean): readonly Step[] => [
     args: [
       "test",
       "--project",
-      "@vibestart/integrations",
+      "@vibe-scaffold/integrations",
       // `--update` takes an optional mode, so a bare one would read the file after it as the mode.
       "--update=all",
       "src/snapshot.test.ts",

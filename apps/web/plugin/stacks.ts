@@ -1,14 +1,14 @@
 import { omit } from "es-toolkit/object";
 
-import type { RegistryInfo } from "@vibestart/core";
-import { defaultAddons, generate, legalStacks } from "@vibestart/core";
+import type { RegistryInfo } from "@vibe-scaffold/core";
+import { defaultAddons, generate, legalStacks } from "@vibe-scaffold/core";
 import {
   bunSubjectOf,
   registry,
   stackLabel,
   verificationOf,
   verifiedAs,
-} from "@vibestart/integrations";
+} from "@vibe-scaffold/integrations";
 
 import type { Project, StackSummary } from "../src/lib/project.ts";
 import { addonsKey, projectKey } from "../src/lib/project.ts";

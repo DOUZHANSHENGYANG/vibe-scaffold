@@ -66,7 +66,7 @@ describe(generate, () => {
       expect.arrayContaining(["lint.txt", "metrics.txt"])
     );
     expect(
-      generation.files.find((f) => f.path === "vibestart.jsonc")?.content
+      generation.files.find((f) => f.path === "vibe-scaffold.jsonc")?.content
     ).toContain('"addons": ["lint", "metrics"],');
   });
 
@@ -97,7 +97,7 @@ describe(generate, () => {
       { ...blueprint, addons: ["lint"] },
       { name: "my-app" }
     );
-    expect(files.find((f) => f.path === "vibestart.jsonc")?.content).toContain(
+    expect(files.find((f) => f.path === "vibe-scaffold.jsonc")?.content).toContain(
       '"addons": ["lint"],'
     );
   });

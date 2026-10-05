@@ -1,4 +1,4 @@
-import type { Change } from "@vibestart/core";
+import type { Change } from "@vibe-scaffold/core";
 
 import { kindLabel } from "#/lib/i18n.ts";
 import type { Decision } from "#/lib/stack.ts";
@@ -238,7 +238,7 @@ export const groupOf = (owner: string): Group => {
 
 export const ownerName = (owner: string) =>
   owner === "core"
-    ? "vibestart"
+    ? "vibe-scaffold"
     : (addonOf(owner)?.name ?? integrationOf(owner).name);
 
 export const tintClass: Record<Group, string> = {

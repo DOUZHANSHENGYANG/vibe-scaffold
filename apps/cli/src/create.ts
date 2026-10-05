@@ -6,7 +6,7 @@ import type {
   Generation,
   PackageManager,
   Stack,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 import {
   addonsInOrder,
   choicesOf,
@@ -14,14 +14,14 @@ import {
   generate,
   resolve,
   withDefaults,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 import {
   materializeEnvFromExamples,
   registry,
   stackLabel,
   toolchainVersions,
   verificationOf,
-} from "@vibestart/integrations";
+} from "@vibe-scaffold/integrations";
 
 import { initializeBaseline } from "#/maintenance/files.ts";
 import { snapshotOf } from "#/maintenance/model.ts";
@@ -270,7 +270,7 @@ export const create = async (
   ui: Ui,
   version: string
 ): Promise<CreateResult> => {
-  ui.intro(`vibestart ${version}`);
+  ui.intro(`vibe-scaffold ${version}`);
   const target = await chooseTarget(options);
   const start = await given(options);
   let stack = await chooseStack(options, start.choices);

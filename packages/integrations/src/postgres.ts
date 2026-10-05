@@ -4,7 +4,7 @@ import {
   gettingStarted,
   packageJson,
   renderFile,
-} from "@vibestart/core";
+} from "@vibe-scaffold/core";
 
 import {
   authVariant,

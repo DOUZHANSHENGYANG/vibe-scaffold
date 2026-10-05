@@ -6,7 +6,7 @@ import { runnerImport } from "vite-plus";
 import type { Project } from "../src/lib/project.ts";
 import type * as Stacks from "./stacks.ts";
 
-const moduleId = "virtual:vibestart";
+const moduleId = "virtual:vibe-scaffold";
 const projectPrefix = `${moduleId}/project/`;
 const resolved = (id: string) => `\0${id}`;
 
@@ -18,7 +18,7 @@ const jsonModule = (project: Project) =>
  * Serves the registry, every legal stack, and each stack's generated project with each set of add-ons as
  * virtual modules, one lazy chunk per project. The generator formats with oxfmt's native binding, so it runs here in Node, not in the browser.
  */
-export const vibestart = (): Plugin => {
+export const vibe-scaffold = (): Plugin => {
   let stacks: Promise<typeof Stacks> | undefined;
   const loadStacks = async () => {
     stacks ??= (async () => {
@@ -58,7 +58,7 @@ export const vibestart = (): Plugin => {
       }
       return null;
     },
-    name: "vibestart",
+    name: "vibe-scaffold",
     resolveId: (id) => {
       if (id === moduleId || id.startsWith(projectPrefix)) {
         return resolved(id);

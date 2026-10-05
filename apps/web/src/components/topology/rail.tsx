@@ -2,8 +2,8 @@ import { ChevronsUpDown, FlaskConical, Wrench } from "lucide-react";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
-import type { IntegrationInfo, Stack } from "@vibestart/core";
-import { cn } from "@vibestart/ui/lib/utils";
+import type { IntegrationInfo, Stack } from "@vibe-scaffold/core";
+import { cn } from "@vibe-scaffold/ui/lib/utils";
 
 import type { Choosing } from "#/components/topology/decision.tsx";
 import { DecisionTrigger } from "#/components/topology/decision.tsx";

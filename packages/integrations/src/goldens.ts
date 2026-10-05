@@ -1,8 +1,8 @@
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
 
-import type { Stack } from "@vibestart/core";
-import { legalStacks } from "@vibestart/core";
+import type { Stack } from "@vibe-scaffold/core";
+import { legalStacks } from "@vibe-scaffold/core";
 
 import { registry } from "#/registry.ts";
 import { repoRoot } from "#/repo.ts";

@@ -1,6 +1,6 @@
 import { getRouteApi } from "@tanstack/react-router";
 
-import type { Stack } from "@vibestart/core";
+import type { Stack } from "@vibe-scaffold/core";
 
 import { entryFromFlags, flagsOf, parseFlags } from "#/lib/stack.ts";
 

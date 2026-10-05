@@ -4,8 +4,8 @@ import path from "node:path";
 
 import { execa } from "execa";
 
-import type { GeneratedFile } from "@vibestart/core";
-import { projectNameError } from "@vibestart/core";
+import type { GeneratedFile } from "@vibe-scaffold/core";
+import { projectNameError } from "@vibe-scaffold/core";
 
 import { CliError } from "#/errors.ts";
 import type { Ui } from "#/ui.ts";

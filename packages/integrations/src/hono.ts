@@ -4,8 +4,8 @@ import {
   file,
   packageJson,
   renderFile,
-} from "@vibestart/core";
-import type { Context } from "@vibestart/core";
+} from "@vibe-scaffold/core";
+import type { Context } from "@vibe-scaffold/core";
 
 import {
   apiVariant,

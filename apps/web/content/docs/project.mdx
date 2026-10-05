@@ -15,9 +15,9 @@ packages/
   auth/                Better Auth configuration
   ui/                  Shared components and theme
   config/              Shared TypeScript settings
-.vibestart/            Template baseline and maintenance state
+.vibe-scaffold/            Template baseline and maintenance state
 AGENTS.md              Development conventions
-vibestart.jsonc        The project's technology choices
+vibe-scaffold.jsonc        The project's technology choices
 vite.config.ts         Checks and project tasks
 ```
 
@@ -48,7 +48,7 @@ For the example stack above:
 
 ## Project recipe [#blueprint]
 
-`vibestart.jsonc` records the stack, add-ons, package manager, and release channel the project was created with. `packageManager` and `stack.runtime` are separate: one names the installation tool, the other the application runtime. To create another project with the same choices, pass the file to `--recipe`; see [Recipes](/docs/cli/create#recipe).
+`vibe-scaffold.jsonc` records the stack, add-ons, package manager, and release channel the project was created with. `packageManager` and `stack.runtime` are separate: one names the installation tool, the other the application runtime. To create another project with the same choices, pass the file to `--recipe`; see [Recipes](/docs/cli/create#recipe).
 
 ## Dependency versions [#catalog]
 
@@ -65,7 +65,7 @@ pnpm projects declare their workspaces and a catalog of shared versions in `pnpm
 
 ## Maintenance baseline [#baseline]
 
-`.vibestart/state.json` and `.vibestart/base.json` record where the project came from and the template files it started with. Upgrades use them to tell template changes apart from your own edits. Commit both files, and do not edit them by hand. See [Upgrade a project](/docs/cli/upgrade).
+`.vibe-scaffold/state.json` and `.vibe-scaffold/base.json` record where the project came from and the template files it started with. Upgrades use them to tell template changes apart from your own edits. Commit both files, and do not edit them by hand. See [Upgrade a project](/docs/cli/upgrade).
 
 ## Project tasks [#scripts]
 
