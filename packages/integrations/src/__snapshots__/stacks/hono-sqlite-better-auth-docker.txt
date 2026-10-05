@@ -45,7 +45,7 @@ coverage
 !.vscode/extensions.json
 
 # .node-version (vite-plus)
-24.21.0
+>=24.17.0
 
 # .vscode/extensions.json (vite-plus)
 {
@@ -434,13 +434,13 @@ volumes:
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.9.1",
+      "version": ">=11.22.0",
       "onFail": "warn"
     }
   },
   "engines": {
-    "node": "24.21.0",
-    "pnpm": "12.9.1"
+    "node": ">=24.17.0",
+    "pnpm": ">=11.22.0"
   }
 }
 

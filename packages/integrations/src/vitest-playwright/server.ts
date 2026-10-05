@@ -23,16 +23,13 @@ const warmUp = (ctx: Context) => {
   ];
 };
 
-const webArgs = (ctx: Context, port: string) =>
-  ctx.has("next")
-    ? ['"node_modules/next/dist/bin/next"', '"dev"', '"--port"', port]
-    : [
-        '"node_modules/vite-plus/bin/vp"',
-        '"dev"',
-        '"--port"',
-        port,
-        '"--strictPort"',
-      ];
+const webArgs = (port: string) => [
+  '"node_modules/vite-plus/bin/vp"',
+  '"dev"',
+  '"--port"',
+  port,
+  '"--strictPort"',
+];
 
 const serverEnv = (ctx: Context) => [
   ...(ctx.has("better-auth")
@@ -43,9 +40,6 @@ const serverEnv = (ctx: Context) => [
     : []),
   ...(ctx.stack.database === undefined ? [] : ["DATABASE_URL: database.url"]),
 ];
-
-const nextDistDir = (ctx: Context, port: string) =>
-  ctx.has("next") ? [`NEXT_DIST_DIR: \`.next-test-\${${port}}\``] : [];
 
 const healthCheck = (ctx: Context) =>
   `    await waitForServer(\`\${baseURL}${hasBackend(ctx) ? "/api/health" : "/"}\`);`;
@@ -73,10 +67,7 @@ const separateServerBody = (ctx: Context) => ({
       ctx.has("bun")
     ),
     `    await waitForServer(\`http://localhost:\${serverPort}/api/health\`);`,
-    startCall("webDir", webArgs(ctx, "String(webPort)"), [
-      ...nextDistDir(ctx, "webPort"),
-      // Nitro's dev server listens on PORT over --port, and the server's .env sets PORT.
-      ...(ctx.has("tanstack-start") ? ["PORT: String(webPort)"] : []),
+    startCall("webDir", webArgs("String(webPort)"), [
       `SERVER_URL: \`http://localhost:\${serverPort}\``,
     ]),
   ],
@@ -84,12 +75,7 @@ const separateServerBody = (ctx: Context) => ({
 
 const singleServerBody = (ctx: Context) => ({
   ports: ["  const { port } = new URL(baseURL);"],
-  starts: [
-    startCall("webDir", webArgs(ctx, "port"), [
-      ...serverEnv(ctx),
-      ...nextDistDir(ctx, "port"),
-    ]),
-  ],
+  starts: [startCall("webDir", webArgs("port"), [...serverEnv(ctx)])],
 });
 
 // A failed start stops what it started, so no server outlives the run holding its port.
@@ -158,7 +144,7 @@ const declarations = (ctx: Context) => [
 
 const helpers = (
   ctx: Context
-) => `const waitForServer = async (url: string, attempts = ${ctx.has("next") ? 300 : 100}): Promise<void> => {
+) => `const waitForServer = async (url: string, attempts = 100): Promise<void> => {
   await retry(
     async () => {
       const response = await fetch(url);

@@ -107,19 +107,14 @@ export const processBoxes = (stack: Stack): ProcessBox[] => {
   ];
   const boxes: ProcessBox[] = [];
   if (framework !== undefined) {
-    const self = stack.backend === "self";
     const browser = framework.id === "spa";
     boxes.push({
       deployed: true,
       group: "framework",
       id: "web",
-      label: webLabel(framework.name, self, browser, has(stack, "desktop")),
+      label: webLabel(framework.name, false, browser, has(stack, "desktop")),
       node: !browser,
-      rect: around(
-        [blocks.framework, ...(self ? [blocks.backend, ...hosted] : [])],
-        boxPadding,
-        boxLabel
-      ),
+      rect: around([blocks.framework], boxPadding, boxLabel),
     });
   }
   if (stack.backend === "hono") {

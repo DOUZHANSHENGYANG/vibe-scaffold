@@ -66,26 +66,18 @@ const renderHealth = (ctx: Context) => {
 
 const queriesPath = "apps/web/src/lib/api.ts";
 
-// Only Next.js builds a second set of queries, for its Server Components.
+// The typed client serves the todo example; the home page's health check is a plain fetch.
 const queries = (ctx: Context) => {
   const content = templateContent(ctx, "openapi/web", queriesPath);
   return file(
     queriesPath,
-    ctx.has("next")
-      ? content
-      : content.replace("export const createQueries", "const createQueries")
+    content.replace("export const createQueries", "const createQueries")
   );
 };
 
-// Start's client calls the API server directly during SSR; the other web apps only ever run it in the browser.
-// The typed client serves the todo example; the home page's health check is a plain fetch.
 const webFiles = (ctx: Context) => [
   queries(ctx),
-  ...templateFiles(
-    ctx,
-    ctx.has("tanstack-start") ? "openapi/tanstack-start" : "openapi/browser"
-  ),
-  ...(ctx.has("next") ? templateFiles(ctx, "openapi/next") : []),
+  ...templateFiles(ctx, "openapi/browser"),
   contribute(packageJson, {
     dependencies: ["hono"],
     devDependencies: [`${ctx.scope}/api`],

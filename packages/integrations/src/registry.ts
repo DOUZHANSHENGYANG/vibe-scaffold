@@ -8,18 +8,15 @@ import { drizzle } from "#/drizzle.ts";
 import { electron } from "#/electron.ts";
 import { hono } from "#/hono.ts";
 import { knip } from "#/knip.ts";
-import { next } from "#/next.ts";
 import { node } from "#/node.ts";
 import { openapi } from "#/openapi.ts";
 import { orpc } from "#/orpc.ts";
 import { postgres } from "#/postgres.ts";
 import { react } from "#/react.ts";
-import { self } from "#/self.ts";
 import { shadcn } from "#/shadcn.ts";
 import { spa } from "#/spa.ts";
 import { sqlite } from "#/sqlite.ts";
 import { tanstackRouter } from "#/tanstack-router.ts";
-import { tanstackStart } from "#/tanstack-start.ts";
 import { ultracite } from "#/ultracite.ts";
 import { vitePlus } from "#/vite-plus/index.ts";
 import { vitestPlaywright } from "#/vitest-playwright/index.ts";
@@ -28,7 +25,6 @@ export const registry = defineRegistry({
   addons: [knip, ultracite],
   capabilities: {
     "frontend-framework": "a frontend framework",
-    "fullstack-framework": "a full-stack framework",
     "hono-server": "a Hono server",
     "http-server": "an HTTP server",
     "node-runtime": "a Node.js-compatible runtime",
@@ -45,11 +41,8 @@ export const registry = defineRegistry({
     vitePlus,
     react,
     spa,
-    tanstackStart,
-    next,
     tanstackRouter,
     hono,
-    self,
     orpc,
     openapi,
     postgres,

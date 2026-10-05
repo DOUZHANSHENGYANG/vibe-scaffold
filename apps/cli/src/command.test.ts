@@ -76,20 +76,19 @@ describe("--list", () => {
 
 describe("choosing a stack", () => {
   it("names the kinds left to decide, with their flags", async () => {
-    const { exitCode, output } = await run("app", "--framework", "next");
+    const { exitCode, output } = await run("app", "--framework", "spa");
     expect(exitCode).toBe(1);
     expect(output).toMatchObject({
       error: {
         code: "incomplete-stack",
         open: [
-          { flags: ["--backend hono", "--backend self"] },
-          { kind: "api" },
+          { flags: ["--api orpc", "--api openapi", "--api none"] },
           { flags: ["--auth better-auth", "--auth none"] },
         ],
       },
       ok: false,
     });
-    expect(output).toHaveProperty("error.open.length", 3);
+    expect(output).toHaveProperty("error.open.length", 2);
   });
 
   it("explains an illegal stack and offers the smallest fixes as flags", async () => {
@@ -179,9 +178,9 @@ describe("package manager and runtime flags", () => {
     const unsupported = await run(
       "api",
       "--framework",
-      "next",
+      "spa",
       "--backend",
-      "self",
+      "none",
       "--runtime",
       "bun",
       "--dry-run"
@@ -299,12 +298,6 @@ describe("creating a project", async () => {
       label: "spa-hono-orpc-postgres-better-auth-electron",
       ok: true,
     });
-    await expect(
-      run(target, "--framework", "next", "--desktop", "electron", "--dry-run")
-    ).resolves.toMatchObject({ exitCode: 1, output: { ok: false } });
-    await expect(dryRunPaths(target)).resolves.not.toContain(
-      "apps/desktop/package.json"
-    );
   });
 
   it("takes the default add-ons unless told otherwise, and stays verified without them", async () => {

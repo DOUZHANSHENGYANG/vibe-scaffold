@@ -8,7 +8,6 @@ import {
 
 import {
   apiVariant,
-  clientComponent,
   databaseCheck,
   hasWebApp,
   serverApp,
@@ -42,10 +41,7 @@ const router = (ctx: Context) => {
 const apiStatusPath = "apps/web/src/components/api-status.tsx";
 
 const apiStatus = (ctx: Context) =>
-  file(
-    apiStatusPath,
-    clientComponent(ctx, templateContent(ctx, "orpc/web", apiStatusPath))
-  );
+  file(apiStatusPath, templateContent(ctx, "orpc/web", apiStatusPath));
 
 const renderHealth = (ctx: Context) => {
   if (ctx.stack.database === undefined) {

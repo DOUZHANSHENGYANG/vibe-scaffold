@@ -172,14 +172,11 @@ const fits = {
   docker: () => m.fit_docker(),
   electron: () => m.fit_electron(),
   hono: () => m.fit_hono(),
-  next: () => m.fit_next(),
   openapi: () => m.fit_openapi(),
   orpc: () => m.fit_orpc(),
   postgres: () => m.fit_postgres(),
-  self: () => m.fit_self(),
   spa: () => m.fit_spa(),
   sqlite: () => m.fit_sqlite(),
-  "tanstack-start": () => m.fit_tanstack_start(),
 } satisfies Record<string, () => string>;
 
 const noneFits: Record<Decision, () => string> = {

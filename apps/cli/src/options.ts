@@ -2,7 +2,11 @@ import type { ArgsDef, ParsedArgs } from "citty";
 import { z } from "zod";
 
 import type { Choices, Kind, PackageManager } from "@vibe-scaffold/core";
-import { addonsInOrder, defaultAddons, packageManagers } from "@vibe-scaffold/core";
+import {
+  addonsInOrder,
+  defaultAddons,
+  packageManagers,
+} from "@vibe-scaffold/core";
 import { registry } from "@vibe-scaffold/integrations";
 
 import { CliError } from "#/errors.ts";

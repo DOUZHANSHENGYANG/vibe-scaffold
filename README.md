@@ -80,7 +80,7 @@ npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --databa
 | `--addons <ids\|none>`                                       | Select add-ons, comma-separated. Knip and Ultracite are on by default; `none` leaves out both.                                                                 |
 | `--package-manager <pnpm\|bun>`                              | Install with pnpm (default) or Bun 1.4.2 or newer.                                                                                                             |
 | `--runtime <node\|bun>`                                      | Run the Hono server on Node.js (default) or Bun.                                                                                                               |
-| `--recipe <path\|url>`                                       | Start from a `vibe-scaffold.jsonc`; kind flags override it.                                                                                                        |
+| `--recipe <path\|url>`                                       | Start from a `vibe-scaffold.jsonc`; kind flags override it.                                                                                                    |
 | `--list`                                                     | List every kind, its options, and every legal stack.                                                                                                           |
 | `--dry-run`                                                  | Resolve the stack and list the files without writing.                                                                                                          |
 | `--json`                                                     | Print one JSON object and never prompt. Failures carry a machine-readable `code`.                                                                              |
@@ -96,7 +96,7 @@ npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --databa
 
 | Path                    | Owns                                                                     |
 | ----------------------- | ------------------------------------------------------------------------ |
-| `apps/cli`              | The `vibe-scaffold` command                                                  |
+| `apps/cli`              | The `vibe-scaffold` command                                              |
 | `apps/web`              | The web studio and documentation site                                    |
 | `packages/core`         | Blueprint schema, resolver, and generator                                |
 | `packages/integrations` | Integrations, templates, the dependency catalog, and `verification.json` |

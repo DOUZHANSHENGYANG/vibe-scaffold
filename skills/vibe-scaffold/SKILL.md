@@ -18,14 +18,14 @@ Use the CLI to resolve stacks and maintain generated projects. Let its current h
 
 Read the relevant reference before acting. Paths are relative to this skill's directory, not the user's project.
 
-| User intent                               | First action                                       | Reference                                                       |
-| ----------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------- |
+| User intent                               | First action                                           | Reference                                                       |
+| ----------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------- |
 | Create a project or use a recipe          | `npx --yes vibe-scaffold-cli --list --json`            | [Creating projects](references/create.md)                       |
 | Add a capability                          | `npx --yes vibe-scaffold-cli add --list --json`        | [Maintenance](references/maintenance.md#add-capabilities)       |
 | Diagnose an existing project              | `npx --yes vibe-scaffold-cli doctor --offline --json`  | [Maintenance](references/maintenance.md#inspect-project-state)  |
 | Update a generated project                | `npx --yes vibe-scaffold-cli upgrade --dry-run --json` | [Maintenance](references/maintenance.md#upgrade-templates)      |
-| Finish or undo an interrupted operation   | Inspect the pending state with `doctor`            | [Maintenance](references/maintenance.md#recover-an-operation)   |
-| Establish provenance for an older project | Locate its original snapshot                       | [Maintenance](references/maintenance.md#adopt-an-older-project) |
+| Finish or undo an interrupted operation   | Inspect the pending state with `doctor`                | [Maintenance](references/maintenance.md#recover-an-operation)   |
+| Establish provenance for an older project | Locate its original snapshot                           | [Maintenance](references/maintenance.md#adopt-an-older-project) |
 
 Run maintenance from the generated project root, or pass `--cwd /actual/project/path`. Creation instead takes a positional destination directory; it has no `--cwd` option.
 

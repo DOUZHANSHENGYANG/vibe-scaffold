@@ -558,7 +558,10 @@ export const main = async (args: readonly string[]) => {
       force: { default: false, type: "boolean" },
       "package-manager": { default: "all", type: "string" },
       jobs: { default: String(defaultJobs), type: "string" },
-      out: { default: path.join(tmpdir(), "vibe-scaffold-stacks"), type: "string" },
+      out: {
+        default: path.join(tmpdir(), "vibe-scaffold-stacks"),
+        type: "string",
+      },
       shard: { default: "0/1", type: "string" },
       shards: { type: "string" },
     },

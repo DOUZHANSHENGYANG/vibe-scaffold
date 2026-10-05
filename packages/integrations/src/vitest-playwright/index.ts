@@ -101,12 +101,8 @@ const layerTable = (ctx: Context) =>
     ]
   );
 
-const frontServer = (ctx: Context) => {
-  if (ctx.has("next")) {
-    return "`next dev` in its own `.next-test-<port>`, beside any running dev server";
-  }
-  return ctx.has("spa") && ctx.has("hono") ? "Vite" : "`vp dev`";
-};
+const frontServer = (ctx: Context) =>
+  ctx.has("spa") && ctx.has("hono") ? "Vite" : "`vp dev`";
 
 const e2eStack = (ctx: Context) => {
   const parts = [

@@ -29,7 +29,8 @@ const fileSchema = z.strictObject({
   content: z.string(),
   owner: z.string(),
   path: relativePath.refine(
-    (value) => !value.startsWith(".vibe-scaffold/") && !value.startsWith(".git/")
+    (value) =>
+      !value.startsWith(".vibe-scaffold/") && !value.startsWith(".git/")
   ),
 });
 

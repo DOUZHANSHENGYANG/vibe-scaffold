@@ -185,7 +185,10 @@ export const prepare = (
 
 const resolveCandidates = (cwd: string, journal: Journal) => {
   for (const file of journal.conflicts) {
-    const candidate = readText(cwd, `.vibe-scaffold/pending/candidates/${file}`);
+    const candidate = readText(
+      cwd,
+      `.vibe-scaffold/pending/candidates/${file}`
+    );
     if (candidate === null || /^(?:<{7}|={7}|>{7}|\|{7})/mu.test(candidate)) {
       throw new MaintenanceError(
         `Resolve .vibe-scaffold/pending/candidates/${file}, then run recover.`

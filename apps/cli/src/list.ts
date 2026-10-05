@@ -1,5 +1,9 @@
 import { defaultAddons, legalStacks } from "@vibe-scaffold/core";
-import { registry, stackLabel, verificationOf } from "@vibe-scaffold/integrations";
+import {
+  registry,
+  stackLabel,
+  verificationOf,
+} from "@vibe-scaffold/integrations";
 
 import { addonsValue, kindFlag, none, noneLabel } from "#/options.ts";
 
@@ -95,7 +99,7 @@ export const listingText = ({ addons, kinds, stacks }: Listing) =>
     "",
     "Examples",
     "  npx vibe-scaffold-cli my-app",
-    `  npx vibe-scaffold-cli my-app ${[kindFlag("framework", "next"), kindFlag("backend", "self"), kindFlag("api", "orpc"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --no-interactive`,
+    `  npx vibe-scaffold-cli my-app ${[kindFlag("framework", "spa"), kindFlag("backend", "hono"), kindFlag("api", "orpc"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --no-interactive`,
     `  npx vibe-scaffold-cli my-api ${[kindFlag("frontend", null), kindFlag("api", "openapi"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --addons ${addonsValue([])} --json`,
     "  npx vibe-scaffold-cli my-app --recipe ../other-app --json",
     "",

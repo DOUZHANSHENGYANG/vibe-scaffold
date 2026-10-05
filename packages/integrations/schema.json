@@ -15,12 +15,9 @@
       "properties": {
         "toolchain": { "type": "string", "enum": ["vite-plus"] },
         "frontend": { "type": "string", "enum": ["react"] },
-        "framework": {
-          "type": "string",
-          "enum": ["spa", "tanstack-start", "next"]
-        },
+        "framework": { "type": "string", "enum": ["spa"] },
         "router": { "type": "string", "enum": ["tanstack-router"] },
-        "backend": { "type": "string", "enum": ["hono", "self"] },
+        "backend": { "type": "string", "enum": ["hono"] },
         "api": { "type": "string", "enum": ["orpc", "openapi"] },
         "database": { "type": "string", "enum": ["postgres", "sqlite"] },
         "orm": { "type": "string", "enum": ["drizzle"] },

@@ -6,7 +6,7 @@ import {
   packageJson,
 } from "@vibe-scaffold/core";
 
-import { clientComponent, hasBackend } from "#/app.ts";
+import { hasBackend } from "#/app.ts";
 import { templateContent, templateFiles } from "#/templates.ts";
 import { ultracitePresets } from "#/ultracite.ts";
 
@@ -15,15 +15,7 @@ const apiStatusPath = "apps/web/src/components/api-status.tsx";
 // oRPC brings its own typed status; without it the home page asks `/api/health` directly.
 const healthStatus = (ctx: Context) =>
   hasBackend(ctx) && !ctx.has("orpc")
-    ? [
-        file(
-          apiStatusPath,
-          clientComponent(
-            ctx,
-            templateContent(ctx, "react/health", apiStatusPath)
-          )
-        ),
-      ]
+    ? [file(apiStatusPath, templateContent(ctx, "react/health", apiStatusPath))]
     : [];
 
 export const react = defineIntegration({

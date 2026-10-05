@@ -80,7 +80,7 @@ npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --databa
 | `--addons <ids\|none>`                                       | 选择扩展,逗号分隔。默认启用 Knip 与 Ultracite;`none` 两者都不要。                                                                    |
 | `--package-manager <pnpm\|bun>`                              | 用 pnpm(默认)或 Bun 1.4.2 及以上安装依赖。                                                                                           |
 | `--runtime <node\|bun>`                                      | Hono 服务运行在 Node.js(默认)或 Bun 上。                                                                                             |
-| `--recipe <path\|url>`                                       | 从 `vibe-scaffold.jsonc` 开始;`kind` 参数优先于它。                                                                                      |
+| `--recipe <path\|url>`                                       | 从 `vibe-scaffold.jsonc` 开始;`kind` 参数优先于它。                                                                                  |
 | `--list`                                                     | 列出所有选择类别、选项与全部合法技术栈。                                                                                             |
 | `--dry-run`                                                  | 解析技术栈并列出文件,不写入磁盘。                                                                                                    |
 | `--json`                                                     | 只输出一个 JSON 对象,从不提问。失败时带有机器可读的 `code`。                                                                         |
@@ -96,7 +96,7 @@ npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --databa
 
 | 路径                    | 职责                                              |
 | ----------------------- | ------------------------------------------------- |
-| `apps/cli`              | `vibe-scaffold` 命令                                  |
+| `apps/cli`              | `vibe-scaffold` 命令                              |
 | `apps/web`              | 网页工作台与文档站                                |
 | `packages/core`         | Blueprint schema、解析器与生成器                  |
 | `packages/integrations` | Integration、模板、依赖目录与 `verification.json` |

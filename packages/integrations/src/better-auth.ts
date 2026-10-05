@@ -24,31 +24,11 @@ import {
   readmeTagline,
 } from "#/vite-plus/slots.ts";
 
-// A full-stack framework that serves auth itself sets cookies from server functions and actions
-// only through its plugin; under Hono the plugin would bundle the framework's server into it.
-const cookiePlugins = [
-  {
-    call: "tanstackStartCookies()",
-    framework: "tanstack-start",
-    statement:
-      'import { tanstackStartCookies } from "better-auth/tanstack-start";',
-  },
-  {
-    call: "nextCookies()",
-    framework: "next",
-    statement: 'import { nextCookies } from "better-auth/next-js";',
-  },
-];
-
 const renderAuthIndex = (ctx: Context) => {
-  const plugin = ctx.has("self")
-    ? cookiePlugins.find(({ framework }) => ctx.has(framework))
-    : undefined;
   const provider = ctx.has("sqlite") ? "sqlite" : "pg";
   return [
     'import { drizzleAdapter } from "@better-auth/drizzle-adapter/relations-v2";',
     'import { betterAuth } from "better-auth";',
-    ...(plugin === undefined ? [] : [plugin.statement]),
     "",
     `import type { Database } from "${ctx.scope}/db";`,
     `import * as schema from "${ctx.scope}/db/schema/auth";`,
@@ -67,7 +47,6 @@ const renderAuthIndex = (ctx: Context) => {
     "    baseURL,",
     `    database: drizzleAdapter(db, { provider: "${provider}", schema }),`,
     "    emailAndPassword: { enabled: true },",
-    ...(plugin === undefined ? [] : [`    plugins: [${plugin.call}],`]),
     "    secret,",
     ...(ctx.has("electron") ? ["    trustedOrigins: [rendererOrigin],"] : []),
     "  });",
@@ -78,14 +57,8 @@ const renderAuthIndex = (ctx: Context) => {
   ].join("\n");
 };
 
-// Where signing in lands without a `redirect`: the todos when there are any.
-const home = (ctx: Context) => (todosExample(ctx) ? "/todos" : "/");
-
 const protectedPage = (ctx: Context) => {
   const boundary = ctx.has("orpc") ? "the procedure" : "the server route";
-  if (ctx.has("next")) {
-    return `A page that needs a user calls \`getSession()\` and \`redirect("/login?redirect=…")\` when the session is missing. Add the page to \`redirectTargets\` in \`src/app/login/page.tsx\`; any other redirect value falls back to \`${home(ctx)}\`. The page hide is UX, and ${boundary} is the security boundary.`;
-  }
   const guard = todosExample(ctx)
     ? "Put the route under `src/routes/_authenticated/`. The layout sends an anonymous visitor to `/login?redirect=…`."
     : 'The route\'s `beforeLoad` throws `redirect({ to: "/login", search: { redirect: location.href } })` when `context.session` is missing; several such routes share a pathless `_authenticated.tsx` layout that does it once.';
@@ -105,21 +78,16 @@ const authorization = (ctx: Context) => {
 };
 
 const loginPages = {
-  next: {
-    path: "apps/web/src/app/login/page.tsx",
-    set: "better-auth/next",
-  },
   "tanstack-router": {
     path: "apps/web/src/routes/login.tsx",
     set: "better-auth/tanstack-router",
   },
 } as const;
 
-const loginTemplate = (ctx: Context) =>
-  ctx.has("next") ? loginPages.next : loginPages["tanstack-router"];
+const loginTemplate = () => loginPages["tanstack-router"];
 
 const loginPage = (ctx: Context) => {
-  const { path, set } = loginTemplate(ctx);
+  const { path, set } = loginTemplate();
   const content = templateContent(ctx, set, path);
   if (todosExample(ctx)) {
     return file(path, content);
@@ -133,19 +101,11 @@ const loginPage = (ctx: Context) => {
   return file(path, page);
 };
 
-// A full-stack framework either runs Better Auth itself or asks Hono for the session.
-const appSets = (ctx: Context) => {
-  const server = ctx.has("hono") ? "hono" : "self";
-  if (ctx.has("next")) {
-    return ["better-auth/next", `better-auth/next-${server}`];
-  }
-  return ctx.has("tanstack-start")
-    ? [`better-auth/tanstack-start-${server}`]
-    : ["better-auth/spa"];
-};
+// The SPA asks Hono for the session; the auth handler runs on the server.
+const appSets = () => ["better-auth/spa"];
 
 const webSets = (ctx: Context) => [
-  ...appSets(ctx),
+  ...appSets(),
   ...(ctx.has("tanstack-router") ? ["better-auth/tanstack-router"] : []),
   ...(ctx.has("tanstack-router") && todosExample(ctx)
     ? ["better-auth/tanstack-router-todos"]
@@ -153,7 +113,7 @@ const webSets = (ctx: Context) => [
 ];
 
 const webFiles = (ctx: Context) => {
-  const login = loginTemplate(ctx);
+  const login = loginTemplate();
   return [
     ...webSets(ctx).flatMap((set) =>
       templateFiles(ctx, set, { except: set === login.set ? [login.path] : [] })

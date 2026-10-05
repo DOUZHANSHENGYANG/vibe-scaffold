@@ -97,8 +97,9 @@ describe("the pins of this repository and the projects it generates", () => {
   });
 
   it("pins the types of the Node.js major it runs", () => {
+    // Node's engine is a range in this fork, so read its minimum version.
     expect(major(minVersion(only("@types/node")) ?? "0.0.0")).toBe(
-      major(only("node"))
+      major(minVersion(only("node")) ?? "0.0.0")
     );
   });
 });

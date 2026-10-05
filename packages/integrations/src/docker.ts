@@ -7,7 +7,7 @@ import {
   renderFile,
 } from "@vibe-scaffold/core";
 
-import { hasBackend, hasWebApp, proxiesToHono } from "#/app.ts";
+import { hasBackend, hasWebApp } from "#/app.ts";
 import { toolchainVersions } from "#/catalog.ts";
 import { joinWords, quote } from "#/format.ts";
 import {
@@ -276,12 +276,7 @@ const deployChoice = (ctx: Context) => {
   if (!ctx.has("node") && !ctx.has("bun")) {
     return "Docker: nginx serving the static build";
   }
-  if (proxiesToHono(ctx)) {
-    return `Docker: the ${ctx.has("next") ? "Next.js standalone" : "Nitro"} server and the Hono server from one image${ctx.has("sqlite") ? ", SQLite on a volume" : ""}`;
-  }
-  const image = ctx.has("next")
-    ? "Next.js standalone server"
-    : `${ctx.has("tanstack-start") ? "one Nitro server, one image" : "one self-contained image"}, no \`node_modules\` at runtime`;
+  const image = "one self-contained image, no `node_modules` at runtime";
   return `Docker: ${image}${ctx.has("sqlite") ? ", SQLite on a volume" : ""}`;
 };
 
@@ -326,9 +321,7 @@ const renderProduction = (ctx: Context, read: ReadSlot) => {
   const server = `\`${cmd?.join(" ")}\``;
   const [apiServer] = read(composeServers);
   const pageRoutes = apiServer === undefined ? routes : [];
-  const pages = ctx.has("next")
-    ? `${server} is the Next.js standalone server for ${joinWords(["the pages", ...pageRoutes])}`
-    : `${server} serves ${joinWords(serverServes(ctx, pageRoutes))}`;
+  const pages = `${server} serves ${joinWords(serverServes(ctx, pageRoutes))}`;
   const forwarded = ctx.has("orpc") ? "`/rpc` and `/api`" : "`/api`";
   const serves =
     apiServer === undefined

@@ -335,9 +335,7 @@ const renderReadme = (ctx: Context, read: ReadSlot) => {
         ...read(readmeLayers).map(({ layer, choice }) => [layer, choice]),
         [
           "Toolchain",
-          ctx.has("next")
-            ? "Vite+ (`vp`): lint, format, type check, test; Next.js builds the app"
-            : "Vite+ (`vp`): dev, build, test, lint, format, type check",
+          "Vite+ (`vp`): dev, build, test, lint, format, type check",
         ],
       ]
     ),

@@ -81,9 +81,12 @@ export const readSnapshot = (file: string) =>
   snapshotSchema.parse(JSON.parse(readFileSync(file, "utf-8")));
 
 export const latestVersion = async () => {
-  const response = await fetch("https://registry.npmjs.org/vibe-scaffold/latest", {
-    signal: AbortSignal.timeout(8000),
-  });
+  const response = await fetch(
+    "https://registry.npmjs.org/vibe-scaffold/latest",
+    {
+      signal: AbortSignal.timeout(8000),
+    }
+  );
   if (!response.ok) {
     return null;
   }

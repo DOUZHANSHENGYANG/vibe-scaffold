@@ -2,8 +2,8 @@ import type { Catalog } from "@vibe-scaffold/core";
 
 export const toolchainVersions = {
   bun: "1.4.2",
-  node: "24.21.0",
-  pnpm: "12.9.1",
+  node: ">=24.17.0",
+  pnpm: ">=11.22.0",
   vitePlus: "1.0.0",
 };
 
@@ -28,16 +28,13 @@ export const catalog = {
     "@tanstack/react-router": "^1.170.41",
     "@tanstack/react-router-devtools": "^1.167.2",
     "@tanstack/react-router-ssr-query": "^1.167.3",
-    "@tanstack/react-start": "^1.168.60",
     "@tanstack/router-plugin": "^1.168.42",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "es-toolkit": "^1.52.0",
-    next: "^16.3.8",
     "next-themes": "^0.4.6",
-    nitro: "3.0.260903-beta",
     "oxc-transform-react": "^0.152.0",
     react: "^19.3.0",
     "react-dom": "^19.3.0",

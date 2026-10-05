@@ -18,7 +18,7 @@ const jsonModule = (project: Project) =>
  * Serves the registry, every legal stack, and each stack's generated project with each set of add-ons as
  * virtual modules, one lazy chunk per project. The generator formats with oxfmt's native binding, so it runs here in Node, not in the browser.
  */
-export const vibe-scaffold = (): Plugin => {
+export const vibeScaffold = (): Plugin => {
   let stacks: Promise<typeof Stacks> | undefined;
   const loadStacks = async () => {
     stacks ??= (async () => {

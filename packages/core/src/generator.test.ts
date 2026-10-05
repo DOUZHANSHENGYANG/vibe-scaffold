@@ -97,9 +97,9 @@ describe(generate, () => {
       { ...blueprint, addons: ["lint"] },
       { name: "my-app" }
     );
-    expect(files.find((f) => f.path === "vibe-scaffold.jsonc")?.content).toContain(
-      '"addons": ["lint"],'
-    );
+    expect(
+      files.find((f) => f.path === "vibe-scaffold.jsonc")?.content
+    ).toContain('"addons": ["lint"],');
   });
 
   it("rejects an add-on the registry does not declare", async () => {

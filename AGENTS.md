@@ -50,7 +50,7 @@ Converge on the simplest durable design that meets current requirements. Land it
 
 | Path                    | Owns                                                                                              |
 | ----------------------- | ------------------------------------------------------------------------------------------------- |
-| `apps/cli`              | The `vibe-scaffold` CLI: prompts, flags, `--json`, writing the project and running its setup          |
+| `apps/cli`              | The `vibe-scaffold` CLI: prompts, flags, `--json`, writing the project and running its setup      |
 | `packages/core`         | Blueprint schema, resolver, and generator. Core returns a virtual file tree                       |
 | `packages/integrations` | Integrations, the catalog, templates, golden comparison, and `verification.json`                  |
 | `packages/config`       | Shared TypeScript presets: `typescript/node.json` for Node, `typescript/react.json` for a web app |

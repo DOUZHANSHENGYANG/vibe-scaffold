@@ -36,7 +36,7 @@ Node.js 22.12 or newer. The CLI installs the project with pnpm (the default) or 
 | `--<kind> <choice>`                                          | Decide one kind (`--framework`, `--backend`, `--api`, `--database`, `--auth`, `--desktop`, `--deployment`, …). |
 | `--addons <ids\|none>`                                       | Select add-ons, comma-separated.                                                                               |
 | `--package-manager <pnpm\|bun>`                              | Install with pnpm (default) or Bun.                                                                            |
-| `--recipe <path\|url>`                                       | Start from a `vibe-scaffold.jsonc`.                                                                                |
+| `--recipe <path\|url>`                                       | Start from a `vibe-scaffold.jsonc`.                                                                            |
 | `--list`                                                     | List every kind, its options, and every legal stack.                                                           |
 | `--dry-run`                                                  | Resolve the stack and list the files without writing.                                                          |
 | `--json`                                                     | Print one JSON object and never prompt.                                                                        |

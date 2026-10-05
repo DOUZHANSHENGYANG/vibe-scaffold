@@ -50,7 +50,6 @@ describe.each(generations)("$golden", ({ generation, golden, stack }) => {
   it("runs install, then generates route types or the route tree, and the initial migration", () => {
     expect(setup.map((command) => command.run)).toStrictEqual([
       "vp install",
-      ...(stack.framework === "next" ? ["vp run typegen"] : []),
       ...(stack.router === "tanstack-router" ? ["vp build apps/web"] : []),
       "vp run db:generate --name init",
     ]);

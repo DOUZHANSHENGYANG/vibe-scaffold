@@ -20,16 +20,11 @@
 
 **App shape is not a kind.** It is a legal pairing of `framework` and `backend`, of which at least one is set:
 
-| `framework`              | `backend` | Shape                                                                                                |
-| ------------------------ | --------- | ---------------------------------------------------------------------------------------------------- |
-| `spa`                    | `hono`    | Vite proxies `/api` (and `/rpc` with oRPC) in dev; Hono serves the built SPA in production           |
-| `spa`                    | none      | A static SPA served by nginx                                                                         |
-| `tanstack-start`, `next` | `self`    | The framework's own server                                                                           |
-| `tanstack-start`, `next` | `hono`    | Two processes: route handlers forward `/api` and `/rpc` to Hono, so session cookies stay first-party |
-| `tanstack-start`, `next` | none      | Server-rendered pages only, with no API or database                                                  |
-| none                     | `hono`    | A backend alone, tested by integration tests                                                         |
-
-`self` contributes nothing. It makes "has a backend" a value of the same kind in every shape, and frameworks branch on `ctx.has("self")`.
+| `framework` | `backend` | Shape                                                                                      |
+| ----------- | --------- | ------------------------------------------------------------------------------------------ |
+| `spa`       | `hono`    | Vite proxies `/api` (and `/rpc` with oRPC) in dev; Hono serves the built SPA in production |
+| `spa`       | none      | A static SPA served by nginx                                                               |
+| none        | `hono`    | A backend alone, tested by integration tests                                               |
 
 ## Resolver
 
@@ -37,10 +32,10 @@ Integrations declare `provides` and `requires` as capability strings. Four rules
 
 1. A required kind has a value, and each `kindGroups` group (`framework` and `backend`) has at least one.
 2. Every `requires` is provided by some integration in the stack.
-3. A capability has at most one provider, so Next.js and TanStack Router (both `router`) exclude each other, as do Hono and `self` (both `http-server`).
+3. A capability has at most one provider, so a stack cannot take two HTTP servers or two routers.
 4. An `auxiliary` integration exists only to satisfy another's `requires`; a static SPA cannot carry a Node runtime.
 
-Each violation carries a `reason`. The suggested fix is found by enumeration: among all legal stacks, the one that differs from the current stack in the fewest kinds, optionally keeping the kind just changed. Legal stacks number in the hundreds, so enumeration is cheap and no constraint solver is needed.
+Each violation carries a `reason`. The suggested fix is found by enumeration: among all legal stacks, the one that differs from the current stack in the fewest kinds, optionally keeping the kind just changed. Legal stacks number in the dozens, so enumeration is cheap and no constraint solver is needed.
 
 ## Contributions
 

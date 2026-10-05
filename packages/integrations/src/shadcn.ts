@@ -1,5 +1,8 @@
-import type { Context } from "@vibe-scaffold/core";
-import { contribute, defineIntegration, packageJson } from "@vibe-scaffold/core";
+import {
+  contribute,
+  defineIntegration,
+  packageJson,
+} from "@vibe-scaffold/core";
 
 import { templateFiles } from "#/templates.ts";
 import { ultracitePresets } from "#/ultracite.ts";
@@ -10,16 +13,11 @@ import {
   vendoredFiles,
 } from "#/vite-plus/slots.ts";
 
-// Next.js renders Server Components: interactive components start with "use client", and `components.json` sets `rsc`.
-const bundler = (ctx: Context) => (ctx.has("next") ? "next" : "vite");
-
 export const shadcn = defineIntegration({
   contribute: (ctx) => [
     ...templateFiles(ctx, "shadcn/common"),
-    ...templateFiles(ctx, `shadcn/${bundler(ctx)}`),
-    ...(ctx.has("better-auth")
-      ? templateFiles(ctx, `shadcn/${bundler(ctx)}-auth`)
-      : []),
+    ...templateFiles(ctx, "shadcn/vite"),
+    ...(ctx.has("better-auth") ? templateFiles(ctx, "shadcn/vite-auth") : []),
     contribute(packageJson, {
       dependencies: [
         "@base-ui/react",

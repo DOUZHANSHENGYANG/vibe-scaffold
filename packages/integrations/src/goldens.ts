@@ -10,11 +10,8 @@ import { stackLabel } from "#/stack-label.ts";
 
 /** Every integration appears in at least one golden. */
 const goldenLabels = [
-  "tanstack-start-self-orpc-postgres-better-auth-docker",
-  "next-self-orpc-sqlite-better-auth-docker",
   "spa-hono-orpc-postgres-better-auth-docker",
   "spa-hono-orpc-postgres-better-auth-electron-docker",
-  "next-hono-openapi-postgres-better-auth-docker",
   "hono-openapi-sqlite-docker",
   "hono-openapi-sqlite-bun-docker",
 ];

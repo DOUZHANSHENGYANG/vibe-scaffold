@@ -51,15 +51,6 @@ describe("desktop shell", () => {
     expect(stack.framework).toBe("spa");
     expect(flagsOf(stack).desktop).toBe("electron");
   });
-
-  it("moves a frontend that cannot host it to a single-page app", () => {
-    const next = outcome(
-      entryFromFlags({ framework: "next" }).stack,
-      "desktop",
-      "electron"
-    );
-    expect(next?.entry.stack.framework).toBe("spa");
-  });
 });
 
 describe("flags to a stack", () => {
@@ -72,8 +63,12 @@ describe("flags to a stack", () => {
   });
 
   it("repairs flags that leave no legal stack", () => {
-    const { stack } = entryFromFlags({ backend: "self", framework: "spa" });
-    expect(stack.framework === "spa" || stack.backend === "self").toBeTruthy();
+    const { stack } = entryFromFlags({
+      api: "orpc",
+      backend: "none",
+      framework: "spa",
+    });
+    expect(stack.backend).toBe("hono");
   });
 });
 
@@ -84,11 +79,11 @@ describe("search params", () => {
         searchSchema.parse({
           database: "mongo",
           deployment: "none",
-          framework: "next",
+          framework: "spa",
           orm: "drizzle",
         })
       )
-    ).toStrictEqual({ deployment: "none", framework: "next" });
+    ).toStrictEqual({ deployment: "none", framework: "spa" });
   });
 });
 
@@ -122,28 +117,22 @@ describe("add-ons", () => {
 });
 
 describe("choosing an option", () => {
-  const start = entry("next-self-orpc-sqlite-better-auth").stack;
-
-  it("offers one outcome per option, even when several fixes would do", () => {
-    const hono = entry("spa-hono-openapi-sqlite").stack;
-    expect(outcome(hono, "backend", "self")?.changes).toStrictEqual([
-      { from: "spa", kind: "framework", to: "tanstack-start" },
-      { from: "openapi", kind: "api", to: "orpc" },
-    ]);
-  });
+  const start = entry("spa-hono-orpc-sqlite-better-auth").stack;
 
   it("changes nothing else when the choice alone is legal", () => {
     const only = outcome(start, "database", "postgres");
     expect(only?.changes).toHaveLength(0);
-    expect(only?.entry.label).toBe("next-self-orpc-postgres-better-auth");
+    expect(only?.entry.label).toBe("spa-hono-orpc-postgres-better-auth");
   });
 
-  it("carries the fewest other changes when the choice alone is not legal", () => {
-    const only = outcome(start, "framework", "spa");
-    expect(only?.changes).toStrictEqual([
-      { from: "self", kind: "backend", to: "hono" },
-    ]);
-    expect(only?.entry.label).toBe("spa-hono-orpc-sqlite-better-auth");
+  it("adds the framework without changing the rest", () => {
+    const only = outcome(
+      entry("hono-openapi-sqlite").stack,
+      "framework",
+      "spa"
+    );
+    expect(only?.entry.label).toBe("spa-hono-openapi-sqlite");
+    expect(only?.changes).toStrictEqual([]);
   });
 });
 
@@ -163,9 +152,10 @@ describe("why an integration is included", () => {
 
 describe("the create command", () => {
   it("writes the command a person runs", () => {
-    const { stack } = entry("next-self-orpc-sqlite-better-auth-docker");
-    expect(commandLine(commandWords(flagsOf(stack), "acme", "pnpm"))).toBe(
-      "pnpm dlx vibe-scaffold-cli acme --framework next --backend self --api orpc --database sqlite --auth better-auth --deployment docker"
+    const { stack } = entry("spa-hono-orpc-sqlite-better-auth-docker");
+    const line = commandLine(commandWords(flagsOf(stack), "acme", "pnpm"));
+    expect(line).toMatch(
+      /^pnpm dlx vibe-scaffold-cli acme .*--framework spa .*--api orpc .*--database sqlite .*--auth better-auth .*--deployment docker$/u
     );
   });
 });
