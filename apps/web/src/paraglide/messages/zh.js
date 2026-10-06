@@ -12,6 +12,7 @@
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
+/** @typedef {{}} Addon_Desc_PwaInputs */
 /** @typedef {{}} Addon_Desc_UltraciteInputs */
 /** @typedef {{}} AddonsInputs */
 /** @typedef {{}} Api_ClientsInputs */
@@ -389,6 +390,10 @@ export const addon_desc_knip = /** @type {(inputs: Addon_Desc_KnipInputs) => Loc
 
 export const addon_desc_local_db = /** @type {(inputs: Addon_Desc_Local_DbInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`统一的本地键值存储：浏览器用 IndexedDB，桌面端通过 Tauri SQL 插件用 SQLite`)
+};
+
+export const addon_desc_pwa = /** @type {(inputs: Addon_Desc_PwaInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`让 Web 应用可安装：通过 vite-plugin-pwa 提供自动更新的 Service Worker 与 Web 清单`)
 };
 
 export const addon_desc_ultracite = /** @type {(inputs: Addon_Desc_UltraciteInputs) => LocalizedString} */ () => {

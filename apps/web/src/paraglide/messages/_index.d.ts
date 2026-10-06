@@ -11,6 +11,7 @@ export type Addon_DefaultInputs = {};
 export type Addon_Desc_BeuiInputs = {};
 export type Addon_Desc_KnipInputs = {};
 export type Addon_Desc_Local_DbInputs = {};
+export type Addon_Desc_PwaInputs = {};
 export type Addon_Desc_UltraciteInputs = {};
 export type AddonsInputs = {};
 export type Api_ClientsInputs = {};
@@ -563,6 +564,20 @@ export declare const addon_desc_knip: ((inputs?: Addon_Desc_KnipInputs, options?
 export declare const addon_desc_local_db: ((inputs?: Addon_Desc_Local_DbInputs, options?: {
     locale?: "en" | "zh";
 }) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_Local_DbInputs, {
+    locale?: "en" | "zh";
+}, {}>;
+/**
+* | output |
+* | --- |
+* | "Makes the web app installable: auto-updating service worker and web manifest through vite-plugin-pwa" |
+*
+* @param {Addon_Desc_PwaInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export declare const addon_desc_pwa: ((inputs?: Addon_Desc_PwaInputs, options?: {
+    locale?: "en" | "zh";
+}) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_PwaInputs, {
     locale?: "en" | "zh";
 }, {}>;
 /**

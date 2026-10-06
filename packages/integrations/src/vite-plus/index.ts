@@ -42,6 +42,7 @@ import {
   readySteps,
   testProjects,
   toolConventions,
+  vitePlugins,
   unitTestSources,
   vendoredFiles,
 } from "#/vite-plus/slots.ts";
@@ -125,6 +126,7 @@ const renderTestProject = ({ envDir, include, name }: TestProject) =>
   ].join("\n");
 
 const renderViteConfig = (ctx: Context, read: ReadSlot) => {
+  const vitePluginCalls = read(vitePlugins);
   const presets = read(lintPresets);
   const [base] = presets;
   const [fmt] = read(fmtPresets);
@@ -144,6 +146,9 @@ const renderViteConfig = (ctx: Context, read: ReadSlot) => {
   );
 
   return [
+    ...vitePluginCalls.map(
+      ({ name, specifier }) => `import { ${name} } from ${quote(specifier)};`
+    ),
     ...(fmt === undefined
       ? []
       : [`import ${fmt.name} from ${quote(fmt.module)};`]),
@@ -160,6 +165,13 @@ const renderViteConfig = (ctx: Context, read: ReadSlot) => {
       : []),
     "",
     "export default defineConfig({",
+    ...(vitePluginCalls.length > 0
+      ? [
+          "  plugins: [",
+          ...vitePluginCalls.map((plugin) => `      ${plugin.init},`),
+          "    ],",
+        ]
+      : []),
     "  fmt: {",
     ...(fmt === undefined ? [] : [`    ...${fmt.name},`]),
     `    ignorePatterns: [${[

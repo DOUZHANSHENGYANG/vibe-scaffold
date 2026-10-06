@@ -13,6 +13,13 @@ export const fmtPresets = defineSlot<{
   config: OxfmtConfig;
 }>("vite-plus/fmt-presets");
 
+/** A Vite plugin another integration adds: its import and the call in `plugins`. */
+export const vitePlugins = defineSlot<{
+  name: string;
+  specifier: string;
+  init: string;
+}>("vite-plus/vite-plugins");
+
 export const lintPlugins = defineSlot<{
   name: string;
   specifier: string;

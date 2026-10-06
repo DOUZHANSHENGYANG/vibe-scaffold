@@ -12,6 +12,7 @@
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
+/** @typedef {{}} Addon_Desc_PwaInputs */
 /** @typedef {{}} Addon_Desc_UltraciteInputs */
 /** @typedef {{}} AddonsInputs */
 /** @typedef {{}} Api_ClientsInputs */
@@ -389,6 +390,10 @@ export const addon_desc_knip = /** @type {(inputs: Addon_Desc_KnipInputs) => Loc
 
 export const addon_desc_local_db = /** @type {(inputs: Addon_Desc_Local_DbInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`A unified local key-value store: IndexedDB in the browser, SQLite through the Tauri SQL plugin on desktop`)
+};
+
+export const addon_desc_pwa = /** @type {(inputs: Addon_Desc_PwaInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Makes the web app installable: auto-updating service worker and web manifest through vite-plugin-pwa`)
 };
 
 export const addon_desc_ultracite = /** @type {(inputs: Addon_Desc_UltraciteInputs) => LocalizedString} */ () => {

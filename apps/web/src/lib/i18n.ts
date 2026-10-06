@@ -91,6 +91,7 @@ export const addonDescription = (addon: AddonInfo) =>
       ultracite: () => m.addon_desc_ultracite(),
       "local-db": () => m.addon_desc_local_db(),
       beui: () => m.addon_desc_beui(),
+      pwa: () => m.addon_desc_pwa(),
     },
     addon.id
   );

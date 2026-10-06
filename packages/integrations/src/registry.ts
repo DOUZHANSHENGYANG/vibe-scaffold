@@ -15,6 +15,7 @@ import { node } from "#/node.ts";
 import { openapi } from "#/openapi.ts";
 import { orpc } from "#/orpc.ts";
 import { postgres } from "#/postgres.ts";
+import { pwa } from "#/pwa.ts";
 import { react } from "#/react.ts";
 import { shadcn } from "#/shadcn.ts";
 import { spa } from "#/spa.ts";
@@ -26,7 +27,7 @@ import { vitePlus } from "#/vite-plus/index.ts";
 import { vitestPlaywright } from "#/vitest-playwright/index.ts";
 
 export const registry = defineRegistry({
-  addons: [beui, knip, localDb, ultracite],
+  addons: [beui, knip, localDb, pwa, ultracite],
   capabilities: {
     "frontend-framework": "a frontend framework",
     "hono-server": "a Hono server",

@@ -14,6 +14,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
+/** @typedef {{}} Addon_Desc_PwaInputs */
 /** @typedef {{}} Addon_Desc_UltraciteInputs */
 /** @typedef {{}} AddonsInputs */
 /** @typedef {{}} Api_ClientsInputs */
@@ -511,6 +512,20 @@ export const addon_desc_local_db = /** @type {((inputs?: Addon_Desc_Local_DbInpu
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.addon_desc_local_db(inputs)
 	return __en.addon_desc_local_db(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "Makes the web app installable: auto-updating service worker and web manifest through vite-plugin-pwa" |
+*
+* @param {Addon_Desc_PwaInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const addon_desc_pwa = /** @type {((inputs?: Addon_Desc_PwaInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_PwaInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.addon_desc_pwa(inputs)
+	return __en.addon_desc_pwa(inputs)
 });
 /**
 * | output |

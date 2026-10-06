@@ -10,6 +10,7 @@
   "addon_default": "default",
   "addon_desc_beui": "beUI registry wiring: animated Motion components installable through the shadcn CLI",
   "addon_desc_knip": "Finds unused files, exports, dependencies, and catalog entries",
+  "addon_desc_pwa": "Makes the web app installable: auto-updating service worker and web manifest through vite-plugin-pwa",
   "addon_desc_ultracite": "Lint and formatting presets with framework rules and AI code quality checks",
   "addon_desc_local_db": "A unified local key-value store: IndexedDB in the browser, SQLite through the Tauri SQL plugin on desktop",
   "add_mobile": "add the Android shell",
