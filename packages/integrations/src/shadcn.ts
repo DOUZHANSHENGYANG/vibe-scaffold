@@ -1,10 +1,15 @@
+import { z } from "zod";
+
+import type { Context, ReadSlot } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
+  defineSlot,
   packageJson,
+  renderFile,
 } from "@vibe-scaffold/core";
 
-import { templateFiles } from "#/templates.ts";
+import { templateContent, templateFiles } from "#/templates.ts";
 import { ultracitePresets } from "#/ultracite.ts";
 import {
   agentsConventions,
@@ -13,11 +18,49 @@ import {
   vendoredFiles,
 } from "#/vite-plus/slots.ts";
 
+/** A namespaced shadcn registry another add-on wires into `components.json`. */
+export interface ShadcnRegistry {
+  readonly name: string;
+  readonly url: string;
+}
+
+export const shadcnRegistries = defineSlot<ShadcnRegistry>("shadcn/registries");
+
+const componentsConfigSchema = z.looseObject({});
+
+const componentsJson = (ctx: Context, read: ReadSlot) => {
+  const original = templateContent(
+    ctx,
+    "shadcn/vite",
+    "packages/ui/components.json"
+  );
+  const registries = read(shadcnRegistries);
+  if (registries.length === 0) {
+    return original;
+  }
+  const config = componentsConfigSchema.parse(JSON.parse(original));
+  return `${JSON.stringify(
+    {
+      ...config,
+      registries: Object.fromEntries(
+        registries.map((registry) => [registry.name, registry.url])
+      ),
+    },
+    null,
+    2
+  )}\n`;
+};
+
 export const shadcn = defineIntegration({
   contribute: (ctx) => [
     ...templateFiles(ctx, "shadcn/common"),
-    ...templateFiles(ctx, "shadcn/vite"),
+    ...templateFiles(ctx, "shadcn/vite", {
+      except: ["packages/ui/components.json"],
+    }),
     ...(ctx.has("better-auth") ? templateFiles(ctx, "shadcn/vite-auth") : []),
+    renderFile("packages/ui/components.json", (read) =>
+      componentsJson(ctx, read)
+    ),
     contribute(packageJson, {
       dependencies: [
         "@base-ui/react",

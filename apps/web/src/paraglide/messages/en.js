@@ -8,6 +8,7 @@
 /** @typedef {{}} Add_DesktopInputs */
 /** @typedef {{}} Add_FrameworkInputs */
 /** @typedef {{}} Addon_DefaultInputs */
+/** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
 /** @typedef {{}} Addon_Desc_UltraciteInputs */
@@ -362,6 +363,10 @@ export const add_framework = /** @type {(inputs: Add_FrameworkInputs) => Localiz
 
 export const addon_default = /** @type {(inputs: Addon_DefaultInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`default`)
+};
+
+export const addon_desc_beui = /** @type {(inputs: Addon_Desc_BeuiInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`beUI registry wiring: animated Motion components installable through the shadcn CLI`)
 };
 
 export const addon_desc_knip = /** @type {(inputs: Addon_Desc_KnipInputs) => LocalizedString} */ () => {

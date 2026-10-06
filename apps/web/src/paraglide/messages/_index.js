@@ -10,6 +10,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Add_DesktopInputs */
 /** @typedef {{}} Add_FrameworkInputs */
 /** @typedef {{}} Addon_DefaultInputs */
+/** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
 /** @typedef {{}} Addon_Desc_UltraciteInputs */
@@ -444,6 +445,20 @@ export const addon_default = /** @type {((inputs?: Addon_DefaultInputs, options?
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.addon_default(inputs)
 	return __en.addon_default(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "beUI registry wiring: animated Motion components installable through the shadcn CLI" |
+*
+* @param {Addon_Desc_BeuiInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const addon_desc_beui = /** @type {((inputs?: Addon_Desc_BeuiInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_BeuiInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.addon_desc_beui(inputs)
+	return __en.addon_desc_beui(inputs)
 });
 /**
 * | output |

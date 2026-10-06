@@ -8,6 +8,7 @@
   "add_desktop": "添加桌面端",
   "add_framework": "添加前端",
   "addon_default": "默认",
+  "addon_desc_beui": "接入 beUI 注册表：通过 shadcn CLI 安装 Motion 动效组件",
   "addon_desc_knip": "查找未使用的文件、导出、依赖与 catalog 条目",
   "addon_desc_ultracite": "统一 lint 与格式化预设，含框架规则和 AI 代码质量检查",
   "addon_desc_local_db": "统一的本地键值存储：浏览器用 IndexedDB，桌面端通过 Tauri SQL 插件用 SQLite",
