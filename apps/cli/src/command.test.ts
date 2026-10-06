@@ -136,7 +136,7 @@ describe("choosing a stack", () => {
     const { exitCode, message } = await run("--addons", "knip,eslint");
     expect(exitCode).toBe(1);
     expect(message).toContain(
-      '--addons takes knip, ultracite, or none; got "eslint"'
+      '--addons takes knip, ultracite, local-db, or none; got "eslint"'
     );
   });
 });

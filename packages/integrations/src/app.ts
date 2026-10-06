@@ -152,10 +152,11 @@ export const homePage = (ctx: Context, path: string, route: boolean) =>
       names.length > 1
         ? `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`
         : names.join("");
+    const local = ctx.has("local-db");
     const status = hasBackend(ctx);
     const cardParts = [
       "Card",
-      ...(status ? ["CardContent"] : []),
+      ...(status || local ? ["CardContent"] : []),
       "CardDescription",
       "CardHeader",
       "CardTitle",
@@ -169,6 +170,12 @@ export const homePage = (ctx: Context, path: string, route: boolean) =>
       ...(status
         ? ['import { ApiStatus } from "#src/components/api-status.tsx";', ""]
         : []),
+      ...(local
+        ? [
+            'import { LocalStorageCard } from "#src/components/local-storage-card.tsx";',
+            "",
+          ]
+        : []),
       "const HomePage = () => (",
       "  <Card>",
       "    <CardHeader>",
@@ -180,6 +187,14 @@ export const homePage = (ctx: Context, path: string, route: boolean) =>
             '    <CardContent className="flex items-center justify-between">',
             "      <span>API status</span>",
             "      <ApiStatus />",
+            "    </CardContent>",
+          ]
+        : []),
+      ...(local
+        ? [
+            '    <CardContent className="flex items-center justify-between">',
+            "      <span>Local visits</span>",
+            "      <LocalStorageCard />",
             "    </CardContent>",
           ]
         : []),

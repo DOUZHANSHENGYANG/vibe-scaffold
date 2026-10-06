@@ -1,8 +1,10 @@
-import type { Context } from "@vibe-scaffold/core";
+import type { Context, ReadSlot } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
+  defineSlot,
   packageJson,
+  renderFile,
   setupCommand,
 } from "@vibe-scaffold/core";
 
@@ -16,6 +18,16 @@ import {
   readmeTagline,
 } from "#/vite-plus/slots.ts";
 
+/** A Tauri plugin another integration adds: its Cargo dependency, builder call, and capability. */
+export interface TauriPlugin {
+  readonly cargo: string;
+  readonly init: string;
+  readonly permission?: string;
+}
+
+/** Plugins other integrations contribute; rendered into the shell's Cargo manifest, builder, and capabilities. */
+export const tauriPlugin = defineSlot<TauriPlugin>("tauri/plugin");
+
 const architecture = (ctx: Context) => {
   const auth = ctx.has("better-auth")
     ? "; `packages/auth` lists both origins in `trustedOrigins`"
@@ -23,9 +35,75 @@ const architecture = (ctx: Context) => {
   return `The desktop app wraps \`apps/web\` with a Tauri 2 Rust shell in \`src-tauri\`: \`pnpm tauri dev\` starts the web dev server (\`vp dev\`) and opens it in the Tauri window, and \`pnpm tauri build\` builds the web app and packages an installer (MSI or NSIS on Windows); both need the Rust toolchain. In production the window loads the bundled SPA at \`http://tauri.localhost\` (Windows and Linux) or \`tauri://localhost\` (macOS)${auth}. Rust commands live in \`src-tauri/src/main.rs\`, where \`greet\` shows the pattern; add \`@tauri-apps/api\` to \`apps/web\` to invoke them from the renderer. \`src-tauri/capabilities/default.json\` grants the window its permissions. Restart \`pnpm tauri dev\` after changing Rust code.`;
 };
 
+const cargoToml = (ctx: Context, read: ReadSlot) =>
+  [
+    "[package]",
+    `name = "${ctx.name}"`,
+    'version = "0.1.0"',
+    'edition = "2021"',
+    "",
+    "[build-dependencies]",
+    'tauri-build = { version = "2", features = [] }',
+    "",
+    "[dependencies]",
+    'serde = { version = "1", features = ["derive"] }',
+    'serde_json = "1"',
+    'tauri = { version = "2", features = [] }',
+    ...read(tauriPlugin).map((plugin) => plugin.cargo),
+    "",
+    "[profile.release]",
+    "codegen-units = 1",
+    "lto = true",
+    'opt-level = "s"',
+    'panic = "abort"',
+    "strip = true",
+    "",
+  ].join("\n");
+
+const mainRs = (read: ReadSlot) =>
+  [
+    "// Prevents an additional console window on Windows in release builds.",
+    '#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]',
+    "",
+    "/// The pattern for app commands: take typed args, return a typed value.",
+    "#[tauri::command]",
+    "fn greet(name: &str) -> String {",
+    '    format!("Hello, {name}! You have been greeted from Rust.")',
+    "}",
+    "",
+    "fn main() {",
+    "    tauri::Builder::default()",
+    ...read(tauriPlugin).map((plugin) => `        ${plugin.init}`),
+    "        .invoke_handler(tauri::generate_handler![greet])",
+    "        .run(tauri::generate_context!())",
+    '        .expect("error while running the tauri application");',
+    "}",
+    "",
+  ].join("\n");
+
+const capabilitiesJson = (read: ReadSlot) =>
+  `${JSON.stringify(
+    {
+      $schema: "../gen/schemas/desktop-schema.json",
+      identifier: "default",
+      windows: ["main"],
+      permissions: [
+        "core:default",
+        ...read(tauriPlugin).flatMap((plugin) => plugin.permission ?? []),
+      ],
+    },
+    null,
+    2
+  )}\n`;
+
 export const tauri = defineIntegration({
   contribute: (ctx) => [
     ...templateFiles(ctx, "tauri/common"),
+    renderFile("src-tauri/Cargo.toml", (read) => cargoToml(ctx, read)),
+    renderFile("src-tauri/src/main.rs", (read) => mainRs(read)),
+    renderFile("src-tauri/capabilities/default.json", (read) =>
+      capabilitiesJson(read)
+    ),
     contribute(packageJson, {
       devDependencies: ["@tauri-apps/cli"],
       path: ".",

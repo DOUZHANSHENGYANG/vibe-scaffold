@@ -87,6 +87,7 @@ export const addonDescription = (addon: AddonInfo) =>
     {
       knip: () => m.addon_desc_knip(),
       ultracite: () => m.addon_desc_ultracite(),
+      "local-db": () => m.addon_desc_local_db(),
     },
     addon.id
   );

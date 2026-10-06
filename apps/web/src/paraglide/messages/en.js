@@ -9,6 +9,7 @@
 /** @typedef {{}} Add_FrameworkInputs */
 /** @typedef {{}} Addon_DefaultInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
+/** @typedef {{}} Addon_Desc_Local_DbInputs */
 /** @typedef {{}} Addon_Desc_UltraciteInputs */
 /** @typedef {{}} AddonsInputs */
 /** @typedef {{}} Api_ClientsInputs */
@@ -365,6 +366,10 @@ export const addon_default = /** @type {(inputs: Addon_DefaultInputs) => Localiz
 
 export const addon_desc_knip = /** @type {(inputs: Addon_Desc_KnipInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`Finds unused files, exports, dependencies, and catalog entries`)
+};
+
+export const addon_desc_local_db = /** @type {(inputs: Addon_Desc_Local_DbInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`A unified local key-value store: IndexedDB in the browser, SQLite through the Tauri SQL plugin on desktop`)
 };
 
 export const addon_desc_ultracite = /** @type {(inputs: Addon_Desc_UltraciteInputs) => LocalizedString} */ () => {

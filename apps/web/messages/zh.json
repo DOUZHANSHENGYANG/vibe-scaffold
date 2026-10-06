@@ -10,6 +10,7 @@
   "addon_default": "默认",
   "addon_desc_knip": "查找未使用的文件、导出、依赖与 catalog 条目",
   "addon_desc_ultracite": "统一 lint 与格式化预设，含框架规则和 AI 代码质量检查",
+  "addon_desc_local_db": "统一的本地键值存储：浏览器用 IndexedDB，桌面端通过 Tauri SQL 插件用 SQLite",
   "addons": "扩展能力",
   "api_clients": "API 调用方",
   "cap_frontend_framework": "前端框架",

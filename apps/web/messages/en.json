@@ -10,6 +10,7 @@
   "addon_default": "default",
   "addon_desc_knip": "Finds unused files, exports, dependencies, and catalog entries",
   "addon_desc_ultracite": "Lint and formatting presets with framework rules and AI code quality checks",
+  "addon_desc_local_db": "A unified local key-value store: IndexedDB in the browser, SQLite through the Tauri SQL plugin on desktop",
   "addons": "Extensions",
   "api_clients": "API clients",
   "cap_frontend_framework": "a frontend framework",

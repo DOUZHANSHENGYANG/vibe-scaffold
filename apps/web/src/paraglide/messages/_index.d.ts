@@ -8,6 +8,7 @@ export type Add_DesktopInputs = {};
 export type Add_FrameworkInputs = {};
 export type Addon_DefaultInputs = {};
 export type Addon_Desc_KnipInputs = {};
+export type Addon_Desc_Local_DbInputs = {};
 export type Addon_Desc_UltraciteInputs = {};
 export type AddonsInputs = {};
 export type Api_ClientsInputs = {};
@@ -509,6 +510,20 @@ export declare const addon_default: ((inputs?: Addon_DefaultInputs, options?: {
 export declare const addon_desc_knip: ((inputs?: Addon_Desc_KnipInputs, options?: {
     locale?: "en" | "zh";
 }) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_KnipInputs, {
+    locale?: "en" | "zh";
+}, {}>;
+/**
+* | output |
+* | --- |
+* | "A unified local key-value store: IndexedDB in the browser, SQLite through the Tauri SQL plugin on desktop" |
+*
+* @param {Addon_Desc_Local_DbInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export declare const addon_desc_local_db: ((inputs?: Addon_Desc_Local_DbInputs, options?: {
+    locale?: "en" | "zh";
+}) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_Local_DbInputs, {
     locale?: "en" | "zh";
 }, {}>;
 /**

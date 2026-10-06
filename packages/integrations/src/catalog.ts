@@ -34,6 +34,7 @@ export const catalog = {
     "@vitejs/plugin-react": "^6.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "es-toolkit": "^1.52.0",
+    idb: "^8.0.3",
     "next-themes": "^0.4.6",
     "oxc-transform-react": "^0.152.0",
     react: "^19.3.0",
@@ -63,6 +64,7 @@ export const catalog = {
   },
   desktop: {
     "@tauri-apps/cli": "^2.5.0",
+    "@tauri-apps/plugin-sql": "^2.0.0",
     electron: "^44.5.1",
     "electron-builder": "^26.15.3",
   },

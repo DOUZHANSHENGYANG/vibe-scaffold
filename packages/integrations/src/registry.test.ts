@@ -4,7 +4,10 @@ import { registry } from "#/registry.ts";
 
 describe("the registry", () => {
   it("links every third-party integration to its official site over HTTPS", () => {
-    const linked = [...registry.integrations, ...registry.addons];
+    // `local-db` is vibe-scaffold's own glue: it has no third-party project to link.
+    const linked = [...registry.integrations, ...registry.addons].filter(
+      ({ id }) => id !== "local-db"
+    );
     expect(
       linked
         .filter(({ homepage }) => homepage === undefined)

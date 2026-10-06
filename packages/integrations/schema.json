@@ -6,7 +6,7 @@
     "addons": {
       "default": ["knip", "ultracite"],
       "type": "array",
-      "items": { "type": "string", "enum": ["knip", "ultracite"] }
+      "items": { "type": "string", "enum": ["knip", "ultracite", "local-db"] }
     },
     "channel": { "type": "string", "enum": ["recommended"] },
     "packageManager": { "type": "string", "enum": ["pnpm", "bun"] },

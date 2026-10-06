@@ -11,6 +11,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Add_FrameworkInputs */
 /** @typedef {{}} Addon_DefaultInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
+/** @typedef {{}} Addon_Desc_Local_DbInputs */
 /** @typedef {{}} Addon_Desc_UltraciteInputs */
 /** @typedef {{}} AddonsInputs */
 /** @typedef {{}} Api_ClientsInputs */
@@ -457,6 +458,20 @@ export const addon_desc_knip = /** @type {((inputs?: Addon_Desc_KnipInputs, opti
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.addon_desc_knip(inputs)
 	return __en.addon_desc_knip(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "A unified local key-value store: IndexedDB in the browser, SQLite through the Tauri SQL plugin on desktop" |
+*
+* @param {Addon_Desc_Local_DbInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const addon_desc_local_db = /** @type {((inputs?: Addon_Desc_Local_DbInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_Local_DbInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.addon_desc_local_db(inputs)
+	return __en.addon_desc_local_db(inputs)
 });
 /**
 * | output |

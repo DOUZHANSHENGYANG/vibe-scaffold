@@ -8,6 +8,7 @@ import { drizzle } from "#/drizzle.ts";
 import { electron } from "#/electron.ts";
 import { hono } from "#/hono.ts";
 import { knip } from "#/knip.ts";
+import { localDb } from "#/local-db.ts";
 import { node } from "#/node.ts";
 import { openapi } from "#/openapi.ts";
 import { orpc } from "#/orpc.ts";
@@ -23,7 +24,7 @@ import { vitePlus } from "#/vite-plus/index.ts";
 import { vitestPlaywright } from "#/vitest-playwright/index.ts";
 
 export const registry = defineRegistry({
-  addons: [knip, ultracite],
+  addons: [knip, ultracite, localDb],
   capabilities: {
     "frontend-framework": "a frontend framework",
     "hono-server": "a Hono server",
