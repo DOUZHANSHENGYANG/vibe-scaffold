@@ -41,6 +41,7 @@ export const catalog = {
     "react-dom": "^19.3.0",
     "server-only": "^0.0.1",
     tailwindcss: "^4.3.3",
+    zustand: "^5.0.0",
   },
   ui: {
     "@base-ui/react": "^1.8.0",

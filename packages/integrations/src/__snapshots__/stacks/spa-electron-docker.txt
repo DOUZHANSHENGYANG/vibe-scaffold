@@ -132,6 +132,7 @@ The desktop app wraps `apps/web`: `vp run dev` starts the web dev server and ope
 
 ## Conventions
 
+- **Client state.** Client state lives in `apps/web/src/stores`: one zustand store per concern, typed where it is created (`create<State>()(...)`), and read with selectors. Server data belongs to TanStack Query, not to a store; a store never caches what a query already caches.
 - **UI.** From `packages/ui`, run `pnpm dlx shadcn@latest add <component>` and import `@my-app/ui/components/<name>`. Files in `packages/ui/src/components` are vendored shadcn and are not linted. App code is checked by `@shadcn/lint`: style a component through its variants, and use `className` on it only for layout. When the first file lands in `src/hooks`, add `"./hooks/*": "./src/hooks/*.ts"` to the package exports (`components.json` already aliases that path).
 - **Generated.** `routeTree.gen.ts` is tool output. Leave it unchanged.
 - **Utilities.** Import shared helpers from [es-toolkit](https://es-toolkit.dev/llms.txt), from the submodule the docs name (`import { retry } from "es-toolkit/function"`). `es-toolkit/compat` stays out.
@@ -909,7 +910,8 @@ export default defineConfig({
     "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "sonner": "catalog:"
+    "sonner": "catalog:",
+    "zustand": "catalog:"
   },
   "devDependencies": {
     "@my-app/config": "workspace:*",
@@ -950,6 +952,25 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
 });
+
+# apps/web/src/components/counter-card.tsx (react)
+import { useCounterStore } from "#src/stores/counter.ts";
+
+// The starter demo for `zustand`: client state read from a store with selectors.
+export const CounterCard = () => {
+  const count = useCounterStore((state) => state.count);
+  const increment = useCounterStore((state) => state.increment);
+
+  return (
+    <button
+      className="text-foreground border-border hover:bg-accent rounded-md border px-3 py-1 text-sm"
+      onClick={increment}
+      type="button"
+    >
+      {count}
+    </button>
+  );
+};
 
 # apps/web/src/components/header.tsx (tanstack-router)
 import { Link } from "@tanstack/react-router";
@@ -1158,10 +1179,13 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@my-app/ui/components/card";
+
+import { CounterCard } from "#src/components/counter-card.tsx";
 
 const HomePage = () => (
   <Card>
@@ -1169,12 +1193,33 @@ const HomePage = () => (
       <CardTitle>my-app</CardTitle>
       <CardDescription>React on Vite+.</CardDescription>
     </CardHeader>
+    <CardContent className="flex items-center justify-between">
+      <span>Client count</span>
+      <CounterCard />
+    </CardContent>
   </Card>
 );
 
 export const Route = createFileRoute("/")({
   component: HomePage,
 });
+
+# apps/web/src/stores/counter.ts (react)
+import { create } from "zustand";
+
+interface CounterState {
+  count: number;
+  increment: () => void;
+  reset: () => void;
+}
+
+// Client state lives in `src/stores`, one store per concern, typed where it is
+// created. Server data stays in TanStack Query, not here.
+export const useCounterStore = create<CounterState>()((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  reset: () => set({ count: 0 }),
+}));
 
 # apps/web/tests/e2e/app.e2e.ts (vitest-playwright)
 import { expect, test } from "@playwright/test";
@@ -2317,6 +2362,7 @@ catalog:
   react: ^19.3.0
   react-dom: ^19.3.0
   tailwindcss: ^4.3.3
+  zustand: ^5.0.0
 
   # ui
   "@base-ui/react": ^1.8.0

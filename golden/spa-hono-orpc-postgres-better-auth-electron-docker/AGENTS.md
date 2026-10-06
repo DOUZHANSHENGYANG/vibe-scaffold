@@ -64,6 +64,7 @@ The desktop app wraps `apps/web`: `vp run dev` starts the web dev server and ope
 
 ## Conventions
 
+- **Client state.** Client state lives in `apps/web/src/stores`: one zustand store per concern, typed where it is created (`create<State>()(...)`), and read with selectors. Server data belongs to TanStack Query, not to a store; a store never caches what a query already caches.
 - **Environment.** Declare every server variable in `apps/server/src/env.ts` and add it to `apps/server/.env.example`. Code reads `env`. The web app is shipped to the browser, so it holds no secret.
 - **Procedure.** Add it on a router in `packages/api/src/routers/` and register that router in `packages/api/src/index.ts`. Validate input with Zod, read the database from `context.db`, and throw `ORPCError` for an expected failure. The web client takes the new type with no codegen step.
 - **Schema.** Add or edit a table in `packages/db/src/schema/`, register a new table in `src/relations.ts`, and back each invariant with a constraint (`check`, `unique`, foreign keys) as well as Zod. Run `vp run db:generate` and commit the new folder under `src/migrations/`. A committed migration stays as generated. The Better Auth tables in `schema/auth.ts` match the fields Better Auth expects; read its docs before adding a plugin.

@@ -131,6 +131,7 @@ Converge on the simplest durable design that meets current requirements. Land it
 
 ## Conventions
 
+- **Client state.** Client state lives in `apps/web/src/stores`: one zustand store per concern, typed where it is created (`create<State>()(...)`), and read with selectors. Server data belongs to TanStack Query, not to a store; a store never caches what a query already caches.
 - **Environment.** Declare every server variable in `apps/server/src/env.ts` and add it to `apps/server/.env.example`. Code reads `env`. The web app is shipped to the browser, so it holds no secret.
 - **Schema.** Add or edit a table in `packages/db/src/schema/`, register a new table in `src/relations.ts`, and back each invariant with a constraint (`check`, `unique`, foreign keys) as well as Zod. Run `vp run db:generate` and commit the new folder under `src/migrations/`. A committed migration stays as generated. The Better Auth tables in `schema/auth.ts` match the fields Better Auth expects; read its docs before adding a plugin.
 - **Authorization.** A server route that reads or writes user data gets the session with `auth.api.getSession({ headers })`, answers 401 without one, and scopes every query by the session's user id. Each new protected route is tested as an anonymous caller and as another user.
@@ -475,7 +476,8 @@ export default defineConfig({
     "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "sonner": "catalog:"
+    "sonner": "catalog:",
+    "zustand": "catalog:"
   },
   "devDependencies": {
     "@my-app/config": "workspace:*",
@@ -669,6 +671,25 @@ export const AuthForm = ({ onSuccess }: { onSuccess: () => Promise<void> }) => {
         </form>
       </CardContent>
     </Card>
+  );
+};
+
+# apps/web/src/components/counter-card.tsx (react)
+import { useCounterStore } from "#src/stores/counter.ts";
+
+// The starter demo for `zustand`: client state read from a store with selectors.
+export const CounterCard = () => {
+  const count = useCounterStore((state) => state.count);
+  const increment = useCounterStore((state) => state.increment);
+
+  return (
+    <button
+      className="text-foreground border-border hover:bg-accent rounded-md border px-3 py-1 text-sm"
+      onClick={increment}
+      type="button"
+    >
+      {count}
+    </button>
   );
 };
 
@@ -975,6 +996,7 @@ import {
 } from "@my-app/ui/components/card";
 
 import { ApiStatus } from "#src/components/api-status.tsx";
+import { CounterCard } from "#src/components/counter-card.tsx";
 
 const HomePage = () => (
   <Card>
@@ -984,6 +1006,10 @@ const HomePage = () => (
         React, Hono, PostgreSQL, Drizzle and Better Auth on Vite+.
       </CardDescription>
     </CardHeader>
+    <CardContent className="flex items-center justify-between">
+      <span>Client count</span>
+      <CounterCard />
+    </CardContent>
     <CardContent className="flex items-center justify-between">
       <span>API status</span>
       <ApiStatus />
@@ -1031,6 +1057,23 @@ export const Route = createFileRoute("/login")({
   },
   component: LoginPage,
 });
+
+# apps/web/src/stores/counter.ts (react)
+import { create } from "zustand";
+
+interface CounterState {
+  count: number;
+  increment: () => void;
+  reset: () => void;
+}
+
+// Client state lives in `src/stores`, one store per concern, typed where it is
+// created. Server data stays in TanStack Query, not here.
+export const useCounterStore = create<CounterState>()((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  reset: () => set({ count: 0 }),
+}));
 
 # apps/web/tests/e2e/app.e2e.ts (vitest-playwright)
 import { expect, test } from "@playwright/test";
@@ -2556,6 +2599,7 @@ catalog:
   react: ^19.3.0
   react-dom: ^19.3.0
   tailwindcss: ^4.3.3
+  zustand: ^5.0.0
 
   # ui
   "@base-ui/react": ^1.8.0

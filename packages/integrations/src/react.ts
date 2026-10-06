@@ -9,6 +9,7 @@ import {
 import { hasBackend } from "#/app.ts";
 import { templateContent, templateFiles } from "#/templates.ts";
 import { ultracitePresets } from "#/ultracite.ts";
+import { agentsConventions } from "#/vite-plus/slots.ts";
 
 const apiStatusPath = "apps/web/src/components/api-status.tsx";
 
@@ -28,6 +29,7 @@ export const react = defineIntegration({
         "@tanstack/react-query-devtools",
         "react",
         "react-dom",
+        "zustand",
       ],
       devDependencies: ["@types/react", "@types/react-dom"],
       path: "apps/web",
@@ -35,6 +37,10 @@ export const react = defineIntegration({
     contribute(ultracitePresets, {
       module: "ultracite/oxlint/react",
       name: "react",
+    }),
+    contribute(agentsConventions, {
+      text: "Client state lives in `apps/web/src/stores`: one zustand store per concern, typed where it is created (`create<State>()(...)`), and read with selectors. Server data belongs to TanStack Query, not to a store; a store never caches what a query already caches.",
+      title: "Client state",
     }),
   ],
   id: "react",

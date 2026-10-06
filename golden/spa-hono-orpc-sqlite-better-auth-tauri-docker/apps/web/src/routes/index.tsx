@@ -9,6 +9,7 @@ import {
 } from "@my-app/ui/components/card";
 
 import { ApiStatus } from "#src/components/api-status.tsx";
+import { CounterCard } from "#src/components/counter-card.tsx";
 
 const HomePage = () => (
   <Card>
@@ -18,6 +19,10 @@ const HomePage = () => (
         React, Hono, oRPC, SQLite, Drizzle and Better Auth on Vite+.
       </CardDescription>
     </CardHeader>
+    <CardContent className="flex items-center justify-between">
+      <span>Client count</span>
+      <CounterCard />
+    </CardContent>
     <CardContent className="flex items-center justify-between">
       <span>API status</span>
       <ApiStatus />

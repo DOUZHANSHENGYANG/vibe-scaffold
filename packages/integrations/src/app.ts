@@ -156,7 +156,7 @@ export const homePage = (ctx: Context, path: string, route: boolean) =>
     const status = hasBackend(ctx);
     const cardParts = [
       "Card",
-      ...(status || local ? ["CardContent"] : []),
+      "CardContent",
       "CardDescription",
       "CardHeader",
       "CardTitle",
@@ -166,6 +166,8 @@ export const homePage = (ctx: Context, path: string, route: boolean) =>
         ? ['import { createFileRoute } from "@tanstack/react-router";', ""]
         : []),
       `import { ${cardParts.join(", ")} } from "${ctx.scope}/ui/components/card";`,
+      "",
+      'import { CounterCard } from "#src/components/counter-card.tsx";',
       "",
       ...(status
         ? ['import { ApiStatus } from "#src/components/api-status.tsx";', ""]
@@ -182,6 +184,10 @@ export const homePage = (ctx: Context, path: string, route: boolean) =>
       `      <CardTitle>${ctx.name}</CardTitle>`,
       `      <CardDescription>${listed} on Vite+.</CardDescription>`,
       "    </CardHeader>",
+      '    <CardContent className="flex items-center justify-between">',
+      "      <span>Client count</span>",
+      "      <CounterCard />",
+      "    </CardContent>",
       ...(status
         ? [
             '    <CardContent className="flex items-center justify-between">',
