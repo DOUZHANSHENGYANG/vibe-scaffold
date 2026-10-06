@@ -1,6 +1,6 @@
 ---
 name: vibe-scaffold
-description: Use the vibe-scaffold CLI to create a TypeScript project, choose a stack or recipe, add capabilities such as Knip, Ultracite or Docker, diagnose project state, upgrade templates while preserving business edits, or recover an interrupted operation. Use when the user mentions vibe-scaffold, asks to maintain a project with vibe-scaffold.jsonc and .vibe-scaffold metadata, or needs help with these CLI workflows. Not for ordinary application feature development unrelated to the CLI.
+description: Use the vibe-scaffold CLI to create a TypeScript project, choose a stack or recipe, add capabilities such as Knip, PWA, the local database, beUI or Docker, pick a desktop (Electron/Tauri) or mobile (Capacitor) shell, diagnose project state, upgrade templates while preserving business edits, or recover an interrupted operation. Use when the user mentions vibe-scaffold, asks to maintain a project with vibe-scaffold.jsonc and .vibe-scaffold metadata, or needs help with these CLI workflows. Not for ordinary application feature development unrelated to the CLI.
 ---
 
 # VibeScaffold CLI
