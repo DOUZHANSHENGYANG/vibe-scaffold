@@ -9,6 +9,7 @@ import {
   Plug,
   Plus,
   Server,
+  Smartphone,
 } from "lucide-react";
 
 import { cn } from "@vibe-scaffold/ui/lib/utils";
@@ -23,6 +24,7 @@ const icons: Record<Decision, LucideIcon> = {
   database: Database,
   deployment: Container,
   desktop: AppWindow,
+  mobile: Smartphone,
   framework: PanelsTopLeft,
 };
 

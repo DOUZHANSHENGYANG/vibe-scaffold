@@ -128,6 +128,20 @@ export const roles: Record<
       return m.role_framework();
     },
   },
+  mobile: {
+    get about() {
+      return m.role_mobile_about();
+    },
+    get none() {
+      return m.role_mobile_none();
+    },
+    get question() {
+      return m.role_mobile_question();
+    },
+    get role() {
+      return m.role_mobile();
+    },
+  },
 };
 
 const noneNames: Record<Decision, () => string> = {
@@ -137,6 +151,7 @@ const noneNames: Record<Decision, () => string> = {
   backend: () => m.none_backend(),
   database: () => m.none_database(),
   desktop: () => m.none_desktop(),
+  mobile: () => m.none_mobile(),
   deployment: () => m.none_deployment(),
   framework: () => m.none_framework(),
 };
@@ -159,6 +174,7 @@ const addLabels: Record<Decision, () => string> = {
   backend: () => m.add_backend(),
   database: () => m.add_database(),
   desktop: () => m.add_desktop(),
+  mobile: () => m.add_mobile(),
   deployment: () => m.add_deployment(),
   framework: () => m.add_framework(),
 };
@@ -172,6 +188,7 @@ const fits = {
   docker: () => m.fit_docker(),
   electron: () => m.fit_electron(),
   tauri: () => m.fit_tauri(),
+  capacitor: () => m.fit_capacitor(),
   hono: () => m.fit_hono(),
   openapi: () => m.fit_openapi(),
   orpc: () => m.fit_orpc(),
@@ -187,6 +204,7 @@ const noneFits: Record<Decision, () => string> = {
   backend: () => m.fit_none_backend(),
   database: () => m.fit_none_database(),
   desktop: () => m.fit_none_desktop(),
+  mobile: () => m.fit_none_mobile(),
   deployment: () => m.fit_none_deployment(),
   framework: () => m.fit_none_framework(),
 };
@@ -210,6 +228,7 @@ const groupOfKind = {
   database: "database",
   deployment: "deployment",
   desktop: "desktop",
+  mobile: "desktop",
   framework: "framework",
   frontend: "framework",
   orm: "database",
@@ -246,6 +265,7 @@ export const tintClass: Record<Group, string> = {
   database: "tint-database",
   deployment: "tint-deployment",
   desktop: "tint-desktop",
+  mobile: "tint-desktop",
   foundation: "tint-foundation",
   runtime: "tint-backend",
   framework: "tint-framework",

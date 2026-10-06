@@ -69,6 +69,11 @@ export const catalog = {
     electron: "^44.5.1",
     "electron-builder": "^26.15.3",
   },
+  mobile: {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+  },
   server: {
     "@hono/bun": "^1.0.0",
     "@hono/node-server": "^2.1.3",

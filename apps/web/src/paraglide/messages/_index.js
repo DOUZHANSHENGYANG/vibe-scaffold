@@ -9,6 +9,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Add_DeploymentInputs */
 /** @typedef {{}} Add_DesktopInputs */
 /** @typedef {{}} Add_FrameworkInputs */
+/** @typedef {{}} Add_MobileInputs */
 /** @typedef {{}} Addon_DefaultInputs */
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
@@ -63,6 +64,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{ name: NonNullable<unknown> }} Deployment_PostgresInputs */
 /** @typedef {{}} Desc_Better_AuthInputs */
 /** @typedef {{}} Desc_BunInputs */
+/** @typedef {{}} Desc_CapacitorInputs */
 /** @typedef {{}} Desc_DockerInputs */
 /** @typedef {{}} Desc_DrizzleInputs */
 /** @typedef {{}} Desc_ElectronInputs */
@@ -105,6 +107,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{ count: NonNullable<unknown> }} File_CountInputs */
 /** @typedef {{}} Fit_Better_AuthInputs */
 /** @typedef {{}} Fit_BunInputs */
+/** @typedef {{}} Fit_CapacitorInputs */
 /** @typedef {{}} Fit_DockerInputs */
 /** @typedef {{}} Fit_ElectronInputs */
 /** @typedef {{}} Fit_HonoInputs */
@@ -117,6 +120,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Fit_None_DeploymentInputs */
 /** @typedef {{}} Fit_None_DesktopInputs */
 /** @typedef {{}} Fit_None_FrameworkInputs */
+/** @typedef {{}} Fit_None_MobileInputs */
 /** @typedef {{}} Fit_OpenapiInputs */
 /** @typedef {{}} Fit_OrpcInputs */
 /** @typedef {{}} Fit_PostgresInputs */
@@ -169,6 +173,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Kind_DesktopInputs */
 /** @typedef {{}} Kind_FrameworkInputs */
 /** @typedef {{}} Kind_FrontendInputs */
+/** @typedef {{}} Kind_MobileInputs */
 /** @typedef {{}} Kind_OrmInputs */
 /** @typedef {{}} Kind_RouterInputs */
 /** @typedef {{}} Kind_RuntimeInputs */
@@ -188,6 +193,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} None_DeploymentInputs */
 /** @typedef {{}} None_DesktopInputs */
 /** @typedef {{}} None_FrameworkInputs */
+/** @typedef {{}} None_MobileInputs */
 /** @typedef {{}} None_TokenInputs */
 /** @typedef {{}} Not_Found_BodyInputs */
 /** @typedef {{}} Not_Found_HomeInputs */
@@ -241,6 +247,10 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Role_Framework_AboutInputs */
 /** @typedef {{}} Role_Framework_NoneInputs */
 /** @typedef {{}} Role_Framework_QuestionInputs */
+/** @typedef {{}} Role_MobileInputs */
+/** @typedef {{}} Role_Mobile_AboutInputs */
+/** @typedef {{}} Role_Mobile_NoneInputs */
+/** @typedef {{}} Role_Mobile_QuestionInputs */
 /** @typedef {{}} Runs_In_BrowserInputs */
 /** @typedef {{}} Runs_In_ElectronInputs */
 /** @typedef {{}} Runs_In_TauriInputs */
@@ -431,6 +441,20 @@ export const add_framework = /** @type {((inputs?: Add_FrameworkInputs, options?
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.add_framework(inputs)
 	return __en.add_framework(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "add the Android shell" |
+*
+* @param {Add_MobileInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const add_mobile = /** @type {((inputs?: Add_MobileInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Add_MobileInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.add_mobile(inputs)
+	return __en.add_mobile(inputs)
 });
 /**
 * | output |
@@ -1191,6 +1215,20 @@ export const desc_bun = /** @type {((inputs?: Desc_BunInputs, options?: { locale
 /**
 * | output |
 * | --- |
+* | "Mobile app around the web app, packaged with Capacitor" |
+*
+* @param {Desc_CapacitorInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const desc_capacitor = /** @type {((inputs?: Desc_CapacitorInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Desc_CapacitorInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.desc_capacitor(inputs)
+	return __en.desc_capacitor(inputs)
+});
+/**
+* | output |
+* | --- |
 * | "Production Dockerfile and Docker Compose" |
 *
 * @param {Desc_DockerInputs} inputs
@@ -1780,6 +1818,20 @@ export const fit_bun = /** @type {((inputs?: Fit_BunInputs, options?: { locale?:
 /**
 * | output |
 * | --- |
+* | "For the same web app as an installable Android app, with native plugins one import away." |
+*
+* @param {Fit_CapacitorInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const fit_capacitor = /** @type {((inputs?: Fit_CapacitorInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Fit_CapacitorInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.fit_capacitor(inputs)
+	return __en.fit_capacitor(inputs)
+});
+/**
+* | output |
+* | --- |
 * | "For your own server or any container host." |
 *
 * @param {Fit_DockerInputs} inputs
@@ -1944,6 +1996,20 @@ export const fit_none_framework = /** @type {((inputs?: Fit_None_FrameworkInputs
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.fit_none_framework(inputs)
 	return __en.fit_none_framework(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "For the web app in browsers only, with no store build." |
+*
+* @param {Fit_None_MobileInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const fit_none_mobile = /** @type {((inputs?: Fit_None_MobileInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Fit_None_MobileInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.fit_none_mobile(inputs)
+	return __en.fit_none_mobile(inputs)
 });
 /**
 * | output |
@@ -2689,6 +2755,20 @@ export const kind_frontend = /** @type {((inputs?: Kind_FrontendInputs, options?
 /**
 * | output |
 * | --- |
+* | "Mobile" |
+*
+* @param {Kind_MobileInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const kind_mobile = /** @type {((inputs?: Kind_MobileInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Kind_MobileInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.kind_mobile(inputs)
+	return __en.kind_mobile(inputs)
+});
+/**
+* | output |
+* | --- |
 * | "ORM" |
 *
 * @param {Kind_OrmInputs} inputs
@@ -2951,6 +3031,20 @@ export const none_framework = /** @type {((inputs?: None_FrameworkInputs, option
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.none_framework(inputs)
 	return __en.none_framework(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "no mobile app" |
+*
+* @param {None_MobileInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const none_mobile = /** @type {((inputs?: None_MobileInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<None_MobileInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.none_mobile(inputs)
+	return __en.none_mobile(inputs)
 });
 /**
 * | output |
@@ -3704,6 +3798,62 @@ export const role_framework_question = /** @type {((inputs?: Role_Framework_Ques
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.role_framework_question(inputs)
 	return __en.role_framework_question(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "Mobile" |
+*
+* @param {Role_MobileInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const role_mobile = /** @type {((inputs?: Role_MobileInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Role_MobileInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.role_mobile(inputs)
+	return __en.role_mobile(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "Wraps the web app in a native Android shell with a WebView and a plugin bridge; iOS needs a Mac." |
+*
+* @param {Role_Mobile_AboutInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const role_mobile_about = /** @type {((inputs?: Role_Mobile_AboutInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Role_Mobile_AboutInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.role_mobile_about(inputs)
+	return __en.role_mobile_about(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "No native mobile app; the web app runs in browsers only." |
+*
+* @param {Role_Mobile_NoneInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const role_mobile_none = /** @type {((inputs?: Role_Mobile_NoneInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Role_Mobile_NoneInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.role_mobile_none(inputs)
+	return __en.role_mobile_none(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "Ship the web app to app stores?" |
+*
+* @param {Role_Mobile_QuestionInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const role_mobile_question = /** @type {((inputs?: Role_Mobile_QuestionInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Role_Mobile_QuestionInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.role_mobile_question(inputs)
+	return __en.role_mobile_question(inputs)
 });
 /**
 * | output |

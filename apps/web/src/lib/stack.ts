@@ -30,6 +30,7 @@ export const decisions = [
   "database",
   "auth",
   "desktop",
+  "mobile",
   "deployment",
   "runtime",
 ] as const;
@@ -110,6 +111,7 @@ export const searchSchema = z.object({
   database: flag,
   deployment: flag,
   desktop: flag,
+  mobile: flag,
   framework: flag,
   runtime: flag,
   packageManager: z.preprocess((value) => {

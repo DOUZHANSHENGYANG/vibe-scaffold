@@ -7,6 +7,7 @@
 /** @typedef {{}} Add_DeploymentInputs */
 /** @typedef {{}} Add_DesktopInputs */
 /** @typedef {{}} Add_FrameworkInputs */
+/** @typedef {{}} Add_MobileInputs */
 /** @typedef {{}} Addon_DefaultInputs */
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
@@ -61,6 +62,7 @@
 /** @typedef {{ name: NonNullable<unknown> }} Deployment_PostgresInputs */
 /** @typedef {{}} Desc_Better_AuthInputs */
 /** @typedef {{}} Desc_BunInputs */
+/** @typedef {{}} Desc_CapacitorInputs */
 /** @typedef {{}} Desc_DockerInputs */
 /** @typedef {{}} Desc_DrizzleInputs */
 /** @typedef {{}} Desc_ElectronInputs */
@@ -103,6 +105,7 @@
 /** @typedef {{ count: NonNullable<unknown> }} File_CountInputs */
 /** @typedef {{}} Fit_Better_AuthInputs */
 /** @typedef {{}} Fit_BunInputs */
+/** @typedef {{}} Fit_CapacitorInputs */
 /** @typedef {{}} Fit_DockerInputs */
 /** @typedef {{}} Fit_ElectronInputs */
 /** @typedef {{}} Fit_HonoInputs */
@@ -115,6 +118,7 @@
 /** @typedef {{}} Fit_None_DeploymentInputs */
 /** @typedef {{}} Fit_None_DesktopInputs */
 /** @typedef {{}} Fit_None_FrameworkInputs */
+/** @typedef {{}} Fit_None_MobileInputs */
 /** @typedef {{}} Fit_OpenapiInputs */
 /** @typedef {{}} Fit_OrpcInputs */
 /** @typedef {{}} Fit_PostgresInputs */
@@ -167,6 +171,7 @@
 /** @typedef {{}} Kind_DesktopInputs */
 /** @typedef {{}} Kind_FrameworkInputs */
 /** @typedef {{}} Kind_FrontendInputs */
+/** @typedef {{}} Kind_MobileInputs */
 /** @typedef {{}} Kind_OrmInputs */
 /** @typedef {{}} Kind_RouterInputs */
 /** @typedef {{}} Kind_RuntimeInputs */
@@ -186,6 +191,7 @@
 /** @typedef {{}} None_DeploymentInputs */
 /** @typedef {{}} None_DesktopInputs */
 /** @typedef {{}} None_FrameworkInputs */
+/** @typedef {{}} None_MobileInputs */
 /** @typedef {{}} None_TokenInputs */
 /** @typedef {{}} Not_Found_BodyInputs */
 /** @typedef {{}} Not_Found_HomeInputs */
@@ -239,6 +245,10 @@
 /** @typedef {{}} Role_Framework_AboutInputs */
 /** @typedef {{}} Role_Framework_NoneInputs */
 /** @typedef {{}} Role_Framework_QuestionInputs */
+/** @typedef {{}} Role_MobileInputs */
+/** @typedef {{}} Role_Mobile_AboutInputs */
+/** @typedef {{}} Role_Mobile_NoneInputs */
+/** @typedef {{}} Role_Mobile_QuestionInputs */
 /** @typedef {{}} Runs_In_BrowserInputs */
 /** @typedef {{}} Runs_In_ElectronInputs */
 /** @typedef {{}} Runs_In_TauriInputs */
@@ -359,6 +369,10 @@ export const add_desktop = /** @type {(inputs: Add_DesktopInputs) => LocalizedSt
 
 export const add_framework = /** @type {(inputs: Add_FrameworkInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`Add frontend`)
+};
+
+export const add_mobile = /** @type {(inputs: Add_MobileInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`add the Android shell`)
 };
 
 export const addon_default = /** @type {(inputs: Addon_DefaultInputs) => LocalizedString} */ () => {
@@ -582,6 +596,10 @@ export const desc_bun = /** @type {(inputs: Desc_BunInputs) => LocalizedString} 
 	return /** @type {LocalizedString} */ (`Bun runtime for the Hono server; web frameworks and tools stay on Node.js`)
 };
 
+export const desc_capacitor = /** @type {(inputs: Desc_CapacitorInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Mobile app around the web app, packaged with Capacitor`)
+};
+
 export const desc_docker = /** @type {(inputs: Desc_DockerInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`Production Dockerfile and Docker Compose`)
 };
@@ -752,6 +770,10 @@ export const fit_bun = /** @type {(inputs: Fit_BunInputs) => LocalizedString} */
 	return /** @type {LocalizedString} */ (`Use Bun to run Hono, with TypeScript and environment files built in.`)
 };
 
+export const fit_capacitor = /** @type {(inputs: Fit_CapacitorInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`For the same web app as an installable Android app, with native plugins one import away.`)
+};
+
 export const fit_docker = /** @type {(inputs: Fit_DockerInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`For your own server or any container host.`)
 };
@@ -798,6 +820,10 @@ export const fit_none_desktop = /** @type {(inputs: Fit_None_DesktopInputs) => L
 
 export const fit_none_framework = /** @type {(inputs: Fit_None_FrameworkInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`For an API that apps or scripts call.`)
+};
+
+export const fit_none_mobile = /** @type {(inputs: Fit_None_MobileInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`For the web app in browsers only, with no store build.`)
 };
 
 export const fit_openapi = /** @type {(inputs: Fit_OpenapiInputs) => LocalizedString} */ () => {
@@ -1021,6 +1047,10 @@ export const kind_frontend = /** @type {(inputs: Kind_FrontendInputs) => Localiz
 	return /** @type {LocalizedString} */ (`Frontend`)
 };
 
+export const kind_mobile = /** @type {(inputs: Kind_MobileInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Mobile`)
+};
+
 export const kind_orm = /** @type {(inputs: Kind_OrmInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`ORM`)
 };
@@ -1095,6 +1125,10 @@ export const none_desktop = /** @type {(inputs: None_DesktopInputs) => Localized
 
 export const none_framework = /** @type {(inputs: None_FrameworkInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`No frontend`)
+};
+
+export const none_mobile = /** @type {(inputs: None_MobileInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`no mobile app`)
 };
 
 export const none_token = /** @type {(inputs: None_TokenInputs) => LocalizedString} */ () => {
@@ -1316,6 +1350,22 @@ export const role_framework_none = /** @type {(inputs: Role_Framework_NoneInputs
 
 export const role_framework_question = /** @type {(inputs: Role_Framework_QuestionInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`How are the pages built?`)
+};
+
+export const role_mobile = /** @type {(inputs: Role_MobileInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Mobile`)
+};
+
+export const role_mobile_about = /** @type {(inputs: Role_Mobile_AboutInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Wraps the web app in a native Android shell with a WebView and a plugin bridge; iOS needs a Mac.`)
+};
+
+export const role_mobile_none = /** @type {(inputs: Role_Mobile_NoneInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`No native mobile app; the web app runs in browsers only.`)
+};
+
+export const role_mobile_question = /** @type {(inputs: Role_Mobile_QuestionInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Ship the web app to app stores?`)
 };
 
 export const runs_in_browser = /** @type {(inputs: Runs_In_BrowserInputs) => LocalizedString} */ () => {

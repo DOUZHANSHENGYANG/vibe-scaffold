@@ -1265,6 +1265,12 @@ services:
 volumes:
   data:
 
+# knip.json (knip)
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "workspaces": {}
+}
+
 # package.json (core)
 {
   "name": "my-app",

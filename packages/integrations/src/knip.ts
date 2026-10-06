@@ -13,30 +13,36 @@ export const knipEntries = defineSlot<{
   readonly entry: readonly string[];
 }>("knip/entries");
 
+/** Dependencies a native build or config consumes, invisible to Knip's import graph. */
+export const knipIgnores = defineSlot<string>("knip/ignore-dependencies");
+
 export const knip = defineAddon({
   supportsAdd: true,
-  contribute: (ctx) => [
-    ...(knipEntries.values(ctx).length === 0
-      ? []
-      : [
-          renderFile(
-            "knip.json",
-            (read) =>
-              `${JSON.stringify(
-                {
-                  $schema: "https://unpkg.com/knip@6/schema.json",
-                  workspaces: Object.fromEntries(
-                    read(knipEntries).map(({ workspace, entry }) => [
-                      workspace,
-                      { entry },
-                    ])
-                  ),
-                },
-                null,
-                2
-              )}\n`
-          ),
-        ]),
+  contribute: () => [
+    renderFile("knip.json", (read) => {
+      const entries = read(knipEntries);
+      const ignores = read(knipIgnores);
+      const workspaces: Record<
+        string,
+        { entry?: readonly string[]; ignoreDependencies?: readonly string[] }
+      > = Object.fromEntries(
+        entries.map(({ workspace, entry }) => [workspace, { entry }])
+      );
+      if (ignores.length > 0) {
+        workspaces["."] = {
+          ...workspaces["."],
+          ignoreDependencies: [...ignores],
+        };
+      }
+      return `${JSON.stringify(
+        {
+          $schema: "https://unpkg.com/knip@6/schema.json",
+          workspaces,
+        },
+        null,
+        2
+      )}\n`;
+    }),
     contribute(packageJson, {
       devDependencies: ["knip"],
       path: ".",

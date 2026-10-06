@@ -19,8 +19,14 @@ export const verifiedName = "my-app";
 
 export const verification = verificationSchema.parse(recorded);
 
+// Stacks with a desktop or mobile shell await their first verification run; until the CI
+// shards record them, they stay outside the verification data model.
 const legal = new Map(
-  legalStacks(registry).map((stack) => [stackLabel(stack), stack])
+  legalStacks(registry)
+    .filter(
+      (stack) => stack.desktop !== "tauri" && stack.mobile !== "capacitor"
+    )
+    .map((stack) => [stackLabel(stack), stack])
 );
 
 /** Docker adds only its own files and docs, so a stack without a deployment is verified as its Docker sibling. */

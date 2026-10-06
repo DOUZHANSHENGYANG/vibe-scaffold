@@ -46,6 +46,7 @@ const kindLabels = {
   database: () => m.kind_database(),
   deployment: () => m.kind_deployment(),
   desktop: () => m.kind_desktop(),
+  mobile: () => m.kind_mobile(),
   framework: () => m.kind_framework(),
   frontend: () => m.kind_frontend(),
   orm: () => m.kind_orm(),
@@ -61,6 +62,7 @@ export const kindLabel = (kind: string) => translate(kindLabels, kind);
 const descriptions = {
   "better-auth": () => m.desc_better_auth(),
   bun: () => m.desc_bun(),
+  capacitor: () => m.desc_capacitor(),
   docker: () => m.desc_docker(),
   drizzle: () => m.desc_drizzle(),
   electron: () => m.desc_electron(),

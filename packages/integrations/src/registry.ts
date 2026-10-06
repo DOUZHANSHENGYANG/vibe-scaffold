@@ -3,6 +3,7 @@ import { defineRegistry } from "@vibe-scaffold/core";
 import { betterAuth } from "#/better-auth.ts";
 import { beui } from "#/beui.ts";
 import { bun } from "#/bun.ts";
+import { capacitor } from "#/capacitor.ts";
 import { catalog } from "#/catalog.ts";
 import { docker } from "#/docker.ts";
 import { drizzle } from "#/drizzle.ts";
@@ -55,6 +56,7 @@ export const registry = defineRegistry({
     shadcn,
     electron,
     tauri,
+    capacitor,
     node,
     bun,
     docker,
@@ -73,6 +75,7 @@ export const registry = defineRegistry({
     { id: "auth", name: "Auth", optional: true },
     { id: "ui", name: "UI", optional: true },
     { id: "desktop", name: "Desktop", optional: true, default: null },
+    { id: "mobile", name: "Mobile", optional: true, default: null },
     { id: "runtime", name: "Runtime", optional: true, default: "node" },
     { id: "deployment", name: "Deployment", optional: true, default: null },
     { id: "testing", name: "Testing", optional: false },

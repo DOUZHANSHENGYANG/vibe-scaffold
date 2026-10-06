@@ -27,6 +27,7 @@
         "auth": { "type": "string", "enum": ["better-auth"] },
         "ui": { "type": "string", "enum": ["shadcn"] },
         "desktop": { "type": "string", "enum": ["electron", "tauri"] },
+        "mobile": { "type": "string", "enum": ["capacitor"] },
         "runtime": { "type": "string", "enum": ["node", "bun"] },
         "deployment": { "type": "string", "enum": ["docker"] },
         "testing": { "type": "string", "enum": ["vitest-playwright"] }

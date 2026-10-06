@@ -55,6 +55,7 @@ describe.each(generations)("$golden", ({ generation, golden, stack }) => {
       ...(stack.desktop === "tauri"
         ? ["pnpm exec tauri icon src-tauri/app-icon.svg"]
         : []),
+      ...(stack.mobile === "capacitor" ? ["pnpm exec cap add android"] : []),
     ]);
   });
 

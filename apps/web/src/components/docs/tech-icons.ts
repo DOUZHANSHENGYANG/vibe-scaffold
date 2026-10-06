@@ -1,5 +1,6 @@
 import betterAuth from "#/assets/tech/better-auth.svg";
 import bun from "#/assets/tech/bun.svg";
+import capacitor from "#/assets/tech/capacitor.svg";
 import docker from "#/assets/tech/docker.svg";
 import drizzle from "#/assets/tech/drizzle.svg";
 import electron from "#/assets/tech/electron.svg";
@@ -29,6 +30,7 @@ import zod from "#/assets/tech/zod.svg";
 export const techIcons = {
   "better-auth": betterAuth,
   bun,
+  capacitor,
   docker,
   drizzle,
   electron,
