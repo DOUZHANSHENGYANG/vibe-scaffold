@@ -62,6 +62,7 @@ export const catalog = {
     zod: "^4.6.5",
   },
   desktop: {
+    "@tauri-apps/cli": "^2.5.0",
     electron: "^44.5.1",
     "electron-builder": "^26.15.3",
   },

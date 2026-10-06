@@ -17,6 +17,7 @@ import { shadcn } from "#/shadcn.ts";
 import { spa } from "#/spa.ts";
 import { sqlite } from "#/sqlite.ts";
 import { tanstackRouter } from "#/tanstack-router.ts";
+import { tauri } from "#/tauri.ts";
 import { ultracite } from "#/ultracite.ts";
 import { vitePlus } from "#/vite-plus/index.ts";
 import { vitestPlaywright } from "#/vitest-playwright/index.ts";
@@ -51,6 +52,7 @@ export const registry = defineRegistry({
     betterAuth,
     shadcn,
     electron,
+    tauri,
     node,
     bun,
     docker,

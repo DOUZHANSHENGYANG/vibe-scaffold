@@ -52,6 +52,9 @@ describe.each(generations)("$golden", ({ generation, golden, stack }) => {
       "vp install",
       ...(stack.router === "tanstack-router" ? ["vp build apps/web"] : []),
       "vp run db:generate --name init",
+      ...(stack.desktop === "tauri"
+        ? ["pnpm exec tauri icon src-tauri/app-icon.svg"]
+        : []),
     ]);
   });
 

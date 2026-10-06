@@ -49,6 +49,9 @@ const renderAuthIndex = (ctx: Context) => {
     "    emailAndPassword: { enabled: true },",
     "    secret,",
     ...(ctx.has("electron") ? ["    trustedOrigins: [rendererOrigin],"] : []),
+    ...(ctx.has("tauri")
+      ? ['    trustedOrigins: ["http://tauri.localhost", "tauri://localhost"],']
+      : []),
     "  });",
     "",
     "export type Auth = ReturnType<typeof createAuth>;",

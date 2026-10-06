@@ -12,7 +12,6 @@ export type Addon_Desc_UltraciteInputs = {};
 export type AddonsInputs = {};
 export type Api_ClientsInputs = {};
 export type Cap_Frontend_FrameworkInputs = {};
-export type Cap_Fullstack_FrameworkInputs = {};
 export type Cap_Hono_ServerInputs = {};
 export type Cap_Http_ServerInputs = {};
 export type Cap_Node_RuntimeInputs = {};
@@ -81,6 +80,7 @@ export type Desc_SpaInputs = {};
 export type Desc_SqliteInputs = {};
 export type Desc_Tanstack_RouterInputs = {};
 export type Desc_Tanstack_StartInputs = {};
+export type Desc_TauriInputs = {};
 export type Desc_Vite_PlusInputs = {};
 export type Desc_Vitest_PlaywrightInputs = {};
 export type Desktop_DistInputs = {};
@@ -129,6 +129,7 @@ export type Fit_SelfInputs = {};
 export type Fit_SpaInputs = {};
 export type Fit_SqliteInputs = {};
 export type Fit_Tanstack_StartInputs = {};
+export type Fit_TauriInputs = {};
 export type Gate_BuildInputs = {};
 export type Gate_Build_WebInputs = {};
 export type Gate_CheckInputs = {};
@@ -274,6 +275,7 @@ export type Role_Framework_NoneInputs = {};
 export type Role_Framework_QuestionInputs = {};
 export type Runs_In_BrowserInputs = {};
 export type Runs_In_ElectronInputs = {};
+export type Runs_In_TauriInputs = {};
 export type Runtime_AboutInputs = {};
 export type Runtime_NoneInputs = {};
 export type Runtime_QuestionInputs = {};
@@ -287,6 +289,7 @@ export type Search_PlaceholderInputs = {};
 export type Search_Placeholder_ShortInputs = {};
 export type Search_SearchingInputs = {};
 export type Studio_StackInputs = {};
+export type Tauri_ProcessInputs = {};
 export type Tests_Scope_ApiInputs = {};
 export type Tests_Scope_Api_IntegrationInputs = {};
 export type Tests_Scope_StaticInputs = {};
@@ -562,20 +565,6 @@ export declare const api_clients: ((inputs?: Api_ClientsInputs, options?: {
 export declare const cap_frontend_framework: ((inputs?: Cap_Frontend_FrameworkInputs, options?: {
     locale?: "en" | "zh";
 }) => LocalizedString) & import('../runtime.js').MessageMetadata<Cap_Frontend_FrameworkInputs, {
-    locale?: "en" | "zh";
-}, {}>;
-/**
-* | output |
-* | --- |
-* | "a full-stack framework" |
-*
-* @param {Cap_Fullstack_FrameworkInputs} inputs
-* @param {{ locale?: "en" | "zh" }} options
-* @returns {LocalizedString}
-*/
-export declare const cap_fullstack_framework: ((inputs?: Cap_Fullstack_FrameworkInputs, options?: {
-    locale?: "en" | "zh";
-}) => LocalizedString) & import('../runtime.js').MessageMetadata<Cap_Fullstack_FrameworkInputs, {
     locale?: "en" | "zh";
 }, {}>;
 /**
@@ -1449,6 +1438,20 @@ export declare const desc_tanstack_start: ((inputs?: Desc_Tanstack_StartInputs, 
 /**
 * | output |
 * | --- |
+* | "Desktop app around the web app, built with Tauri 2" |
+*
+* @param {Desc_TauriInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export declare const desc_tauri: ((inputs?: Desc_TauriInputs, options?: {
+    locale?: "en" | "zh";
+}) => LocalizedString) & import('../runtime.js').MessageMetadata<Desc_TauriInputs, {
+    locale?: "en" | "zh";
+}, {}>;
+/**
+* | output |
+* | --- |
 * | "Unified toolchain for dev, build, test, lint, and format" |
 *
 * @param {Desc_Vite_PlusInputs} inputs
@@ -2061,6 +2064,20 @@ export declare const fit_sqlite: ((inputs?: Fit_SqliteInputs, options?: {
 export declare const fit_tanstack_start: ((inputs?: Fit_Tanstack_StartInputs, options?: {
     locale?: "en" | "zh";
 }) => LocalizedString) & import('../runtime.js').MessageMetadata<Fit_Tanstack_StartInputs, {
+    locale?: "en" | "zh";
+}, {}>;
+/**
+* | output |
+* | --- |
+* | "For the same web app in its own window, as a smaller binary backed by Rust." |
+*
+* @param {Fit_TauriInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export declare const fit_tauri: ((inputs?: Fit_TauriInputs, options?: {
+    locale?: "en" | "zh";
+}) => LocalizedString) & import('../runtime.js').MessageMetadata<Fit_TauriInputs, {
     locale?: "en" | "zh";
 }, {}>;
 /**
@@ -3740,6 +3757,20 @@ export declare const runs_in_electron: ((inputs?: Runs_In_ElectronInputs, option
 /**
 * | output |
 * | --- |
+* | "Renderer in a Tauri window" |
+*
+* @param {Runs_In_TauriInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export declare const runs_in_tauri: ((inputs?: Runs_In_TauriInputs, options?: {
+    locale?: "en" | "zh";
+}) => LocalizedString) & import('../runtime.js').MessageMetadata<Runs_In_TauriInputs, {
+    locale?: "en" | "zh";
+}, {}>;
+/**
+* | output |
+* | --- |
 * | "Runs the Hono server. The package manager, web framework and test tools are independent." |
 *
 * @param {Runtime_AboutInputs} inputs
@@ -3889,6 +3920,20 @@ export declare const search_searching: ((inputs?: Search_SearchingInputs, option
 export declare const studio_stack: ((inputs?: Studio_StackInputs, options?: {
     locale?: "en" | "zh";
 }) => LocalizedString) & import('../runtime.js').MessageMetadata<Studio_StackInputs, {
+    locale?: "en" | "zh";
+}, {}>;
+/**
+* | output |
+* | --- |
+* | "Tauri Rust process" |
+*
+* @param {Tauri_ProcessInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export declare const tauri_process: ((inputs?: Tauri_ProcessInputs, options?: {
+    locale?: "en" | "zh";
+}) => LocalizedString) & import('../runtime.js').MessageMetadata<Tauri_ProcessInputs, {
     locale?: "en" | "zh";
 }, {}>;
 /**

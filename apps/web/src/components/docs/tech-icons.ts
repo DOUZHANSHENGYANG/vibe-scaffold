@@ -18,6 +18,7 @@ import shadcn from "#/assets/tech/shadcn.svg";
 import sqlite from "#/assets/tech/sqlite.svg";
 import tailwind from "#/assets/tech/tailwind.svg";
 import tanstack from "#/assets/tech/tanstack.svg";
+import tauri from "#/assets/tech/tauri.svg";
 import typescript from "#/assets/tech/typescript.svg";
 import ultracite from "#/assets/tech/ultracite.svg";
 import vitePlus from "#/assets/tech/vite-plus.svg";
@@ -46,6 +47,7 @@ export const techIcons = {
   sqlite,
   tailwind,
   tanstack,
+  tauri,
   typescript,
   ultracite,
   vite,

@@ -13,7 +13,6 @@
 /** @typedef {{}} AddonsInputs */
 /** @typedef {{}} Api_ClientsInputs */
 /** @typedef {{}} Cap_Frontend_FrameworkInputs */
-/** @typedef {{}} Cap_Fullstack_FrameworkInputs */
 /** @typedef {{}} Cap_Hono_ServerInputs */
 /** @typedef {{}} Cap_Http_ServerInputs */
 /** @typedef {{}} Cap_Node_RuntimeInputs */
@@ -76,6 +75,7 @@
 /** @typedef {{}} Desc_SqliteInputs */
 /** @typedef {{}} Desc_Tanstack_RouterInputs */
 /** @typedef {{}} Desc_Tanstack_StartInputs */
+/** @typedef {{}} Desc_TauriInputs */
 /** @typedef {{}} Desc_Vite_PlusInputs */
 /** @typedef {{}} Desc_Vitest_PlaywrightInputs */
 /** @typedef {{}} Desktop_DistInputs */
@@ -120,6 +120,7 @@
 /** @typedef {{}} Fit_SpaInputs */
 /** @typedef {{}} Fit_SqliteInputs */
 /** @typedef {{}} Fit_Tanstack_StartInputs */
+/** @typedef {{}} Fit_TauriInputs */
 /** @typedef {{}} Gate_BuildInputs */
 /** @typedef {{}} Gate_Build_WebInputs */
 /** @typedef {{}} Gate_CheckInputs */
@@ -238,6 +239,7 @@
 /** @typedef {{}} Role_Framework_QuestionInputs */
 /** @typedef {{}} Runs_In_BrowserInputs */
 /** @typedef {{}} Runs_In_ElectronInputs */
+/** @typedef {{}} Runs_In_TauriInputs */
 /** @typedef {{}} Runtime_AboutInputs */
 /** @typedef {{}} Runtime_NoneInputs */
 /** @typedef {{}} Runtime_QuestionInputs */
@@ -249,6 +251,7 @@
 /** @typedef {{}} Search_Placeholder_ShortInputs */
 /** @typedef {{}} Search_SearchingInputs */
 /** @typedef {{}} Studio_StackInputs */
+/** @typedef {{}} Tauri_ProcessInputs */
 /** @typedef {{}} Tests_Scope_ApiInputs */
 /** @typedef {{}} Tests_Scope_Api_IntegrationInputs */
 /** @typedef {{}} Tests_Scope_StaticInputs */
@@ -378,10 +381,6 @@ export const api_clients = /** @type {(inputs: Api_ClientsInputs) => LocalizedSt
 
 export const cap_frontend_framework = /** @type {(inputs: Cap_Frontend_FrameworkInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`a frontend framework`)
-};
-
-export const cap_fullstack_framework = /** @type {(inputs: Cap_Fullstack_FrameworkInputs) => LocalizedString} */ () => {
-	return /** @type {LocalizedString} */ (`a full-stack framework`)
 };
 
 export const cap_hono_server = /** @type {(inputs: Cap_Hono_ServerInputs) => LocalizedString} */ () => {
@@ -637,6 +636,10 @@ export const desc_tanstack_start = /** @type {(inputs: Desc_Tanstack_StartInputs
 	return /** @type {LocalizedString} */ (`Full-stack React with SSR, server routes, and server functions`)
 };
 
+export const desc_tauri = /** @type {(inputs: Desc_TauriInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Desktop app around the web app, built with Tauri 2`)
+};
+
 export const desc_vite_plus = /** @type {(inputs: Desc_Vite_PlusInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`Unified toolchain for dev, build, test, lint, and format`)
 };
@@ -813,6 +816,10 @@ export const fit_sqlite = /** @type {(inputs: Fit_SqliteInputs) => LocalizedStri
 
 export const fit_tanstack_start = /** @type {(inputs: Fit_Tanstack_StartInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`For sites that need SEO or fast first loads.`)
+};
+
+export const fit_tauri = /** @type {(inputs: Fit_TauriInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`For the same web app in its own window, as a smaller binary backed by Rust.`)
 };
 
 export const gate_build = /** @type {(inputs: Gate_BuildInputs) => LocalizedString} */ () => {
@@ -1309,6 +1316,10 @@ export const runs_in_electron = /** @type {(inputs: Runs_In_ElectronInputs) => L
 	return /** @type {LocalizedString} */ (`Renderer in an Electron window`)
 };
 
+export const runs_in_tauri = /** @type {(inputs: Runs_In_TauriInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Renderer in a Tauri window`)
+};
+
 export const runtime_about = /** @type {(inputs: Runtime_AboutInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`Runs the Hono server. The package manager, web framework and test tools are independent.`)
 };
@@ -1351,6 +1362,10 @@ export const search_searching = /** @type {(inputs: Search_SearchingInputs) => L
 
 export const studio_stack = /** @type {(inputs: Studio_StackInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`Your stack`)
+};
+
+export const tauri_process = /** @type {(inputs: Tauri_ProcessInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`Tauri Rust process`)
 };
 
 export const tests_scope_api = /** @type {(inputs: Tests_Scope_ApiInputs) => LocalizedString} */ () => {

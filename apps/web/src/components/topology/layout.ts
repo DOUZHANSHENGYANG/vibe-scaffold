@@ -85,13 +85,16 @@ const webLabel = (
   name: string,
   self: boolean,
   browser: boolean,
-  desktop: boolean
+  desktop: string | undefined
 ): string => {
   if (self) {
     return m.process_with_api({ name });
   }
-  if (desktop) {
+  if (desktop === "electron") {
     return m.runs_in_electron();
+  }
+  if (desktop === "tauri") {
+    return m.runs_in_tauri();
   }
   if (browser) {
     return m.runs_in_browser();
@@ -112,7 +115,7 @@ export const processBoxes = (stack: Stack): ProcessBox[] => {
       deployed: true,
       group: "framework",
       id: "web",
-      label: webLabel(framework.name, false, browser, has(stack, "desktop")),
+      label: webLabel(framework.name, false, browser, stack.desktop),
       node: !browser,
       rect: around([blocks.framework], boxPadding, boxLabel),
     });
@@ -142,7 +145,8 @@ export const processBoxes = (stack: Stack): ProcessBox[] => {
       deployed: false,
       group: "desktop",
       id: "desktop",
-      label: m.electron_process(),
+      label:
+        stack.desktop === "tauri" ? m.tauri_process() : m.electron_process(),
       node: false,
       rect: around([blocks.desktop], boxPadding, boxLabel),
     });

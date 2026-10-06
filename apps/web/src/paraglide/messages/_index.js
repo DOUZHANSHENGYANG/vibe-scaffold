@@ -15,7 +15,6 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} AddonsInputs */
 /** @typedef {{}} Api_ClientsInputs */
 /** @typedef {{}} Cap_Frontend_FrameworkInputs */
-/** @typedef {{}} Cap_Fullstack_FrameworkInputs */
 /** @typedef {{}} Cap_Hono_ServerInputs */
 /** @typedef {{}} Cap_Http_ServerInputs */
 /** @typedef {{}} Cap_Node_RuntimeInputs */
@@ -78,6 +77,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Desc_SqliteInputs */
 /** @typedef {{}} Desc_Tanstack_RouterInputs */
 /** @typedef {{}} Desc_Tanstack_StartInputs */
+/** @typedef {{}} Desc_TauriInputs */
 /** @typedef {{}} Desc_Vite_PlusInputs */
 /** @typedef {{}} Desc_Vitest_PlaywrightInputs */
 /** @typedef {{}} Desktop_DistInputs */
@@ -122,6 +122,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Fit_SpaInputs */
 /** @typedef {{}} Fit_SqliteInputs */
 /** @typedef {{}} Fit_Tanstack_StartInputs */
+/** @typedef {{}} Fit_TauriInputs */
 /** @typedef {{}} Gate_BuildInputs */
 /** @typedef {{}} Gate_Build_WebInputs */
 /** @typedef {{}} Gate_CheckInputs */
@@ -240,6 +241,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Role_Framework_QuestionInputs */
 /** @typedef {{}} Runs_In_BrowserInputs */
 /** @typedef {{}} Runs_In_ElectronInputs */
+/** @typedef {{}} Runs_In_TauriInputs */
 /** @typedef {{}} Runtime_AboutInputs */
 /** @typedef {{}} Runtime_NoneInputs */
 /** @typedef {{}} Runtime_QuestionInputs */
@@ -251,6 +253,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Search_Placeholder_ShortInputs */
 /** @typedef {{}} Search_SearchingInputs */
 /** @typedef {{}} Studio_StackInputs */
+/** @typedef {{}} Tauri_ProcessInputs */
 /** @typedef {{}} Tests_Scope_ApiInputs */
 /** @typedef {{}} Tests_Scope_Api_IntegrationInputs */
 /** @typedef {{}} Tests_Scope_StaticInputs */
@@ -510,20 +513,6 @@ export const cap_frontend_framework = /** @type {((inputs?: Cap_Frontend_Framewo
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.cap_frontend_framework(inputs)
 	return __en.cap_frontend_framework(inputs)
-});
-/**
-* | output |
-* | --- |
-* | "a full-stack framework" |
-*
-* @param {Cap_Fullstack_FrameworkInputs} inputs
-* @param {{ locale?: "en" | "zh" }} options
-* @returns {LocalizedString}
-*/
-export const cap_fullstack_framework = /** @type {((inputs?: Cap_Fullstack_FrameworkInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Cap_Fullstack_FrameworkInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
-	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
-	if (locale === "zh") return __zh.cap_fullstack_framework(inputs)
-	return __en.cap_fullstack_framework(inputs)
 });
 /**
 * | output |
@@ -1396,6 +1385,20 @@ export const desc_tanstack_start = /** @type {((inputs?: Desc_Tanstack_StartInpu
 /**
 * | output |
 * | --- |
+* | "Desktop app around the web app, built with Tauri 2" |
+*
+* @param {Desc_TauriInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const desc_tauri = /** @type {((inputs?: Desc_TauriInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Desc_TauriInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.desc_tauri(inputs)
+	return __en.desc_tauri(inputs)
+});
+/**
+* | output |
+* | --- |
 * | "Unified toolchain for dev, build, test, lint, and format" |
 *
 * @param {Desc_Vite_PlusInputs} inputs
@@ -2009,6 +2012,20 @@ export const fit_tanstack_start = /** @type {((inputs?: Fit_Tanstack_StartInputs
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.fit_tanstack_start(inputs)
 	return __en.fit_tanstack_start(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "For the same web app in its own window, as a smaller binary backed by Rust." |
+*
+* @param {Fit_TauriInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const fit_tauri = /** @type {((inputs?: Fit_TauriInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Fit_TauriInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.fit_tauri(inputs)
+	return __en.fit_tauri(inputs)
 });
 /**
 * | output |
@@ -3689,6 +3706,20 @@ export const runs_in_electron = /** @type {((inputs?: Runs_In_ElectronInputs, op
 /**
 * | output |
 * | --- |
+* | "Renderer in a Tauri window" |
+*
+* @param {Runs_In_TauriInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const runs_in_tauri = /** @type {((inputs?: Runs_In_TauriInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Runs_In_TauriInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.runs_in_tauri(inputs)
+	return __en.runs_in_tauri(inputs)
+});
+/**
+* | output |
+* | --- |
 * | "Runs the Hono server. The package manager, web framework and test tools are independent." |
 *
 * @param {Runtime_AboutInputs} inputs
@@ -3839,6 +3870,20 @@ export const studio_stack = /** @type {((inputs?: Studio_StackInputs, options?: 
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.studio_stack(inputs)
 	return __en.studio_stack(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "Tauri Rust process" |
+*
+* @param {Tauri_ProcessInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const tauri_process = /** @type {((inputs?: Tauri_ProcessInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Tauri_ProcessInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.tauri_process(inputs)
+	return __en.tauri_process(inputs)
 });
 /**
 * | output |

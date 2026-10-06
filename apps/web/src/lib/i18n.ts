@@ -25,7 +25,6 @@ const translate = (
 
 const capabilityPhrases = {
   "frontend-framework": () => m.cap_frontend_framework(),
-  "fullstack-framework": () => m.cap_fullstack_framework(),
   "hono-server": () => m.cap_hono_server(),
   "http-server": () => m.cap_http_server(),
   "node-runtime": () => m.cap_node_runtime(),
@@ -65,6 +64,7 @@ const descriptions = {
   docker: () => m.desc_docker(),
   drizzle: () => m.desc_drizzle(),
   electron: () => m.desc_electron(),
+  tauri: () => m.desc_tauri(),
   hono: () => m.desc_hono(),
   node: () => m.desc_node(),
   openapi: () => m.desc_openapi(),

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vibe-scaffold.dev/schema.json",
+
+  "stack": {
+    "toolchain": "vite-plus",
+    "frontend": "react",
+    "framework": "spa",
+    "router": "tanstack-router",
+    "backend": "hono",
+    "api": "orpc",
+    "database": "sqlite",
+    "orm": "drizzle",
+    "auth": "better-auth",
+    "ui": "shadcn",
+    "desktop": "tauri",
+    "runtime": "node",
+    "deployment": "docker",
+    "testing": "vitest-playwright",
+  },
+
+  "addons": ["knip", "ultracite"],
+
+  "channel": "recommended",
+}

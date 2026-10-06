@@ -171,6 +171,7 @@ const fits = {
   "better-auth": () => m.fit_better_auth(),
   docker: () => m.fit_docker(),
   electron: () => m.fit_electron(),
+  tauri: () => m.fit_tauri(),
   hono: () => m.fit_hono(),
   openapi: () => m.fit_openapi(),
   orpc: () => m.fit_orpc(),

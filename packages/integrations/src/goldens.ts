@@ -12,6 +12,7 @@ import { stackLabel } from "#/stack-label.ts";
 const goldenLabels = [
   "spa-hono-orpc-postgres-better-auth-docker",
   "spa-hono-orpc-postgres-better-auth-electron-docker",
+  "spa-hono-orpc-sqlite-better-auth-tauri-docker",
   "hono-openapi-sqlite-docker",
   "hono-openapi-sqlite-bun-docker",
 ];
