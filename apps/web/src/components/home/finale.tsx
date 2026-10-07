@@ -136,7 +136,7 @@ export const Finale = () => {
             >
               {m.home_open()}
             </Link>
-            <CopyCommand command="npx vibe-scaffold-cli" />
+            <CopyCommand command="npx @douzhanshengyang/vibe-scaffold-cli" />
           </div>
         </div>
         <Mark inView={inView} />

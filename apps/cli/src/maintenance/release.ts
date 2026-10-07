@@ -43,7 +43,7 @@ export const targetSnapshot = async (base: Snapshot, version?: string) => {
     [
       "exec",
       "--yes",
-      `--package=vibe-scaffold-cli@${version}`,
+      `--package=@douzhanshengyang/vibe-scaffold-cli@${version}`,
       "--",
       "vibe-scaffold",
       "snapshot",

@@ -9,21 +9,21 @@ The vibe-scaffold CLI creates projects and maintains them afterwards. It needs n
 <Tab value="pnpm">
 
 ```sh
-npx vibe-scaffold-cli <command>
+npx @douzhanshengyang/vibe-scaffold-cli <command>
 ```
 
 </Tab>
 <Tab value="npm">
 
 ```sh
-npx vibe-scaffold-cli <command>
+npx @douzhanshengyang/vibe-scaffold-cli <command>
 ```
 
 </Tab>
 <Tab value="bun">
 
 ```sh
-bunx vibe-scaffold-cli <command>
+bunx @douzhanshengyang/vibe-scaffold-cli <command>
 ```
 
 </Tab>
@@ -52,7 +52,7 @@ Every command that changes an existing project follows the same steps. Run them 
 `doctor` reports the project's template version, any problems, and whether an update is available. It never writes.
 
 ```sh
-npx vibe-scaffold-cli doctor --offline
+npx @douzhanshengyang/vibe-scaffold-cli doctor --offline
 ```
 
 </Step>
@@ -61,7 +61,7 @@ npx vibe-scaffold-cli doctor --offline
 `--dry-run` prepares the change plan from the original template, your current files, and the target template, and shows it without writing.
 
 ```sh
-npx vibe-scaffold-cli upgrade --dry-run
+npx @douzhanshengyang/vibe-scaffold-cli upgrade --dry-run
 ```
 
 </Step>
@@ -70,7 +70,7 @@ npx vibe-scaffold-cli upgrade --dry-run
 Confirm the plan in the terminal, or pass `--yes` where there is no terminal. Dependencies are installed and the project is checked afterwards.
 
 ```sh
-npx vibe-scaffold-cli upgrade --yes
+npx @douzhanshengyang/vibe-scaffold-cli upgrade --yes
 ```
 
 </Step>

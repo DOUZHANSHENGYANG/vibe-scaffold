@@ -8,7 +8,8 @@ import {
   integrationsOfKind,
 } from "#/registry.ts";
 
-export const blueprintSchemaUrl = "https://vibe-scaffold.dev/schema.json";
+export const blueprintSchemaUrl =
+  "https://douzhanshengyang.github.io/vibe-scaffold/schema.json";
 
 export const channels = ["recommended"] as const;
 export const packageManagers = ["pnpm", "bun"] as const;

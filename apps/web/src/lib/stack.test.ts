@@ -155,7 +155,7 @@ describe("the create command", () => {
     const { stack } = entry("spa-hono-orpc-sqlite-better-auth-docker");
     const line = commandLine(commandWords(flagsOf(stack), "acme", "pnpm"));
     expect(line).toMatch(
-      /^pnpm dlx vibe-scaffold-cli acme .*--framework spa .*--api orpc .*--database sqlite .*--auth better-auth .*--deployment docker$/u
+      /^pnpm dlx @douzhanshengyang\/vibe-scaffold-cli acme .*--framework spa .*--api orpc .*--database sqlite .*--auth better-auth .*--deployment docker$/u
     );
   });
 });
@@ -175,7 +175,7 @@ describe("Bun selections", () => {
     ).toContain("--package-manager bun");
     expect(
       commandLine(commandWords(flags, "acme", "bun", verifiedAddons, "pnpm"))
-    ).toMatch(/^bunx vibe-scaffold-cli/u);
+    ).toMatch(/^bunx @douzhanshengyang\/vibe-scaffold-cli/u);
     expect(
       verificationWith(
         { ...entryFromFlags({}), bunVerification: null },

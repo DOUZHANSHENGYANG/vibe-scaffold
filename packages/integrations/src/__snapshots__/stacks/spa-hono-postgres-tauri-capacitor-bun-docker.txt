@@ -2281,7 +2281,7 @@ fn main() {
 
 # vibe-scaffold.jsonc (core)
 {
-  "$schema": "https://vibe-scaffold.dev/schema.json",
+  "$schema": "https://douzhanshengyang.github.io/vibe-scaffold/schema.json",
 
   "stack": {
     "toolchain": "vite-plus",

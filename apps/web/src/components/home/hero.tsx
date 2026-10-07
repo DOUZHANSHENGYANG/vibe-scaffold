@@ -76,7 +76,7 @@ export const Hero = () => {
           >
             {m.home_open()}
           </Link>
-          <CopyCommand command="npx vibe-scaffold-cli" />
+          <CopyCommand command="npx @douzhanshengyang/vibe-scaffold-cli" />
         </div>
       </motion.div>
       <div className="mt-14 sm:mt-16 xl:mt-20">

@@ -10,22 +10,22 @@ Use the CLI to resolve stacks and maintain generated projects. Let its current h
 ## Establish the context
 
 1. Identify the target directory and whether the request is creation or maintenance. Read the project's instructions. For an existing project, inspect `vibe-scaffold.jsonc`, `package.json`, Git status, and the presence of `.vibe-scaffold/state.json` and `.vibe-scaffold/base.json`. Preserve unrelated edits.
-2. Run the CLI from npm with `npx --yes vibe-scaffold-cli` (or `pnpm dlx vibe-scaffold-cli`); a global install is not required. Resolve its version with `npx --yes vibe-scaffold-cli --version`. For a preview followed by application, append `@` and that exact published version to the package name in both commands so a new release cannot change the target between them.
+2. Run the CLI from npm with `npx --yes @douzhanshengyang/vibe-scaffold-cli` (or `pnpm dlx @douzhanshengyang/vibe-scaffold-cli`); a global install is not required. Resolve its version with `npx --yes @douzhanshengyang/vibe-scaffold-cli --version`. For a preview followed by application, append `@` and that exact published version to the package name in both commands so a new release cannot change the target between them.
 3. Installing this skill does not install the CLI, Vite+, or project dependencies. If a required tool is unavailable, follow its installation instructions within the user's scope rather than changing the selected stack.
-4. Read `npx --yes vibe-scaffold-cli --help` for creation or `npx --yes vibe-scaffold-cli COMMAND --help` for maintenance. Prefer `--json` for operations executed by an agent; keep stdout separate from stderr. Do not parse a task runner's banner as JSON.
+4. Read `npx --yes @douzhanshengyang/vibe-scaffold-cli --help` for creation or `npx --yes @douzhanshengyang/vibe-scaffold-cli COMMAND --help` for maintenance. Prefer `--json` for operations executed by an agent; keep stdout separate from stderr. Do not parse a task runner's banner as JSON.
 
 ## Choose the workflow
 
 Read the relevant reference before acting. Paths are relative to this skill's directory, not the user's project.
 
-| User intent                               | First action                                           | Reference                                                       |
-| ----------------------------------------- | ------------------------------------------------------ | --------------------------------------------------------------- |
-| Create a project or use a recipe          | `npx --yes vibe-scaffold-cli --list --json`            | [Creating projects](references/create.md)                       |
-| Add a capability                          | `npx --yes vibe-scaffold-cli add --list --json`        | [Maintenance](references/maintenance.md#add-capabilities)       |
-| Diagnose an existing project              | `npx --yes vibe-scaffold-cli doctor --offline --json`  | [Maintenance](references/maintenance.md#inspect-project-state)  |
-| Update a generated project                | `npx --yes vibe-scaffold-cli upgrade --dry-run --json` | [Maintenance](references/maintenance.md#upgrade-templates)      |
-| Finish or undo an interrupted operation   | Inspect the pending state with `doctor`                | [Maintenance](references/maintenance.md#recover-an-operation)   |
-| Establish provenance for an older project | Locate its original snapshot                           | [Maintenance](references/maintenance.md#adopt-an-older-project) |
+| User intent                               | First action                                                             | Reference                                                       |
+| ----------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------- |
+| Create a project or use a recipe          | `npx --yes @douzhanshengyang/vibe-scaffold-cli --list --json`            | [Creating projects](references/create.md)                       |
+| Add a capability                          | `npx --yes @douzhanshengyang/vibe-scaffold-cli add --list --json`        | [Maintenance](references/maintenance.md#add-capabilities)       |
+| Diagnose an existing project              | `npx --yes @douzhanshengyang/vibe-scaffold-cli doctor --offline --json`  | [Maintenance](references/maintenance.md#inspect-project-state)  |
+| Update a generated project                | `npx --yes @douzhanshengyang/vibe-scaffold-cli upgrade --dry-run --json` | [Maintenance](references/maintenance.md#upgrade-templates)      |
+| Finish or undo an interrupted operation   | Inspect the pending state with `doctor`                                  | [Maintenance](references/maintenance.md#recover-an-operation)   |
+| Establish provenance for an older project | Locate its original snapshot                                             | [Maintenance](references/maintenance.md#adopt-an-older-project) |
 
 Run maintenance from the generated project root, or pass `--cwd /actual/project/path`. Creation instead takes a positional destination directory; it has no `--cwd` option.
 

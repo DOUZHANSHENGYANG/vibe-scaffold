@@ -12,8 +12,8 @@ description: 让编码 Agent通过 vibe-scaffold CLI 创建和维护项目。
 在需要使用 skill 的项目目录中，选择以下任一命令：
 
 ```sh
-npx skills add your-org/vibe-scaffold --skill vibe-scaffold
-npx skills add your-org/vibe-scaffold --skill vibe-scaffold
+npx skills add DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
+npx skills add DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
 ```
 
 安装器会引导你选择编码 Agent，默认安装到当前项目。也可以追加 `--agent codex` 或 `--agent claude-code` 直接指定；追加 `--list` 则只查看可用的 skill，不执行安装。
@@ -34,7 +34,7 @@ Skill 按任务分别加载创建和维护的指引，并区分预览、延后�
 如果只在本次会话中使用，可以运行 `skills use`，它会输出指令，并提供一个临时的 supporting-files 目录：
 
 ```sh
-npx skills use your-org/vibe-scaffold --skill vibe-scaffold
+npx skills use DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
 ```
 
 请让 Agent 读取完整输出，并从该目录解析其中引用的文件。这个命令不会创建或修改任何 vibe-scaffold 项目。

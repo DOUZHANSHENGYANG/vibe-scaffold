@@ -5,8 +5,14 @@
   // Routes, not custom domains: each host's DNS record is an unproxied CNAME to a preferred
   // Cloudflare hostname, which a custom domain would replace with a proxied one.
   "routes": [
-    { "pattern": "vibe-scaffold.dev/*", "zone_name": "vibe-scaffold.dev" },
-    { "pattern": "www.vibe-scaffold.dev/*", "zone_name": "vibe-scaffold.dev" },
+    {
+      "pattern": "douzhanshengyang.github.io/vibe-scaffold/*",
+      "zone_name": "douzhanshengyang.github.io/vibe-scaffold",
+    },
+    {
+      "pattern": "www.douzhanshengyang.github.io/vibe-scaffold/*",
+      "zone_name": "douzhanshengyang.github.io/vibe-scaffold",
+    },
   ],
   // Non-production branches deploy with `wrangler preview`, which requires this block.
   "previews": {},

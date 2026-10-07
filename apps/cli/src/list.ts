@@ -98,9 +98,9 @@ export const listingText = ({ addons, kinds, stacks }: Listing) =>
     `${stacks.length} legal stacks, ${stacks.filter((stack) => stack.verifiedAt !== null).length} verified at this version with the default add-ons. --list --json lists each.`,
     "",
     "Examples",
-    "  npx vibe-scaffold-cli my-app",
-    `  npx vibe-scaffold-cli my-app ${[kindFlag("framework", "spa"), kindFlag("backend", "hono"), kindFlag("api", "orpc"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --no-interactive`,
-    `  npx vibe-scaffold-cli my-api ${[kindFlag("frontend", null), kindFlag("api", "openapi"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --addons ${addonsValue([])} --json`,
-    "  npx vibe-scaffold-cli my-app --recipe ../other-app --json",
+    "  npx @douzhanshengyang/vibe-scaffold-cli my-app",
+    `  npx @douzhanshengyang/vibe-scaffold-cli my-app ${[kindFlag("framework", "spa"), kindFlag("backend", "hono"), kindFlag("api", "orpc"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --no-interactive`,
+    `  npx @douzhanshengyang/vibe-scaffold-cli my-api ${[kindFlag("frontend", null), kindFlag("api", "openapi"), kindFlag("database", "sqlite"), kindFlag("auth", null)].join(" ")} --addons ${addonsValue([])} --json`,
+    "  npx @douzhanshengyang/vibe-scaffold-cli my-app --recipe ../other-app --json",
     "",
   ].join("\n");

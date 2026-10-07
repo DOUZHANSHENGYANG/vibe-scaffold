@@ -4,16 +4,16 @@ description: Read-only checks for configuration, baseline integrity, and unfinis
 ---
 
 ```sh
-npx vibe-scaffold-cli doctor
-npx vibe-scaffold-cli doctor --offline
-npx vibe-scaffold-cli doctor --cwd my-app --json
+npx @douzhanshengyang/vibe-scaffold-cli doctor
+npx @douzhanshengyang/vibe-scaffold-cli doctor --offline
+npx @douzhanshengyang/vibe-scaffold-cli doctor --cwd my-app --json
 ```
 
 `doctor` checks baseline integrity, configuration, package-manager consistency, lockfiles, and unfinished operations. It neither modifies project files nor upgrades dependencies.
 
 Terminal output lists the project template version, findings, conflicting files, and pending template changes. Use `--json` for structured results in scripts and coding agents.
 
-By default, it queries npm’s `latest` channel, not the `beta` channel. To preview the beta template, run `npx vibe-scaffold-cli upgrade --dry-run`. `--offline` disables that query. An available release is informational and does not make the project unhealthy.
+By default, it queries npm’s `latest` channel, not the `beta` channel. To preview the beta template, run `npx @douzhanshengyang/vibe-scaffold-cli upgrade --dry-run`. `--offline` disables that query. An available release is informational and does not make the project unhealthy.
 
 ## Act on findings [#results]
 

@@ -9,7 +9,7 @@
     "stacks": "node packages/integrations/scripts/stacks.ts",
     "ready": "vp check && vp run knip && vp test",
     "prepare": "vp config",
-    "cli": "vp run --filter vibe-scaffold-cli build && node apps/cli/dist/cli.mjs"
+    "cli": "vp run --filter @douzhanshengyang/vibe-scaffold-cli build && node apps/cli/dist/cli.mjs"
   },
   "devDependencies": {
     "@shadcn/lint": "catalog:",

@@ -6,8 +6,8 @@
 
 Compose a full-stack TypeScript stack and get a cutting-edge, verified project made for AI coding agents, with type safety, lint, and tests built in.
 
-[![npm](https://img.shields.io/npm/v/vibe-scaffold-cli?label=npm&color=cb3837)](https://www.npmjs.com/package/vibe-scaffold-cli)
-[![CI](https://github.com/your-org/vibe-scaffold/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/vibe-scaffold/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@douzhanshengyang/vibe-scaffold-cli?label=npm&color=cb3837)](https://www.npmjs.com/package/@douzhanshengyang/vibe-scaffold-cli)
+[![CI](https://github.com/DOUZHANSHENGYANG/vibe-scaffold/actions/workflows/ci.yml/badge.svg)](https://github.com/DOUZHANSHENGYANG/vibe-scaffold/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **English** · [简体中文](README.zh.md)
@@ -20,10 +20,10 @@ https://github.com/user-attachments/assets/aa58d60b-4776-460b-97ee-234aa331f436
 
 ### Compose it yourself
 
-Pick each layer in the [web studio](https://vibe-scaffold.dev/studio) and copy the command it builds, or answer the prompts in your terminal:
+Pick each layer in the [web studio](https://douzhanshengyang.github.io/vibe-scaffold/studio) and copy the command it builds, or answer the prompts in your terminal:
 
 ```sh
-npx vibe-scaffold-cli my-app
+npx @douzhanshengyang/vibe-scaffold-cli my-app
 ```
 
 ### Hand it to an AI agent
@@ -31,14 +31,14 @@ npx vibe-scaffold-cli my-app
 Paste this command, along with what you want to build, into Claude Code, Codex, Cursor, or any coding agent:
 
 ```sh
-npx skills add your-org/vibe-scaffold --skill vibe-scaffold
+npx skills add DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
 ```
 
 The agent installs the [vibe-scaffold skill](skills/vibe-scaffold/SKILL.md), chooses the stack, and creates the project. Later, ask it to add capabilities or upgrade the templates. See the [Agent Skills guide](apps/web/content/docs/cli/skill.mdx).
 
 ## Why VibeScaffold
 
-Full details: [Why vibe-scaffold](https://vibe-scaffold.dev/docs/why).
+Full details: [Why vibe-scaffold](https://douzhanshengyang.github.io/vibe-scaffold/docs/why).
 
 With a coding agent, the hard part of an application is rarely the first day. It is the thirtieth: features pile up, the structure erodes, and each fix introduces another bug. VibeScaffold gives the agent, and you, a better starting point: best practices for a current, carefully chosen stack, and a codebase built so that an agent writes good code in it.
 
@@ -71,7 +71,7 @@ VibeScaffold does not host your application, does not migrate production data, a
 Pass flags to skip the prompts:
 
 ```sh
-npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --database postgres --auth better-auth
+npx @douzhanshengyang/vibe-scaffold-cli my-app --framework next --backend self --api orpc --database postgres --auth better-auth
 ```
 
 | Option                                                       | Description                                                                                                                                                    |
@@ -88,7 +88,7 @@ npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --databa
 
 ## Documentation
 
-- [vibe-scaffold.dev/docs](https://vibe-scaffold.dev/docs): quick start, choosing a stack, the CLI reference, testing, and concepts
+- [douzhanshengyang.github.io/vibe-scaffold/docs](https://douzhanshengyang.github.io/vibe-scaffold/docs): quick start, choosing a stack, the CLI reference, testing, and concepts
 - [Architecture](docs/architecture.md): the model, the resolver, integrations, verification, and project maintenance
 - [AGENTS.md](AGENTS.md): the rules for code in this repository and in every generated project
 

@@ -6,8 +6,8 @@
 
 自由组合全栈 TypeScript 技术栈，得到一个前沿、经过验证、为 AI 编码智能体打造的项目，内置类型安全、lint 与测试。
 
-[![npm](https://img.shields.io/npm/v/vibe-scaffold-cli?label=npm&color=cb3837)](https://www.npmjs.com/package/vibe-scaffold-cli)
-[![CI](https://github.com/your-org/vibe-scaffold/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/vibe-scaffold/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@douzhanshengyang/vibe-scaffold-cli?label=npm&color=cb3837)](https://www.npmjs.com/package/@douzhanshengyang/vibe-scaffold-cli)
+[![CI](https://github.com/DOUZHANSHENGYANG/vibe-scaffold/actions/workflows/ci.yml/badge.svg)](https://github.com/DOUZHANSHENGYANG/vibe-scaffold/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 [English](README.md) · **简体中文**
@@ -20,10 +20,10 @@ https://github.com/user-attachments/assets/6adc6f20-99ef-452f-83a7-7d0b69251906
 
 ### 自己组合
 
-在[网页工作台](https://vibe-scaffold.dev/studio)中逐层选择技术，复制生成的命令；或者直接在终端按提示回答：
+在[网页工作台](https://douzhanshengyang.github.io/vibe-scaffold/studio)中逐层选择技术，复制生成的命令；或者直接在终端按提示回答：
 
 ```sh
-npx vibe-scaffold-cli my-app
+npx @douzhanshengyang/vibe-scaffold-cli my-app
 ```
 
 ### 交给 AI 助手
@@ -31,14 +31,14 @@ npx vibe-scaffold-cli my-app
 将下面的命令和你的需求一起粘贴给 Codex、Cursor、WorkBuddy 等编码助手：
 
 ```sh
-npx skills add your-org/vibe-scaffold --skill vibe-scaffold
+npx skills add DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
 ```
 
 助手会安装 [vibe-scaffold skill](skills/vibe-scaffold/SKILL.md)，选好技术栈并创建项目；之后也可以让它添加能力或升级模板。详见 [Agent Skills 指南](apps/web/content/docs/cli/skill.mdx)。
 
 ## 为什么选择 VibeScaffold
 
-详见[为什么选择 vibe-scaffold](https://vibe-scaffold.dev/docs/why)。
+详见[为什么选择 vibe-scaffold](https://douzhanshengyang.github.io/vibe-scaffold/docs/why)。
 
 借助编码 Agent 开发应用，难点往往不在第一天，而在第三十天：功能越来越多，结构逐渐失序，每修复一个 bug 又会引入新的问题。VibeScaffold 为 Agent 和你提供一个更好的起点：经过精心挑选的前沿技术栈及其最佳实践，以及一套让 Agent 能够写出好代码的工程基础。
 
@@ -71,7 +71,7 @@ VibeScaffold 不托管你的应用，不迁移生产数据，也不隐藏代码�
 用参数跳过提问：
 
 ```sh
-npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --database postgres --auth better-auth
+npx @douzhanshengyang/vibe-scaffold-cli my-app --framework next --backend self --api orpc --database postgres --auth better-auth
 ```
 
 | 选项                                                         | 说明                                                                                                                                 |
@@ -88,7 +88,7 @@ npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --databa
 
 ## 文档
 
-- [vibe-scaffold.dev/docs](https://vibe-scaffold.dev/docs)：快速开始、选择技术栈、CLI 参考、测试与概念
+- [douzhanshengyang.github.io/vibe-scaffold/docs](https://douzhanshengyang.github.io/vibe-scaffold/docs)：快速开始、选择技术栈、CLI 参考、测试与概念
 - [架构](docs/architecture.md):模型、解析器、Integration、验证与项目维护
 - [AGENTS.md](AGENTS.md):本仓库与每个生成项目的代码规则
 

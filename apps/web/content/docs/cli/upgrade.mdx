@@ -4,9 +4,9 @@ description: Preview template updates while preserving application changes.
 ---
 
 ```sh
-npx vibe-scaffold-cli upgrade --check
-npx vibe-scaffold-cli upgrade --dry-run
-npx vibe-scaffold-cli upgrade --yes
+npx @douzhanshengyang/vibe-scaffold-cli upgrade --check
+npx @douzhanshengyang/vibe-scaffold-cli upgrade --dry-run
+npx @douzhanshengyang/vibe-scaffold-cli upgrade --yes
 ```
 
 `--check` reports available updates and exits with `1` when an update is found. `--dry-run` shows the merge plan without writing. The default target is the template release bundled with the running CLI.
@@ -25,15 +25,15 @@ Maintenance does not initialize, migrate, or reset databases. Review and execute
 
 ## Conflicts [#conflicts]
 
-If application encounters conflicts, project files are not written. Candidates are saved in `.vibe-scaffold/pending/candidates/`. Review them, resolve conflict markers, and run `npx vibe-scaffold-cli recover --yes`. Previews do not create candidates.
+If application encounters conflicts, project files are not written. Candidates are saved in `.vibe-scaffold/pending/candidates/`. Review them, resolve conflict markers, and run `npx @douzhanshengyang/vibe-scaffold-cli recover --yes`. Previews do not create candidates.
 
 See [recovery](/docs/cli/recover) for resume and rollback behavior.
 
 ## Adopt an older project [#adopt]
 
 ```sh
-npx vibe-scaffold-cli adopt --from original-snapshot.json --dry-run
-npx vibe-scaffold-cli adopt --from original-snapshot.json --yes
+npx @douzhanshengyang/vibe-scaffold-cli adopt --from original-snapshot.json --dry-run
+npx @douzhanshengyang/vibe-scaffold-cli adopt --from original-snapshot.json --yes
 ```
 
 `adopt` requires a separately retained original generation snapshot and confirmed project name and technology choices. The snapshot must use the CLI baseline format. A recipe or current application files cannot replace it.

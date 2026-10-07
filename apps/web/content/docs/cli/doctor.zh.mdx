@@ -4,16 +4,16 @@ description: 只读检查配置、基线和未完成的维护操作。
 ---
 
 ```sh
-npx vibe-scaffold-cli doctor
-npx vibe-scaffold-cli doctor --offline
-npx vibe-scaffold-cli doctor --cwd my-app --json
+npx @douzhanshengyang/vibe-scaffold-cli doctor
+npx @douzhanshengyang/vibe-scaffold-cli doctor --offline
+npx @douzhanshengyang/vibe-scaffold-cli doctor --cwd my-app --json
 ```
 
 `doctor` 检查项目基线完整性、配置、包管理器一致性、锁文件和未完成操作，不修改项目文件，也不执行依赖升级。
 
 终端会列出项目模板版本、检查发现的问题、冲突文件和待更新文件数。`--json` 提供相同检查结果的结构化输出，供脚本和编码 Agent 使用。
 
-默认查询的是 npm 的 `latest` 通道，而非 `beta` 通道。如需预览 beta 模板的更新，请运行 `npx vibe-scaffold-cli upgrade --dry-run`。`--offline` 会关闭这项网络查询。发现新版本仅作为提示，不会因此判定项目存在问题。
+默认查询的是 npm 的 `latest` 通道，而非 `beta` 通道。如需预览 beta 模板的更新，请运行 `npx @douzhanshengyang/vibe-scaffold-cli upgrade --dry-run`。`--offline` 会关闭这项网络查询。发现新版本仅作为提示，不会因此判定项目存在问题。
 
 ## 处理检查结果 [#results]
 

@@ -1,5 +1,5 @@
 {
-  "name": "vibe-scaffold-cli",
+  "name": "@douzhanshengyang/vibe-scaffold-cli",
   "version": "0.1.0-beta.1",
   "description": "Create a verified full-stack TypeScript project from a stack you compose",
   "keywords": [
@@ -8,14 +8,14 @@
     "stack",
     "vite-plus"
   ],
-  "homepage": "https://github.com/your-org/vibe-scaffold#readme",
+  "homepage": "https://github.com/DOUZHANSHENGYANG/vibe-scaffold#readme",
   "bugs": {
-    "url": "https://github.com/your-org/vibe-scaffold/issues"
+    "url": "https://github.com/DOUZHANSHENGYANG/vibe-scaffold/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/vibe-scaffold.git",
+    "url": "git+https://github.com/DOUZHANSHENGYANG/vibe-scaffold.git",
     "directory": "apps/cli"
   },
   "bin": {

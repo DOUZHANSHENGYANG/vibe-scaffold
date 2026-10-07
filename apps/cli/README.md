@@ -1,20 +1,20 @@
-# vibe-scaffold-cli
+# @douzhanshengyang/vibe-scaffold-cli
 
 **Compose. Verify. Ship.**
 
 Compose a full-stack TypeScript stack and get a project that has been installed, checked, tested, and built for real. This package is the `vibe-scaffold` command.
 
 ```sh
-npx vibe-scaffold-cli@beta my-app
+npx @douzhanshengyang/vibe-scaffold-cli@beta my-app
 ```
 
 Answer the prompts, or pass flags to skip them:
 
 ```sh
-npx vibe-scaffold-cli@beta my-app --framework next --backend self --api orpc --database postgres --auth better-auth
+npx @douzhanshengyang/vibe-scaffold-cli@beta my-app --framework next --backend self --api orpc --database postgres --auth better-auth
 ```
 
-Or compose visually in the [web studio](https://vibe-scaffold.dev/studio) and copy the command.
+Or compose visually in the [web studio](https://douzhanshengyang.github.io/vibe-scaffold/studio) and copy the command.
 
 ## What you get
 
@@ -42,12 +42,12 @@ Node.js 22.12 or newer. The CLI installs the project with pnpm (the default) or 
 | `--json`                                                     | Print one JSON object and never prompt.                                                                        |
 | `--no-interactive`, `--no-git`, `--no-install`, `--no-check` | Skip prompts, `git init`, install and setup, or the final check.                                               |
 
-Run `npx vibe-scaffold-cli@beta --help` for the full reference.
+Run `npx @douzhanshengyang/vibe-scaffold-cli@beta --help` for the full reference.
 
 ## Links
 
-- [Documentation](https://vibe-scaffold.dev/docs)
-- [Source and issues](https://github.com/your-org/vibe-scaffold)
-- [Agent skill](https://github.com/your-org/vibe-scaffold/tree/main/skills/vibe-scaffold)
+- [Documentation](https://douzhanshengyang.github.io/vibe-scaffold/docs)
+- [Source and issues](https://github.com/DOUZHANSHENGYANG/vibe-scaffold)
+- [Agent skill](https://github.com/DOUZHANSHENGYANG/vibe-scaffold/tree/main/skills/vibe-scaffold)
 
 MIT

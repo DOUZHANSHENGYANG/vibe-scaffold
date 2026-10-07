@@ -1,8 +1,8 @@
 name: Release
 
 # Push a tag `vX.Y.Z` or `vX.Y.Z-beta.N` that matches apps/cli/package.json. npm authenticates this
-# workflow through trusted publishing (npmjs.com → vibe-scaffold-cli → Settings → Trusted publisher:
-# your-org/vibe-scaffold, workflow `release.yml`), so no token or one-time password is involved.
+# workflow through trusted publishing (npmjs.com → @douzhanshengyang/vibe-scaffold-cli → Settings → Trusted publisher:
+# DOUZHANSHENGYANG/vibe-scaffold, workflow `release.yml`), so no token or one-time password is involved.
 on:
   push:
     tags: ["v*"]
@@ -45,11 +45,11 @@ jobs:
         run: |
           version="${VERSION#v}"
           for attempt in $(seq 1 20); do
-            npx --yes "vibe-scaffold-cli@$version" --version && break
+            npx --yes "@douzhanshengyang/vibe-scaffold-cli@$version" --version && break
             test "$attempt" -lt 20 && sleep 15
           done
-          test "$(npx --yes "vibe-scaffold-cli@$version" --version)" = "$version"
-          test "$(vp dlx "vibe-scaffold-cli@$version" --version)" = "$version"
+          test "$(npx --yes "@douzhanshengyang/vibe-scaffold-cli@$version" --version)" = "$version"
+          test "$(vp dlx "@douzhanshengyang/vibe-scaffold-cli@$version" --version)" = "$version"
       - name: GitHub release
         env:
           GH_TOKEN: ${{ github.token }}

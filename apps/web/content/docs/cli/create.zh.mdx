@@ -4,7 +4,7 @@ description: 创建参数、包管理器、运行时、配方与输出格式。
 ---
 
 ```sh
-npx vibe-scaffold-cli create [目录] [选项]
+npx @douzhanshengyang/vibe-scaffold-cli create [目录] [选项]
 ```
 
 `目录` 是项目的创建位置，目录名即项目名，默认为 `my-app`。该目录必须不存在或为空。`create` 关键字可以省略。
@@ -14,7 +14,7 @@ npx vibe-scaffold-cli create [目录] [选项]
 在终端中运行 CLI，不带任何技术栈参数：
 
 ```sh
-npx vibe-scaffold-cli
+npx @douzhanshengyang/vibe-scaffold-cli
 ```
 
 CLI 会依次：
@@ -76,10 +76,10 @@ CLI 会依次：
 
 ```sh
 # Next.js 全栈应用，使用框架服务端、oRPC 和 SQLite，不含认证
-npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --database sqlite --auth none
+npx @douzhanshengyang/vibe-scaffold-cli my-app --framework next --backend self --api orpc --database sqlite --auth none
 
 # 仅 API：不含前端，使用 Hono 和 OpenAPI
-npx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none
+npx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none
 ```
 
 表格最后一列是不进行交互时，未指定类别的取值：数据库为 SQLite，不含桌面应用和部署配置。
@@ -102,13 +102,13 @@ Change them to one of:
 
 ```sh
 # 使用 pnpm 安装依赖，Bun 运行 Hono
-npx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --runtime bun
+npx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --runtime bun
 
 # 使用 Bun 安装依赖，Node.js 运行 Hono
-bunx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun
+bunx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun
 
 # 安装依赖和运行 Hono 均使用 Bun
-bunx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun --runtime bun
+bunx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun --runtime bun
 ```
 
 用于启动 CLI 的命令（`pnpm dlx`、`npx` 或 `bunx`）不决定项目的包管理器。`--package-manager` 优先于配方；两者都未指定时，采用交互中的选择或默认的 pnpm。在工作台中，包管理器在创建面板中选择，运行时在 Hono 的进程框中选择。
@@ -125,10 +125,10 @@ bunx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --
 | `ultracite` | [Ultracite](https://www.ultracite.ai)：为 `vp check` 提供 lint 与格式化预设，包含所用框架的规则，以及针对 AI 生成代码的检查  | 是   |
 
 ```sh
-npx vibe-scaffold-cli my-app --addons none             # 不含扩展
-npx vibe-scaffold-cli my-app --addons knip             # 仅 Knip
-npx vibe-scaffold-cli my-app --addons ultracite        # 仅 Ultracite
-npx vibe-scaffold-cli my-app --addons knip,ultracite   # 默认选择
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons none             # 不含扩展
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons knip             # 仅 Knip
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons ultracite        # 仅 Ultracite
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons knip,ultracite   # 默认选择
 ```
 
 未指定 `--addons` 时，CLI 在终端中会询问，否则使用默认项。验证基于默认扩展进行。不选 Knip 会移除它的任务和检查步骤；不选 Ultracite 会移除它的预设及相关依赖。无论如何选择，Vite+ 的基础检查、类型检查、测试和构建都会保留。
@@ -139,14 +139,14 @@ npx vibe-scaffold-cli my-app --addons knip,ultracite   # 默认选择
 
 ```sh
 # 使用另一个项目的目录
-npx vibe-scaffold-cli new-app --recipe ../my-app
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe ../my-app
 
 # 使用文件或 URL
-npx vibe-scaffold-cli new-app --recipe ./team-stack.jsonc
-npx vibe-scaffold-cli new-app --recipe https://example.com/vibe-scaffold.jsonc
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe ./team-stack.jsonc
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe https://example.com/vibe-scaffold.jsonc
 
 # 使用配方，但更换数据库
-npx vibe-scaffold-cli new-app --recipe ../my-app --database postgres
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe ../my-app --database postgres
 ```
 
 命令行参数会覆盖配方中的选择。团队可以共享同一份 `vibe-scaffold.jsonc`，让每个新项目都从相同的选择开始。
@@ -154,9 +154,9 @@ npx vibe-scaffold-cli new-app --recipe ../my-app --database postgres
 ## 预览与列出 [#dry-run]
 
 ```sh
-npx vibe-scaffold-cli my-app --dry-run   # 列出将要写入的文件及其所属技术
-npx vibe-scaffold-cli --list             # 列出所有选项和合法组合
-npx vibe-scaffold-cli --list --json      # 同上，以 JSON 输出
+npx @douzhanshengyang/vibe-scaffold-cli my-app --dry-run   # 列出将要写入的文件及其所属技术
+npx @douzhanshengyang/vibe-scaffold-cli --list             # 列出所有选项和合法组合
+npx @douzhanshengyang/vibe-scaffold-cli --list --json      # 同上，以 JSON 输出
 ```
 
 ## 选项 [#options]
@@ -183,7 +183,7 @@ npx vibe-scaffold-cli --list --json      # 同上，以 JSON 输出
 使用 `--json` 时，CLI 在标准输出只打印一个 JSON 对象（失败时也是如此），并且不进行任何询问。脚本和编码 Agent 可以据此区分成功与失败：
 
 ```sh
-npx vibe-scaffold-cli my-app --framework spa --backend hono --json
+npx @douzhanshengyang/vibe-scaffold-cli my-app --framework spa --backend hono --json
 ```
 
 成功时：

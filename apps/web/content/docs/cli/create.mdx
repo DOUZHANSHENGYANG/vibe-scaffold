@@ -4,7 +4,7 @@ description: Creation flags, package managers, runtimes, recipes, and output for
 ---
 
 ```sh
-npx vibe-scaffold-cli create [directory] [options]
+npx @douzhanshengyang/vibe-scaffold-cli create [directory] [options]
 ```
 
 `directory` is where the project is created, and its name becomes the project's name. It defaults to `my-app`, and must either not exist or be empty. The `create` keyword is optional.
@@ -14,7 +14,7 @@ npx vibe-scaffold-cli create [directory] [options]
 Run the CLI in a terminal without any stack flags:
 
 ```sh
-npx vibe-scaffold-cli
+npx @douzhanshengyang/vibe-scaffold-cli
 ```
 
 The CLI then:
@@ -76,10 +76,10 @@ Specify the kinds you care about; compatibility rules settle the rest. Choosing 
 
 ```sh
 # Full-stack Next.js with its own server, oRPC, SQLite, no authentication
-npx vibe-scaffold-cli my-app --framework next --backend self --api orpc --database sqlite --auth none
+npx @douzhanshengyang/vibe-scaffold-cli my-app --framework next --backend self --api orpc --database sqlite --auth none
 
 # API only: no frontend, Hono with OpenAPI
-npx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none
+npx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none
 ```
 
 The table's last column shows what an unspecified kind becomes when the CLI does not prompt: SQLite for the database, and no desktop app or deployment.
@@ -102,13 +102,13 @@ These two choices are independent. The package manager defaults to `pnpm`; choos
 
 ```sh
 # pnpm installs, Bun runs Hono
-npx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --runtime bun
+npx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --runtime bun
 
 # Bun installs, Node.js runs Hono
-bunx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun
+bunx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun
 
 # Bun installs and runs Hono
-bunx vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun --runtime bun
+bunx @douzhanshengyang/vibe-scaffold-cli my-api --frontend none --api openapi --database sqlite --auth none --package-manager bun --runtime bun
 ```
 
 The command that launches the CLI (`pnpm dlx`, `npx`, or `bunx`) does not choose the project's package manager. `--package-manager` takes precedence over a recipe; without either, the interactive choice or the pnpm default applies. In the studio, the package manager is chosen in the creation panel and the runtime on Hono's process box.
@@ -125,10 +125,10 @@ Add-ons are tools that any stack can include. They are not part of the stack's l
 | `ultracite` | [Ultracite](https://www.ultracite.ai): lint and formatting presets for `vp check`, with rules for the frameworks in use and checks aimed at AI-written code | Yes     |
 
 ```sh
-npx vibe-scaffold-cli my-app --addons none             # no add-ons
-npx vibe-scaffold-cli my-app --addons knip             # Knip only
-npx vibe-scaffold-cli my-app --addons ultracite        # Ultracite only
-npx vibe-scaffold-cli my-app --addons knip,ultracite   # the defaults
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons none             # no add-ons
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons knip             # Knip only
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons ultracite        # Ultracite only
+npx @douzhanshengyang/vibe-scaffold-cli my-app --addons knip,ultracite   # the defaults
 ```
 
 Without `--addons`, the CLI asks in a terminal and uses the defaults otherwise. Verification runs with the default add-ons. Leaving out Knip removes its task and check step; leaving out Ultracite removes its presets and their dependencies. The Vite+ baseline checks, type checks, tests, and build remain either way.
@@ -139,14 +139,14 @@ Every generated project has a `vibe-scaffold.jsonc` at its root, recording its s
 
 ```sh
 # From another project's directory
-npx vibe-scaffold-cli new-app --recipe ../my-app
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe ../my-app
 
 # From a file or a URL
-npx vibe-scaffold-cli new-app --recipe ./team-stack.jsonc
-npx vibe-scaffold-cli new-app --recipe https://example.com/vibe-scaffold.jsonc
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe ./team-stack.jsonc
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe https://example.com/vibe-scaffold.jsonc
 
 # From a recipe, with a different database
-npx vibe-scaffold-cli new-app --recipe ../my-app --database postgres
+npx @douzhanshengyang/vibe-scaffold-cli new-app --recipe ../my-app --database postgres
 ```
 
 Flags override the recipe's choices. A team can share one `vibe-scaffold.jsonc` so that every new project starts from the same choices.
@@ -154,9 +154,9 @@ Flags override the recipe's choices. A team can share one `vibe-scaffold.jsonc` 
 ## Preview and list [#dry-run]
 
 ```sh
-npx vibe-scaffold-cli my-app --dry-run   # the files it would write, and the technology each comes from
-npx vibe-scaffold-cli --list             # every option and every legal stack
-npx vibe-scaffold-cli --list --json      # the same, as JSON
+npx @douzhanshengyang/vibe-scaffold-cli my-app --dry-run   # the files it would write, and the technology each comes from
+npx @douzhanshengyang/vibe-scaffold-cli --list             # every option and every legal stack
+npx @douzhanshengyang/vibe-scaffold-cli --list --json      # the same, as JSON
 ```
 
 ## Options [#options]
@@ -183,7 +183,7 @@ The CLI never prompts in CI (`CI=true`), or when stdin or stdout is not a termin
 With `--json`, the CLI prints exactly one JSON object on stdout, even when it fails, and never prompts. Scripts and coding agents can rely on it to tell success from failure:
 
 ```sh
-npx vibe-scaffold-cli my-app --framework spa --backend hono --json
+npx @douzhanshengyang/vibe-scaffold-cli my-app --framework spa --backend hono --json
 ```
 
 On success:

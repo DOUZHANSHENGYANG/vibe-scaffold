@@ -12,8 +12,8 @@ Installing the skill adds instructions to your agent. It does not install the vi
 Run either command from the project where you want the agent to use the skill:
 
 ```sh
-npx skills add your-org/vibe-scaffold --skill vibe-scaffold
-npx skills add your-org/vibe-scaffold --skill vibe-scaffold
+npx skills add DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
+npx skills add DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
 ```
 
 The installer lets you select your coding agent. Installation is project-scoped by default. To select an agent explicitly, append `--agent codex` or `--agent claude-code`. Use `--list` to inspect the source without installing.
@@ -34,7 +34,7 @@ The skill routes creation and maintenance to separate references. It distinguish
 For one session without installation, `skills use` prints instructions and provides a temporary supporting-files directory:
 
 ```sh
-npx skills use your-org/vibe-scaffold --skill vibe-scaffold
+npx skills use DOUZHANSHENGYANG/vibe-scaffold --skill vibe-scaffold
 ```
 
 Ask the agent to read the complete output and resolve reference paths from that supporting-files directory. This command does not create or modify a vibe-scaffold project.

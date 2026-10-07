@@ -1,1 +1,1 @@
-export const repository = "https://github.com/your-org/vibe-scaffold";
+export const repository = "https://github.com/DOUZHANSHENGYANG/vibe-scaffold";

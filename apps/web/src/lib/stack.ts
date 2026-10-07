@@ -206,9 +206,9 @@ export const verificationWith = (
 export type PackageRunner = "pnpm" | "npm" | "bun";
 
 const runners: Record<PackageRunner, string> = {
-  bun: "bunx vibe-scaffold-cli",
-  npm: "npx vibe-scaffold-cli",
-  pnpm: "pnpm dlx vibe-scaffold-cli",
+  bun: "bunx @douzhanshengyang/vibe-scaffold-cli",
+  npm: "npx @douzhanshengyang/vibe-scaffold-cli",
+  pnpm: "pnpm dlx @douzhanshengyang/vibe-scaffold-cli",
 };
 
 export const commandWords = (
