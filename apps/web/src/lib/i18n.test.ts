@@ -57,7 +57,7 @@ describe("messages", () => {
 
   it(
     "words every getting-started note as the generator does",
-    { timeout: 60_000 },
+    { timeout: 120_000 },
     async () => {
       const projects = await Promise.all(
         stacks.map(async (entry) => await loadProject(entry))

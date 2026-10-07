@@ -7,13 +7,13 @@ catalogMode: prefer
 catalog:
   node-diff3: ^3.2.1
   # toolchain
-  "@shadcn/lint": ^0.2.0
+  "@shadcn/lint": 0.2.0
   "@types/node": ^24.19.1
-  knip: ^6.39.0
+  knip: 6.39.0
   # Must match the oxfmt that vite-plus bundles, so generated files pass `vp check`.
   oxfmt: 0.70.0
-  typescript: ^7.0.2
-  ultracite: ^7.12.2
+  typescript: 7.0.2
+  ultracite: 7.12.2
   vite: npm:@voidzero-dev/vite-plus-core@1.0.0
   vite-plus: 1.0.0
 

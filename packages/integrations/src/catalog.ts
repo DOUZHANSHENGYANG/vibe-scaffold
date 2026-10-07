@@ -11,11 +11,13 @@ export const catalog = {
   toolchain: {
     "@types/bun": "^1.4.2",
     "@playwright/test": "^1.63.0",
-    "@shadcn/lint": "^0.2.0",
+    "@shadcn/lint": "0.2.0",
     "@types/node": "^24.19.1",
-    knip: "^6.39.0",
-    typescript: "^7.0.2",
-    ultracite: "^7.12.2",
+    knip: "6.39.0",
+    typescript: "7.0.2",
+    // Pinned exact: newer ultracite emits oxlint rules the bundled oxlint of
+    // vite-plus 1.0.0 does not know, which fails `vp check` before analysis.
+    ultracite: "7.12.2",
     undici: "^8.11.2",
     vite: `npm:@voidzero-dev/vite-plus-core@${toolchainVersions.vitePlus}`,
     "vite-plus": toolchainVersions.vitePlus,
