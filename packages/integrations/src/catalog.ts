@@ -42,6 +42,7 @@ export const catalog = {
     react: "^19.3.0",
     "react-dom": "^19.3.0",
     "server-only": "^0.0.1",
+    "vite-plugin-pwa": "^1.0.0",
     tailwindcss: "^4.3.3",
     zustand: "^5.0.0",
   },

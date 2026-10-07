@@ -10,8 +10,7 @@
     "dev": "vp dev",
     "build": "vp build",
     "postinstall": "fumadocs-mdx",
-    "preview": "vp preview",
-    "deploy": "wrangler deploy"
+    "preview": "vp preview"
   },
   "dependencies": {
     "@base-ui/react": "catalog:",
@@ -44,7 +43,6 @@
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vite-plus": "catalog:",
-    "wrangler": "catalog:"
+    "vite-plus": "catalog:"
   }
 }

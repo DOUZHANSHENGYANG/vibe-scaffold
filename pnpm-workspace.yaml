@@ -44,7 +44,6 @@ catalog:
   react-dom: ^19.3.0
   shiki: ^4.5.0
   tailwindcss: ^4.3.3
-  wrangler: ^4.147.0
 
   # docs
   "@types/mdx": ^2.0.14
