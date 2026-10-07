@@ -1296,8 +1296,12 @@ interface CounterState {
 // created. Server data stays in TanStack Query, not here.
 export const useCounterStore = create<CounterState>()((set) => ({
   count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  reset: () => set({ count: 0 }),
+  increment: () => {
+    set((state) => ({ count: state.count + 1 }));
+  },
+  reset: () => {
+    set({ count: 0 });
+  },
 }));
 
 # apps/web/tests/e2e/app.e2e.ts (vitest-playwright)
