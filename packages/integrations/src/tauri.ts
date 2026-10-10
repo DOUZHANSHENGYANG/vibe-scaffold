@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 import type { Context, ReadSlot } from "@vibe-scaffold/core";
 import {
   contribute,
@@ -8,7 +10,7 @@ import {
   setupCommand,
 } from "@vibe-scaffold/core";
 
-import { templateFiles } from "#/templates.ts";
+import { templateContent, templateFiles } from "#/templates.ts";
 import {
   agentsMap,
   agentsNotes,
@@ -20,13 +22,35 @@ import {
 
 /** A Tauri plugin another integration adds: its Cargo dependency, builder call, and capability. */
 export interface TauriPlugin {
-  readonly cargo: string;
-  readonly init: string;
+  readonly cargo?: string;
+  readonly init?: string;
   readonly permission?: string;
 }
 
 /** Plugins other integrations contribute; rendered into the shell's Cargo manifest, builder, and capabilities. */
 export const tauriPlugin = defineSlot<TauriPlugin>("tauri/plugin");
+
+/** Window options another integration adjusts: the main window's native decorations. */
+export interface TauriWindow {
+  readonly decorations?: boolean;
+}
+
+/** Window settings other integrations contribute; rendered into tauri.conf.json's main window. */
+export const tauriWindow = defineSlot<TauriWindow>("tauri/window");
+
+// The conf's keys stay in this order through the parse, so the rendered file
+// keeps the template's layout.
+const confSchema = z.looseObject({
+  $schema: z.string(),
+  productName: z.string(),
+  version: z.string(),
+  identifier: z.string(),
+  build: z.looseObject({}),
+  app: z.looseObject({
+    windows: z.array(z.looseObject({})),
+  }),
+  bundle: z.looseObject({}),
+});
 
 const architecture = (ctx: Context) => {
   const auth = ctx.has("better-auth")
@@ -49,7 +73,7 @@ const cargoToml = (ctx: Context, read: ReadSlot) =>
     'serde = { version = "1", features = ["derive"] }',
     'serde_json = "1"',
     'tauri = { version = "2", features = [] }',
-    ...read(tauriPlugin).map((plugin) => plugin.cargo),
+    ...read(tauriPlugin).flatMap((plugin) => plugin.cargo ?? []),
     "",
     "[profile.release]",
     "codegen-units = 1",
@@ -73,7 +97,9 @@ const mainRs = (read: ReadSlot) =>
     "",
     "fn main() {",
     "    tauri::Builder::default()",
-    ...read(tauriPlugin).map((plugin) => `        ${plugin.init}`),
+    ...read(tauriPlugin).flatMap((plugin) =>
+      plugin.init === undefined ? [] : [`        ${plugin.init}`]
+    ),
     "        .invoke_handler(tauri::generate_handler![greet])",
     "        .run(tauri::generate_context!())",
     '        .expect("error while running the tauri application");',
@@ -98,12 +124,29 @@ const capabilitiesJson = (read: ReadSlot) =>
 
 export const tauri = defineIntegration({
   contribute: (ctx) => [
-    ...templateFiles(ctx, "tauri/common"),
+    ...templateFiles(ctx, "tauri/common", {
+      except: ["src-tauri/tauri.conf.json"],
+    }),
     renderFile("src-tauri/Cargo.toml", (read) => cargoToml(ctx, read)),
     renderFile("src-tauri/src/main.rs", (read) => mainRs(read)),
     renderFile("src-tauri/capabilities/default.json", (read) =>
       capabilitiesJson(read)
     ),
+    // The conf's window block comes from the tauriWindow slot, so an add-on
+    // can turn the native decorations off for its own titlebar.
+    renderFile("src-tauri/tauri.conf.json", (read) => {
+      const windows = read(tauriWindow);
+      const decorations =
+        windows.find((window) => window.decorations !== undefined)
+          ?.decorations ?? true;
+      const conf = confSchema.parse(
+        JSON.parse(
+          templateContent(ctx, "tauri/common", "src-tauri/tauri.conf.json")
+        )
+      );
+      conf.app.windows[0] = { ...conf.app.windows[0], decorations };
+      return `${JSON.stringify(conf, null, 2)}\n`;
+    }),
     contribute(packageJson, {
       devDependencies: ["@tauri-apps/cli"],
       path: ".",
