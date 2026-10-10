@@ -611,7 +611,7 @@ allowBuilds:
     "testing": "vitest-playwright",
   },
 
-  "addons": ["knip", "ultracite"],
+  "addons": ["app-shell", "knip", "ultracite"],
 
   "channel": "recommended",
 }

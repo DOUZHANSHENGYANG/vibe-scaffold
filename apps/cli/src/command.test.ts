@@ -304,7 +304,7 @@ describe("creating a project", async () => {
     const target = path.join(root, "addons");
     const defaults = await run(target, ...restApi, "--dry-run");
     expect(defaults.output).toMatchObject({
-      addons: ["knip", "ultracite"],
+      addons: ["app-shell", "knip", "ultracite"],
       ok: true,
     });
     const ultracite = await run(

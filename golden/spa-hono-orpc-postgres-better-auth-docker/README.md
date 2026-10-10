@@ -2,16 +2,17 @@
 
 React · Hono · oRPC · PostgreSQL · Drizzle · Better Auth · Node · Docker, on [Vite+](https://viteplus.dev).
 
-| Layer     | Choice                                                         |
-| --------- | -------------------------------------------------------------- |
-| Frontend  | React 19, TanStack Router, TanStack Query, Tailwind CSS 4      |
-| Backend   | Hono on Node.js 24                                             |
-| API       | oRPC (end-to-end types, no codegen) plus OpenAPI at `/api`     |
-| Database  | PostgreSQL 18, Drizzle ORM v1                                  |
-| Auth      | Better Auth, email and password, sessions in PostgreSQL        |
-| UI        | shadcn/ui on Base UI, in `packages/ui`                         |
-| Deploy    | Docker: one self-contained image, no `node_modules` at runtime |
-| Toolchain | Vite+ (`vp`): dev, build, test, lint, format, type check       |
+| Layer     | Choice                                                                                                                         |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Frontend  | React 19, TanStack Router, TanStack Query, Tailwind CSS 4                                                                      |
+| Backend   | Hono on Node.js 24                                                                                                             |
+| API       | oRPC (end-to-end types, no codegen) plus OpenAPI at `/api`                                                                     |
+| Database  | PostgreSQL 18, Drizzle ORM v1                                                                                                  |
+| Auth      | Better Auth, email and password, sessions in PostgreSQL                                                                        |
+| UI        | shadcn/ui on Base UI, in `packages/ui`                                                                                         |
+| Deploy    | Docker: one self-contained image, no `node_modules` at runtime                                                                 |
+| Shell     | App shell: settings page with section sidebar, en/zh through paraglide, the diffusion theme switch, and the in-window titlebar |
+| Toolchain | Vite+ (`vp`): dev, build, test, lint, format, type check                                                                       |
 
 ## Getting started
 

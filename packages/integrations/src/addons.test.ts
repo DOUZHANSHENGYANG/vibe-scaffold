@@ -81,7 +81,13 @@ describe("leaving out a default add-on removes only its own checks", () => {
         { name: verifiedName }
       ),
     ]);
-    expect(left.setup).toStrictEqual(taken.setup);
+    // A removed add-on takes its own setup command with it; the others keep order.
+    expect(
+      isSubsequence(
+        left.setup.map((command) => command.run),
+        taken.setup.map((command) => command.run)
+      )
+    ).toBeTruthy();
 
     const leftPaths = new Set(left.files.map((file) => file.path));
     // Only the add-on's files go: those it owns, and the config files an integration writes for it, named after it.
@@ -98,13 +104,27 @@ describe("leaving out a default add-on removes only its own checks", () => {
         .map((file) => file.path)
     ).toStrictEqual([]);
 
-    const manifests = new Set(["package.json", "pnpm-workspace.yaml"]);
+    // Nested manifests are owner-rendered too: an add-on adds its own deps to them.
+    const manifests = new Set([
+      "package.json",
+      "apps/web/package.json",
+      "pnpm-workspace.yaml",
+    ]);
     const changed = left.files.filter(
       (file) =>
         file.content !== contentOf(taken, file.path) &&
         !described.has(file.path) &&
         !manifests.has(file.path) &&
-        !(removed.includes("ultracite") && file.path === "vite.config.ts")
+        // ultracite presets, and the spaVitePlugins/generatedFiles slots (app-shell,
+        // pwa), land in owner-rendered configs, which differ per add-on set.
+        !(
+          (removed.some((addon) =>
+            ["ultracite", "app-shell", "pwa"].includes(addon)
+          ) &&
+            /vite.config.ts$/u.test(file.path)) ||
+          (removed.includes("app-shell") &&
+            file.path === ".vscode/settings.json")
+        )
     );
     const testConfig = (generation: Generation) => {
       const config = contentOf(generation, "vite.config.ts");

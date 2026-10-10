@@ -17,6 +17,7 @@ catalog:
   vite-plus: 1.0.0
 
   # web
+  "@inlang/paraglide-js": ^2.25.4
   "@tailwindcss/vite": ^4.3.3
   "@tanstack/react-query": ^5.104.1
   "@tanstack/react-query-devtools": ^5.104.1
@@ -27,6 +28,7 @@ catalog:
   "@types/react-dom": ^19.3.0
   "@vitejs/plugin-react": ^6.1.1
   es-toolkit: ^1.52.0
+  gsap: ^3.15.0
   next-themes: ^0.4.6
   oxc-transform-react: ^0.152.0
   react: ^19.3.0

@@ -4,12 +4,12 @@
 
 ## 已修复（本轮）
 
-| 问题 | 修复 |
-|---|---|
-| B3：非 Tauri 栈构建失败（window.ts 静态解析 `@tauri-apps/api` 失败） | 拆双模板变体：`app-shell/common`（浏览器 stub）/ `app-shell/tauri`（真实现） |
-| B1（部分）：paraglide 插件注入错配置文件 | 新 `spaVitePlugins` slot——注入点改为 **apps/web/vite.config.ts**（spa.ts renderFile 化）；pwa 同步迁移；vite-plus 上错误位置的 vitePlugins slot 已撤销 |
-| M-minor：主题选中态双轨 / ready rejection / titlebar 初始闪烁 / settings 高亮不跟随 / 清空无错误处理 | 全部修复（useTheme 驱动选中态、`.catch`、拖拽区先渲染、hashchange 跟踪、toast error） |
-| local-db 模板 plugin-sql API 错误 | `new Database()` 构造式（Todo 实测抓出） |
+| 问题                                                                                                 | 修复                                                                                                                                                   |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| B3：非 Tauri 栈构建失败（window.ts 静态解析 `@tauri-apps/api` 失败）                                 | 拆双模板变体：`app-shell/common`（浏览器 stub）/ `app-shell/tauri`（真实现）                                                                           |
+| B1（部分）：paraglide 插件注入错配置文件                                                             | 新 `spaVitePlugins` slot——注入点改为 **apps/web/vite.config.ts**（spa.ts renderFile 化）；pwa 同步迁移；vite-plus 上错误位置的 vitePlugins slot 已撤销 |
+| M-minor：主题选中态双轨 / ready rejection / titlebar 初始闪烁 / settings 高亮不跟随 / 清空无错误处理 | 全部修复（useTheme 驱动选中态、`.catch`、拖拽区先渲染、hashchange 跟踪、toast error）                                                                  |
+| local-db 模板 plugin-sql API 错误                                                                    | `new Database()` 构造式（Todo 实测抓出）                                                                                                               |
 
 ## 待做（按优先级）
 

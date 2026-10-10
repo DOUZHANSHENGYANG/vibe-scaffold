@@ -56,6 +56,11 @@ describe.each(generations)("$golden", ({ generation, golden, stack }) => {
         ? ["pnpm exec tauri icon src-tauri/app-icon.svg"]
         : []),
       ...(stack.mobile === "capacitor" ? ["pnpm exec cap add android"] : []),
+      ...(stack.framework === undefined
+        ? []
+        : [
+            "pnpm --dir apps/web exec paraglide-js compile --project ./project.inlang --outdir ./src/paraglide --emit-ts-declarations",
+          ]),
     ]);
   });
 

@@ -21,6 +21,7 @@
     "@tanstack/react-router": "catalog:",
     "@tanstack/react-router-devtools": "catalog:",
     "better-auth": "catalog:",
+    "gsap": "catalog:",
     "lucide-react": "catalog:",
     "next-themes": "catalog:",
     "react": "catalog:",
@@ -29,6 +30,7 @@
     "zustand": "catalog:"
   },
   "devDependencies": {
+    "@inlang/paraglide-js": "catalog:",
     "@my-app/api": "workspace:*",
     "@my-app/config": "workspace:*",
     "@my-app/db": "workspace:*",

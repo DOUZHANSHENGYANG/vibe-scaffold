@@ -96,8 +96,9 @@ describe("add-ons", () => {
   });
 
   it("takes Ultracite alone or alongside Knip", () => {
+    // An explicit list replaces the defaults entirely, in registry order.
     expect(parseAddons("ultracite")).toStrictEqual(["ultracite"]);
-    expect(parseAddons("ultracite,knip")).toStrictEqual(verifiedAddons);
+    expect(parseAddons("ultracite,knip")).toStrictEqual(["knip", "ultracite"]);
   });
 
   it("names them in the search and the command only when they are not the defaults", () => {

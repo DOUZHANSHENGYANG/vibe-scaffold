@@ -11,6 +11,7 @@ const generatedFiles = [
   ".vibe-scaffold/**",
   "**/routeTree.gen.ts",
   "packages/db/src/migrations/**",
+  "apps/web/src/paraglide/**",
 ];
 const vendoredFiles = ["packages/ui/src/components/**"];
 

@@ -9,6 +9,7 @@
   "oxc.fmt.disableNestedConfig": true,
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true,
-    "packages/db/src/migrations/**": true
+    "packages/db/src/migrations/**": true,
+    "apps/web/src/paraglide/**": true
   }
 }

@@ -1,6 +1,7 @@
 # setup
 vp install  # writes pnpm-lock.yaml
 vp build apps/web  # writes apps/web/src/routeTree.gen.ts
+pnpm --dir apps/web exec paraglide-js compile --project ./project.inlang --outdir ./src/paraglide --emit-ts-declarations  # writes apps/web/src/paraglide/**
 
 # .dockerignore (docker)
 .git
@@ -63,7 +64,8 @@ test-results
   "oxc.disableNestedConfig": true,
   "oxc.fmt.disableNestedConfig": true,
   "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
+    "**/routeTree.gen.ts": true,
+    "apps/web/src/paraglide/**": true
   }
 }
 
@@ -122,6 +124,7 @@ Converge on the simplest durable design that meets current requirements. Land it
 | `apps/server`     | Hono on Bun: `env`, oRPC at `/rpc`, OpenAPI and docs at `/api`, the built SPA in production |
 | `packages/api`    | oRPC routers, `publicProcedure`, and the `AppRouter` type the web client is typed from      |
 | `packages/ui`     | shadcn/ui components (Base UI), Tailwind theme in `src/styles/globals.css`                  |
+| `apps/web/src`    | The app shell: the settings page, the i18n messages, the theme switch, and the titlebar     |
 | `packages/config` | Shared TypeScript presets                                                                   |
 
 `vp run dev` serves the web app on :5173 and the API on :3000. Request flow: `apps/web` → `api.*` (`src/lib/api.ts`) → `POST /rpc/*` → `packages/api` procedure. In development Vite proxies `/rpc` and `/api` to the server; in production the server serves the SPA itself, so everything is same-origin.
@@ -132,6 +135,7 @@ Converge on the simplest durable design that meets current requirements. Land it
 - **Environment.** Declare every server variable in `apps/server/src/env.ts` and add it to `apps/server/.env.example`. Code reads `env`. The web app is shipped to the browser, so it holds no secret.
 - **Procedure.** Add it on a router in `packages/api/src/routers/` and register that router in `packages/api/src/index.ts`. Validate input with Zod, add what a procedure reads per request to `Context` in `packages/api/src/context.ts`, and throw `ORPCError` for an expected failure. The web client takes the new type with no codegen step.
 - **UI.** From `packages/ui`, run `pnpm dlx shadcn@latest add <component>` and import `@my-app/ui/components/<name>`. Files in `packages/ui/src/components` are vendored shadcn and are not linted. App code is checked by `@shadcn/lint`: style a component through its variants, and use `className` on it only for layout. When the first file lands in `src/hooks`, add `"./hooks/*": "./src/hooks/*.ts"` to the package exports (`components.json` already aliases that path).
+- **App shell.** User-facing text lives in `apps/web/messages/{en,zh}.json`; a component reads it as `m.message_name()` from `#/paraglide/messages.js`, and paraglide recompiles on the next dev or build. Mount `<Titlebar />` at the top of `__root.tsx`'s layout when the app runs in Tauri — it draws the drag region and window controls in place of the native titlebar. New pages follow `routes/settings.tsx`: sections on a left rail through `SettingsShell`.
 - **Generated.** `routeTree.gen.ts` is tool output. Leave it unchanged.
 - **Utilities.** Import shared helpers from [es-toolkit](https://es-toolkit.dev/llms.txt), from the submodule the docs name (`import { retry } from "es-toolkit/function"`). `es-toolkit/compat` stays out.
 - **Knip.** Delete what `vp run knip` reports: unused files, exports, dependencies, and catalog entries. Add a Knip config entry only when a plugin cannot see a real reference.
@@ -199,14 +203,15 @@ CMD ["bun", "dist/index.mjs"]
 
 React · Hono · oRPC · Bun · Docker, on [Vite+](https://viteplus.dev).
 
-| Layer     | Choice                                                         |
-| --------- | -------------------------------------------------------------- |
-| Frontend  | React 19, TanStack Router, TanStack Query, Tailwind CSS 4      |
-| Backend   | Hono on Bun                                                    |
-| API       | oRPC (end-to-end types, no codegen) plus OpenAPI at `/api`     |
-| UI        | shadcn/ui on Base UI, in `packages/ui`                         |
-| Deploy    | Docker: one self-contained image, no `node_modules` at runtime |
-| Toolchain | Vite+ (`vp`): dev, build, test, lint, format, type check       |
+| Layer     | Choice                                                                                                                         |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Frontend  | React 19, TanStack Router, TanStack Query, Tailwind CSS 4                                                                      |
+| Backend   | Hono on Bun                                                                                                                    |
+| API       | oRPC (end-to-end types, no codegen) plus OpenAPI at `/api`                                                                     |
+| UI        | shadcn/ui on Base UI, in `packages/ui`                                                                                         |
+| Deploy    | Docker: one self-contained image, no `node_modules` at runtime                                                                 |
+| Shell     | App shell: settings page with section sidebar, en/zh through paraglide, the diffusion theme switch, and the in-window titlebar |
+| Toolchain | Vite+ (`vp`): dev, build, test, lint, format, type check                                                                       |
 
 ## Getting started
 
@@ -438,6 +443,70 @@ export default defineConfig({
   </body>
 </html>
 
+# apps/web/messages/en.json (app-shell)
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "app_name": "my-app",
+  "nav_home": "Home",
+  "nav_settings": "Settings",
+  "settings_title": "Settings",
+  "settings_appearance": "Appearance",
+  "settings_language": "Language",
+  "settings_data": "Data",
+  "settings_appearance_desc": "Pick light or dark; the switch sweeps in a circle from where you click.",
+  "settings_language_desc": "Applies everywhere after the page reloads.",
+  "settings_theme": "Theme",
+  "theme_light": "Light",
+  "theme_dark": "Dark",
+  "theme_system": "System",
+  "data_backend": "Storage backend",
+  "data_backend_indexeddb": "IndexedDB (browser)",
+  "data_backend_sqlite": "SQLite (Tauri SQL plugin)",
+  "data_clear": "Clear all local data",
+  "data_cleared": "Local data cleared",
+  "window_minimize": "Minimize",
+  "window_maximize": "Toggle maximize",
+  "window_close": "Close",
+  "data_dir_title": "Storage directory",
+  "data_dir_desc": "Where the app keeps its local data. Applies after the app restarts.",
+  "data_dir_current": "Current",
+  "data_dir_choose": "Choose directory…",
+  "data_dir_browser": "The browser keeps data per origin; the directory applies to the desktop app.",
+  "data_dir_chosen": "Storage directory updated"
+}
+
+# apps/web/messages/zh.json (app-shell)
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "app_name": "my-app",
+  "nav_home": "首页",
+  "nav_settings": "设置",
+  "settings_title": "设置",
+  "settings_appearance": "外观",
+  "settings_language": "语言",
+  "settings_data": "数据",
+  "settings_appearance_desc": "选择浅色或深色；切换会以点击位置为圆心扩散。",
+  "settings_language_desc": "页面刷新后全局生效。",
+  "settings_theme": "主题",
+  "theme_light": "浅色",
+  "theme_dark": "深色",
+  "theme_system": "跟随系统",
+  "data_backend": "存储后端",
+  "data_backend_indexeddb": "IndexedDB（浏览器）",
+  "data_backend_sqlite": "SQLite（Tauri SQL 插件）",
+  "data_clear": "清空本地数据",
+  "data_cleared": "本地数据已清空",
+  "window_minimize": "最小化",
+  "window_maximize": "最大化/还原",
+  "window_close": "关闭",
+  "data_dir_title": "存储目录",
+  "data_dir_desc": "应用本地数据的存放位置，重启应用后生效。",
+  "data_dir_current": "当前",
+  "data_dir_choose": "选择目录…",
+  "data_dir_browser": "浏览器按站点存放数据；目录设置仅对桌面应用生效。",
+  "data_dir_chosen": "存储目录已更新"
+}
+
 # apps/web/package.json (core)
 {
   "name": "@my-app/web",
@@ -461,6 +530,7 @@ export default defineConfig({
     "@tanstack/react-query-devtools": "catalog:",
     "@tanstack/react-router": "catalog:",
     "@tanstack/react-router-devtools": "catalog:",
+    "gsap": "catalog:",
     "lucide-react": "catalog:",
     "next-themes": "catalog:",
     "react": "catalog:",
@@ -469,6 +539,7 @@ export default defineConfig({
     "zustand": "catalog:"
   },
   "devDependencies": {
+    "@inlang/paraglide-js": "catalog:",
     "@my-app/api": "workspace:*",
     "@my-app/config": "workspace:*",
     "@playwright/test": "catalog:",
@@ -509,6 +580,20 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
 });
+
+# apps/web/project.inlang/settings.json (app-shell)
+{
+  "$schema": "https://inlang.com/schema/project-settings",
+  "baseLocale": "en",
+  "locales": ["en", "zh"],
+  "modules": [
+    "https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@4.4.4/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/plugin-m-function-matcher@2.2.16/dist/index.js"
+  ],
+  "plugin.inlang.messageFormat": {
+    "pathPattern": "./messages/{locale}.json"
+  }
+}
 
 # apps/web/src/components/api-status.tsx (orpc)
 import { useQuery } from "@tanstack/react-query";
@@ -625,6 +710,378 @@ export const ModeToggle = () => {
   );
 };
 
+# apps/web/src/components/settings/data-section.tsx (app-shell)
+import { open } from "@tauri-apps/plugin-dialog";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+
+import { Button } from "@my-app/ui/components/button";
+
+import { db } from "#src/lib/db.ts";
+import { isDesktop } from "#src/lib/window.ts";
+import { m } from "#src/paraglide/messages.js";
+
+const DIR_KEY = "dataDir";
+const DIR_STORE = "settings";
+
+// The storage directory: where the desktop app keeps its local data. The
+// choice persists now and applies on the next launch; in a browser the
+// storage is per-origin and this section explains that instead.
+export const DataSection = () => {
+  const [dir, setDir] = useState<string | undefined>();
+
+  useEffect(() => {
+    void db.get<string>(DIR_STORE, DIR_KEY).then(setDir);
+  }, []);
+
+  const choose = async () => {
+    const picked = await open({ directory: true });
+    if (typeof picked !== "string") {
+      return;
+    }
+    await db.set(DIR_STORE, DIR_KEY, picked);
+    setDir(picked);
+    toast(m.data_dir_chosen());
+  };
+
+  if (!isDesktop) {
+    return (
+      <section id="data">
+        <h3 className="mb-1 text-sm font-medium">{m.settings_data()}</h3>
+        <p className="text-muted-foreground text-sm">{m.data_dir_browser()}</p>
+      </section>
+    );
+  }
+
+  return (
+    <section id="data">
+      <h3 className="mb-1 text-sm font-medium">{m.data_dir_title()}</h3>
+      <p className="text-muted-foreground mb-3 text-sm">{m.data_dir_desc()}</p>
+      <p className="text-muted-foreground mb-2 font-mono text-xs">
+        {m.data_dir_current()}: {dir ?? "—"}
+      </p>
+      <Button
+        onClick={() => {
+          void choose();
+        }}
+        variant="outline"
+      >
+        {m.data_dir_choose()}
+      </Button>
+    </section>
+  );
+};
+
+# apps/web/src/components/settings/language-section.tsx (app-shell)
+import { Button } from "@todo-app/ui/components/button";
+import { cn } from "@todo-app/ui/lib/utils";
+
+import { m } from "#src/paraglide/messages.js";
+import { setLocale } from "#src/paraglide/runtime.js";
+import { getLocale } from "#src/paraglide/runtime.js";
+
+// The language choice: switching here re-renders the app's messages in place.
+export const LanguageSection = () => {
+  const current = getLocale();
+
+  return (
+    <section id="language">
+      <h3 className="mb-1 text-sm font-medium">{m.settings_language()}</h3>
+      <p className="text-muted-foreground mb-3 text-sm">
+        {m.settings_language_desc()}
+      </p>
+      <div className="flex gap-2">
+        <Button
+          className={cn(current === "en" && "border-foreground")}
+          onClick={() => {
+            void setLocale("en");
+          }}
+          variant="outline"
+        >
+          English
+        </Button>
+        <Button
+          className={cn(current === "zh" && "border-foreground")}
+          onClick={() => {
+            void setLocale("zh");
+          }}
+          variant="outline"
+        >
+          中文
+        </Button>
+      </div>
+    </section>
+  );
+};
+
+# apps/web/src/components/settings/theme-section.tsx (app-shell)
+import { Button } from "@todo-app/ui/components/button";
+import { cn } from "@todo-app/ui/lib/utils";
+import { useTheme } from "next-themes";
+
+import { m } from "#src/paraglide/messages.js";
+
+type Choice = "light" | "dark" | "system";
+const choices: readonly Choice[] = ["light", "dark", "system"];
+
+const labels = {
+  dark: () => m.theme_dark(),
+  light: () => m.theme_light(),
+  system: () => m.theme_system(),
+} as const;
+
+// The settings-page theme choice. The quick toggle lives in the titlebar; this
+// section shows which of the three choices is active.
+export const ThemeSection = () => {
+  const { setTheme, theme } = useTheme();
+  const picked = (theme ?? "system") as Choice;
+
+  return (
+    <section id="theme">
+      <h3 className="mb-1 text-sm font-medium">{m.settings_theme()}</h3>
+      <p className="text-muted-foreground mb-3 text-sm">
+        {m.settings_appearance_desc()}
+      </p>
+      <div className="flex gap-2">
+        {choices.map((choice) => (
+          <Button
+            className={cn(picked === choice && "border-foreground")}
+            key={choice}
+            onClick={() => {
+              setTheme(choice);
+            }}
+            variant="outline"
+          >
+            {labels[choice]()}
+          </Button>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+# apps/web/src/components/titlebar.tsx (app-shell)
+import { useNavigate } from "@tanstack/react-router";
+import gsap from "gsap";
+import { Home, Moon, Settings, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useRef, useState } from "react";
+
+import { cn } from "@my-app/ui/lib/utils";
+
+import { windowControls, type WindowControls } from "#src/lib/window.ts";
+import { m } from "#src/paraglide/messages.js";
+
+const controlButton =
+  "flex h-full w-11 items-center justify-center text-foreground/70 hover:bg-accent hover:text-foreground transition-colors";
+
+// The theme sweep: light -> dark expands a dark circle from the clicked icon;
+// dark -> light is the reverse, the dark view collapsing into that point. GSAP
+// animates an overlay so the direction is explicit, falling back to an instant
+// switch where animations are unavailable.
+const sweepTheme = (to: "light" | "dark", x: number, y: number) => {
+  const root = document.documentElement;
+  const isDark = root.classList.contains("dark");
+  if (isDark === (to === "dark")) {
+    return;
+  }
+  const radius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y)
+  );
+  const commit = () => root.classList.toggle("dark", to === "dark");
+  // Colors come from the theme's CSS variables so the overlay always matches.
+  const styles = getComputedStyle(root);
+  const color =
+    styles.getPropertyValue(
+      to === "dark" ? "--color-neutral-950" : "--color-neutral-50"
+    ) || (to === "dark" ? "#0a0a0a" : "#fafafa");
+
+  const overlay = document.createElement("div");
+  overlay.style.cssText = `position:fixed;inset:0;z-index:9999;pointer-events:none;background:${color};`;
+  document.body.appendChild(overlay);
+
+  if (to === "dark") {
+    // The dark view grows from the icon over the light page, then the theme commits.
+    gsap.set(overlay, { clipPath: `circle(0px at ${x}px ${y}px)` });
+    gsap.to(overlay, {
+      clipPath: `circle(${radius}px at ${x}px ${y}px)`,
+      duration: 0.6,
+      ease: "power2.in",
+      onComplete: () => {
+        commit();
+        gsap.to(overlay, {
+          opacity: 0,
+          duration: 0.15,
+          onComplete: () => overlay.remove(),
+        });
+      },
+    });
+    setTimeout(() => overlay.remove(), 1500);
+    return;
+  }
+  // The light page sits under the overlay; commit first, then the dark layer
+  // collapses back into the icon.
+  commit();
+  gsap.set(overlay, { clipPath: `circle(${radius}px at ${x}px ${y}px)` });
+  gsap.to(overlay, {
+    clipPath: `circle(0px at ${x}px ${y}px)`,
+    duration: 0.6,
+    ease: "power2.out",
+    onComplete: () => overlay.remove(),
+  });
+  setTimeout(() => overlay.remove(), 1500);
+};
+
+// The app's own titlebar: the drag region carries the app icon and the page
+// navigation; the right side holds the theme sweep, the language switch, and
+// the window controls. In a browser the window controls simply drop out.
+export const Titlebar = () => {
+  const { resolvedTheme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const [controls, setControls] = useState<WindowControls | undefined>();
+  const barRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    void windowControls().then(setControls);
+    if (barRef.current !== null) {
+      gsap.from(barRef.current, {
+        y: -36,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+  }, []);
+
+  const toggleTheme = (event: React.MouseEvent) => {
+    const next =
+      (resolvedTheme ?? "light") === "dark"
+        ? ("light" as const)
+        : ("dark" as const);
+    setTheme(next);
+    sweepTheme(next, event.clientX, event.clientY);
+  };
+
+  const cycleLanguage = () => {
+    const next = document.documentElement.lang === "zh" ? "en" : "zh";
+    void import("#src/paraglide/runtime.js").then(({ setLocale }) =>
+      setLocale(next)
+    );
+    if (barRef.current !== null) {
+      gsap.fromTo(
+        barRef.current,
+        { opacity: 1 },
+        {
+          opacity: 0.4,
+          duration: 0.18,
+          yoyo: true,
+          repeat: 1,
+          ease: "power1.inOut",
+        }
+      );
+    }
+  };
+
+  return (
+    <header
+      className="bg-background/90 flex h-10 shrink-0 items-center border-b backdrop-blur"
+      data-tauri-drag-region
+      ref={barRef}
+    >
+      <div
+        className="flex h-full items-center gap-1 pl-3"
+        data-tauri-drag-region
+      >
+        <button
+          aria-label={m.nav_home()}
+          className="text-foreground/70 hover:text-foreground flex h-full items-center gap-1.5 px-2 text-sm transition-colors"
+          data-tauri-drag-region={false}
+          onClick={() => {
+            void navigate({ to: "/" });
+          }}
+          type="button"
+        >
+          <Home className="size-4" />
+        </button>
+        <button
+          className="text-foreground/70 hover:text-foreground flex h-full items-center px-2 text-sm transition-colors"
+          data-tauri-drag-region={false}
+          onClick={() => {}}
+          type="button"
+        ></button>
+      </div>
+      <div className="ml-auto flex h-full items-center">
+        <button
+          aria-label={m.nav_settings()}
+          className={controlButton}
+          onClick={() => {
+            void navigate({ to: "/settings" });
+          }}
+          type="button"
+        >
+          <Settings className="size-4" />
+        </button>
+        <button
+          aria-label={m.settings_theme()}
+          className={controlButton}
+          onClick={toggleTheme}
+          type="button"
+        >
+          {(resolvedTheme ?? "light") === "dark" ? (
+            <Sun className="size-4" />
+          ) : (
+            <Moon className="size-4" />
+          )}
+        </button>
+        <button
+          aria-label={m.settings_language()}
+          className={cn(controlButton, "w-auto px-3 text-xs font-medium")}
+          onClick={cycleLanguage}
+          type="button"
+        >
+          {document.documentElement.lang === "zh" ? "EN" : "中"}
+        </button>
+        {controls !== undefined && (
+          <>
+            <span className="bg-border mx-1 h-4 w-px" />
+            <button
+              aria-label={m.window_minimize()}
+              className={controlButton}
+              onClick={() => {
+                void controls.minimize();
+              }}
+              type="button"
+            >
+              ―
+            </button>
+            <button
+              aria-label={m.window_maximize()}
+              className={controlButton}
+              onClick={() => {
+                void controls.toggleMaximize();
+              }}
+              type="button"
+            >
+              ▢
+            </button>
+            <button
+              aria-label={m.window_close()}
+              className={`${controlButton} hover:bg-destructive hover:text-white`}
+              onClick={() => {
+                void controls.close();
+              }}
+              type="button"
+            >
+              ✕
+            </button>
+          </>
+        )}
+      </div>
+    </header>
+  );
+};
+
 # apps/web/src/lib/api.ts (spa)
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
@@ -665,6 +1122,20 @@ export const createQueryClient = () => {
 
   return queryClient;
 };
+
+# apps/web/src/lib/window.ts (app-shell)
+// The browser stub of the window layer: the Tauri variant of this file, which
+// the tauri set contributes in place of this one, wraps the real window API.
+export const isDesktop = false;
+
+export interface WindowControls {
+  close(): Promise<void>;
+  minimize(): Promise<void>;
+  toggleMaximize(): Promise<void>;
+}
+
+export const windowControls = async (): Promise<WindowControls | undefined> =>
+  undefined;
 
 # apps/web/src/main.tsx (spa)
 import "@my-app/ui/globals.css";
@@ -798,6 +1269,83 @@ const HomePage = () => (
 
 export const Route = createFileRoute("/")({
   component: HomePage,
+});
+
+# apps/web/src/routes/settings.tsx (app-shell)
+import { createFileRoute } from "@tanstack/react-router";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@todo-app/ui/components/card";
+import { cn } from "@todo-app/ui/lib/utils";
+import { useEffect, useState } from "react";
+
+import { DataSection } from "#src/components/settings/data-section.tsx";
+import { LanguageSection } from "#src/components/settings/language-section.tsx";
+import { ThemeSection } from "#src/components/settings/theme-section.tsx";
+import { m } from "#src/paraglide/messages.js";
+
+// The system sidebar: theme, language, and the storage directory, top to bottom.
+const useSections = () => [
+  { id: "theme", title: m.settings_theme() },
+  { id: "language", title: m.settings_language() },
+  { id: "data", title: m.settings_data() },
+];
+
+const SettingsPage = () => {
+  const [active, setActive] = useState("theme");
+  const sections = useSections();
+
+  useEffect(() => {
+    const read = () => {
+      const hash = window.location.hash.slice(1);
+      if (sections.some((section) => section.id === hash)) {
+        setActive(hash);
+      }
+    };
+    read();
+    window.addEventListener("hashchange", read);
+    return () => {
+      window.removeEventListener("hashchange", read);
+    };
+  }, []);
+
+  return (
+    <div className="grid gap-8 md:grid-cols-[200px_1fr]">
+      <nav aria-label={m.settings_title()} className="flex flex-col gap-1">
+        {sections.map((section) => (
+          <a
+            className={cn(
+              "text-muted-foreground hover:text-foreground rounded-md px-3 py-2 text-sm transition-colors",
+              active === section.id && "bg-accent text-foreground"
+            )}
+            href={`#${section.id}`}
+            key={section.id}
+          >
+            {section.title}
+          </a>
+        ))}
+      </nav>
+      <div className="flex flex-col gap-10">
+        <Card>
+          <CardHeader>
+            <CardTitle>{m.settings_title()}</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-10">
+            <ThemeSection />
+            <LanguageSection />
+            <DataSection />
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export const Route = createFileRoute("/settings")({
+  component: SettingsPage,
 });
 
 # apps/web/src/stores/counter.ts (react)
@@ -1997,6 +2545,7 @@ catalog:
   vite-plus: 1.0.0
 
   # web
+  "@inlang/paraglide-js": ^2.25.4
   "@tailwindcss/vite": ^4.3.3
   "@tanstack/react-query": ^5.104.1
   "@tanstack/react-query-devtools": ^5.104.1
@@ -2007,6 +2556,7 @@ catalog:
   "@types/react-dom": ^19.3.0
   "@vitejs/plugin-react": ^6.1.1
   es-toolkit: ^1.52.0
+  gsap: ^3.15.0
   next-themes: ^0.4.6
   oxc-transform-react: ^0.152.0
   react: ^19.3.0
@@ -2072,7 +2622,7 @@ peerDependencyRules:
     "testing": "vitest-playwright",
   },
 
-  "addons": ["knip", "ultracite"],
+  "addons": ["app-shell", "knip", "ultracite"],
 
   "channel": "recommended",
 }
@@ -2087,7 +2637,11 @@ import tanstack from "ultracite/oxlint/tanstack";
 import vitest from "ultracite/oxlint/vitest";
 import { defineConfig } from "vite-plus";
 
-const generatedFiles = [".vibe-scaffold/**", "**/routeTree.gen.ts"];
+const generatedFiles = [
+  ".vibe-scaffold/**",
+  "**/routeTree.gen.ts",
+  "apps/web/src/paraglide/**",
+];
 const vendoredFiles = ["packages/ui/src/components/**"];
 
 export default defineConfig({

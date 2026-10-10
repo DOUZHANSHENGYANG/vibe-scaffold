@@ -4,7 +4,7 @@
   "properties": {
     "$schema": { "type": "string" },
     "addons": {
-      "default": ["knip", "ultracite"],
+      "default": ["app-shell", "knip", "ultracite"],
       "type": "array",
       "items": {
         "type": "string",
