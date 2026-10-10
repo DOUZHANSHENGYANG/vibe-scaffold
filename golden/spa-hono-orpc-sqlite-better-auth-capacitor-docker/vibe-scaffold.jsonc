@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/DOUZHANSHENGYANG/vibe-scaffold/main/packages/integrations/schema.json",
+  "$schema": "https://cdn.jsdelivr.net/gh/DOUZHANSHENGYANG/vibe-scaffold@main/packages/integrations/schema.json",
 
   "stack": {
     "toolchain": "vite-plus",

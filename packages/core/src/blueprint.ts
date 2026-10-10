@@ -8,10 +8,10 @@ import {
   integrationsOfKind,
 } from "#/registry.ts";
 
-// Served from the repository itself: the Studio site has no static hosting yet,
-// and editors only need a stable URL that follows main.
+// Served through jsDelivr, which mirrors the repository and is reachable where
+// raw.githubusercontent is not; branch pins refresh within a day of a push.
 export const blueprintSchemaUrl =
-  "https://raw.githubusercontent.com/DOUZHANSHENGYANG/vibe-scaffold/main/packages/integrations/schema.json";
+  "https://cdn.jsdelivr.net/gh/DOUZHANSHENGYANG/vibe-scaffold@main/packages/integrations/schema.json";
 
 export const channels = ["recommended"] as const;
 export const packageManagers = ["pnpm", "bun"] as const;
