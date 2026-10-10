@@ -1,1012 +1,1012 @@
 {
   "hono-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "93a17b1d2878913172d7c22ef60f8bb007f4998aa3883e6ce85a63712eeaa6d7",
-    "seconds": 10,
-    "verifiedAt": "2026-10-05T01:00:44.674Z"
+    "fingerprint": "8e59ee02507c1db9572eb76b4338124f63f2a50147b0947282078df7ce9aeccb",
+    "seconds": 6,
+    "verifiedAt": "2026-10-07T14:32:25.084Z"
   },
   "hono-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "da94d277e4805e36c9bcd5a60dd71f4d6dbb386831f798bdda3042dec33e50f2",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:44.674Z"
+    "fingerprint": "0fbc20ce1ef0d221ee2527b03ab356d48f0c377cd84622ced1d2b2aff2812bac",
+    "seconds": 4,
+    "verifiedAt": "2026-10-07T14:33:35.284Z"
   },
   "hono-openapi-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "08d33cb1c3214e41f9b38d95d1e05e93a53acba6bae7c77f1c27a2b9e57352be",
-    "seconds": 11,
-    "verifiedAt": "2026-10-05T01:00:16.781Z"
+    "fingerprint": "50fa69a40edf0fe12e10294d3a40789b20a04bf85186564c2bd8d56c6a7d36cf",
+    "seconds": 5,
+    "verifiedAt": "2026-10-07T14:32:27.162Z"
   },
   "hono-openapi-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "88ab43d66ac4fae51afc52c4c81045e896c435df9b65346aae72566b1158d9e1",
-    "seconds": 11,
-    "verifiedAt": "2026-10-05T01:00:15.351Z"
+    "fingerprint": "b1e4088d2a26601d1c81e54f405996ad1a1c8be9ef754c6927c4b59dda97cfcb",
+    "seconds": 6,
+    "verifiedAt": "2026-10-07T14:33:30.989Z"
   },
   "hono-openapi-postgres-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "cdcbf2972e44bf4a71d5c7aad26fbe37754a56eb087efed39dc859c8e63c615b",
+    "fingerprint": "381bcd9435c7455a9433c8d41ed291560eba7d64c895ac2d2b3501323d6781e0",
     "seconds": 15,
-    "verifiedAt": "2026-10-05T00:59:51.322Z"
+    "verifiedAt": "2026-10-07T14:33:12.944Z"
   },
   "hono-openapi-postgres-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "4dbc4a0855ebbaf1a9fd90dec42658dfd65d9a26921e6edf199488634764f2a1",
-    "seconds": 15,
-    "verifiedAt": "2026-10-05T00:59:51.321Z"
+    "fingerprint": "54046a0c313422dc21c2922ef554a474a29182c7ff3ea8829ef2ae3e7a4dad73",
+    "seconds": 12,
+    "verifiedAt": "2026-10-07T14:36:51.191Z"
   },
   "hono-openapi-postgres-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "a551b2463a37f247f4a951a7abc4e84000a38598f2dab9f3d345eed4746bc5b5",
-    "seconds": 10,
-    "verifiedAt": "2026-10-05T00:59:55.426Z"
+    "fingerprint": "bcb2355043fc859e70503790912fb20bd45e45cc27fb258dd00cdb4c123f1f21",
+    "seconds": 12,
+    "verifiedAt": "2026-10-07T14:31:58.175Z"
   },
   "hono-openapi-postgres-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "9c4ab350fdee8fcd920d12439774f3fca416395548b4dee64b14a153670cd804",
+    "fingerprint": "ab92625d22f0f6adab17172331336aca7f71c909a4fb0e903c29a26595613cea",
     "seconds": 13,
-    "verifiedAt": "2026-10-05T00:59:50.920Z"
+    "verifiedAt": "2026-10-07T14:34:06.789Z"
   },
   "hono-openapi-sqlite-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "d10fa8168d1560a2cb308953999ca044d1bcac87410a8644e865bc2dd9ae8f99",
-    "seconds": 14,
-    "verifiedAt": "2026-10-05T01:00:05.510Z"
+    "fingerprint": "70a4a6a92cdc71d4d1dc0e188d6cdf5f6c821a751ef16d5a59a71366fafe9725",
+    "seconds": 15,
+    "verifiedAt": "2026-10-07T14:32:19.398Z"
   },
   "hono-openapi-sqlite-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "f25c494dc02948dbdb3be88cc8c11d6c742713a4b1fd1c67bf60cd1bd6861209",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:03.567Z"
+    "fingerprint": "a812ecd9f3a44827c4088e4209f9ebed41cae508a6047236c9a4acff9f89c56d",
+    "seconds": 14,
+    "verifiedAt": "2026-10-07T14:33:31.335Z"
   },
   "hono-openapi-sqlite-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "8d7a9bbe370bdfa4af13ecbedb2ab453a531a5ef6b2bfc3cd4e964d8f4e0bced",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:07.757Z"
+    "fingerprint": "f55bed54bfcb3cea4e62ee6fbfbeaa9fc46be5ff12a7f793f0c4bca3b63b8d27",
+    "seconds": 7,
+    "verifiedAt": "2026-10-07T14:32:23.989Z"
   },
   "hono-openapi-sqlite-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "9cc425714f014072ff6ad59dd387283220f806294d8e0e43e0c0b8fb9a194a30",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:05.118Z"
+    "fingerprint": "866352da2658bf38f95ceec42633a7394e54e25f7d5726498a5e6eb29751e692",
+    "seconds": 11,
+    "verifiedAt": "2026-10-07T14:33:33.864Z"
   },
   "hono-orpc-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "a617777579690e6cc889d0e88c9463e78ac1bb5aa02bc29ba9c0aae08a22c546",
-    "seconds": 10,
-    "verifiedAt": "2026-10-05T00:59:45.433Z"
+    "fingerprint": "531dadc70cfaeee4af6843715985ea93b6ead538d0c5521d8852c33f33c6af2e",
+    "seconds": 7,
+    "verifiedAt": "2026-10-07T14:32:57.517Z"
   },
   "hono-orpc-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "a0c10ab12693e22a8a6ddd07d09f89bf0106f69f164e0f1102a71105725d1c35",
-    "seconds": 7,
-    "verifiedAt": "2026-10-05T00:59:37.588Z"
+    "fingerprint": "0297487680d951a53aad660ca5bd03610eeb89c3d6aa610a8267ded20c311d3f",
+    "seconds": 5,
+    "verifiedAt": "2026-10-07T14:36:41.703Z"
   },
   "hono-orpc-postgres-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "22c6455327a80c764f044fa995b810dfe8c67afea63e5901fd08a127f47e4046",
-    "seconds": 11,
-    "verifiedAt": "2026-10-05T00:59:22.407Z"
+    "fingerprint": "0ea0aec330fc581b5982a630831c1ec04b6dbe8d843def3ca0611ac582e583ca",
+    "seconds": 15,
+    "verifiedAt": "2026-10-07T14:31:46.271Z"
   },
   "hono-orpc-postgres-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "8727014b032580ba35f565725a713256b19b9e681250a2c129a60ba1ac288409",
-    "seconds": 14,
-    "verifiedAt": "2026-10-05T00:59:18.615Z"
+    "fingerprint": "6dc51302662d8f6f94def37356cb227cfac40cc5062c5c11a97cba173ede8d5b",
+    "seconds": 15,
+    "verifiedAt": "2026-10-07T14:33:53.698Z"
   },
   "hono-orpc-postgres-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "850037af6f4e4c1339c72dfab82c3c90939f80d16dd86c309f59f14150f2f2d6",
-    "seconds": 11,
-    "verifiedAt": "2026-10-05T00:59:24.005Z"
+    "fingerprint": "356b3f463d8add554a0f6fd339a6f050179cbd07046129cd0f965678de7a9fa7",
+    "seconds": 13,
+    "verifiedAt": "2026-10-07T14:32:16.474Z"
   },
   "hono-orpc-postgres-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "20f53782722606d1c99957653280aa095aa84596b002549cf30440e0af56a380",
-    "seconds": 11,
-    "verifiedAt": "2026-10-05T00:59:23.107Z"
+    "fingerprint": "7c82b3a8a3e4603c182a689fcb45167e2f8333cb9e57b1261c74b44335ccf4fd",
+    "seconds": 12,
+    "verifiedAt": "2026-10-07T14:33:25.508Z"
   },
   "hono-orpc-sqlite-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "453ec53bb840d496b0738baca8930b1d18cda769cc9c71025b0a78bf5a6d2426",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T00:59:34.994Z"
+    "fingerprint": "9afc4bcec9e872e5c28df5be37ee21d044106199cdaad1076f7a00c7f42b5d78",
+    "seconds": 9,
+    "verifiedAt": "2026-10-07T14:32:22.601Z"
   },
   "hono-orpc-sqlite-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "fa88b4ec27ff69fface042db7e4187b2b27c5c77e6bc2b1c688a8bdbdae73d91",
-    "seconds": 11,
-    "verifiedAt": "2026-10-05T00:59:30.241Z"
+    "fingerprint": "1f083ad1e7678b140b4f4c5ac4f3e04ed9153ab1026c1238fcd9888c1e679ceb",
+    "seconds": 13,
+    "verifiedAt": "2026-10-07T14:33:23.018Z"
   },
   "hono-orpc-sqlite-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "e4b2b369bf45c6f039961e13f4544a97c6d1a991a132b0d4ec1c63ff243ee350",
+    "fingerprint": "5d7fd99ded6005f11b1b382b93c6b7e7d4d641088c2e12010850f4e6ec9fe158",
     "seconds": 11,
-    "verifiedAt": "2026-10-05T00:59:36.118Z"
+    "verifiedAt": "2026-10-07T14:32:50.076Z"
   },
   "hono-orpc-sqlite-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "dc849a0bb3540308a7528af2b8e488b53a133cc26cfed89c9941ded15e038a03",
+    "fingerprint": "4276328c874b2cd716f8360570af375a0f71fe1b36c26bb0ee3284706d8ccab9",
     "seconds": 11,
-    "verifiedAt": "2026-10-05T00:59:35.315Z"
+    "verifiedAt": "2026-10-07T14:36:38.830Z"
   },
   "hono-postgres-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "f6d99baf1efc84c0b27dfd52576e71abb29a50ef255f8c8cf6174500db7a29f0",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:20.116Z"
+    "fingerprint": "e929c7ca64b6ff083af267549815e4a3cf409c1dae44adaa9b369dd854e91b5b",
+    "seconds": 9,
+    "verifiedAt": "2026-10-07T14:31:57.456Z"
   },
   "hono-postgres-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "b77fb23b8286196ee8eb9b9dd76492e1a9adda84a206a7c656842fe72c526f3e",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:18.517Z"
+    "fingerprint": "31b1bf12a4507f30874f104862df2e60c1eeb6d590ad31f98a3e26517e4f8f85",
+    "seconds": 9,
+    "verifiedAt": "2026-10-07T14:34:06.737Z"
   },
   "hono-postgres-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "7803c553f4e487cf6c08f8d836b51375d354b108b2d2ea6ca6756472077e947d",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:29.349Z"
+    "fingerprint": "93b9e15768ad583c370f4ae2e310d1c9f8b37429ea98cd32498eea77354637d5",
+    "seconds": 6,
+    "verifiedAt": "2026-10-07T14:32:22.126Z"
   },
   "hono-postgres-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "ec82dd8726f188d3055f9c20a9cdb73626d4417cb36fc55205c8395ca340b5c6",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:27.306Z"
+    "fingerprint": "3256e84fe7c12908de2c6224c25257986ac4b27f3001650f7d7d7b7d52556624",
+    "seconds": 6,
+    "verifiedAt": "2026-10-07T14:33:31.305Z"
   },
   "hono-sqlite-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "a1ec2ed97947f818a5bf0520f03e9928088ed3ed8e727d5a2284bbddc7aa76b2",
-    "seconds": 13,
-    "verifiedAt": "2026-10-05T01:00:33.996Z"
+    "fingerprint": "e669e625cc70f2f77e86dbb5b6af5f5c38f54510d39df89a0c0930a4dedacc66",
+    "seconds": 5,
+    "verifiedAt": "2026-10-07T14:32:28.938Z"
   },
   "hono-sqlite-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "60f6bc3283bc5847d5f3e4ff27c0aee55c0db7c7592bda676cbf1a7fa927fa8a",
-    "seconds": 13,
-    "verifiedAt": "2026-10-05T01:00:31.979Z"
+    "fingerprint": "762966145a0b0c02ae609ac3d063d48f5dce2cb075d578116cb201e46a34d8ab",
+    "seconds": 6,
+    "verifiedAt": "2026-10-07T14:33:37.315Z"
   },
   "hono-sqlite-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "d65b480296d7a24c6a1d30d091542c650eace94f2b25ea3e4cab153bf1e1b314",
-    "seconds": 13,
-    "verifiedAt": "2026-10-05T01:00:42.351Z"
+    "fingerprint": "a8885afb1481d2603249b40febc7e10602f00f74168473b30df58bf62231fdad",
+    "seconds": 6,
+    "verifiedAt": "2026-10-07T14:33:05.601Z"
   },
   "hono-sqlite-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "1e4e5a74c7a12785013a8458c623bb14ffe2bc6fea46d7289156548c1141794f",
-    "seconds": 12,
-    "verifiedAt": "2026-10-05T01:00:40.046Z"
+    "fingerprint": "3ab4f4504969174e7cc53b39f4668612a9471296e5f0c8699213f79f5eb95574",
+    "seconds": 6,
+    "verifiedAt": "2026-10-07T14:36:47.780Z"
   },
   "spa-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "bb293a7b7f5805fd94581eab11d15185d9a89bee298545ccaa4b76043d30df8e",
-    "seconds": 16,
-    "verifiedAt": "2026-10-05T00:47:34.340Z"
+    "fingerprint": "ffaf3a49aaeffe2e16d51eafe9bb8e95de5fe348552242017ca4a92d840b8627",
+    "seconds": 19,
+    "verifiedAt": "2026-10-07T14:31:48.752Z"
   },
   "spa-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "f24dff31b3291cd3fb2955945664f98a233581e2edb383b82e2742c731e535e4",
-    "seconds": 21,
-    "verifiedAt": "2026-10-05T00:47:21.205Z"
+    "fingerprint": "9cc10652cff05dd8c012b96b00d48a255e4b3838359eabeeca0cd0d40b3f4e2b",
+    "seconds": 20,
+    "verifiedAt": "2026-10-07T14:33:57.653Z"
   },
   "spa-electron-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "924e6bd3fc3f92aec6acad36499c344a12307f5b2069aa3bad3569d2aa79c2cd",
-    "seconds": 16,
-    "verifiedAt": "2026-10-05T01:02:17.131Z"
+    "fingerprint": "893fa655cfa3556c6bc45b07be5ddff7ed7c51b2c0247a1f044205d4e72b11da",
+    "seconds": 15,
+    "verifiedAt": "2026-10-07T14:33:28.348Z"
   },
   "spa-hono-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "231a9dd1585b3749eb9f58743d7e78026bb5a8bd97812ce5561324fe7d35fceb",
-    "seconds": 20,
-    "verifiedAt": "2026-10-05T00:47:17.940Z"
+    "fingerprint": "97b50e816e301c049cb72dee7a6c8625ff9142290d6ed8a9d9243ccd2fab4159",
+    "seconds": 21,
+    "verifiedAt": "2026-10-07T14:33:16.895Z"
   },
   "spa-hono-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "c8210278ae18e0bc5a390dc51a87cf45aaedbdf69149f21671c7d3144c0a1a31",
-    "seconds": 20,
-    "verifiedAt": "2026-10-05T00:47:16.969Z"
+    "fingerprint": "4ceab7cf48c1c6817e3e1854739a809bd12caca102f8ab500a214cad1e3d6d96",
+    "seconds": 14,
+    "verifiedAt": "2026-10-07T14:32:16.549Z"
   },
   "spa-hono-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "a2b2e5aa32f2b12fd7ebd8f31491a643715f1e48968c3b2fb34264d0830c9cd4",
-    "seconds": 22,
-    "verifiedAt": "2026-10-05T00:47:17.940Z"
+    "fingerprint": "36d4278342e70ff6885de606a81cfe45feac782d2badc9668a4a6a6bcfbdd9a6",
+    "seconds": 19,
+    "verifiedAt": "2026-10-07T14:33:24.552Z"
   },
   "spa-hono-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "46c49a738626e446a1046e2eb1f1e63ddc04ca196fef64c168b7ab90a0f62557",
-    "seconds": 20,
-    "verifiedAt": "2026-10-05T00:46:55.946Z"
+    "fingerprint": "39f48bee270271e2e55f6a451fa606e548ad6a1595a54f149ba3e32d10f13f2f",
+    "seconds": 21,
+    "verifiedAt": "2026-10-07T14:32:59.158Z"
   },
   "spa-hono-openapi-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "465b29246180e520b0d3d1580ba3e6c915253c335616bb0d8ac01aef0ec3e999",
-    "seconds": 18,
-    "verifiedAt": "2026-10-05T00:45:08.440Z"
+    "fingerprint": "812489a04ae41e8abf4fc55461365479082e27d39092a656852a76ff5e710506",
+    "seconds": 25,
+    "verifiedAt": "2026-10-07T14:35:59.690Z"
   },
   "spa-hono-openapi-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "b22d0e666dec634634c80922ab31437bcc69d589cf02f787acbe349c2edbd425",
-    "seconds": 20,
-    "verifiedAt": "2026-10-05T00:45:08.440Z"
+    "fingerprint": "265c110f00747fb9a62a71f704581dc9341f36be8a377e8eae82868464416df6",
+    "seconds": 29,
+    "verifiedAt": "2026-10-07T14:30:49.650Z"
   },
   "spa-hono-openapi-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "c995f6cbed5f0937e3f1439cee32308f40feb7d60bf626f233938271ed6ee44a",
-    "seconds": 20,
-    "verifiedAt": "2026-10-05T00:45:07.238Z"
+    "fingerprint": "aef19fd39f8e980089761204740847575951691b2bce50416909019ad10f93ad",
+    "seconds": 30,
+    "verifiedAt": "2026-10-07T14:32:56.029Z"
   },
   "spa-hono-openapi-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "8128b6fecd5a6dfde58a2382b7f858fa372a2e255f4e68715ee856b6aea844a3",
-    "seconds": 16,
-    "verifiedAt": "2026-10-05T00:44:50.648Z"
+    "fingerprint": "600b042fd3d9b5bfa5b5682af2422f42660660c61f17c2915466413745247d83",
+    "seconds": 25,
+    "verifiedAt": "2026-10-07T14:31:20.745Z"
   },
   "spa-hono-openapi-postgres-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "6fa8cd18cf087280529580e7614523f8407805369b6614e0f3d0698b824ec826",
-    "seconds": 33,
-    "verifiedAt": "2026-10-05T00:43:23.470Z"
+    "fingerprint": "221d989369ddf7930547427277c521f470caa8ea84d18b9f86b2156ed9efaccc",
+    "seconds": 53,
+    "verifiedAt": "2026-10-07T14:32:06.548Z"
   },
   "spa-hono-openapi-postgres-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "85ed9cd773ce10f69a75e671e690adc579017726e2830a7e6d2891494e20dc92",
-    "seconds": 33,
-    "verifiedAt": "2026-10-05T00:43:22.505Z"
+    "fingerprint": "498f35c0640f2f1f0d636f507cd9996ff0e2e57b1631bb06ca9a02978b5e42f6",
+    "seconds": 35,
+    "verifiedAt": "2026-10-07T14:31:31.144Z"
   },
   "spa-hono-openapi-postgres-better-auth-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "05c4ddcfe89f095378cc7e53a7e513eeb516b0d954870251a7895a8c62798d28",
-    "seconds": 35,
-    "verifiedAt": "2026-10-05T00:43:23.470Z"
+    "fingerprint": "27449774d2cdf3c9fa6312aca7b137e85b2e92aec0c29b3110bc3d9acde1fc56",
+    "seconds": 48,
+    "verifiedAt": "2026-10-07T14:32:08.677Z"
   },
   "spa-hono-openapi-postgres-better-auth-electron-bun-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "8f8db47dba612e4fe6c6b6520823f9df00d405a358fa56281a35c6924fd37a88",
-    "seconds": 39,
-    "verifiedAt": "2026-10-05T01:02:04.281Z"
+    "fingerprint": "bb928c8f752a29aa09f629e751284e5353f7b2da4bccd5635739176a983754fd",
+    "seconds": 54,
+    "verifiedAt": "2026-10-07T14:34:07.189Z"
   },
   "spa-hono-openapi-postgres-better-auth-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "75c547161de66bebb6a1c062b10b7a99579f1cff4023174ab5f66642ae9bb3f7",
-    "seconds": 28,
-    "verifiedAt": "2026-10-05T00:43:14.582Z"
+    "fingerprint": "a5c1bf675c356342ded866479dbddffaa7df373a015d6601540d3ef2a1f956c6",
+    "seconds": 52,
+    "verifiedAt": "2026-10-07T14:35:34.892Z"
   },
   "spa-hono-openapi-postgres-better-auth-electron-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "ba5c584e2820d28f53a9632ede0f515d69a6fd8e9a0c8b8be1c6a91157b4f2f9",
-    "seconds": 41,
-    "verifiedAt": "2026-10-05T01:02:04.281Z"
+    "fingerprint": "ed2498e561e0f3025e8a6d0aece7082c2195b8638d1ab3fd0724f2e83cab1266",
+    "seconds": 55,
+    "verifiedAt": "2026-10-07T14:33:45.048Z"
   },
   "spa-hono-openapi-postgres-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "131a5718c70769f5db458c9c378baefb31fb862a9ee0c349bb3e5ed1a0bac748",
-    "seconds": 24,
-    "verifiedAt": "2026-10-05T00:43:50.575Z"
+    "fingerprint": "2547dddd818455bfe264ba2bafb00318591c7310a3e916df7f5649adf9b9c8a4",
+    "seconds": 40,
+    "verifiedAt": "2026-10-07T14:32:26.042Z"
   },
   "spa-hono-openapi-postgres-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "c645610c1a293e274120bc622860e36860687dc16458bfc65de63809ccc9b99c",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:43:49.488Z"
+    "fingerprint": "05d38ee3c674756ae74d3434f5b39710591538d355791f4dde2857826ee64ae7",
+    "seconds": 42,
+    "verifiedAt": "2026-10-07T14:31:22.190Z"
   },
   "spa-hono-openapi-postgres-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "ba413c34f5797da51d78676c4d4145da6795470849b20c9d7da6178d851e41ff",
-    "seconds": 27,
-    "verifiedAt": "2026-10-05T00:43:50.575Z"
+    "fingerprint": "2eb635fc3a71719db1a3c5f7647ae0c8b07a818c6ba327ae45214d23a1135a35",
+    "seconds": 48,
+    "verifiedAt": "2026-10-07T14:32:27.590Z"
   },
   "spa-hono-openapi-postgres-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "15a37e52ee9aa400243897a4bb2e4d27e7bcfcd79ff192d96e8d18055d05720d",
-    "seconds": 24,
-    "verifiedAt": "2026-10-05T00:43:42.696Z"
+    "fingerprint": "b18aff26d3ecb27b819816be0456adf189283c38e760e14382da2c6e6ad6f440",
+    "seconds": 30,
+    "verifiedAt": "2026-10-07T14:31:43.944Z"
   },
   "spa-hono-openapi-sqlite-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "4577fd91a1eb0d10a3c9204b2b297df84536bd55d2816e361e46db016036a554",
-    "seconds": 28,
-    "verifiedAt": "2026-10-05T00:44:21.511Z"
+    "fingerprint": "1c73125429b4bbc55870c11b3e2cfb2d5bf7d07e469e8ba4d1aed0978aec25ff",
+    "seconds": 49,
+    "verifiedAt": "2026-10-07T14:32:39.747Z"
   },
   "spa-hono-openapi-sqlite-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "57e8f4191fbb2b542612d18b37cf2d5a3e0b2025f83fccc57d0f45eb1060ccbc",
-    "seconds": 31,
-    "verifiedAt": "2026-10-05T00:44:22.896Z"
+    "fingerprint": "4018b105796db076963dcac4b126b3588f3b18101fc76afa9ccdb3d02a46a565",
+    "seconds": 49,
+    "verifiedAt": "2026-10-07T14:32:11.820Z"
   },
   "spa-hono-openapi-sqlite-better-auth-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "34744a5db31419fb3b8aaa9dafd78e847bdafa2c64a73c43560a0d00e3dd7b10",
-    "seconds": 29,
-    "verifiedAt": "2026-10-05T00:44:19.893Z"
+    "fingerprint": "c317c371567ada281d98fa1e67db0bd22f17a8b4596fa674cdb528a0a798b916",
+    "seconds": 49,
+    "verifiedAt": "2026-10-07T14:35:49.422Z"
   },
   "spa-hono-openapi-sqlite-better-auth-electron-bun-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "8d83685b948d51d5ac12664c26d6dbd1a156602a6c15ecb9da0709f9642427d5",
-    "seconds": 32,
-    "verifiedAt": "2026-10-05T01:02:01.571Z"
+    "fingerprint": "2a69e4b00751de2dd22488c9fde0b9f6fd654bd8503c00fd8ddba365d9597725",
+    "seconds": 49,
+    "verifiedAt": "2026-10-07T14:33:43.312Z"
   },
   "spa-hono-openapi-sqlite-better-auth-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "264657616a2144c9fd2457abc85a99859b49b204ce4d12bcfcb6485fe62d4a0e",
-    "seconds": 24,
-    "verifiedAt": "2026-10-05T00:44:08.109Z"
+    "fingerprint": "f347fa79f06566af022062ed57ab599d7e301a5a3524c7a08752deb0e99965be",
+    "seconds": 52,
+    "verifiedAt": "2026-10-07T14:32:52.885Z"
   },
   "spa-hono-openapi-sqlite-better-auth-electron-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "cf17a4dc019d0320c15958513e38bf69e8c13ff51f047d6a76b93950deec764d",
-    "seconds": 31,
-    "verifiedAt": "2026-10-05T01:01:58.562Z"
+    "fingerprint": "6525deff41e074a441b20c4835afb6a7fdcb79a592663365797312607e1a7e03",
+    "seconds": 51,
+    "verifiedAt": "2026-10-07T14:33:16.252Z"
   },
   "spa-hono-openapi-sqlite-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "0e2ce74bd3e2f1bf6d2d8b535b97780236b00b85008e1c4703ec2dfb725371fd",
-    "seconds": 24,
-    "verifiedAt": "2026-10-05T00:44:48.633Z"
+    "fingerprint": "13d17c0a0174e5b34418409dc30c21bf12da60b74fe1a5c3e62267852462fc01",
+    "seconds": 40,
+    "verifiedAt": "2026-10-07T14:32:46.648Z"
   },
   "spa-hono-openapi-sqlite-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "d6b46d43738ac2ad423342abc085fa2db0475f361be50fa4d6ecc06b701c3932",
+    "fingerprint": "200351be8d515d4c120424ea3817782e5064f1325aebfdaca84b15a25f07b0d2",
     "seconds": 25,
-    "verifiedAt": "2026-10-05T00:44:47.407Z"
+    "verifiedAt": "2026-10-07T14:31:55.945Z"
   },
   "spa-hono-openapi-sqlite-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "ed4031d3bc239892467cdfbddc02fd9e2eda39df39bcda9e3eccf3a6f5a7fa23",
-    "seconds": 24,
-    "verifiedAt": "2026-10-05T00:44:45.891Z"
+    "fingerprint": "93c8c31e2a97ce3244324912f8dbac6c87b1ff01802d90455cb32f518acf8380",
+    "seconds": 38,
+    "verifiedAt": "2026-10-07T14:32:46.941Z"
   },
   "spa-hono-openapi-sqlite-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "cca088cb74d85549c3ad0085d36e974133924572561c7d01434b1d97a96fa56a",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:44:33.837Z"
+    "fingerprint": "b24ed822b4bd8cac66c84b3dbcf6253b267b24f1ea51049bdb17f9381d1538dd",
+    "seconds": 41,
+    "verifiedAt": "2026-10-07T14:32:11.189Z"
   },
   "spa-hono-orpc-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "2bff5a0e085a2347ec3301572da67825f0b78f4334373948e9ab3b9ac43f8933",
-    "seconds": 18,
-    "verifiedAt": "2026-10-05T00:42:46.684Z"
+    "fingerprint": "c9f9c07af700d8171f37ac270a575d042b8177ddbec89676b5da121a106975b5",
+    "seconds": 22,
+    "verifiedAt": "2026-10-07T14:35:00.646Z"
   },
   "spa-hono-orpc-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "e9b0f7611eaa15edfeabe8f747650701614a10eac89bdc0b68d22a7377f97265",
-    "seconds": 20,
-    "verifiedAt": "2026-10-05T00:42:46.684Z"
+    "fingerprint": "560fc80f39a600615185d32e02d4c79f72a47611aa883b7aaa4426dd2a8e2d4e",
+    "seconds": 27,
+    "verifiedAt": "2026-10-07T14:30:47.283Z"
   },
   "spa-hono-orpc-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "f50ed354f172e508f0414aee943d79497de7e62354548981bf79f987ef4d21eb",
-    "seconds": 21,
-    "verifiedAt": "2026-10-05T00:42:46.683Z"
+    "fingerprint": "841f2378336cdcb6abb4354dc5eef5237a284a09b3ae8738e97319910cb7d0a5",
+    "seconds": 24,
+    "verifiedAt": "2026-10-07T14:32:00.626Z"
   },
   "spa-hono-orpc-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "f288b87c238cb8fe4bbc6e0a504495a70575167016e2305e30deb13daaeb57a1",
-    "seconds": 21,
-    "verifiedAt": "2026-10-05T00:42:45.455Z"
+    "fingerprint": "d85ca26d0dd534721da25a16fd7f1928e88c0f373a62ecd48d4ba06c96ca88e5",
+    "seconds": 26,
+    "verifiedAt": "2026-10-07T14:30:40.158Z"
   },
   "spa-hono-orpc-postgres-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "183de90e046e19b033e53f64713eb0c499ce315d833dc6d3346ba52ee1090582",
-    "seconds": 31,
-    "verifiedAt": "2026-10-05T00:41:00.704Z"
+    "fingerprint": "d9e5769844fe9b34d34a9f6f8a924b66ddc1d4ec14b57b661dbaf322bc60d837",
+    "seconds": 54,
+    "verifiedAt": "2026-10-07T14:31:13.109Z"
   },
   "spa-hono-orpc-postgres-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "898cccb9e833b05804517248cb92cc2f9bb7a4b494187bd2b6b09576c397b2a4",
-    "seconds": 30,
-    "verifiedAt": "2026-10-05T00:40:58.365Z"
+    "fingerprint": "7dd1e92cec8337ce712247eba547f758579d4fa535c8de0e6c683f0721b5016d",
+    "seconds": 39,
+    "verifiedAt": "2026-10-07T14:30:55.878Z"
   },
   "spa-hono-orpc-postgres-better-auth-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "ba98fae62113baf970442f7f8483c2af53980c9066968e835753f836fa2fcb99",
-    "seconds": 33,
-    "verifiedAt": "2026-10-05T00:41:00.703Z"
+    "fingerprint": "fa220fd6d66de6cfbc463a1be628a24119de95a1b40d08ced8b99df7a20881d0",
+    "seconds": 51,
+    "verifiedAt": "2026-10-07T14:31:21.100Z"
   },
   "spa-hono-orpc-postgres-better-auth-electron-bun-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "91b23f7de41bcd3aedf24785fbd8c516d5556c6d7c43690c6b6b4fb8d7ebaa8b",
-    "seconds": 39,
-    "verifiedAt": "2026-10-05T01:01:23.415Z"
+    "fingerprint": "93dd729282c1f880e9bdc612406a056bdd056a8571329aa275f8f5a1ae5fbcd7",
+    "seconds": 57,
+    "verifiedAt": "2026-10-07T14:34:02.404Z"
   },
   "spa-hono-orpc-postgres-better-auth-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "88b8ef9a8fd8690bce51cc72b5e50e7d877b6800efda5e16120d222ea83671f5",
-    "seconds": 32,
-    "verifiedAt": "2026-10-05T00:40:58.367Z"
+    "fingerprint": "d817e04a440c48d16387ac68b5dfbff22f7e99fe05ffa2a650cd1095f184af16",
+    "seconds": 56,
+    "verifiedAt": "2026-10-07T14:34:43.191Z"
   },
   "spa-hono-orpc-postgres-better-auth-electron-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "fd90b78df70c2466e5e39481c6622b9dc0e5a268cf27a553dccdaa10231669f1",
-    "seconds": 41,
-    "verifiedAt": "2026-10-05T01:01:23.415Z"
+    "fingerprint": "4bc5ff9186f1f8cb3e53293398a8483a374bd4cab5380c3ece06d701d1255a50",
+    "seconds": 56,
+    "verifiedAt": "2026-10-07T14:32:53.826Z"
   },
   "spa-hono-orpc-postgres-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "6c1d1b9cd4eaec6fbcd921dc4d680d153327a0d3d12b2da0b8ea6a201d17f5b8",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:41:28.161Z"
+    "fingerprint": "c8d0e5828260933316ec2e94d31f9699d1a4ca2665182a215b6bdfefa422c11a",
+    "seconds": 43,
+    "verifiedAt": "2026-10-07T14:31:36.132Z"
   },
   "spa-hono-orpc-postgres-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "0cb86147aa0beb7abbf8169ceb61faa0b577435ad3b5da29d72a8b01e5d06620",
-    "seconds": 26,
-    "verifiedAt": "2026-10-05T00:41:28.161Z"
+    "fingerprint": "47ba6f1e71da48f22e2813635198999b55c22d0972707c8001a6ae2f4cb107db",
+    "seconds": 41,
+    "verifiedAt": "2026-10-07T14:30:55.540Z"
   },
   "spa-hono-orpc-postgres-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "edb21a2da846b0b54d2a7a6323f7072f03b8c7d4f8c08c19ef39787f84f03907",
-    "seconds": 26,
-    "verifiedAt": "2026-10-05T00:41:27.067Z"
+    "fingerprint": "9198bbea2c6414389b93f9d1ccaf3b7eee5c529b9fc43ff4f9ee888c7e70af13",
+    "seconds": 45,
+    "verifiedAt": "2026-10-07T14:31:04.357Z"
   },
   "spa-hono-orpc-postgres-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "b808e474b2964d6bea3c478bceda9e2b457215695fdad05cb056ad5590fa1680",
-    "seconds": 29,
-    "verifiedAt": "2026-10-05T00:41:28.160Z"
+    "fingerprint": "e75d59812ac3ac31971a2784e5cbba9ec8c7370798d4ab9cd2a1668aa4d394b8",
+    "seconds": 33,
+    "verifiedAt": "2026-10-07T14:30:50.304Z"
   },
   "spa-hono-orpc-sqlite-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "33a8990b934b916ce14c570d523bfef8350b90d018ee1e7ee38faf230bdb1f6d",
-    "seconds": 26,
-    "verifiedAt": "2026-10-05T00:41:57.573Z"
+    "fingerprint": "357a4834f392ef98c5eb02a7b4d98e0a55a432a72c769b5b681e5d24d4b8e850",
+    "seconds": 48,
+    "verifiedAt": "2026-10-07T14:31:18.191Z"
   },
   "spa-hono-orpc-sqlite-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "c3e3e6f50f453e90740fc1f66c5c2bfb00cd177319e987d98f6a2434305365ff",
-    "seconds": 30,
-    "verifiedAt": "2026-10-05T00:42:00.069Z"
+    "fingerprint": "4c705bdae8eae59a514a8347e9bd026d3b0a8eb59a87654be5c50d3accb14fea",
+    "seconds": 49,
+    "verifiedAt": "2026-10-07T14:31:30.445Z"
   },
   "spa-hono-orpc-sqlite-better-auth-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "d24120ff3047fa3b003d6867d82d297e750b1122097dbe3656ef23d4ce2a83ac",
-    "seconds": 28,
-    "verifiedAt": "2026-10-05T00:41:57.573Z"
+    "fingerprint": "ac42a498259e5103574c38de99f48933c9d20ad383a820927662e35452a0827d",
+    "seconds": 51,
+    "verifiedAt": "2026-10-07T14:34:38.174Z"
   },
   "spa-hono-orpc-sqlite-better-auth-electron-bun-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "26a615d1f183dcacfeb4fcc2ecb0a7ad8edbb4caf46ae8f10d3749abad4d2caf",
-    "seconds": 34,
-    "verifiedAt": "2026-10-05T01:01:23.415Z"
+    "fingerprint": "6b868e2cc8b499685b53896c330b3b9c06524d402d0133d412f961bedc139ac5",
+    "seconds": 52,
+    "verifiedAt": "2026-10-07T14:32:50.475Z"
   },
   "spa-hono-orpc-sqlite-better-auth-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "21e18fffe5a9e0b046d8f1cf58a2c621a0176142e94a9994775dfd6a04a2732a",
-    "seconds": 28,
-    "verifiedAt": "2026-10-05T00:41:56.008Z"
+    "fingerprint": "f6d92b064d6f0a28def2371399b1bedc1b95bb4f41b4fdcc459ead8980a299de",
+    "seconds": 52,
+    "verifiedAt": "2026-10-07T14:31:45.656Z"
   },
   "spa-hono-orpc-sqlite-better-auth-electron-docker-bun-pm": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "4bc182cf4297825089d598c794301efdb8a93fd816e2c75b21d629075ee4001a",
-    "seconds": 34,
-    "verifiedAt": "2026-10-05T01:01:20.687Z"
+    "fingerprint": "9266b12a129d17c626c390c73d6320473436d3b18de07a9a4becabef832a1227",
+    "seconds": 51,
+    "verifiedAt": "2026-10-07T14:33:12.890Z"
   },
   "spa-hono-orpc-sqlite-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "bad77a243ef1ec3940be98254957a24e2b7a5ae8de0cd49f24a5a69e2024984b",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:42:26.848Z"
+    "fingerprint": "2c1464e495c78aa00937ab2a684bf1b9769bd2538d2bbbed6a9c94c6653c4f8b",
+    "seconds": 36,
+    "verifiedAt": "2026-10-07T14:31:39.981Z"
   },
   "spa-hono-orpc-sqlite-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "54238a3ff70988bb9c0d9ac810df1dd196c28a95dd16d9ab1c62d13d84f38c2f",
+    "fingerprint": "c100575e4765f9596ae68fbe1d2c6afc6eee729f1409e38b88a2d77ed23c810c",
     "seconds": 24,
-    "verifiedAt": "2026-10-05T00:42:24.284Z"
+    "verifiedAt": "2026-10-07T14:31:14.001Z"
   },
   "spa-hono-orpc-sqlite-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "43ee3823d86c47d0747ca14a812bf8486d05805cb99136da309bd5f62266af50",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:42:24.284Z"
+    "fingerprint": "e030899589aa389d50d433dda6da05c6b87a2fbfcf4b951fdde17e17322d3191",
+    "seconds": 32,
+    "verifiedAt": "2026-10-07T14:31:50.278Z"
   },
   "spa-hono-orpc-sqlite-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "c3d51dd7305748b22dcd96aa9528e09b006590c07ae38d5b0a2f5bdec7585674",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:42:22.929Z"
+    "fingerprint": "b7b9b50972ac26d97534323047ef2af87d28976e8e2fc8e83b4d633ebf8a5457",
+    "seconds": 41,
+    "verifiedAt": "2026-10-07T14:31:23.167Z"
   },
   "spa-hono-postgres-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "2b1fe63c4a8791a378fb4ab278967e91920a212d10ddca48ffe116f62fa48965",
-    "seconds": 27,
-    "verifiedAt": "2026-10-05T00:45:39.366Z"
+    "fingerprint": "c53f193734b863dff031ac31a12f314cb73b736dba72ad7647bb394728682184",
+    "seconds": 38,
+    "verifiedAt": "2026-10-07T14:36:27.540Z"
   },
   "spa-hono-postgres-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "a89713aad5fb77c88820ec661f59c5ca1337e2612e23b465151589e2c0fe2750",
-    "seconds": 30,
-    "verifiedAt": "2026-10-05T00:45:39.365Z"
+    "fingerprint": "d67f540c714bd27c20835bd9147f5e6d83efff3f1992818b28347a3ab4a7c396",
+    "seconds": 44,
+    "verifiedAt": "2026-10-07T14:31:30.891Z"
   },
   "spa-hono-postgres-better-auth-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "cc00ebe81223c0ffc99202432fbb2bdc109e211fd1739fd5c6081a5e94353307",
-    "seconds": 30,
-    "verifiedAt": "2026-10-05T00:45:38.335Z"
+    "fingerprint": "207105a5445efef82dcb6b7cb58d4c86e85fb0a4322c5cf1922a5370de088ef6",
+    "seconds": 45,
+    "verifiedAt": "2026-10-07T14:33:37.741Z"
   },
   "spa-hono-postgres-better-auth-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "37663b45472943a6486ca75743755a82e48cfe236e00c478236241591db9f1ed",
-    "seconds": 23,
-    "verifiedAt": "2026-10-05T00:45:15.655Z"
+    "fingerprint": "5ee1e915cd02dabcda992b03f01255bffe8577b641fd8c7d231a0d72fefc44cb",
+    "seconds": 44,
+    "verifiedAt": "2026-10-07T14:32:04.882Z"
   },
   "spa-hono-postgres-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "72b49cc26f0c723f28325cbe77820afbab46f000df38f80f7cb796c9d9c9b4ab",
-    "seconds": 24,
-    "verifiedAt": "2026-10-05T00:46:05.828Z"
+    "fingerprint": "629475a43485c1d677a4c46bd666cf73a9eafba64906105014a324bc44749b37",
+    "seconds": 28,
+    "verifiedAt": "2026-10-07T14:32:55.395Z"
   },
   "spa-hono-postgres-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "03bff05842e1b33f97364321a68016264a465388b36fa77ced6596b1b42c17f4",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:46:05.828Z"
+    "fingerprint": "72316b491e83507f18a87e6bd163be7f16dfa3502c11f5031227b012317202a2",
+    "seconds": 18,
+    "verifiedAt": "2026-10-07T14:32:02.404Z"
   },
   "spa-hono-postgres-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "1e2235a5b0a145a9db8ab6946ea4d2f2708a217b13370c3d0b308891e48f44c2",
+    "fingerprint": "248acf4e876c0e1aabd1f39f0a314789791f86d92a1840ae5eb59d9fb4e6959f",
     "seconds": 25,
-    "verifiedAt": "2026-10-05T00:46:04.723Z"
+    "verifiedAt": "2026-10-07T14:33:05.069Z"
   },
   "spa-hono-postgres-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "df9988a1ead13bb6cbee212885829c1d636f0e69597417c9c415ce620456af0d",
-    "seconds": 22,
-    "verifiedAt": "2026-10-05T00:45:38.333Z"
+    "fingerprint": "9a7fae87111aaa6308439b9a11b1a3fde0ee3fba9a6e813223431e2ee389fe08",
+    "seconds": 28,
+    "verifiedAt": "2026-10-07T14:32:39.377Z"
   },
   "spa-hono-sqlite-better-auth-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "87f332ed47fcef3bb9c27c0827563dafaeab820aa5046dc5da0d16240073f9f5",
-    "seconds": 26,
-    "verifiedAt": "2026-10-05T00:46:34.424Z"
+    "fingerprint": "6d9f2abb52a0fdad734823cf82ec5f520ec737b06d7da0be88bd2b2b8a25b601",
+    "seconds": 37,
+    "verifiedAt": "2026-10-07T14:36:36.832Z"
   },
   "spa-hono-sqlite-better-auth-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "557c61ed71a34e55826cc88d5ec62c794ed2a837bdfecba68eb2e277cf3cee01",
-    "seconds": 26,
-    "verifiedAt": "2026-10-05T00:46:33.117Z"
+    "fingerprint": "bd436ab15eb2ea4d808f5dadfd4832434a1283f24dc0fc31209f7203958014f3",
+    "seconds": 40,
+    "verifiedAt": "2026-10-07T14:31:29.787Z"
   },
   "spa-hono-sqlite-better-auth-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "a9c0ba0c14cd3deab0d19f96cab8c999c778a8c043a74d1f7a35fa14014bae66",
-    "seconds": 26,
-    "verifiedAt": "2026-10-05T00:46:31.717Z"
+    "fingerprint": "7596e88614583caebcb0e0ed0c37ab2b7e11b818aa42e885076031cd760f6bb4",
+    "seconds": 43,
+    "verifiedAt": "2026-10-07T14:33:38.541Z"
   },
   "spa-hono-sqlite-better-auth-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "2fb34f997e40f345966cc627427e6b89c81727f976362f580cf38654b40e5f1a",
-    "seconds": 25,
-    "verifiedAt": "2026-10-05T00:46:08.140Z"
+    "fingerprint": "d771efd74c2855dab994bfdf035cdcdd245cb5f50512338e962b2c9223721ae0",
+    "seconds": 42,
+    "verifiedAt": "2026-10-07T14:32:03.733Z"
   },
   "spa-hono-sqlite-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "8e977d05fdab797b415b76224541487812368e1077427bfed588376629e1ef9f",
-    "seconds": 22,
-    "verifiedAt": "2026-10-05T00:46:55.946Z"
+    "fingerprint": "89916d8e3572226e0637cbb6befae0474a4a6fc4c84de0c2c6c8783b1d8cf6fb",
+    "seconds": 27,
+    "verifiedAt": "2026-10-07T14:33:13.968Z"
   },
   "spa-hono-sqlite-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "4371d099c3d9425aa3a5d97167aa8461f306b25c8d6f406859cacc0a7205471f",
-    "seconds": 23,
-    "verifiedAt": "2026-10-05T00:46:55.945Z"
+    "fingerprint": "bb0c006da22c416400bf5647bdca0565cda24a92d8027f8262b95618a70a6bdf",
+    "seconds": 17,
+    "verifiedAt": "2026-10-07T14:32:13.428Z"
   },
   "spa-hono-sqlite-electron-bun-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "c64512de97a61017e9ae5872283cd3b31c5b4c5deff6746879cd79a302e43d93",
-    "seconds": 23,
-    "verifiedAt": "2026-10-05T00:46:54.853Z"
+    "fingerprint": "2669116cf02ea2c66946ad8580f6385ef5d726356c331352307540cbf6022020",
+    "seconds": 24,
+    "verifiedAt": "2026-10-07T14:33:10.456Z"
   },
   "spa-hono-sqlite-electron-docker": {
     "environment": {
-      "arch": "arm64",
+      "arch": "x64",
       "node": "v24.21.0",
-      "os": "darwin 25.6.0"
+      "os": "linux 6.17.0-1022-azure"
     },
-    "fingerprint": "bde9b0569a469e8f7eac715b59f38be14248472cfb2dc70c16330ded311f3763",
-    "seconds": 21,
-    "verifiedAt": "2026-10-05T00:46:30.097Z"
+    "fingerprint": "d7fdb43c8a541ecd3be101bf4870161690623d1f8acd5d54b0a43516cbce550d",
+    "seconds": 26,
+    "verifiedAt": "2026-10-07T14:32:38.170Z"
   }
 }
