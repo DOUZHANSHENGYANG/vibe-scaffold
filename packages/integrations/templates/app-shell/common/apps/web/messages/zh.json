@@ -17,5 +17,14 @@
   "data_backend_indexeddb": "IndexedDB（浏览器）",
   "data_backend_sqlite": "SQLite（Tauri SQL 插件）",
   "data_clear": "清空本地数据",
-  "data_cleared": "本地数据已清空"
+  "data_cleared": "本地数据已清空",
+  "window_minimize": "最小化",
+  "window_maximize": "最大化/还原",
+  "window_close": "关闭",
+  "data_dir_title": "存储目录",
+  "data_dir_desc": "应用本地数据的存放位置，重启应用后生效。",
+  "data_dir_current": "当前",
+  "data_dir_choose": "选择目录…",
+  "data_dir_browser": "浏览器按站点存放数据；目录设置仅对桌面应用生效。",
+  "data_dir_chosen": "存储目录已更新"
 }

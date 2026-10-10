@@ -23,6 +23,7 @@ export const catalog = {
     "vite-plus": toolchainVersions.vitePlus,
   },
   web: {
+    gsap: "^3.15.0",
     "@inlang/paraglide-js": "^2.25.4",
     "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
@@ -69,6 +70,7 @@ export const catalog = {
   },
   desktop: {
     "@tauri-apps/api": "^2.5.0",
+    "@tauri-apps/plugin-dialog": "^2.8.2",
     "@tauri-apps/cli": "^2.5.0",
     "@tauri-apps/plugin-sql": "^2.0.0",
     electron: "^44.5.1",

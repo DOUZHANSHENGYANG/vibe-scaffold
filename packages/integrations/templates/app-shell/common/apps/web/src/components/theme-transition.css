@@ -1,6 +1,0 @@
-/* The diffusion: the old view stays while the new one sweeps in as a circle. */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}

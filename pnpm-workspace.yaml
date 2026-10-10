@@ -30,6 +30,7 @@ catalog:
   zod: ^4.6.5
 
   # web
+  gsap: ^3.15.0
   "@inlang/paraglide-js": ^2.25.4
   "@inlang/paraglide-js-react": ^1.0.3
   "@tailwindcss/vite": ^4.3.3

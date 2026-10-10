@@ -15,6 +15,7 @@
     "@shadcn/lint": "catalog:",
     "@types/node": "catalog:",
     "@vibe-scaffold/config": "workspace:*",
+    "gsap": "catalog:",
     "knip": "catalog:",
     "typescript": "catalog:",
     "ultracite": "catalog:",

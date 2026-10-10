@@ -1,33 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import { setLocale } from "#src/paraglide/runtime.js";
+import { Card, CardContent, CardHeader, CardTitle } from "@todo-app/ui/components/card";
+import { cn } from "@todo-app/ui/lib/utils";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@my-app/ui/components/card";
-
+import { DataSection } from "#src/components/settings/data-section.tsx";
+import { LanguageSection } from "#src/components/settings/language-section.tsx";
+import { ThemeSection } from "#src/components/settings/theme-section.tsx";
 import { m } from "#src/paraglide/messages.js";
-import { SettingsShell } from "#src/components/layout/settings-shell.tsx";
-import { ThemeToggle } from "#src/components/theme-toggle.tsx";
 
-const sections = () => [
-  { id: "appearance", title: m.settings_appearance() },
+// The system sidebar: theme, language, and the storage directory, top to bottom.
+const useSections = () => [
+  { id: "theme", title: m.settings_theme() },
   { id: "language", title: m.settings_language() },
+  { id: "data", title: m.settings_data() },
 ];
 
 const SettingsPage = () => {
-  const [active, setActive] = useState("appearance");
+  const [active, setActive] = useState("theme");
+  const sections = useSections();
 
-  // The sidebar highlights the section the page is scrolled to, which the
-  // browser tracks through the URL hash.
   useEffect(() => {
     const read = () => {
       const hash = window.location.hash.slice(1);
-      if (sections().some((section) => section.id === hash)) {
+      if (sections.some((section) => section.id === hash)) {
         setActive(hash);
       }
     };
@@ -39,48 +35,34 @@ const SettingsPage = () => {
   }, []);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{m.settings_title()}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <SettingsShell active={active} sections={sections()}>
-          <section id="appearance">
-            <h3 className="mb-1 text-sm font-medium">{m.settings_theme()}</h3>
-            <p className="text-muted-foreground mb-3 text-sm">
-              {m.settings_appearance_desc()}
-            </p>
-            <ThemeToggle />
-          </section>
-          <section id="language">
-            <h3 className="mb-1 text-sm font-medium">{m.settings_language()}</h3>
-            <p className="text-muted-foreground mb-3 text-sm">
-              {m.settings_language_desc()}
-            </p>
-            <div className="flex gap-2">
-              <button
-                className="border-border hover:bg-accent rounded-md border px-3 py-1 text-sm"
-                onClick={() => {
-                  void setLocale("en");
-                }}
-                type="button"
-              >
-                English
-              </button>
-              <button
-                className="border-border hover:bg-accent rounded-md border px-3 py-1 text-sm"
-                onClick={() => {
-                  void setLocale("zh");
-                }}
-                type="button"
-              >
-                中文
-              </button>
-            </div>
-          </section>
-        </SettingsShell>
-      </CardContent>
-    </Card>
+    <div className="grid gap-8 md:grid-cols-[200px_1fr]">
+      <nav aria-label={m.settings_title()} className="flex flex-col gap-1">
+        {sections.map((section) => (
+          <a
+            className={cn(
+              "text-muted-foreground hover:text-foreground rounded-md px-3 py-2 text-sm transition-colors",
+              active === section.id && "bg-accent text-foreground",
+            )}
+            href={`#${section.id}`}
+            key={section.id}
+          >
+            {section.title}
+          </a>
+        ))}
+      </nav>
+      <div className="flex flex-col gap-10">
+        <Card>
+          <CardHeader>
+            <CardTitle>{m.settings_title()}</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-10">
+            <ThemeSection />
+            <LanguageSection />
+            <DataSection />
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 };
 

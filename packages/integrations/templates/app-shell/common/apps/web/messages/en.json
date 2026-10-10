@@ -17,5 +17,14 @@
   "data_backend_indexeddb": "IndexedDB (browser)",
   "data_backend_sqlite": "SQLite (Tauri SQL plugin)",
   "data_clear": "Clear all local data",
-  "data_cleared": "Local data cleared"
+  "data_cleared": "Local data cleared",
+  "window_minimize": "Minimize",
+  "window_maximize": "Toggle maximize",
+  "window_close": "Close",
+  "data_dir_title": "Storage directory",
+  "data_dir_desc": "Where the app keeps its local data. Applies after the app restarts.",
+  "data_dir_current": "Current",
+  "data_dir_choose": "Choose directory…",
+  "data_dir_browser": "The browser keeps data per origin; the directory applies to the desktop app.",
+  "data_dir_chosen": "Storage directory updated"
 }
