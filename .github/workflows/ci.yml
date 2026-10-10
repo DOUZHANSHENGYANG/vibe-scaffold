@@ -109,7 +109,7 @@ jobs:
           git add packages/integrations/verification.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "chore: update verification.json"
-          git pull --rebase origin main
+          git pull --rebase --autostash origin main
           git push origin HEAD:main
       - if: needs.verify.result != 'success'
         run: exit 1
