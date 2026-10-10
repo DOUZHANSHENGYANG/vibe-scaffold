@@ -27,10 +27,18 @@ jobs:
           node-version-file: .node-version
           cache: true
       - run: vp install
-      - run: vp build apps/web
+      # The Studio build died twice on hosted runners mid-transform with a
+      # SIGTERM the runner reported as a shutdown; retry rides it out and a
+      # smaller JS heap leaves more of the machine to rolldown's native side.
+      - uses: nick-fields/retry@v3
+        with:
+          max_attempts: 3
+          retry_on: error
+          timeout_minutes: 20
+          command: vp build apps/web
         env:
           PAGES_BASE: /vibe-scaffold/
-          NODE_OPTIONS: --max-old-space-size=8192
+          NODE_OPTIONS: --max-old-space-size=4096
       - uses: actions/upload-pages-artifact@v4
         with:
           path: apps/web/dist
