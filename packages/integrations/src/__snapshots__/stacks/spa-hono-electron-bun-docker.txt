@@ -2600,7 +2600,7 @@ peerDependencyRules:
 
 # vibe-scaffold.jsonc (core)
 {
-  "$schema": "https://douzhanshengyang.github.io/vibe-scaffold/schema.json",
+  "$schema": "https://raw.githubusercontent.com/DOUZHANSHENGYANG/vibe-scaffold/main/packages/integrations/schema.json",
 
   "stack": {
     "toolchain": "vite-plus",

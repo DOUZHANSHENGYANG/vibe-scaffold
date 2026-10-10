@@ -8,8 +8,10 @@ import {
   integrationsOfKind,
 } from "#/registry.ts";
 
+// Served from the repository itself: the Studio site has no static hosting yet,
+// and editors only need a stable URL that follows main.
 export const blueprintSchemaUrl =
-  "https://douzhanshengyang.github.io/vibe-scaffold/schema.json";
+  "https://raw.githubusercontent.com/DOUZHANSHENGYANG/vibe-scaffold/main/packages/integrations/schema.json";
 
 export const channels = ["recommended"] as const;
 export const packageManagers = ["pnpm", "bun"] as const;
