@@ -1,14 +1,11 @@
 import { contribute, defineAddon, packageJson } from "@vibe-scaffold/core";
 
-import {
-  vitePlugins,
-  agentsConventions,
-  readmeLayers,
-} from "#/vite-plus/slots.ts";
+import { spaVitePlugins } from "#/spa.ts";
+import { agentsConventions, readmeLayers } from "#/vite-plus/slots.ts";
 
 export const pwa = defineAddon({
   contribute: (ctx) => [
-    contribute(vitePlugins, {
+    contribute(spaVitePlugins, {
       name: "VitePWA",
       specifier: "vite-plugin-pwa",
       init: `VitePWA({

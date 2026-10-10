@@ -5,10 +5,10 @@ import {
   setupCommand,
 } from "@vibe-scaffold/core";
 
-import { tauriPlugin, tauriWindow } from "#/tauri.ts";
+import { spaVitePlugins } from "#/spa.ts";
+import { tauriPlugin } from "#/tauri.ts";
 import { templateFiles } from "#/templates.ts";
 import {
-  vitePlugins,
   agentsConventions,
   agentsMap,
   readmeLayers,
@@ -25,18 +25,20 @@ export const appShell = defineAddon({
     ...(ctx.has("local-db") ? templateFiles(ctx, "app-shell/local-db") : []),
     // paraglide compiles the messages into src/paraglide during the setup step
     // below and recompiles on every dev or build through this plugin.
-    contribute(vitePlugins, {
+    contribute(spaVitePlugins, {
       init: `paraglideVitePlugin({
           project: \`\${import.meta.dirname}/project.inlang\`,
           outdir: \`\${import.meta.dirname}/src/paraglide\`,
           strategy: ["localStorage", "preferredLanguage", "baseLocale"],
           outputStructure: "locale-modules",
+          emitTsDeclarations: true,
+          emitGitIgnore: false,
         })`,
       name: "paraglideVitePlugin",
       specifier: "@inlang/paraglide-js",
     }),
     contribute(setupCommand, {
-      run: "pnpm --dir apps/web exec paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
+      run: "pnpm --dir apps/web exec paraglide-js compile --project ./project.inlang --outdir ./src/paraglide --emit-ts-declarations",
       writes: ["apps/web/src/paraglide/**"],
     }),
     contribute(packageJson, {
@@ -45,8 +47,6 @@ export const appShell = defineAddon({
     }),
     ...(ctx.has("tauri")
       ? [
-          // The app draws its own titlebar, so the window loses its native one.
-          contribute(tauriWindow, { decorations: false }),
           contribute(tauriPlugin, { permission: "core:window:allow-minimize" }),
           contribute(tauriPlugin, {
             permission: "core:window:allow-toggle-maximize",

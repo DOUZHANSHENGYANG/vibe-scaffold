@@ -27,7 +27,7 @@ interface KvRecord {
 
 interface SqlClient {
   execute(query: string, bindValues?: unknown[]): Promise<unknown>;
-  select<T>(query: string, bindValues?: unknown[]): Promise<T[]>;
+  select<T>(query: string, bindValues?: unknown[]): Promise<T>;
 }
 
 let webClient: IDBPDatabase<KvRecord> | undefined;

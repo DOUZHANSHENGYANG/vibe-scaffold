@@ -1,11 +1,14 @@
 import { Button } from "@my-app/ui/components/button";
 import { toast } from "sonner";
 
-import { m } from "#/paraglide/messages.js";
+import { m } from "#src/paraglide/messages.js";
 import { db } from "#src/lib/db.ts";
 import { isDesktop } from "#src/lib/window.ts";
 
 // The storage section: shows which backend `db` picked and offers a reset.
+// Each feature's store is listed here; the section knows the demo stores.
+const stores = ["demo", "todos"];
+
 export const DataSection = () => (
   <section id="data">
     <h3 className="mb-1 text-sm font-medium">{m.settings_data()}</h3>
@@ -15,16 +18,16 @@ export const DataSection = () => (
     </p>
     <Button
       onClick={() => {
-        void Promise.all([
-          db.entries("todos"),
-          db.entries("demo"),
-        ]).then(async ([todos, demo]) => {
-          await Promise.all(
-            [...todos, ...demo].map((entry) =>
-              db.delete(entry.store, entry.key)
-            )
-          );
+        const clear = async () => {
+          for (const store of stores) {
+            for (const entry of await db.entries(store)) {
+              await db.delete(entry.store, entry.key);
+            }
+          }
           toast(m.data_cleared());
+        };
+        clear().catch(() => {
+          toast.error("Clear failed");
         });
       }}
       variant="outline"

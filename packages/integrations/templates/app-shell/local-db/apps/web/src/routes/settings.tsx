@@ -1,19 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { setLocale } from "#/paraglide/runtime.js";
+import { useEffect, useState } from "react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@my-app/ui/components/card";
+import { setLocale } from "#src/paraglide/runtime.js";
 
-import { m } from "#/paraglide/messages.js";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@my-app/ui/components/card";
+
+import { m } from "#src/paraglide/messages.js";
 import { DataSection } from "#src/components/settings/data-section.tsx";
 import { SettingsShell } from "#src/components/layout/settings-shell.tsx";
 import { ThemeToggle } from "#src/components/theme-toggle.tsx";
 
+const sections = () => [
+  { id: "appearance", title: m.settings_appearance() },
+  { id: "language", title: m.settings_language() },
+  { id: "data", title: m.settings_data() },
+];
+
 const SettingsPage = () => {
-  const sections = [
-    { id: "appearance", title: m.settings_appearance() },
-    { id: "language", title: m.settings_language() },
-    { id: "data", title: m.settings_data() },
-  ];
+  const [active, setActive] = useState("appearance");
+
+  // The sidebar highlights the section the page is scrolled to, which the
+  // browser tracks through the URL hash.
+  useEffect(() => {
+    const read = () => {
+      const hash = window.location.hash.slice(1);
+      if (sections().some((section) => section.id === hash)) {
+        setActive(hash);
+      }
+    };
+    read();
+    window.addEventListener("hashchange", read);
+    return () => {
+      window.removeEventListener("hashchange", read);
+    };
+  }, []);
 
   return (
     <Card>
@@ -21,7 +46,7 @@ const SettingsPage = () => {
         <CardTitle>{m.settings_title()}</CardTitle>
       </CardHeader>
       <CardContent>
-        <SettingsShell active="appearance" sections={sections}>
+        <SettingsShell active={active} sections={sections()}>
           <section id="appearance">
             <h3 className="mb-1 text-sm font-medium">{m.settings_theme()}</h3>
             <p className="text-muted-foreground mb-3 text-sm">

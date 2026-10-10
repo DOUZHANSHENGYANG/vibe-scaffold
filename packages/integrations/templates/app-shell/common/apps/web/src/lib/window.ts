@@ -1,8 +1,6 @@
-// The window API exists only inside Tauri; everything here degrades to no-ops
-// in a plain browser, so the titlebar component can render unconditionally.
-const inTauri = "__TAURI_INTERNALS__" in globalThis;
-
-export const isDesktop = inTauri;
+// The browser stub of the window layer: the Tauri variant of this file, which
+// the tauri set contributes in place of this one, wraps the real window API.
+export const isDesktop = false;
 
 export interface WindowControls {
   close(): Promise<void>;
@@ -10,15 +8,5 @@ export interface WindowControls {
   toggleMaximize(): Promise<void>;
 }
 
-export const windowControls = async (): Promise<WindowControls | undefined> => {
-  if (!inTauri) {
-    return undefined;
-  }
-  const { getCurrentWindow } = await import("@tauri-apps/api/window");
-  const window = getCurrentWindow();
-  return {
-    close: () => window.close(),
-    minimize: () => window.minimize(),
-    toggleMaximize: () => window.toggleMaximize(),
-  };
-};
+export const windowControls = async (): Promise<WindowControls | undefined> =>
+  undefined;

@@ -2,6 +2,7 @@ import type { Context } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
+  defineSlot,
   file,
   packageJson,
 } from "@vibe-scaffold/core";
@@ -66,20 +67,48 @@ const open = (ctx: Context) => {
 };
 
 // Without oRPC the server has no `/rpc` for Vite to proxy.
-const viteConfig = (ctx: Context) => {
-  if (!hasBackend(ctx)) {
-    return templateFiles(ctx, "spa/static");
-  }
-  const config = templateContent(ctx, "spa/proxy", viteConfigPath);
-  if (!config.includes(rpcProxy)) {
+/** A Vite plugin of the app's own config, contributed by an add-on. */
+export interface SpaVitePlugin {
+  readonly init: string;
+  readonly name: string;
+  readonly specifier: string;
+}
+
+/** Injected into `apps/web/vite.config.ts`'s `plugins` array; empty means the template file stands. */
+export const spaVitePlugins = defineSlot<SpaVitePlugin>("spa/vite-plugins");
+
+const renderViteConfig = (
+  ctx: Context,
+  templateSet: "spa/proxy" | "spa/static"
+) => {
+  let config = templateContent(ctx, templateSet, viteConfigPath);
+  if (templateSet === "spa/proxy" && !config.includes(rpcProxy)) {
     throw new Error(`spa/proxy/${viteConfigPath} has no /rpc proxy`);
   }
+  if (templateSet === "spa/proxy" && !ctx.has("orpc")) {
+    config = config.replace(rpcProxy, "");
+  }
+  const plugins = spaVitePlugins.values(ctx);
+  if (plugins.length === 0) {
+    return [file(viteConfigPath, config)];
+  }
+  const imports = plugins
+    .map((plugin) => `import { ${plugin.name} } from "${plugin.specifier}";`)
+    .join("\n");
+  const calls = plugins.map((plugin) => `    ${plugin.init},`).join("\n");
   return [
     file(
       viteConfigPath,
-      ctx.has("orpc") ? config : config.replace(rpcProxy, "")
+      `${imports}\n${config.replace("  plugins: [\n", `  plugins: [\n${calls}\n`)}`
     ),
   ];
+};
+
+const viteConfig = (ctx: Context) => {
+  if (!hasBackend(ctx)) {
+    return renderViteConfig(ctx, "spa/static");
+  }
+  return renderViteConfig(ctx, "spa/proxy");
 };
 
 export const spa = defineIntegration({
