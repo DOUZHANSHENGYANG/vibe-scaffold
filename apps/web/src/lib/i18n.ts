@@ -87,6 +87,7 @@ export const integrationDescription = (integration: IntegrationInfo) =>
 export const addonDescription = (addon: AddonInfo) =>
   translate(
     {
+      "app-shell": () => m.addon_desc_app_shell(),
       knip: () => m.addon_desc_knip(),
       ultracite: () => m.addon_desc_ultracite(),
       "local-db": () => m.addon_desc_local_db(),

@@ -8,6 +8,7 @@ export type Add_DesktopInputs = {};
 export type Add_FrameworkInputs = {};
 export type Add_MobileInputs = {};
 export type Addon_DefaultInputs = {};
+export type Addon_Desc_App_ShellInputs = {};
 export type Addon_Desc_BeuiInputs = {};
 export type Addon_Desc_KnipInputs = {};
 export type Addon_Desc_Local_DbInputs = {};
@@ -522,6 +523,20 @@ export declare const add_mobile: ((inputs?: Add_MobileInputs, options?: {
 export declare const addon_default: ((inputs?: Addon_DefaultInputs, options?: {
     locale?: "en" | "zh";
 }) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_DefaultInputs, {
+    locale?: "en" | "zh";
+}, {}>;
+/**
+* | output |
+* | --- |
+* | "The shared application shell: a settings page with a section sidebar, en/zh i18n through paraglide, the diffusion theme switch, and the in-window titlebar" |
+*
+* @param {Addon_Desc_App_ShellInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export declare const addon_desc_app_shell: ((inputs?: Addon_Desc_App_ShellInputs, options?: {
+    locale?: "en" | "zh";
+}) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_App_ShellInputs, {
     locale?: "en" | "zh";
 }, {}>;
 /**

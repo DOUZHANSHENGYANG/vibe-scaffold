@@ -11,6 +11,7 @@ import { getLocale, experimentalStaticLocale } from "../runtime.js"
 /** @typedef {{}} Add_FrameworkInputs */
 /** @typedef {{}} Add_MobileInputs */
 /** @typedef {{}} Addon_DefaultInputs */
+/** @typedef {{}} Addon_Desc_App_ShellInputs */
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
@@ -470,6 +471,20 @@ export const addon_default = /** @type {((inputs?: Addon_DefaultInputs, options?
 	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
 	if (locale === "zh") return __zh.addon_default(inputs)
 	return __en.addon_default(inputs)
+});
+/**
+* | output |
+* | --- |
+* | "The shared application shell: a settings page with a section sidebar, en/zh i18n through paraglide, the diffusion theme switch, and the in-window titlebar" |
+*
+* @param {Addon_Desc_App_ShellInputs} inputs
+* @param {{ locale?: "en" | "zh" }} options
+* @returns {LocalizedString}
+*/
+export const addon_desc_app_shell = /** @type {((inputs?: Addon_Desc_App_ShellInputs, options?: { locale?: "en" | "zh" }) => LocalizedString) & import('../runtime.js').MessageMetadata<Addon_Desc_App_ShellInputs, { locale?: "en" | "zh" }, {}>} */ ((inputs = {}, options = {}) => {
+	const locale = experimentalStaticLocale ?? options.locale ?? getLocale()
+	if (locale === "zh") return __zh.addon_desc_app_shell(inputs)
+	return __en.addon_desc_app_shell(inputs)
 });
 /**
 * | output |

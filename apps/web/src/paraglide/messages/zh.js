@@ -9,6 +9,7 @@
 /** @typedef {{}} Add_FrameworkInputs */
 /** @typedef {{}} Add_MobileInputs */
 /** @typedef {{}} Addon_DefaultInputs */
+/** @typedef {{}} Addon_Desc_App_ShellInputs */
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
@@ -378,6 +379,10 @@ export const add_mobile = /** @type {(inputs: Add_MobileInputs) => LocalizedStri
 
 export const addon_default = /** @type {(inputs: Addon_DefaultInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`默认`)
+};
+
+export const addon_desc_app_shell = /** @type {(inputs: Addon_Desc_App_ShellInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`共享的应用外壳：带侧边栏的设置页、paraglide 中英文、扩散主题切换与窗口内标题栏`)
 };
 
 export const addon_desc_beui = /** @type {(inputs: Addon_Desc_BeuiInputs) => LocalizedString} */ () => {

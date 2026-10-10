@@ -1,5 +1,6 @@
 import { defineRegistry } from "@vibe-scaffold/core";
 
+import { appShell } from "#/app-shell.ts";
 import { betterAuth } from "#/better-auth.ts";
 import { beui } from "#/beui.ts";
 import { bun } from "#/bun.ts";
@@ -27,7 +28,7 @@ import { vitePlus } from "#/vite-plus/index.ts";
 import { vitestPlaywright } from "#/vitest-playwright/index.ts";
 
 export const registry = defineRegistry({
-  addons: [beui, knip, localDb, pwa, ultracite],
+  addons: [appShell, beui, knip, localDb, pwa, ultracite],
   capabilities: {
     "frontend-framework": "a frontend framework",
     "hono-server": "a Hono server",

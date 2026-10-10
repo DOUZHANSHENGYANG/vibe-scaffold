@@ -1,0 +1,21 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "app_name": "my-app",
+  "nav_home": "首页",
+  "nav_settings": "设置",
+  "settings_title": "设置",
+  "settings_appearance": "外观",
+  "settings_language": "语言",
+  "settings_data": "数据",
+  "settings_appearance_desc": "选择浅色或深色；切换会以点击位置为圆心扩散。",
+  "settings_language_desc": "页面刷新后全局生效。",
+  "settings_theme": "主题",
+  "theme_light": "浅色",
+  "theme_dark": "深色",
+  "theme_system": "跟随系统",
+  "data_backend": "存储后端",
+  "data_backend_indexeddb": "IndexedDB（浏览器）",
+  "data_backend_sqlite": "SQLite（Tauri SQL 插件）",
+  "data_clear": "清空本地数据",
+  "data_cleared": "本地数据已清空"
+}

@@ -8,7 +8,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["beui", "knip", "local-db", "pwa", "ultracite"]
+        "enum": ["app-shell", "beui", "knip", "local-db", "pwa", "ultracite"]
       }
     },
     "channel": { "type": "string", "enum": ["recommended"] },

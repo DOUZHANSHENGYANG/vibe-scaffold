@@ -9,6 +9,7 @@
 /** @typedef {{}} Add_FrameworkInputs */
 /** @typedef {{}} Add_MobileInputs */
 /** @typedef {{}} Addon_DefaultInputs */
+/** @typedef {{}} Addon_Desc_App_ShellInputs */
 /** @typedef {{}} Addon_Desc_BeuiInputs */
 /** @typedef {{}} Addon_Desc_KnipInputs */
 /** @typedef {{}} Addon_Desc_Local_DbInputs */
@@ -378,6 +379,10 @@ export const add_mobile = /** @type {(inputs: Add_MobileInputs) => LocalizedStri
 
 export const addon_default = /** @type {(inputs: Addon_DefaultInputs) => LocalizedString} */ () => {
 	return /** @type {LocalizedString} */ (`default`)
+};
+
+export const addon_desc_app_shell = /** @type {(inputs: Addon_Desc_App_ShellInputs) => LocalizedString} */ () => {
+	return /** @type {LocalizedString} */ (`The shared application shell: a settings page with a section sidebar, en/zh i18n through paraglide, the diffusion theme switch, and the in-window titlebar`)
 };
 
 export const addon_desc_beui = /** @type {(inputs: Addon_Desc_BeuiInputs) => LocalizedString} */ () => {

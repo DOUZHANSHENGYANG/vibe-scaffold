@@ -6,7 +6,7 @@ describe("the registry", () => {
   it("links every third-party integration to its official site over HTTPS", () => {
     // `local-db` is vibe-scaffold's own glue: it has no third-party project to link.
     const linked = [...registry.integrations, ...registry.addons].filter(
-      ({ id }) => id !== "local-db"
+      ({ id }) => id !== "local-db" && id !== "app-shell"
     );
     expect(
       linked

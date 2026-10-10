@@ -9,6 +9,7 @@
   "add_framework": "Add frontend",
   "addon_default": "default",
   "addon_desc_beui": "beUI registry wiring: animated Motion components installable through the shadcn CLI",
+  "addon_desc_app_shell": "The shared application shell: a settings page with a section sidebar, en/zh i18n through paraglide, the diffusion theme switch, and the in-window titlebar",
   "addon_desc_knip": "Finds unused files, exports, dependencies, and catalog entries",
   "addon_desc_pwa": "Makes the web app installable: auto-updating service worker and web manifest through vite-plugin-pwa",
   "addon_desc_ultracite": "Lint and formatting presets with framework rules and AI code quality checks",
