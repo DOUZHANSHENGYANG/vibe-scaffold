@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "identifier": "com.my-app.app",
   "build": {
-    "beforeDevCommand": "vp dev",
+    "beforeDevCommand": "vp dev apps/web",
     "beforeBuildCommand": "vp build apps/web",
     "devUrl": "http://localhost:5173",
     "frontendDist": "../apps/web/dist"
