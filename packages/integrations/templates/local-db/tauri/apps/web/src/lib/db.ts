@@ -63,8 +63,12 @@ const createWebDb = async (): Promise<LocalDb> => {
 let sqlClient: SqlClient | undefined;
 
 const createTauriDb = async (): Promise<LocalDb> => {
-  sqlClient ??= (await import("@tauri-apps/plugin-sql")).default;
-  const client = await sqlClient.load("sqlite:my-app.db");
+  if (sqlClient === undefined) {
+    sqlClient = new (await import("@tauri-apps/plugin-sql")).default(
+      "sqlite:my-app.db"
+    );
+  }
+  const client = sqlClient;
   await client.execute(
     "CREATE TABLE IF NOT EXISTS kv (store TEXT NOT NULL, key TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY (store, key))"
   );
