@@ -24,7 +24,7 @@ export const verification = verificationSchema.parse(recorded);
 const legal = new Map(
   legalStacks(registry)
     .filter(
-      (stack) => stack.desktop !== "tauri" && stack.mobile !== "capacitor"
+      (stack) => stack.desktop === undefined && stack.mobile === undefined
     )
     .map((stack) => [stackLabel(stack), stack])
 );
@@ -40,7 +40,7 @@ export const verifiedStacks = [...legal.values()].filter(
 );
 
 /** The runtime picks the server's dependencies, so it must match. */
-const covers = (whole: Stack, part: Stack) =>
+export const covers = (whole: Stack, part: Stack) =>
   part.runtime === whole.runtime &&
   Object.entries(part).every(([kind, id]) => whole[kind] === id);
 

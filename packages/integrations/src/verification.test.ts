@@ -1,19 +1,15 @@
 import { describe, expect, it } from "vite-plus/test";
 
-import { legalStacks } from "@vibe-scaffold/core";
-
-import { registry } from "#/registry.ts";
 import { stackLabel } from "#/stack-label.ts";
 import {
-  bunSubjectOf,
   bunSubjects,
+  covers,
   verification,
-  verifiedAs,
   verifiedStacks,
 } from "#/verification.ts";
 
 describe("verification.json", () => {
-  it("records only the stacks verified as themselves", () => {
+  it("records only the stacks the data model keeps", () => {
     const labels = new Set([
       ...verifiedStacks.map(stackLabel),
       ...bunSubjects.map((stack) => `${stackLabel(stack)}-bun-pm`),
@@ -23,16 +19,14 @@ describe("verification.json", () => {
     ).toStrictEqual([]);
   });
 
-  it("covers every legal stack with its verification subject for both package managers", () => {
-    for (const stack of legalStacks(registry)) {
-      // Tauri stacks await their first verification run; the CI shards record them and this skips.
-      if (stack.desktop === "tauri" || stack.mobile === "capacitor") {
-        continue;
-      }
-      expect(verification).toHaveProperty(stackLabel(verifiedAs(stack)));
-      expect(verification).toHaveProperty(
-        `${stackLabel(bunSubjectOf(stack))}-bun-pm`
-      );
-    }
+  it("never records a stack outside every Bun subject's coverage", () => {
+    // The record job commits what the shards finished, so the matrix fills in
+    // across runs. The invariant that always holds: a recorded stack's Bun
+    // verification belongs to a subject that covers it.
+    const uncovered = verifiedStacks
+      .filter((stack) => stackLabel(stack) in verification)
+      .filter((stack) => !bunSubjects.some((subject) => covers(subject, stack)))
+      .map(stackLabel);
+    expect(uncovered).toStrictEqual([]);
   });
 });

@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { runCommand } from "citty";
-import { afterAll, describe, expect, vi, it } from "vite-plus/test";
+import { afterAll, afterEach, describe, expect, vi, it } from "vite-plus/test";
 import { z } from "zod";
 
 import { legalStacks, verificationSchema } from "@vibe-scaffold/core";
@@ -198,6 +198,9 @@ describe("package manager and runtime flags", () => {
 });
 
 describe("creating a project", async () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
   const root = await mkdtemp(path.join(tmpdir(), "vibe-scaffold-"));
   const directory = path.join(root, "my-api");
 
@@ -232,6 +235,9 @@ describe("creating a project", async () => {
   });
 
   it("writes the project, then refuses to write over it", async () => {
+    // Pin PATH: hasCommand("vp") reads the test process's environment, so the
+    // expected install-Vite+ step holds on every machine.
+    vi.stubEnv("PATH", "");
     const created = await run(
       directory,
       ...restApi,
@@ -242,6 +248,10 @@ describe("creating a project", async () => {
       exitCode: 0,
       output: {
         nextSteps: [
+          {
+            note: "install Vite+ (Windows: irm https://vite.plus/ps1 | iex)",
+            run: "curl -fsSL https://vite.plus | bash",
+          },
           { run: `cd ${path.relative(process.cwd(), directory)}` },
           { run: "vp install" },
           { run: "vp run db:generate --name init" },
