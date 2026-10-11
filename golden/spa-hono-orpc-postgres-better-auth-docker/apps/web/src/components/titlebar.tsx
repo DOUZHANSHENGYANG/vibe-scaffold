@@ -1,74 +1,16 @@
 import { useNavigate } from "@tanstack/react-router";
+import { cn } from "@todo-app/ui/lib/utils";
 import gsap from "gsap";
 import { Home, Moon, Settings, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
-import { cn } from "@my-app/ui/lib/utils";
-
+import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { windowControls, type WindowControls } from "#src/lib/window.ts";
 import { m } from "#src/paraglide/messages.js";
 
 const controlButton =
   "flex h-full w-11 items-center justify-center text-foreground/70 hover:bg-accent hover:text-foreground transition-colors";
-
-// The theme sweep: light -> dark expands a dark circle from the clicked icon;
-// dark -> light is the reverse, the dark view collapsing into that point. GSAP
-// animates an overlay so the direction is explicit, falling back to an instant
-// switch where animations are unavailable.
-const sweepTheme = (to: "light" | "dark", x: number, y: number) => {
-  const root = document.documentElement;
-  const isDark = root.classList.contains("dark");
-  if (isDark === (to === "dark")) {
-    return;
-  }
-  const radius = Math.hypot(
-    Math.max(x, window.innerWidth - x),
-    Math.max(y, window.innerHeight - y)
-  );
-  const commit = () => root.classList.toggle("dark", to === "dark");
-  // Colors come from the theme's CSS variables so the overlay always matches.
-  const styles = getComputedStyle(root);
-  const color =
-    styles.getPropertyValue(
-      to === "dark" ? "--color-neutral-950" : "--color-neutral-50"
-    ) || (to === "dark" ? "#0a0a0a" : "#fafafa");
-
-  const overlay = document.createElement("div");
-  overlay.style.cssText = `position:fixed;inset:0;z-index:9999;pointer-events:none;background:${color};`;
-  document.body.appendChild(overlay);
-
-  if (to === "dark") {
-    // The dark view grows from the icon over the light page, then the theme commits.
-    gsap.set(overlay, { clipPath: `circle(0px at ${x}px ${y}px)` });
-    gsap.to(overlay, {
-      clipPath: `circle(${radius}px at ${x}px ${y}px)`,
-      duration: 0.6,
-      ease: "power2.in",
-      onComplete: () => {
-        commit();
-        gsap.to(overlay, {
-          opacity: 0,
-          duration: 0.15,
-          onComplete: () => overlay.remove(),
-        });
-      },
-    });
-    setTimeout(() => overlay.remove(), 1500);
-    return;
-  }
-  // The light page sits under the overlay; commit first, then the dark layer
-  // collapses back into the icon.
-  commit();
-  gsap.set(overlay, { clipPath: `circle(${radius}px at ${x}px ${y}px)` });
-  gsap.to(overlay, {
-    clipPath: `circle(0px at ${x}px ${y}px)`,
-    duration: 0.6,
-    ease: "power2.out",
-    onComplete: () => overlay.remove(),
-  });
-  setTimeout(() => overlay.remove(), 1500);
-};
 
 // The app's own titlebar: the drag region carries the app icon and the page
 // navigation; the right side holds the theme sweep, the language switch, and
@@ -111,8 +53,7 @@ export const Titlebar = () => {
       (resolvedTheme ?? "light") === "dark"
         ? ("light" as const)
         : ("dark" as const);
-    setTheme(next);
-    sweepTheme(next, event.clientX, event.clientY);
+    sweepTheme(next, event.clientX, event.clientY, setTheme);
   };
 
   const cycleLanguage = () => {
@@ -159,9 +100,13 @@ export const Titlebar = () => {
         <button
           className="text-foreground/70 hover:text-foreground flex h-full items-center px-2 text-sm transition-colors"
           data-tauri-drag-region={false}
-          onClick={() => {}}
+          onClick={() => {
+            void navigate({ to: "/todos" });
+          }}
           type="button"
-        ></button>
+        >
+          {m.nav_todos()}
+        </button>
       </div>
       <div className="ml-auto flex h-full items-center">
         <button

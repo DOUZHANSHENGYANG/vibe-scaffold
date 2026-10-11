@@ -1,0 +1,7 @@
+/* The sweep draws its own circle over a live snapshot; the default cross-fade
+   would fade the same pair on top of it. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

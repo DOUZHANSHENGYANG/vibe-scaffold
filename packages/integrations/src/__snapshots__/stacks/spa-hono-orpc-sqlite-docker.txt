@@ -882,6 +882,7 @@ import { Button } from "@todo-app/ui/components/button";
 import { cn } from "@todo-app/ui/lib/utils";
 import { useTheme } from "next-themes";
 
+import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { m } from "#src/paraglide/messages.js";
 
 type Choice = "light" | "dark" | "system";
@@ -894,7 +895,9 @@ const labels = {
 } as const;
 
 // The settings-page theme choice. The quick toggle lives in the titlebar; this
-// section shows which of the three choices is active.
+// section shows which of the three choices is active. Light and dark sweep
+// from the clicked button; system switches instantly (its resolution is not
+// known until the theme applies).
 export const ThemeSection = () => {
   const { setTheme, theme } = useTheme();
   const picked = (theme ?? "system") as Choice;
@@ -910,8 +913,12 @@ export const ThemeSection = () => {
           <Button
             className={cn(picked === choice && "border-foreground")}
             key={choice}
-            onClick={() => {
-              setTheme(choice);
+            onClick={(event) => {
+              if (choice === "system") {
+                setTheme(choice);
+                return;
+              }
+              sweepTheme(choice, event.clientX, event.clientY, setTheme);
             }}
             variant="outline"
           >
@@ -925,76 +932,18 @@ export const ThemeSection = () => {
 
 # apps/web/src/components/titlebar.tsx (app-shell)
 import { useNavigate } from "@tanstack/react-router";
+import { cn } from "@todo-app/ui/lib/utils";
 import gsap from "gsap";
 import { Home, Moon, Settings, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
-import { cn } from "@my-app/ui/lib/utils";
-
+import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { windowControls, type WindowControls } from "#src/lib/window.ts";
 import { m } from "#src/paraglide/messages.js";
 
 const controlButton =
   "flex h-full w-11 items-center justify-center text-foreground/70 hover:bg-accent hover:text-foreground transition-colors";
-
-// The theme sweep: light -> dark expands a dark circle from the clicked icon;
-// dark -> light is the reverse, the dark view collapsing into that point. GSAP
-// animates an overlay so the direction is explicit, falling back to an instant
-// switch where animations are unavailable.
-const sweepTheme = (to: "light" | "dark", x: number, y: number) => {
-  const root = document.documentElement;
-  const isDark = root.classList.contains("dark");
-  if (isDark === (to === "dark")) {
-    return;
-  }
-  const radius = Math.hypot(
-    Math.max(x, window.innerWidth - x),
-    Math.max(y, window.innerHeight - y)
-  );
-  const commit = () => root.classList.toggle("dark", to === "dark");
-  // Colors come from the theme's CSS variables so the overlay always matches.
-  const styles = getComputedStyle(root);
-  const color =
-    styles.getPropertyValue(
-      to === "dark" ? "--color-neutral-950" : "--color-neutral-50"
-    ) || (to === "dark" ? "#0a0a0a" : "#fafafa");
-
-  const overlay = document.createElement("div");
-  overlay.style.cssText = `position:fixed;inset:0;z-index:9999;pointer-events:none;background:${color};`;
-  document.body.appendChild(overlay);
-
-  if (to === "dark") {
-    // The dark view grows from the icon over the light page, then the theme commits.
-    gsap.set(overlay, { clipPath: `circle(0px at ${x}px ${y}px)` });
-    gsap.to(overlay, {
-      clipPath: `circle(${radius}px at ${x}px ${y}px)`,
-      duration: 0.6,
-      ease: "power2.in",
-      onComplete: () => {
-        commit();
-        gsap.to(overlay, {
-          opacity: 0,
-          duration: 0.15,
-          onComplete: () => overlay.remove(),
-        });
-      },
-    });
-    setTimeout(() => overlay.remove(), 1500);
-    return;
-  }
-  // The light page sits under the overlay; commit first, then the dark layer
-  // collapses back into the icon.
-  commit();
-  gsap.set(overlay, { clipPath: `circle(${radius}px at ${x}px ${y}px)` });
-  gsap.to(overlay, {
-    clipPath: `circle(0px at ${x}px ${y}px)`,
-    duration: 0.6,
-    ease: "power2.out",
-    onComplete: () => overlay.remove(),
-  });
-  setTimeout(() => overlay.remove(), 1500);
-};
 
 // The app's own titlebar: the drag region carries the app icon and the page
 // navigation; the right side holds the theme sweep, the language switch, and
@@ -1037,8 +986,7 @@ export const Titlebar = () => {
       (resolvedTheme ?? "light") === "dark"
         ? ("light" as const)
         : ("dark" as const);
-    setTheme(next);
-    sweepTheme(next, event.clientX, event.clientY);
+    sweepTheme(next, event.clientX, event.clientY, setTheme);
   };
 
   const cycleLanguage = () => {
@@ -1085,9 +1033,13 @@ export const Titlebar = () => {
         <button
           className="text-foreground/70 hover:text-foreground flex h-full items-center px-2 text-sm transition-colors"
           data-tauri-drag-region={false}
-          onClick={() => {}}
+          onClick={() => {
+            void navigate({ to: "/todos" });
+          }}
           type="button"
-        ></button>
+        >
+          {m.nav_todos()}
+        </button>
       </div>
       <div className="ml-auto flex h-full items-center">
         <button
@@ -1199,6 +1151,60 @@ export const createQueryClient = () => {
   });
 
   return queryClient;
+};
+
+# apps/web/src/lib/theme-sweep.ts (app-shell)
+import "#src/theme-sweep.css";
+import { flushSync } from "react-dom";
+
+// The theme sweep rides the View Transition API: light -> dark expands the
+// dark view from the click point, dark -> light collapses it back into it.
+// Browsers without the API and reduced-motion users switch instantly.
+export const sweepTheme = (
+  to: "light" | "dark",
+  x: number,
+  y: number,
+  setTheme: (theme: "light" | "dark" | "system") => void
+) => {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!document.startViewTransition || reduce) {
+    setTheme(to);
+    return;
+  }
+  const transition = document.startViewTransition(() => {
+    flushSync(() => setTheme(to));
+  });
+  const goingDark = to === "dark";
+  void transition.ready
+    .then(() => {
+      const radius = Math.hypot(
+        Math.max(x, window.innerWidth - x),
+        Math.max(y, window.innerHeight - y)
+      );
+      document.documentElement.animate(
+        {
+          clipPath: goingDark
+            ? [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${radius}px at ${x}px ${y}px)`,
+              ]
+            : [
+                `circle(${radius}px at ${x}px ${y}px)`,
+                `circle(0px at ${x}px ${y}px)`,
+              ],
+        },
+        {
+          duration: 450,
+          easing: "cubic-bezier(0.33, 1, 0.68, 1)",
+          pseudoElement: goingDark
+            ? "::view-transition-new(root)"
+            : "::view-transition-old(root)",
+        }
+      );
+    })
+    .catch(() => {
+      // A newer transition took over; it owns the screen.
+    });
 };
 
 # apps/web/src/lib/window.ts (app-shell)
@@ -1581,6 +1587,15 @@ export const useCounterStore = create<CounterState>()((set) => ({
     set({ count: 0 });
   },
 }));
+
+# apps/web/src/theme-sweep.css (app-shell)
+/* The sweep draws its own circle over a live snapshot; the default cross-fade
+   would fade the same pair on top of it. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
 
 # apps/web/tests/e2e/app.e2e.ts (vitest-playwright)
 import { expect, test } from "@playwright/test";

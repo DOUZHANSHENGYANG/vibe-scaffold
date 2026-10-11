@@ -3,6 +3,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@todo-app/ui/components/button";
 import { cn } from "@todo-app/ui/lib/utils";
 
+import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { m } from "#src/paraglide/messages.js";
 
 type Choice = "light" | "dark" | "system";
@@ -15,7 +16,9 @@ const labels = {
 } as const;
 
 // The settings-page theme choice. The quick toggle lives in the titlebar; this
-// section shows which of the three choices is active.
+// section shows which of the three choices is active. Light and dark sweep
+// from the clicked button; system switches instantly (its resolution is not
+// known until the theme applies).
 export const ThemeSection = () => {
   const { setTheme, theme } = useTheme();
   const picked = (theme ?? "system") as Choice;
@@ -29,8 +32,12 @@ export const ThemeSection = () => {
           <Button
             className={cn(picked === choice && "border-foreground")}
             key={choice}
-            onClick={() => {
-              setTheme(choice);
+            onClick={(event) => {
+              if (choice === "system") {
+                setTheme(choice);
+                return;
+              }
+              sweepTheme(choice, event.clientX, event.clientY, setTheme);
             }}
             variant="outline"
           >
