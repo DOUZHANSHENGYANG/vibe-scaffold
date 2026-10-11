@@ -7,7 +7,7 @@ import {
 
 import { hasWebApp } from "#/app.ts";
 import { spaVitePlugins } from "#/spa.ts";
-import { tauriPlugin } from "#/tauri.ts";
+import { tauriPlugin, tauriWindow } from "#/tauri.ts";
 import { templateFiles } from "#/templates.ts";
 import {
   agentsConventions,
@@ -63,6 +63,9 @@ export const appShell = defineAddon({
       }),
       ...(ctx.has("tauri")
         ? [
+            // A fixed port of its own, so parallel local projects never collide
+            // and devUrl can never drift from the dev server.
+            contribute(tauriWindow, { devPort: 5201 }),
             contribute(tauriPlugin, {
               permission: "core:window:allow-minimize",
             }),
