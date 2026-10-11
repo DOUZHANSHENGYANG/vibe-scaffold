@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "com.my-app.app",
   "build": {
-    "beforeDevCommand": "vp dev apps/web --port 5173 --strictPort",
-    "beforeBuildCommand": "vp build apps/web",
-    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "node node_modules/vite-plus/bin/vp dev apps/web --port 5201 --strictPort",
+    "beforeBuildCommand": "node node_modules/vite-plus/bin/vp build apps/web",
+    "devUrl": "http://localhost:5201",
     "frontendDist": "../apps/web/dist"
   },
   "app": {
@@ -14,7 +14,8 @@
       {
         "title": "my-app",
         "width": 1024,
-        "height": 768
+        "height": 768,
+        "decorations": true
       }
     ],
     "security": {

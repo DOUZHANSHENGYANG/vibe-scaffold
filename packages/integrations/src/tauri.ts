@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 import type { Context, ReadSlot } from "@vibe-scaffold/core";
 import {
   contribute,
@@ -8,7 +10,7 @@ import {
   setupCommand,
 } from "@vibe-scaffold/core";
 
-import { templateFiles } from "#/templates.ts";
+import { templateContent, templateFiles } from "#/templates.ts";
 import {
   agentsMap,
   agentsNotes,
@@ -27,6 +29,34 @@ export interface TauriPlugin {
 
 /** Plugins other integrations contribute; rendered into the shell's Cargo manifest, builder, and capabilities. */
 export const tauriPlugin = defineSlot<TauriPlugin>("tauri/plugin");
+
+/** Window-level settings another integration contributes: the dev port and native decorations. */
+export interface TauriWindow {
+  readonly devPort?: number;
+  readonly decorations?: boolean;
+}
+
+/** Rendered into tauri.conf.json: beforeDevCommand's port and devUrl's origin stay paired. */
+export const tauriWindow = defineSlot<TauriWindow>("tauri/window");
+
+// The conf's keys stay in this order through the parse, so the rendered file
+// keeps the template's layout.
+const confSchema = z.looseObject({
+  $schema: z.string(),
+  productName: z.string(),
+  version: z.string(),
+  identifier: z.string(),
+  build: z.looseObject({
+    beforeDevCommand: z.string(),
+    beforeBuildCommand: z.string(),
+    devUrl: z.string(),
+    frontendDist: z.string(),
+  }),
+  app: z.looseObject({
+    windows: z.array(z.looseObject({})),
+  }),
+  bundle: z.looseObject({}),
+});
 
 const architecture = (ctx: Context) => {
   const auth = ctx.has("better-auth")
@@ -100,12 +130,33 @@ const capabilitiesJson = (read: ReadSlot) =>
 
 export const tauri = defineIntegration({
   contribute: (ctx) => [
-    ...templateFiles(ctx, "tauri/common"),
+    ...templateFiles(ctx, "tauri/common", {
+      except: ["src-tauri/tauri.conf.json"],
+    }),
     renderFile("src-tauri/Cargo.toml", (read) => cargoToml(ctx, read)),
     renderFile("src-tauri/src/main.rs", (read) => mainRs(read)),
     renderFile("src-tauri/capabilities/default.json", (read) =>
       capabilitiesJson(read)
     ),
+    // The dev port and the origin the window loads stay paired here: an add-on
+    // contributes its port, and the two fields always agree.
+    renderFile("src-tauri/tauri.conf.json", (read) => {
+      const windows = read(tauriWindow);
+      const decorations =
+        windows.find((window) => window.decorations !== undefined)
+          ?.decorations ?? true;
+      const port =
+        windows.find((window) => window.devPort !== undefined)?.devPort ?? 5173;
+      const conf = confSchema.parse(
+        JSON.parse(
+          templateContent(ctx, "tauri/common", "src-tauri/tauri.conf.json")
+        )
+      );
+      conf.app.windows[0] = { ...conf.app.windows[0], decorations };
+      conf.build.beforeDevCommand = `node node_modules/vite-plus/bin/vp dev apps/web --port ${port} --strictPort`;
+      conf.build.devUrl = `http://localhost:${port}`;
+      return `${JSON.stringify(conf, null, 2)}\n`;
+    }),
     contribute(packageJson, {
       devDependencies: ["@tauri-apps/cli"],
       path: ".",
