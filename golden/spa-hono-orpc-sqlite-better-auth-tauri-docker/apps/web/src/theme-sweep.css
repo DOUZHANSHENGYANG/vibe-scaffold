@@ -5,3 +5,14 @@
   animation: none;
   mix-blend-mode: normal;
 }
+
+/* The collapse direction reveals the light view around a shrinking dark
+   snapshot, so the old snapshot must paint above the new one; the expand
+   direction keeps the default stacking (the new view grows over the old). */
+:root[data-sweep="collapse"]::view-transition-old(root) {
+  z-index: 2;
+}
+
+:root[data-sweep="collapse"]::view-transition-new(root) {
+  z-index: 1;
+}

@@ -1036,10 +1036,18 @@ export const sweepTheme = (
     setTheme(to);
     return;
   }
+  const root = document.documentElement;
+  const goingDark = to === "dark";
+  // The view-transition stack paints the new snapshot above the old one. The
+  // expand needs exactly that (the dark view grows over the light page); the
+  // collapse shrinks the dark snapshot over the light view, so the old one
+  // must be raised via the data-sweep CSS while the transition runs.
+  if (!goingDark) {
+    root.dataset.sweep = "collapse";
+  }
   const transition = document.startViewTransition(() => {
     flushSync(() => setTheme(to));
   });
-  const goingDark = to === "dark";
   void transition.ready
     .then(() => {
       const radius = Math.hypot(
@@ -1070,6 +1078,9 @@ export const sweepTheme = (
     .catch(() => {
       // A newer transition took over; it owns the screen.
     });
+  void transition.finished.finally(() => {
+    delete root.dataset.sweep;
+  });
 };
 
 # apps/web/src/lib/window.ts (app-shell)
@@ -1325,6 +1336,17 @@ export const useCounterStore = create<CounterState>()((set) => ({
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
+}
+
+/* The collapse direction reveals the light view around a shrinking dark
+   snapshot, so the old snapshot must paint above the new one; the expand
+   direction keeps the default stacking (the new view grows over the old). */
+:root[data-sweep="collapse"]::view-transition-old(root) {
+  z-index: 2;
+}
+
+:root[data-sweep="collapse"]::view-transition-new(root) {
+  z-index: 1;
 }
 
 # apps/web/tests/e2e/app.e2e.ts (vitest-playwright)

@@ -15,10 +15,18 @@ export const sweepTheme = (
     setTheme(to);
     return;
   }
+  const root = document.documentElement;
+  const goingDark = to === "dark";
+  // The view-transition stack paints the new snapshot above the old one. The
+  // expand needs exactly that (the dark view grows over the light page); the
+  // collapse shrinks the dark snapshot over the light view, so the old one
+  // must be raised via the data-sweep CSS while the transition runs.
+  if (!goingDark) {
+    root.dataset.sweep = "collapse";
+  }
   const transition = document.startViewTransition(() => {
     flushSync(() => setTheme(to));
   });
-  const goingDark = to === "dark";
   void transition.ready
     .then(() => {
       const radius = Math.hypot(
@@ -49,4 +57,7 @@ export const sweepTheme = (
     .catch(() => {
       // A newer transition took over; it owns the screen.
     });
+  void transition.finished.finally(() => {
+    delete root.dataset.sweep;
+  });
 };
