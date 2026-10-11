@@ -953,14 +953,29 @@ export const Titlebar = () => {
 
   useEffect(() => {
     void windowControls().then(setControls);
-    if (barRef.current !== null) {
-      gsap.from(barRef.current, {
-        y: -36,
-        opacity: 0,
+    const bar = barRef.current;
+    if (bar === null) {
+      return;
+    }
+    // StrictMode mounts effects twice, and a second gsap.from reads the first
+    // run's opacity:0 as its target, leaving the bar invisible forever.
+    // Explicit end values keep the entrance independent of mount order.
+    const tween = gsap.fromTo(
+      bar,
+      { y: -36, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
         duration: 0.4,
         ease: "power2.out",
-      });
-    }
+        overwrite: "auto",
+        clearProps: "transform,opacity",
+      }
+    );
+    return () => {
+      tween.kill();
+      gsap.set(bar, { clearProps: "transform,opacity" });
+    };
   }, []);
 
   const toggleTheme = (event: React.MouseEvent) => {
