@@ -1,3 +1,4 @@
+import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
@@ -12,6 +13,14 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      paraglideVitePlugin({
+        project: `${import.meta.dirname}/project.inlang`,
+        outdir: `${import.meta.dirname}/src/paraglide`,
+        strategy: ["localStorage", "preferredLanguage", "baseLocale"],
+        outputStructure: "locale-modules",
+        emitTsDeclarations: true,
+        emitGitIgnore: false,
+      }),
       tanstackRouter({ target: "react", autoCodeSplitting: true }),
       react({ compiler: true }),
       tailwindcss(),

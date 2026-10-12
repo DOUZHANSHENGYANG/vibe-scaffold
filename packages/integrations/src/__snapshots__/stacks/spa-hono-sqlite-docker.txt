@@ -771,8 +771,8 @@ export const DataSection = () => {
 };
 
 # apps/web/src/components/settings/language-section.tsx (app-shell)
-import { Button } from "@todo-app/ui/components/button";
-import { cn } from "@todo-app/ui/lib/utils";
+import { Button } from "@my-app/ui/components/button";
+import { cn } from "@my-app/ui/lib/utils";
 
 import { m } from "#src/paraglide/messages.js";
 import { setLocale } from "#src/paraglide/runtime.js";
@@ -813,9 +813,10 @@ export const LanguageSection = () => {
 };
 
 # apps/web/src/components/settings/theme-section.tsx (app-shell)
-import { Button } from "@todo-app/ui/components/button";
-import { cn } from "@todo-app/ui/lib/utils";
 import { useTheme } from "next-themes";
+
+import { Button } from "@my-app/ui/components/button";
+import { cn } from "@my-app/ui/lib/utils";
 
 import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { m } from "#src/paraglide/messages.js";
@@ -867,11 +868,12 @@ export const ThemeSection = () => {
 
 # apps/web/src/components/titlebar.tsx (app-shell)
 import { useNavigate } from "@tanstack/react-router";
-import { cn } from "@todo-app/ui/lib/utils";
 import gsap from "gsap";
 import { Home, Moon, Settings, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
+
+import { cn } from "@my-app/ui/lib/utils";
 
 import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { windowControls, type WindowControls } from "#src/lib/window.ts";
@@ -1292,14 +1294,15 @@ export const Route = createFileRoute("/")({
 
 # apps/web/src/routes/settings.tsx (app-shell)
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@todo-app/ui/components/card";
-import { cn } from "@todo-app/ui/lib/utils";
-import { useEffect, useState } from "react";
+} from "@my-app/ui/components/card";
+import { cn } from "@my-app/ui/lib/utils";
 
 import { DataSection } from "#src/components/settings/data-section.tsx";
 import { LanguageSection } from "#src/components/settings/language-section.tsx";
@@ -1580,6 +1583,7 @@ export const startTestServer = async (baseURL: string) => {
 }
 
 # apps/web/vite.config.ts (spa)
+import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
@@ -1594,6 +1598,14 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      paraglideVitePlugin({
+        project: `${import.meta.dirname}/project.inlang`,
+        outdir: `${import.meta.dirname}/src/paraglide`,
+        strategy: ["localStorage", "preferredLanguage", "baseLocale"],
+        outputStructure: "locale-modules",
+        emitTsDeclarations: true,
+        emitGitIgnore: false,
+      }),
       tanstackRouter({ target: "react", autoCodeSplitting: true }),
       react({ compiler: true }),
       tailwindcss(),

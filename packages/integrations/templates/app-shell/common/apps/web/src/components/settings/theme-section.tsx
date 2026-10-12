@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 
-import { Button } from "@todo-app/ui/components/button";
-import { cn } from "@todo-app/ui/lib/utils";
+import { Button } from "@my-app/ui/components/button";
+import { cn } from "@my-app/ui/lib/utils";
 
 import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { m } from "#src/paraglide/messages.js";

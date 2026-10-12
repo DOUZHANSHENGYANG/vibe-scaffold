@@ -4,7 +4,7 @@ import { Home, Moon, Settings, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 
-import { cn } from "@todo-app/ui/lib/utils";
+import { cn } from "@my-app/ui/lib/utils";
 
 import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { windowControls, type WindowControls } from "#src/lib/window.ts";

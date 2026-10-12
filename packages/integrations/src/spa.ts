@@ -1,10 +1,10 @@
-import type { Context } from "@vibe-scaffold/core";
+import type { Contribution, Context, ReadSlot } from "@vibe-scaffold/core";
 import {
   contribute,
   defineIntegration,
   defineSlot,
-  file,
   packageJson,
+  renderFile,
 } from "@vibe-scaffold/core";
 
 import {
@@ -76,11 +76,11 @@ export interface SpaVitePlugin {
 
 /** Injected into `apps/web/vite.config.ts`'s `plugins` array; empty means the template file stands. */
 export const spaVitePlugins = defineSlot<SpaVitePlugin>("spa/vite-plugins");
-
 const renderViteConfig = (
   ctx: Context,
+  read: ReadSlot,
   templateSet: "spa/proxy" | "spa/static"
-) => {
+): string => {
   let config = templateContent(ctx, templateSet, viteConfigPath);
   if (templateSet === "spa/proxy" && !config.includes(rpcProxy)) {
     throw new Error(`spa/proxy/${viteConfigPath} has no /rpc proxy`);
@@ -88,34 +88,29 @@ const renderViteConfig = (
   if (templateSet === "spa/proxy" && !ctx.has("orpc")) {
     config = config.replace(rpcProxy, "");
   }
-  const plugins = spaVitePlugins.values(ctx);
+  // Render-time read: add-ons contribute after this integration runs, so the
+  // slot values are only complete once the generator renders files.
+  const plugins = read(spaVitePlugins);
   if (plugins.length === 0) {
-    return [file(viteConfigPath, config)];
+    return config;
   }
   const imports = plugins
     .map((plugin) => `import { ${plugin.name} } from "${plugin.specifier}";`)
     .join("\n");
   const calls = plugins.map((plugin) => `    ${plugin.init},`).join("\n");
-  return [
-    file(
-      viteConfigPath,
-      `${imports}\n${config.replace("  plugins: [\n", `  plugins: [\n${calls}\n`)}`
-    ),
-  ];
+  return `${imports}\n${config.replace("  plugins: [\n", `  plugins: [\n${calls}\n`)}`;
 };
 
-const viteConfig = (ctx: Context) => {
-  if (!hasBackend(ctx)) {
-    return renderViteConfig(ctx, "spa/static");
-  }
-  return renderViteConfig(ctx, "spa/proxy");
-};
+const viteConfig = (ctx: Context): Contribution =>
+  renderFile(viteConfigPath, (read) =>
+    renderViteConfig(ctx, read, hasBackend(ctx) ? "spa/proxy" : "spa/static")
+  );
 
 export const spa = defineIntegration({
   contribute: (ctx) => [
     ...templateFiles(ctx, "spa/common"),
     ...templateFiles(ctx, `spa/${authVariant(ctx)}`),
-    ...viteConfig(ctx),
+    viteConfig(ctx),
     ...(ctx.has("orpc") ? templateFiles(ctx, "spa/orpc") : []),
     ...(todosExample(ctx) && !ctx.has("better-auth")
       ? templateFiles(ctx, "spa/todos")

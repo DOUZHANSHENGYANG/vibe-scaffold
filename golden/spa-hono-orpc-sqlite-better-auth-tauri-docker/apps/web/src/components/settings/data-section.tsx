@@ -1,5 +1,4 @@
 import { open } from "@tauri-apps/plugin-dialog";
-import { open } from "@tauri-apps/plugin-dialog";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 

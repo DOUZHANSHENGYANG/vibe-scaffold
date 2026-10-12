@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@todo-app/ui/components/card";
-import { cn } from "@todo-app/ui/lib/utils";
-import { useEffect, useState } from "react";
+} from "@my-app/ui/components/card";
+import { cn } from "@my-app/ui/lib/utils";
 
 import { DataSection } from "#src/components/settings/data-section.tsx";
 import { LanguageSection } from "#src/components/settings/language-section.tsx";
