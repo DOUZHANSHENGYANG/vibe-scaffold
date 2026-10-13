@@ -837,11 +837,9 @@ export const DataSection = () => {
 
 # apps/web/src/components/settings/language-section.tsx (app-shell)
 import { Button } from "@my-app/ui/components/button";
-import { cn } from "@my-app/ui/lib/utils";
 
 import { m } from "#src/paraglide/messages.js";
-import { setLocale } from "#src/paraglide/runtime.js";
-import { getLocale } from "#src/paraglide/runtime.js";
+import { getLocale, setLocale } from "#src/paraglide/runtime.js";
 
 // The language choice: switching here re-renders the app's messages in place.
 export const LanguageSection = () => {
@@ -855,20 +853,18 @@ export const LanguageSection = () => {
       </p>
       <div className="flex gap-2">
         <Button
-          className={cn(current === "en" && "border-foreground")}
           onClick={() => {
             void setLocale("en");
           }}
-          variant="outline"
+          variant={current === "en" ? "default" : "outline"}
         >
           English
         </Button>
         <Button
-          className={cn(current === "zh" && "border-foreground")}
           onClick={() => {
             void setLocale("zh");
           }}
-          variant="outline"
+          variant={current === "zh" ? "default" : "outline"}
         >
           中文
         </Button>
@@ -881,7 +877,6 @@ export const LanguageSection = () => {
 import { useTheme } from "next-themes";
 
 import { Button } from "@my-app/ui/components/button";
-import { cn } from "@my-app/ui/lib/utils";
 
 import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { m } from "#src/paraglide/messages.js";
@@ -901,7 +896,7 @@ const labels = {
 // known until the theme applies).
 export const ThemeSection = () => {
   const { setTheme, theme } = useTheme();
-  const picked = (theme ?? "system") as Choice;
+  const picked = choices.find((choice) => choice === theme) ?? "system";
 
   return (
     <section id="theme">
@@ -912,7 +907,6 @@ export const ThemeSection = () => {
       <div className="flex gap-2">
         {choices.map((choice) => (
           <Button
-            className={cn(picked === choice && "border-foreground")}
             key={choice}
             onClick={(event) => {
               if (choice === "system") {
@@ -921,7 +915,7 @@ export const ThemeSection = () => {
               }
               sweepTheme(choice, event.clientX, event.clientY, setTheme);
             }}
-            variant="outline"
+            variant={picked === choice ? "default" : "outline"}
           >
             {labels[choice]()}
           </Button>
@@ -933,9 +927,10 @@ export const ThemeSection = () => {
 
 # apps/web/src/components/titlebar.tsx (app-shell)
 import { useNavigate } from "@tanstack/react-router";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { Home, Moon, Settings, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import type { MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@my-app/ui/lib/utils";
@@ -947,9 +942,15 @@ import { m } from "#src/paraglide/messages.js";
 const controlButton =
   "flex h-full w-11 items-center justify-center text-foreground/70 hover:bg-accent hover:text-foreground transition-colors";
 
-// The app's own titlebar: the drag region carries the app icon and the page
-// navigation; the right side holds the theme sweep, the language switch, and
-// the window controls. In a browser the window controls simply drop out.
+const setLocaleAsync = async (locale: "en" | "zh"): Promise<void> => {
+  const runtime = await import("#src/paraglide/runtime.js");
+  await runtime.setLocale(locale);
+};
+
+// The app's own titlebar: the drag region carries the page navigation; the
+// right side holds the theme sweep, the language switch, and the window
+// controls. In a browser the window controls simply drop out. Add one text
+// button per page next to the home button as the app grows.
 export const Titlebar = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const navigate = useNavigate();
@@ -957,33 +958,34 @@ export const Titlebar = () => {
   const barRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    void windowControls().then(setControls);
+    void (async () => {
+      setControls(await windowControls());
+    })();
     const bar = barRef.current;
-    if (bar === null) {
-      return;
-    }
-    // StrictMode mounts effects twice, and a second gsap.from reads the first
-    // run's opacity:0 as its target, leaving the bar invisible forever.
-    // Explicit end values keep the entrance independent of mount order.
-    const tween = gsap.fromTo(
-      bar,
-      { y: -36, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-        overwrite: "auto",
-        clearProps: "transform,opacity",
-      }
-    );
+    const tween =
+      bar === null
+        ? undefined
+        : gsap.fromTo(
+            bar,
+            { y: -36, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.4,
+              ease: "power2.out",
+              overwrite: "auto",
+              clearProps: "transform,opacity",
+            }
+          );
     return () => {
-      tween.kill();
-      gsap.set(bar, { clearProps: "transform,opacity" });
+      tween?.kill();
+      if (bar !== null) {
+        gsap.set(bar, { clearProps: "transform,opacity" });
+      }
     };
   }, []);
 
-  const toggleTheme = (event: React.MouseEvent) => {
+  const toggleTheme = (event: MouseEvent) => {
     const next =
       (resolvedTheme ?? "light") === "dark"
         ? ("light" as const)
@@ -993,9 +995,7 @@ export const Titlebar = () => {
 
   const cycleLanguage = () => {
     const next = document.documentElement.lang === "zh" ? "en" : "zh";
-    void import("#src/paraglide/runtime.js").then(({ setLocale }) =>
-      setLocale(next)
-    );
+    void setLocaleAsync(next);
     if (barRef.current !== null) {
       gsap.fromTo(
         barRef.current,
@@ -1031,16 +1031,6 @@ export const Titlebar = () => {
           type="button"
         >
           <Home className="size-4" />
-        </button>
-        <button
-          className="text-foreground/70 hover:text-foreground flex h-full items-center px-2 text-sm transition-colors"
-          data-tauri-drag-region={false}
-          onClick={() => {
-            void navigate({ to: "/todos" });
-          }}
-          type="button"
-        >
-          {m.nav_todos()}
         </button>
       </div>
       <div className="ml-auto flex h-full items-center">
@@ -1167,9 +1157,9 @@ export const sweepTheme = (
   x: number,
   y: number,
   setTheme: (theme: "light" | "dark" | "system") => void
-) => {
+): void => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!document.startViewTransition || reduce) {
+  if (document.startViewTransition === undefined || reduce) {
     setTheme(to);
     return;
   }
@@ -1183,10 +1173,13 @@ export const sweepTheme = (
     root.dataset.sweep = "collapse";
   }
   const transition = document.startViewTransition(() => {
-    flushSync(() => setTheme(to));
+    flushSync(() => {
+      setTheme(to);
+    });
   });
-  void transition.ready
-    .then(() => {
+  const run = async (): Promise<void> => {
+    try {
+      await transition.ready;
       const radius = Math.hypot(
         Math.max(x, window.innerWidth - x),
         Math.max(y, window.innerHeight - y)
@@ -1211,28 +1204,47 @@ export const sweepTheme = (
             : "::view-transition-old(root)",
         }
       );
-    })
-    .catch(() => {
+      await transition.finished;
+    } catch {
       // A newer transition took over; it owns the screen.
-    });
-  void transition.finished.finally(() => {
-    delete root.dataset.sweep;
-  });
+    } finally {
+      delete root.dataset.sweep;
+    }
+  };
+  void run();
 };
 
 # apps/web/src/lib/window.ts (app-shell)
-// The browser stub of the window layer: the Tauri variant of this file, which
-// the tauri set contributes in place of this one, wraps the real window API.
-export const isDesktop = false;
+// The window API exists only inside Tauri; everything here degrades to no-ops
+// in a plain browser, so the titlebar component can render unconditionally.
+const inTauri = "__TAURI_INTERNALS__" in globalThis;
+
+export const isDesktop = inTauri;
 
 export interface WindowControls {
-  close(): Promise<void>;
-  minimize(): Promise<void>;
-  toggleMaximize(): Promise<void>;
+  close: () => Promise<void>;
+  minimize: () => Promise<void>;
+  toggleMaximize: () => Promise<void>;
 }
 
-export const windowControls = async (): Promise<WindowControls | undefined> =>
-  undefined;
+export const windowControls = async (): Promise<WindowControls | undefined> => {
+  if (!inTauri) {
+    return undefined;
+  }
+  const { getCurrentWindow } = await import("@tauri-apps/api/window");
+  const window = getCurrentWindow();
+  return {
+    close: async () => {
+      await window.close();
+    },
+    minimize: async () => {
+      await window.minimize();
+    },
+    toggleMaximize: async () => {
+      await window.toggleMaximize();
+    },
+  };
+};
 
 # apps/web/src/main.tsx (spa)
 import "@my-app/ui/globals.css";

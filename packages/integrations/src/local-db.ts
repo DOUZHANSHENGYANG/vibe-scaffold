@@ -10,8 +10,8 @@ export const localDb = defineAddon({
     ...templateFiles(ctx, ctx.has("tauri") ? "local-db/tauri" : "local-db/web"),
     contribute(packageJson, {
       dependencies: ctx.has("tauri")
-        ? ["@tauri-apps/plugin-sql", "idb"]
-        : ["idb"],
+        ? ["@tauri-apps/plugin-sql", "idb", "zod"]
+        : ["idb", "zod"],
       path: "apps/web",
     }),
     ...(ctx.has("tauri")

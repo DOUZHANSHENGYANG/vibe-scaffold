@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 
-import { db } from "#src/lib/db.ts";
+import { defineNumberEntry } from "#src/lib/db.ts";
 
-const countStore = "demo";
-const countKey = "visits";
+const visits = defineNumberEntry("demo", "visits");
 
-// The generated demo for `db`: a counter that survives restarts, in this
-// webview and across them, through the same calls on every backend.
+// The generated demo for the local database: a counter that survives
+// restarts, in this webview and across them, through the same calls on every
+// backend.
 export const LocalStorageCard = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    void db.get<number>(countStore, countKey).then((value) => {
-      setCount(value ?? 0);
-    });
+    void (async () => {
+      setCount((await visits.get()) ?? 0);
+    })();
   }, []);
 
   const increment = () => {
     setCount((current) => {
       const next = current + 1;
-      void db.set(countStore, countKey, next);
+      void visits.set(next);
       return next;
     });
   };

@@ -1,7 +1,6 @@
 import { useTheme } from "next-themes";
 
 import { Button } from "@my-app/ui/components/button";
-import { cn } from "@my-app/ui/lib/utils";
 
 import { sweepTheme } from "#src/lib/theme-sweep.ts";
 import { m } from "#src/paraglide/messages.js";
@@ -21,16 +20,17 @@ const labels = {
 // known until the theme applies).
 export const ThemeSection = () => {
   const { setTheme, theme } = useTheme();
-  const picked = (theme ?? "system") as Choice;
+  const picked = choices.find((choice) => choice === theme) ?? "system";
 
   return (
     <section id="theme">
       <h3 className="mb-1 text-sm font-medium">{m.settings_theme()}</h3>
-      <p className="text-muted-foreground mb-3 text-sm">{m.settings_appearance_desc()}</p>
+      <p className="text-muted-foreground mb-3 text-sm">
+        {m.settings_appearance_desc()}
+      </p>
       <div className="flex gap-2">
         {choices.map((choice) => (
           <Button
-            className={cn(picked === choice && "border-foreground")}
             key={choice}
             onClick={(event) => {
               if (choice === "system") {
@@ -39,7 +39,7 @@ export const ThemeSection = () => {
               }
               sweepTheme(choice, event.clientX, event.clientY, setTheme);
             }}
-            variant="outline"
+            variant={picked === choice ? "default" : "outline"}
           >
             {labels[choice]()}
           </Button>

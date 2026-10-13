@@ -1,7 +1,8 @@
 import { useNavigate } from "@tanstack/react-router";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { Home, Moon, Settings, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import type { MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@my-app/ui/lib/utils";
@@ -13,9 +14,15 @@ import { m } from "#src/paraglide/messages.js";
 const controlButton =
   "flex h-full w-11 items-center justify-center text-foreground/70 hover:bg-accent hover:text-foreground transition-colors";
 
-// The app's own titlebar: the drag region carries the app icon and the page
-// navigation; the right side holds the theme sweep, the language switch, and
-// the window controls. In a browser the window controls simply drop out.
+const setLocaleAsync = async (locale: "en" | "zh"): Promise<void> => {
+  const runtime = await import("#src/paraglide/runtime.js");
+  await runtime.setLocale(locale);
+};
+
+// The app's own titlebar: the drag region carries the page navigation; the
+// right side holds the theme sweep, the language switch, and the window
+// controls. In a browser the window controls simply drop out. Add one text
+// button per page next to the home button as the app grows.
 export const Titlebar = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const navigate = useNavigate();
@@ -23,33 +30,34 @@ export const Titlebar = () => {
   const barRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    void windowControls().then(setControls);
+    void (async () => {
+      setControls(await windowControls());
+    })();
     const bar = barRef.current;
-    if (bar === null) {
-      return;
-    }
-    // StrictMode mounts effects twice, and a second gsap.from reads the first
-    // run's opacity:0 as its target, leaving the bar invisible forever.
-    // Explicit end values keep the entrance independent of mount order.
-    const tween = gsap.fromTo(
-      bar,
-      { y: -36, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-        overwrite: "auto",
-        clearProps: "transform,opacity",
-      }
-    );
+    const tween =
+      bar === null
+        ? undefined
+        : gsap.fromTo(
+            bar,
+            { y: -36, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.4,
+              ease: "power2.out",
+              overwrite: "auto",
+              clearProps: "transform,opacity",
+            }
+          );
     return () => {
-      tween.kill();
-      gsap.set(bar, { clearProps: "transform,opacity" });
+      tween?.kill();
+      if (bar !== null) {
+        gsap.set(bar, { clearProps: "transform,opacity" });
+      }
     };
   }, []);
 
-  const toggleTheme = (event: React.MouseEvent) => {
+  const toggleTheme = (event: MouseEvent) => {
     const next =
       (resolvedTheme ?? "light") === "dark"
         ? ("light" as const)
@@ -59,9 +67,7 @@ export const Titlebar = () => {
 
   const cycleLanguage = () => {
     const next = document.documentElement.lang === "zh" ? "en" : "zh";
-    void import("#src/paraglide/runtime.js").then(({ setLocale }) =>
-      setLocale(next)
-    );
+    void setLocaleAsync(next);
     if (barRef.current !== null) {
       gsap.fromTo(
         barRef.current,
@@ -97,16 +103,6 @@ export const Titlebar = () => {
           type="button"
         >
           <Home className="size-4" />
-        </button>
-        <button
-          className="text-foreground/70 hover:text-foreground flex h-full items-center px-2 text-sm transition-colors"
-          data-tauri-drag-region={false}
-          onClick={() => {
-            void navigate({ to: "/todos" });
-          }}
-          type="button"
-        >
-          {m.nav_todos()}
         </button>
       </div>
       <div className="ml-auto flex h-full items-center">

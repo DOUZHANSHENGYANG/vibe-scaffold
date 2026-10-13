@@ -4,12 +4,11 @@ import { toast } from "sonner";
 
 import { Button } from "@my-app/ui/components/button";
 
-import { db } from "#src/lib/db.ts";
+import { defineStringEntry } from "#src/lib/db.ts";
 import { isDesktop } from "#src/lib/window.ts";
 import { m } from "#src/paraglide/messages.js";
 
-const DIR_KEY = "dataDir";
-const DIR_STORE = "settings";
+const dataDir = defineStringEntry("settings", "dataDir");
 
 // The storage directory: where the desktop app keeps its local data. The
 // choice persists now and applies on the next launch; in a browser the
@@ -18,15 +17,17 @@ export const DataSection = () => {
   const [dir, setDir] = useState<string | undefined>();
 
   useEffect(() => {
-    void db.get<string>(DIR_STORE, DIR_KEY).then(setDir);
+    void (async () => {
+      setDir(await dataDir.get());
+    })();
   }, []);
 
   const choose = async () => {
     const picked = await open({ directory: true });
-    if (typeof picked !== "string") {
+    if (Array.isArray(picked) || picked === null) {
       return;
     }
-    await db.set(DIR_STORE, DIR_KEY, picked);
+    await dataDir.set(picked);
     setDir(picked);
     toast(m.data_dir_chosen());
   };

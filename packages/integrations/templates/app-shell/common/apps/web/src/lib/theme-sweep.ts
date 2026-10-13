@@ -8,10 +8,10 @@ export const sweepTheme = (
   to: "light" | "dark",
   x: number,
   y: number,
-  setTheme: (theme: "light" | "dark" | "system") => void,
-) => {
+  setTheme: (theme: "light" | "dark" | "system") => void
+): void => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!document.startViewTransition || reduce) {
+  if (document.startViewTransition === undefined || reduce) {
     setTheme(to);
     return;
   }
@@ -25,31 +25,43 @@ export const sweepTheme = (
     root.dataset.sweep = "collapse";
   }
   const transition = document.startViewTransition(() => {
-    flushSync(() => setTheme(to));
+    flushSync(() => {
+      setTheme(to);
+    });
   });
-  void transition.ready
-    .then(() => {
+  const run = async (): Promise<void> => {
+    try {
+      await transition.ready;
       const radius = Math.hypot(
         Math.max(x, window.innerWidth - x),
-        Math.max(y, window.innerHeight - y),
+        Math.max(y, window.innerHeight - y)
       );
       document.documentElement.animate(
         {
           clipPath: goingDark
-            ? [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`]
-            : [`circle(${radius}px at ${x}px ${y}px)`, `circle(0px at ${x}px ${y}px)`],
+            ? [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${radius}px at ${x}px ${y}px)`,
+              ]
+            : [
+                `circle(${radius}px at ${x}px ${y}px)`,
+                `circle(0px at ${x}px ${y}px)`,
+              ],
         },
         {
           duration: 450,
           easing: "cubic-bezier(0.33, 1, 0.68, 1)",
-          pseudoElement: goingDark ? "::view-transition-new(root)" : "::view-transition-old(root)",
-        },
+          pseudoElement: goingDark
+            ? "::view-transition-new(root)"
+            : "::view-transition-old(root)",
+        }
       );
-    })
-    .catch(() => {
+      await transition.finished;
+    } catch {
       // A newer transition took over; it owns the screen.
-    });
-  void transition.finished.finally(() => {
-    delete root.dataset.sweep;
-  });
+    } finally {
+      delete root.dataset.sweep;
+    }
+  };
+  void run();
 };

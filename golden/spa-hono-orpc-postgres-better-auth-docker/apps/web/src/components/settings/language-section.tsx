@@ -1,9 +1,7 @@
 import { Button } from "@my-app/ui/components/button";
-import { cn } from "@my-app/ui/lib/utils";
 
 import { m } from "#src/paraglide/messages.js";
-import { setLocale } from "#src/paraglide/runtime.js";
-import { getLocale } from "#src/paraglide/runtime.js";
+import { getLocale, setLocale } from "#src/paraglide/runtime.js";
 
 // The language choice: switching here re-renders the app's messages in place.
 export const LanguageSection = () => {
@@ -17,20 +15,18 @@ export const LanguageSection = () => {
       </p>
       <div className="flex gap-2">
         <Button
-          className={cn(current === "en" && "border-foreground")}
           onClick={() => {
             void setLocale("en");
           }}
-          variant="outline"
+          variant={current === "en" ? "default" : "outline"}
         >
           English
         </Button>
         <Button
-          className={cn(current === "zh" && "border-foreground")}
           onClick={() => {
             void setLocale("zh");
           }}
-          variant="outline"
+          variant={current === "zh" ? "default" : "outline"}
         >
           中文
         </Button>
